@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\GitRep\\VanJs"
+		},
+		{
+			"path": "..\\..\\..\\..\\..\\GitRep\\JSP"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "projectKY"
+	}
+}
