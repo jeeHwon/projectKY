@@ -32,7 +32,7 @@
 			</div>
 			<div class="f3">
 			    <div class="logo">
-			        <img src="img/logo_imsi.png">
+			        <a href="index.jsp"><img src="img/logo_imsi.png"></a>
 			    </div>
 			</div>
 			<div class="f4 navbar">
