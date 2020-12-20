@@ -1,24 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="index.css">
+	<title>Insert title here</title>
 </head>
 <body>
-<header>Çì´õ</header>
-<h2>°í°´¼¾ÅÍ</h2>
-<table>
-<tr>
-<td>Á¦¸ñ</td>
-<td>µî·ÏÀÏ</td>
-</tr>
-<tr>
-<td>°øÁö»çÇ×ÀÔ´Ï´Ù</td>
-<td>2020.12.09</td>
-</tr>
-</table>
-<footer>ÇªÅÍ</footer>
+    <div class="container">
+   	<%@include file="header.jsp" %>
+    <main>
+		<h2>ê³ ê°ì„¼í„°</h2>
+		<table>
+			<tr>
+				<td>ì œëª©</td>
+				<td>ë“±ë¡ì¼</td>
+			</tr>
+			<tr>
+				<td>ê³µì§€ì‚¬í•­ì…ë‹ˆë‹¤</td>
+				<td>2020.12.09</td>
+			</tr>
+		</table>
+	</main>
+    <%@include file="footer.jsp" %>
+    </div>
 </body>
 </html>

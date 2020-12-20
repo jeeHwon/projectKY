@@ -2,11 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%
-Class.forName("com.mysql.jdbc.Driver");
-String db="jdbc:mysql://localhost:3306/pkc";
-String uid="root";
-String pw="1234";
-Connection conn=DriverManager.getConnection(db,uid,pw);
+String driver = "oracle.jdbc.driver.OracleDriver";
+String url1 = "jdbc:oracle:thin:@20.194.41.83:1521:xe";
+String url2 = "jdbc:oracle:thin:@db.sarte.kr:1521:xe";
+String uid = "ky";
+String upw = "1234";
+Class.forName(driver);
+      
+Connection conn = DriverManager.getConnection(url1, uid, upw);
 
 request.setCharacterEncoding("utf-8");
 String userid = request.getParameter("userid");
@@ -19,8 +22,8 @@ String phoneNum = request.getParameter("phoneNum");
 String email = request.getParameter("email");
 String interest = String.join(",",request.getParameterValues("interest"));
 
-String sql = "insert into member(userid,nickName,pwd,name,age,sex,phoneNum,email,interest) ";
-sql = sql + " values(?,?,?,?,?,?,?,?,?)";
+String sql = "insert into USER_MEMBER(USER_NO,USER_ID,USER_NICK,USER_PW,USER_NAME,AGE,GENDER,TEL,EMAIL,USER_INTEREST) ";
+sql = sql + " values(USER_MEMBER_seq.nextval,?,?,?,?,?,?,?,?,?)";
 
 PreparedStatement pstmt = conn.prepareStatement(sql);
 pstmt.setString(1, userid);
@@ -35,5 +38,5 @@ pstmt.setString(9, interest);
 
 pstmt.executeUpdate();
 
-response.sendRedirect("index2.jsp");
+response.sendRedirect("index.jsp");
 %>
