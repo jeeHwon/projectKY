@@ -84,7 +84,7 @@
                         </table>
                     </div>
                     <div class="main-left-rule">
-                        <form action="nav2_createRoom_ok.jsp" method="post">
+                        <form action="nav2_createRoom_ok.jsp" method="post" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label for="title" class="col-sm-2 col-form-label">방이름</label>
                                 <div class="col-sm-10">
