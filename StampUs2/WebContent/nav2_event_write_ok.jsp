@@ -6,12 +6,12 @@
 <%@page import="dto.EventDTO"%>
 <%
 	//cos.jar 라이브러리를 통해 파일을 업로드
-	String path="D:\\backend\\jspWK\\stampUs\\WebContent\\img";
+	String realPath = request.getRealPath("/img");
 		//슬래시나 역슬래시2개로 경로표기
 	int size=1024*1024*10;
 	String han="utf-8";
 	MultipartRequest multi =
-	new MultipartRequest(request,path,size,han,new DefaultFileRenamePolicy());
+	new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());
 	String adm = multi.getParameter("adm");
 	String title = multi.getParameter("title");
 	String content = multi.getParameter("content");

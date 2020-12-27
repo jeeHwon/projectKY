@@ -49,6 +49,18 @@
 			</td>
 		</tr>
 	</table>
+	<!------------------------------------------------- 댓글 관련 작업---------------------------->
+    <!-- 댓글을 입력 폼  => 작성자, 내용, 비번 -->
+   <div align="center">
+    <form name="dat" method="post" action="event_dat_write_ok.jsp">
+   	  <input type="hidden" name="did" value="<%=no%>"> 
+      <input type="text" name="name" size="5" placeholder="작성자" id="name">
+      <input type="text" name="content" size="50" placeholder="댓글 내용" id="content">
+      <input type="text" name="pwd" size="5" placeholder="비밀번호">
+      <input type="submit" value="댓글달기">
+    </form>
+   </div>  
+   <!-- 댓글 출력 -->
 <%@include file="footer.jsp" %>
 </body>
 </html>

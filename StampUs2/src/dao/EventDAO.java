@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import dto.EventDTO;
+import dto.Study_my_DTO;
 
 //event_view 기본값 0 으로 설정하기 
 //private String no;
@@ -50,14 +51,17 @@ public class EventDAO {
 	    return no;
 	}
 	//=================================update_ok==================================================
-	public void update_ok(String no) throws Exception {
+	public void update_ok(EventDTO dto) throws Exception {
 		
 		//쿼리생성
 		String sql="update event set event_title=?, event_content=?, event_img=? where event_no=?";
 		
 		//심부름꾼
-		EventDTO dto = new EventDTO();
 		PreparedStatement pstmt=conn.prepareStatement(sql);
+		
+		if(dto.getImg()==null) {
+			dto.setImg("");
+		}
 		pstmt.setString(1, dto.getTitle());
 		pstmt.setString(2, dto.getContent());
 		pstmt.setString(3, dto.getImg());

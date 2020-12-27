@@ -1,13 +1,7 @@
 package dto;
 
 public class EventDTO {
-	private String no;
-	private String adm;
-	private String title;
-	private String content;
-	private String img;
-	private String view;
-	private String postday;
+	private String no, adm, title, content, img, view, postday;
 	public String getNo() {
 		return no;
 	}
