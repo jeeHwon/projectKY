@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="stampUs2.dao.EventDAO" %>
+<%@page import="dao.EventDAO" %>
 <%@page import="java.sql.*" %>
-<%@page import="stampUs2.dto.EventDTO" %>
+<%@page import="dto.EventDTO" %>
 <%
 	String no=request.getParameter("no");
-
     EventDAO dao=new EventDAO();
 	EventDTO dto = dao.content(no);
 %>
@@ -14,6 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
 <%@include file="header.jsp" %>
@@ -43,9 +43,9 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<a href="event_update.jsp?no=<%=no%>">수정</a>
-				<a href="event_delete.jsp?no=<%=no%>">삭제</a>
-				<a href="event_list.jsp">목록</a>
+				<a href="nav2_event_update.jsp?no=<%=no%>">수정</a>
+				<a href="nav2_event_delete.jsp?no=<%=no%>">삭제</a>
+				<a href="nav2_event_list.jsp">목록</a>
 			</td>
 		</tr>
 	</table>

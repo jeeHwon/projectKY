@@ -47,7 +47,7 @@
 			        <li>|</li>
 			        <li><a href="nav2_stats.jsp">통계</a></li>
 			        <li>|</li>
-			        <li><a href="event_list.jsp">이벤트</a></li>
+			        <li><a href="nav2_event_list.jsp">이벤트</a></li>
 			    </ul>
 			    <div class="srchBox">
 			        <form name="search" method="post">

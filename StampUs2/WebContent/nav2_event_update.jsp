@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="stampUs.com.EventDAO" %>
+<%@page import="dao.EventDAO" %>
 <%@page import="java.sql.*" %>
-<%@page import="stampUs.com.EventDTO" %>
+<%@page import="dto.EventDTO" %>
 <%
 	String no=request.getParameter("no");
 
@@ -14,10 +14,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="index.css">
 </head>
 <body>
 <%@include file="header.jsp" %>
-<form method="post" action="event_update_ok.jsp" enctype="multipart/form-data">
+<form method="post" action="nav2_event_update_ok.jsp" enctype="multipart/form-data">
 	<input type="hidden" name="no" value="<%=no%>">
 	<table width="600" align="center">
 		<tr>
@@ -47,7 +48,7 @@
 		<tr>
 			<td colspan="2" align="center">
 				<button>수정</button>
-				<a href="event_content.jsp?no=<%=no%>">뒤로</a>
+				<a href="nav2_event_content.jsp?no=<%=no%>">뒤로</a>
 			</td>
 		</tr>
 	</table>

@@ -6,10 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../index.css">
 </head>
 <body>
 <%@include file="header.jsp" %>
-<form method="post" action="event_write_ok.jsp" enctype="multipart/form-data">
+<form method="post" action="nav2_event_write_ok.jsp" enctype="multipart/form-data">
 	<table width="500" align="center">
 		<tr>
 			<td>제목</td>
@@ -30,7 +31,7 @@
 		<tr>
 			<td colspan="2">
 			<button>입력</button>
-			<a href="list.jsp"><input type="button" value="뒤로가기"></a>
+			<a href="nav2_event_list.jsp"><input type="button" value="뒤로가기"></a>
 			</td>
 		</tr>
 	</table>

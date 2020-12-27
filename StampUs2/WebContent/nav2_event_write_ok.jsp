@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.oreilly.servlet.MultipartRequest" %>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
-<%@page import="stampUs.com.EventDAO"%>
-<%@page import="stampUs.com.EventDTO"%>
+<%@page import="dao.EventDAO"%>
+<%@page import="dto.EventDTO"%>
 <%
 	//cos.jar 라이브러리를 통해 파일을 업로드
 	String path="D:\\backend\\jspWK\\stampUs\\WebContent\\img";
@@ -29,5 +29,5 @@
 	EventDAO dao=new EventDAO();
 	String no = dao.write_ok(dto); //메소드에 전달
 
-	response.sendRedirect("event_content.jsp?no="+no);
+	response.sendRedirect("nav2_event_content.jsp?no="+no);
 %>

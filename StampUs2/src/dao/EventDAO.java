@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import dto.EventDTO;
+
 //event_view 기본값 0 으로 설정하기 
 //private String no;
 //private String adm;
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 //private String img;
 //private String view;
 public class EventDAO {	
-	   String url = "jdbc:oracle:thin:@20.194.41.83:1521:xe";
+	   String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
 	   String uid = "ky";
 	   String upw = "1234";
 	   Connection conn;
