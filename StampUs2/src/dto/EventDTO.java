@@ -1,48 +1,48 @@
 package dto;
 
 public class EventDTO {
-	private String no, adm, title, content, img, view, postday;
-	public String getNo() {
-		return no;
+	private String event_no, event_adm, event_title, event_content, event_img, event_view, event_postday;
+	public String getEvent_no() {
+		return event_no;
 	}
-	public void setNo(String no) {
-		this.no = no;
+	public void setEvent_no(String no) {
+		this.event_no = no;
 	}
-	public String getAdm() {
-		return adm;
+	public String getEvent_adm() {
+		return event_adm;
 	}
-	public void setAdm(String adm) {
-		this.adm = adm;
+	public void setEvent_adm(String adm) {
+		this.event_adm = adm;
 	}
-	public String getTitle() {
-		return title;
+	public String getEvent_title() {
+		return event_title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setEvent_title(String title) {
+		this.event_title = title;
 	}
-	public String getContent() {
-		return content;
+	public String getEvent_content() {
+		return event_content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setEvent_content(String content) {
+		this.event_content = content;
 	}
-	public String getImg() {
-		return img;
+	public String getEvent_img() {
+		return event_img;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setEvent_img(String img) {
+		this.event_img = img;
 	}
-	public String getView() {
-		return view;
+	public String getEvent_view() {
+		return event_view;
 	}
-	public void setView(String view) {
-		this.view = view;
+	public void setEvent_view(String view) {
+		this.event_view = view;
 	}
-	public String getPostday() {
-		return postday;
+	public String getEvent_postday() {
+		return event_postday;
 	}
-	public void setPostday(String postday) {
-		this.postday = postday;
+	public void setEvent_postday(String postday) {
+		this.event_postday = postday;
 	}
 
 

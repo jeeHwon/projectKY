@@ -34,10 +34,10 @@ public class EventDAO {
 		
 		//심부름꾼
 		PreparedStatement pstmt=conn.prepareStatement(sql);
-		pstmt.setString(1, dto.getAdm());
-		pstmt.setString(2, dto.getTitle());
-		pstmt.setString(3, dto.getContent());
-		pstmt.setString(4, dto.getImg());
+		pstmt.setString(1, dto.getEvent_adm());
+		pstmt.setString(2, dto.getEvent_title());
+		pstmt.setString(3, dto.getEvent_content());
+		pstmt.setString(4, dto.getEvent_img());
 
 		//쿼리실행
 		pstmt.executeUpdate();
@@ -59,13 +59,13 @@ public class EventDAO {
 		//심부름꾼
 		PreparedStatement pstmt=conn.prepareStatement(sql);
 		
-		if(dto.getImg()==null) {
-			dto.setImg("");
+		if(dto.getEvent_img()==null) {
+			dto.setEvent_img("");
 		}
-		pstmt.setString(1, dto.getTitle());
-		pstmt.setString(2, dto.getContent());
-		pstmt.setString(3, dto.getImg());
-		pstmt.setString(4, dto.getNo());
+		pstmt.setString(1, dto.getEvent_title());
+		pstmt.setString(2, dto.getEvent_content());
+		pstmt.setString(3, dto.getEvent_img());
+		pstmt.setString(4, dto.getEvent_no());
 		
 		//쿼리실행
 		pstmt.executeUpdate();
@@ -102,10 +102,10 @@ public class EventDAO {
 			
 			while(rs.next()) {
 				EventDTO dto=new EventDTO();
-				dto.setNo(rs.getString("event_no"));
-				dto.setTitle(rs.getString("event_title"));
-				dto.setPostday(rs.getString("event_postday"));
-				dto.setView(rs.getString("event_view"));
+				dto.setEvent_no(rs.getString("event_no"));
+				dto.setEvent_title(rs.getString("event_title"));
+				dto.setEvent_postday(rs.getString("event_postday"));
+				dto.setEvent_view(rs.getString("event_view"));
 				
 				list.add(dto);
 			}
@@ -122,12 +122,12 @@ public class EventDAO {
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			EventDTO dto=new EventDTO();
-			dto.setNo(rs.getString("event_no"));
-			dto.setTitle(rs.getString("event_title"));
-			dto.setContent(rs.getString("event_content"));
-			dto.setImg(rs.getString("event_img"));
-			dto.setPostday(rs.getString("event_postday"));
-			dto.setView(rs.getString("event_view"));
+			dto.setEvent_no(rs.getString("event_no"));
+			dto.setEvent_title(rs.getString("event_title"));
+			dto.setEvent_content(rs.getString("event_content"));
+			dto.setEvent_img(rs.getString("event_img"));
+			dto.setEvent_postday(rs.getString("event_postday"));
+			dto.setEvent_view(rs.getString("event_view"));
 
 			return dto; //return이 있으면 conn.close()안됨
 		}

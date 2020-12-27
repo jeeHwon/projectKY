@@ -21,10 +21,10 @@
 	   long fsize=file.length(); */ //파일크기
 	
 	EventDTO dto = new EventDTO();
-	dto.setNo(no);
-	dto.setTitle(title);
-	dto.setContent(content);
-	if(img!=null) dto.setImg(img);
+	dto.setEvent_no(no);
+	dto.setEvent_title(title);
+	dto.setEvent_content(content);
+	if(img!=null) dto.setEvent_img(img);
 
 	EventDAO dao = new EventDAO();
 	dao.update_ok(dto); //메소드에 전달

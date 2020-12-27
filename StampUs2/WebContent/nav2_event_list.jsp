@@ -27,10 +27,10 @@
 	</tr>
 <%for(int i=0; i<list.size(); i++){ %>
 	<tr>
-		<td><%=list.get(i).getNo() %></td>
-		<td><a href="nav2_event_content.jsp?no=<%=list.get(i).getNo() %>"><%=list.get(i).getTitle() %></a></td>
-		<td><%=list.get(i).getPostday() %></td>
-		<td><%=list.get(i).getView() %></td>
+		<td><%=list.get(i).getEvent_no()%></td>
+		<td><a href="nav2_event_content.jsp?no=<%=list.get(i).getEvent_no()%>"><%=list.get(i).getEvent_title()%></a></td>
+		<td><%=list.get(i).getEvent_postday()%></td>
+		<td><%=list.get(i).getEvent_view()%></td>
 	</tr>
 <% }%>
 	<tr>

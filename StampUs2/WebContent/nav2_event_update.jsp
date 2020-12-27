@@ -23,27 +23,27 @@
 	<table width="600" align="center">
 		<tr>
 			<td>글번호</td>
-			<td><%=dto.getNo() %></td>
+			<td><%=dto.getEvent_no()%></td>
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td><input type="text" name="title" value="<%=dto.getTitle() %>"></td>
+			<td><input type="text" name="title" value="<%=dto.getEvent_title()%>"></td>
 		</tr>
 		<tr>
 			<td>내용</td>
 			<td>
 				<input type="file" name="img"><p>
-					<img src="img/<%=dto.getImg() %>"><p>
-				<textarea name="content" rows="4" cols="40"><%=dto.getContent() %></textarea>
+					<img src="img/<%=dto.getEvent_img()%>"><p>
+				<textarea name="content" rows="4" cols="40"><%=dto.getEvent_content()%></textarea>
 			</td>
 		</tr>
 		<tr>
 			<td>조회수</td>
-			<td><%=dto.getView() %></td>
+			<td><%=dto.getEvent_view()%></td>
 		</tr>
 		<tr>
 			<td>작성일</td>
-			<td><%=dto.getPostday() %></td>
+			<td><%=dto.getEvent_postday()%></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
