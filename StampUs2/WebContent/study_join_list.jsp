@@ -4,7 +4,7 @@
 <%@ page import="dao.Study_join_DAO" %>
 <%@ page import="java.util.*" %>
 <%
-session.setAttribute("user_id", "user1");
+session.setAttribute("user_id", "user2");
 
  Study_join_DAO sjDAO=new Study_join_DAO();
  
