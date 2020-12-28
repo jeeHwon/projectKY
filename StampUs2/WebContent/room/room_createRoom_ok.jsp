@@ -1,4 +1,4 @@
-<%@page import="dto.RoomDTO"%>
+<%@page import="dto.roomDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>    
@@ -6,9 +6,9 @@
 <%@ page import="java.util.Enumeration"%>
 <%@ page import="java.io.*" %>  
 <%@ page import="java.sql.*"%>
-<%@ page import="dao.RoomDAO"%>
-<% 
-	RoomDAO rdao = new RoomDAO();
+<%@ page import="dao.roomDAO"%>
+<%
+	roomDAO rdao = new roomDAO();
 
 	ServletContext context = request.getSession().getServletContext();
 	String saveDir = context.getRealPath("Room_Img_File");
@@ -30,7 +30,7 @@
 	String content = multi.getParameter("content");
 	String deposit = multi.getParameter("deposit");
 
-	RoomDTO rdto = new RoomDTO();
+	roomDTO rdto = new roomDTO();
 	rdto.setTitle(title);
 	rdto.setStart_day(start_day);
 	rdto.setEnd_day(end_day);
@@ -65,6 +65,4 @@
 	//String penalty = request.getParameter("penalty");
 	//String content = request.getParameter("content");
 	//String deposit = request.getParameter("deposit");
-	
-	
 %>

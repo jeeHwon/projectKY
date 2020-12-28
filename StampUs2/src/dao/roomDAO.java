@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dto.RoomDTO;
+import dto.roomDTO;
 
-public class RoomDAO {
+public class roomDAO {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url1 = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
 	String url2 = "jdbc:oracle:thin:@db.sarte.kr:1521:xe";
@@ -16,12 +16,12 @@ public class RoomDAO {
 	String password = "1234";
 	Connection conn;
 	
-	public RoomDAO() throws ClassNotFoundException, SQLException {
+	public roomDAO() throws ClassNotFoundException, SQLException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");	
 		conn = DriverManager.getConnection(url1, user, password);
 	}
 	
-	public void insert(RoomDTO rdto) throws SQLException {
+	public void insert(roomDTO rdto) throws SQLException {
 		//쿼리 생성
 		String sql = "insert into ROOM (ROOM_NO, ROOM_TITLE, ROOM_START_DAY, ROOM_END_DAY, ";
 		sql += " ROOM_CATEGORY, ROOM_CATEGORY2, ROOM_PEOPLE, ROOM_CHECK_DAY, ROOM_CERTI_TYPE, ";

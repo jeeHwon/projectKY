@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css"> 
+    <link rel="stylesheet" href="../index.css"> 
     <title>Stampers</title>
     <style>
         /*추후 style.css로 따로 빼겠습니다*/
@@ -74,7 +74,7 @@
 
 <body>
 	<div class="container">
-    <%@include file="header.jsp" %>
+    <%@include file="../header.jsp" %>
     <main class="main">
         <div class="container-float">
             <div class="main-sidebar">
@@ -197,7 +197,7 @@
 
         </div>
     </main>
-    <%@include file="footer.jsp" %>
+    <%@include file="../footer.jsp" %>
     </div>
 </body>
 </html>

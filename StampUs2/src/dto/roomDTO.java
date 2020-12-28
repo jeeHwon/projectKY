@@ -1,6 +1,6 @@
 package dto;
 
-public class RoomDTO {
+public class roomDTO {
 	private int id, people;
 	private String title, start_day, end_day, category, category2, condition, check_day;
 	private String certi_type, file_name, deposit, penalty, content;
