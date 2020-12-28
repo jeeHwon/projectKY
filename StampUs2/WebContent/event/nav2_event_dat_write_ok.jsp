@@ -3,11 +3,13 @@
 <%@ page import="dao.Event_dat_DAO" %>
 <%@ page import="dto.Event_dat_DTO" %>
 <%
+	session.setAttribute("user_id", "user1");	
+	
 	request.setCharacterEncoding("utf-8");
 	
 	String event_no = request.getParameter("event_no");
-	String user_id = request.getParameter("event_no");
-	String event_dat_content = request.getParameter("event_no");
+	String user_id = request.getParameter("user_id");
+	String event_dat_content = request.getParameter("event_dat_content");
 	
 	Event_dat_DAO edDAO = new Event_dat_DAO();
 	
@@ -18,5 +20,5 @@
 	
 	edDAO.insert(edDTO);
 	
-	response.sendRedirect("event_content.jsp?event_no="+event_no);
+	response.sendRedirect("nav2_event_content.jsp?event_no="+event_no);
 %>

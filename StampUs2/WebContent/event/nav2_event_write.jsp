@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../index.css">
 </head>
 <body>
-<%@include file="header.jsp" %>
+<%@include file="..\\header.jsp" %>
 <form method="post" action="nav2_event_write_ok.jsp" enctype="multipart/form-data">
 	<table width="500" align="center">
 		<tr>
@@ -36,6 +36,6 @@
 		</tr>
 	</table>
 </form>
-<%@include file="footer.jsp" %>
+<%@include file="..\\footer.jsp" %>
 </body>
 </html>

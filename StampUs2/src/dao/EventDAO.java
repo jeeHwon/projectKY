@@ -112,10 +112,10 @@ public class EventDAO {
 			return list; //return이 있으면 conn.close()안됨
 		}
 		//=====================content.jsp===============================
-		public EventDTO content(String no) throws Exception{
+		public EventDTO content(int event_no) throws Exception{
 			
 			//쿼리생성
-			String sql="select * from event where event_no="+no;
+			String sql="select * from event where event_no="+event_no;
 			//심부름꾼
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			//쿼리실행

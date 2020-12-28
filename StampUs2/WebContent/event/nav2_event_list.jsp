@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="index.css"> 
 </head>
 <body>
-<%@include file="header.jsp" %>
+<%@include file="..\\header.jsp" %>
 <table width="600" align="center">
 	<tr>
 		<td>글번호</td>
@@ -28,7 +28,7 @@
 <%for(int i=0; i<list.size(); i++){ %>
 	<tr>
 		<td><%=list.get(i).getEvent_no()%></td>
-		<td><a href="nav2_event_content.jsp?no=<%=list.get(i).getEvent_no()%>"><%=list.get(i).getEvent_title()%></a></td>
+		<td><a href="nav2_event_content.jsp?event_no=<%=list.get(i).getEvent_no()%>"><%=list.get(i).getEvent_title()%></a></td>
 		<td><%=list.get(i).getEvent_postday()%></td>
 		<td><%=list.get(i).getEvent_view()%></td>
 	</tr>
@@ -37,6 +37,6 @@
 		<td colspan="4" align="center"><a href="nav2_event_write.jsp">글쓰기</a></td>
 	</tr>
 </table>
-<%@include file="footer.jsp" %>
+<%@include file="..\\footer.jsp" %>
 </body>
 </html>
