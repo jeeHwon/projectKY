@@ -38,6 +38,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     
+    <!-- HTLM5shiv ie6~8 -->
+    <!--[if lt IE 9]> 
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script type="text/javascript">
+            alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
+        </script>
+   <![endif]-->
+
+
 </head>
 <body>
     <header id="header">
@@ -65,6 +74,36 @@
         </div>
     </header>
     <!-- //header-->
+    
+    <section id="banner">
+        <div class="banner_menu">
+           <h2 class="ir_so">인증샷 이벤트</h2>
+           <div class="container">
+               <div class="row">
+                   <div class="bm_left">
+                       <ul>
+                           <li class="total"><a href="#">전체메뉴</a></li>
+                       </ul>
+                   </div>
+                   <div class="bm_right">
+                       <ul>
+                           <li class="line"><a href="#">고객센터</a></li>
+                           <li class="line"><a href="#">공지사항</a></li>
+                       </ul>
+                       <ul>
+                           <li class="white"><a href="#">카테고리별</a></li>
+                           <li class="red"><a href="#">빠른 검색</a></li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+            
+        </div>
+        <div class="slider">
+            <div><img src="assets/img/main_slider01.jpg" alt="main_slider01"></div>
+        </div>
+    </section>
+    <!-- banner -->
     
     <!-- 자바스크립트 라이브러리 -->
     <script src="assets/js/jquery.min_1.12.4.js"></script>
