@@ -1,1 +1,6 @@
-/build/
+.classpath
+.project
+.git/
+.settings/
+build/
+WebContent/META-INF/
