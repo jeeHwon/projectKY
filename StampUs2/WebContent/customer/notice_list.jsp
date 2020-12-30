@@ -1,27 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
+<%@ page import ="custom.dao.NoticeDao" %>
+<%@page import="java.util.ArrayList" %>
+<%@ page import ="custom.dto.NoticeDto" %>
 <%
-	//DB 연결
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url1 = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
-	String url2 = "jdbc:oracle:thin:@db.sarte.kr:1521:xe";
-	String uid = "ky";
-	String upw = "1234";
-	Class.forName(driver);
-	// 2. 연결
-	Connection conn = DriverManager.getConnection(url1, uid, upw);
-	//폼에 입력된 값을 읽어와서 DB에 저장
-
-	// request는 필요없음 //db에 데이타를 요청할때
-
-	// 쿼리생성
-	String sql = "select * from notice";
-	// 심부름꾼 만들기
-	Statement stmt = conn.createStatement();
-	// 쿼리 실행후 결과를 ResultSet으로
-	ResultSet rs = stmt.executeQuery(sql);
-%>
+   // list메소드를 포함한 클래스 객체를 생성
+   NoticeDao ndao=new NoticeDao();
+   ArrayList<NoticeDto> list=ndao.list();
+   pageContext.setAttribute("list", list);
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,12 +39,14 @@ th, td {
 			<td>작성날짜</td>
 		</tr>
 		<%
-			while (rs.next()) {
-		%>
+    // 출력
+    for(int i=0;i<list.size();i++)
+    {
+ %>
 		<tr>
-			<td align="center"><a href="notice_view.jsp?notice_no=<%=rs.getInt("notice_no")%>"><%=rs.getString("notice_title")%></a></td>
-			<td align="center"><%=rs.getInt("notice_view")%></td>
-			<td align="center"><%=rs.getString("notice_postday")%></td>
+			<td align="center"><a href="notice_view.jsp?notice_no=<%=list.get(i).getNotice_no()%>"><%=list.get(i).getNotice_title()%> </a></td>
+			<td align="center"><%=list.get(i).getNotice_view()%></td>
+			<td align="center"><%=list.get(i).getNotice_postday()%></td>
 		</tr>
 		<%
 			}
@@ -70,7 +60,4 @@ th, td {
 	<%@include file="footer.jsp"%>
 </body>
 </html>
-<%
-	stmt.close();
-	conn.close();
-%>
+

@@ -1,27 +1,15 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
+<%@ page import ="custom.dao.FnqDao" %>
+<%@ page import ="custom.dto.FnqDto" %> 
 <%
-	//DB 연결
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url1 = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
-	String url2 = "jdbc:oracle:thin:@db.sarte.kr:1521:xe";
-	String uid = "ky";
-	String upw = "1234";
-	Class.forName(driver);
-	// 2. 연결
-	Connection conn = DriverManager.getConnection(url1, uid, upw);
-	//폼에 입력된 값을 읽어와서 DB에 저장
-
-	// request는 필요없음 //db에 데이타를 요청할때
-
-	// 쿼리생성
-	String sql = "select * from fnq";
-	// 심부름꾼 만들기
-	Statement stmt = conn.createStatement();
-	// 쿼리 실행후 결과를 ResultSet으로
-	ResultSet rs = stmt.executeQuery(sql);
-%>
+   // list메소드를 포함한 클래스 객체를 생성
+   FnqDao fdao=new FnqDao();
+   ArrayList<FnqDto> list=fdao.list();
+   pageContext.setAttribute("list", list);
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,12 +39,14 @@ th, td {
 			<td>자세히보기</td>
 		</tr>
 		<%
-			while (rs.next()) {
-		%>
+    // 출력
+		    for(int i=0;i<list.size();i++)
+		    {
+ 		%>
 		<tr>
-			<td align="center"><%=rs.getString("fnq_type")%></td>
-			<td align="center"><%=rs.getString("fnq_title")%></td>
-			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=rs.getInt("fnq_no")%>">답변보기!</a></td>		</tr>
+			<td align="center"><%=list.get(i).getFnq_type()%></td>
+			<td align="center"><%=list.get(i).getFnq_title()%></td>
+			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list.get(i).getFnq_no()%>">답변보기!</a></td>		</tr>
 		<%
 			}
 		%>
@@ -69,7 +59,4 @@ th, td {
 	<%@include file="footer.jsp"%>
 </body>
 </html>
-<%
-	stmt.close();
-	conn.close();
-%>
+

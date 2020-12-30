@@ -1,25 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.sql.*"%>
+<%@ page import ="custom.dao.NoticeDao" %>
+<%@ page import ="custom.dto.NoticeDto" %>
 <%
-	//DB 연결
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url1 = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
-	String url2 = "jdbc:oracle:thin:@db.sarte.kr:1521:xe";
-	String uid = "ky";
-	String upw = "1234";
-	Class.forName(driver);
-	// 2. 연결
-	Connection conn = DriverManager.getConnection(url1, uid, upw);
-	//폼에 입력된 값을 읽어와서 DB에 저장
-	String notice_no = request.getParameter("notice_no");
-	String sql = "select * from notice where notice_no=" + notice_no;
-	// 심부름꾼
-	Statement stmt = conn.createStatement();
-	// 쿼리 실행 => ResultSet
-	ResultSet rs = stmt.executeQuery(sql);
-	rs.next();
-%>
+   // request값 가져오기
+   String notice_no=request.getParameter("notice_no");
+
+   // DB_Conn 클래스에서 update()실행
+   
+   NoticeDao ndao = new NoticeDao();
+   NoticeDto ndto=ndao.update(notice_no);
+   pageContext.setAttribute("ndto",ndto);
+   
+%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,18 +35,18 @@
 					<h4>제 목</h4>
 				</td>
 				<td><input type="text" name="notice_title" size="78"
-					placeholder="제목을 입력하세요." value="<%=rs.getString("notice_title")%>">
+					placeholder="제목을 입력하세요." value="<%=ndto.getNotice_title()%>">
 				</td>
 			</tr>
 
 			<tr>
 				<td>내용</td>
 				<td><textarea cols="80" rows="20" name="notice_content"
-				 placeholder="내용을 입력하세요." ><%=rs.getString("notice_content")%></textarea></td>
+				 placeholder="내용을 입력하세요." ><%=ndto.getNotice_content()%></textarea></td>
 			</tr>
 			<tr>
 				<td>첨부</td>
-				<td><input type="file" name="notice_file"></td>
+				<td><input type="file" name="notice_file" value="<%=ndto.getNotice_file()%>"></td>
 			</tr>
 		
 			<tr align="center">

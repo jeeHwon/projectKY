@@ -1,26 +1,17 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="java.sql.*"%>
+<%@ page import ="custom.dao.RevDao" %>
+<%@ page import ="custom.dto.RevDto" %>
 <%
-	// DB 연결
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url1 = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
-	String url2 = "jdbc:oracle:thin:@db.sarte.kr:1521:xe";
-	String uid = "ky";
-	String upw = "1234";
-	Class.forName(driver);
-	// 2. 연결
-	Connection conn = DriverManager.getConnection(url1, uid, upw);
-
-	// 쿼리생성
-	String sql = "select * from rev";
-	// 심부름꾼 만들기
-	Statement stmt = conn.createStatement();
-	// 쿼리 실행후 결과를 ResultSet으로
-	ResultSet rs = stmt.executeQuery(sql);
-%>
+   // list메소드를 포함한 클래스 객체를 생성
+   RevDao rdao=new RevDao();
+   ArrayList<RevDto> list=rdao.list();
+   pageContext.setAttribute("list", list);
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,13 +43,15 @@ td {
 			<td>상세내용</td>
 		</tr>
 		<%
-			while (rs.next()) {
-		%>
+    // 출력
+		    for(int i=0;i<list.size();i++)
+		    {
+ 		%>	
 		<tr align="center">
-			<td align="center"><img src="img/<%=rs.getString("rev_img")%>" width="200"></td>
-			<td align="center"><%=rs.getString("rev_company")%></td>
-			<td align="center"><%=rs.getString("rev_addr")%></td>
-			<td align="center"><a href="rev_content.jsp?rev_no=<%=rs.getInt("rev_no")%>">click!</a></td>
+			<td align="center"><img src="img/<%=list.get(i).getRev_img()%>" width="200"></td>
+			<td align="center"><%=list.get(i).getRev_company()%></td>
+			<td align="center"><%=list.get(i).getRev_addr()%></td>
+			<td align="center"><a href="rev_content.jsp?rev_no=<%=list.get(i).getRev_no()%>">click!</a></td>
 		</tr>
 		<%
 			}
