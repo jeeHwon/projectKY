@@ -133,7 +133,117 @@
             </div>
         </div>
     </section>
-    <!-- banner -->
+    <!-- //banner -->
+    
+    <section id="room">
+        <div class="container">
+            <div class="row">
+                <div class="room">
+                    <h2 class="ir_so">인증방 게시</h2>
+                    <div class="room_title">
+                        <ul>
+                            <li class="active"><a href="#">추천순</a></li>
+                            <li><a href="#">최근생성순</a></li>
+                            <li><a href="#">요즘뜨는순</a></li>
+                            <li><a href="#">마감임박순</a></li>
+                        </ul>
+                    </div>
+                    <div class="room_chart">
+                        <div class="chart_cont1">
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster01.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>1</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate02 ir_pm">study</span><strong>한강 주말런닝:)</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster01.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>2</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate01 ir_pm">study</span><strong>고3_매일인증반</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster01.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>3</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate01 ir_pm">study</span><strong>고3_매일인증반</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster01.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>4</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate01 ir_pm">study</span><strong>고3_매일인증반</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--//chart_cont1-->
+                        <div class="chart_cont2">
+                            
+                        </div><!--//chart_cont2-->
+                        <div class="chart_cont3">
+                            
+                        </div>
+                        <!--//chart_cont3-->
+                        <div class="chart_cont4">
+                            
+                        </div>
+                        <!--//chart_cont4-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <!-- 자바스크립트 라이브러리 -->
     <script src="assets/js/jquery.min_1.12.4.js"></script>
