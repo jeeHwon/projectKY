@@ -102,9 +102,30 @@
         <div class="slider">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide ss1">Slider1</div>
-                    <div class="swiper-slide ss2">Slider2</div>
-                    <div class="swiper-slide ss3">Slider3</div>
+                    <div class="swiper-slide ss1">
+                       <div class="container">
+                           <div class="row">
+                                <h2>인증샷<em>With StampUs</em></h2>
+                                <p>당신의 일상을 공유 하세요</p>                               
+                           </div>
+                       </div>
+                    </div>
+                    <div class="swiper-slide ss2">
+                       <div class="container">
+                           <div class="row">
+                                <h2>인증샷<em>With StampUs</em></h2>
+                                <p>당신의 일상을 공유 하세요</p>                               
+                           </div>
+                       </div>              
+                    </div>
+                    <div class="swiper-slide ss3">
+                       <div class="container">
+                           <div class="row">
+                                <h2>인증샷<em>With StampUs</em></h2>
+                                <p>당신의 일상을 공유 하세요</p>                               
+                           </div>
+                       </div>                  
+                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev"></div>
