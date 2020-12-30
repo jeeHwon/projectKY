@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<%@ page import ="custom.dao.FnqDao" %>
-<%@ page import ="custom.dto.FnqDto" %> 
+<%@ page import ="dao.FnqDao" %>
+<%@ page import ="dto.FnqDto" %> 
 <%
    // list메소드를 포함한 클래스 객체를 생성
    FnqDao fdao=new FnqDao();

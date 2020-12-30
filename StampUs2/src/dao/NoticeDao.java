@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import db.DB;
-import custom.dto.NoticeDto;
+import dto.NoticeDto;
 
 public class NoticeDao {
 	DB db = null;

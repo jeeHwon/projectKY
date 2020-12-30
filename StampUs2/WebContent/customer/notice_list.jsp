@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<%@ page import ="custom.dao.NoticeDao" %>
+<%@ page import ="dao.NoticeDao" %>
 <%@page import="java.util.ArrayList" %>
-<%@ page import ="custom.dto.NoticeDto" %>
+<%@ page import ="dto.NoticeDto" %>
 <%
    // list메소드를 포함한 클래스 객체를 생성
    NoticeDao ndao=new NoticeDao();

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<%@ page import ="custom.dao.FnqDao" %>
-<%@ page import ="custom.dto.FnqDto" %> 
+<%@ page import ="dao.FnqDao" %>
+<%@ page import ="dto.FnqDto" %> 
 <%
    // request값 가져오기
    String fnq_no=request.getParameter("fnq_no");

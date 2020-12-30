@@ -3,8 +3,8 @@
 <%@page import="com.oreilly.servlet.MultipartRequest" %>      
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>    
 <%@page import="java.sql.*" %> 
-<%@ page import ="custom.dao.FnqDao" %>
-<%@ page import ="custom.dto.FnqDto" %> 
+<%@ page import ="dao.FnqDao" %>
+<%@ page import ="dto.FnqDto" %> 
 <%
 //cos.jar 라이브러리를 통해 파일을 업로드시킨다.
 	String realPath = request.getRealPath("/img");

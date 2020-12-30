@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<%@ page import ="custom.dao.RevDao" %>
-<%@ page import ="custom.dto.RevDto" %>
+<%@ page import ="dao.RevDao" %>
+<%@ page import ="dto.RevDto" %>
 <%
    // request값 가져오기
    String rev_no=request.getParameter("rev_no");

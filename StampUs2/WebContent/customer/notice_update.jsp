@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import ="custom.dao.NoticeDao" %>
-<%@ page import ="custom.dto.NoticeDto" %>
+<%@ page import ="dao.NoticeDao" %>
+<%@ page import ="dto.NoticeDto" %>
 <%
    // request값 가져오기
    String notice_no=request.getParameter("notice_no");

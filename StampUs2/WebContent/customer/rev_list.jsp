@@ -4,8 +4,8 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="java.sql.*"%>
-<%@ page import ="custom.dao.RevDao" %>
-<%@ page import ="custom.dto.RevDto" %>
+<%@ page import ="dao.RevDao" %>
+<%@ page import ="dto.RevDto" %>
 <%
    // list메소드를 포함한 클래스 객체를 생성
    RevDao rdao=new RevDao();

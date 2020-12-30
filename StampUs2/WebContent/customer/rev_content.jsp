@@ -3,8 +3,8 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="java.sql.*"%>
-<%@ page import ="custom.dao.RevDao" %>
-<%@ page import ="custom.dto.RevDto" %>
+<%@ page import ="dao.RevDao" %>
+<%@ page import ="dto.RevDto" %>
 <%
    // request값 가져오기
    String rev_no=request.getParameter("rev_no");

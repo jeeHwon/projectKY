@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import db.DB;
-import custom.dto.RevDto;
+import dto.RevDto;
 
 public class RevDao {
 	DB db = null;

@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import db.DB;
-import custom.dto.FnqDto;
+import dto.FnqDto;
 
 public class FnqDao {
 	DB db = null;
