@@ -28,13 +28,13 @@
 <%for(int i=0; i<list.size(); i++){ %>
 	<tr>
 		<td><%=list.get(i).getEvent_no()%></td>
-		<td><a href="nav2_event_content.jsp?event_no=<%=list.get(i).getEvent_no()%>"><%=list.get(i).getEvent_title()%></a></td>
+		<td><a href="event_content.jsp?event_no=<%=list.get(i).getEvent_no()%>"><%=list.get(i).getEvent_title()%></a></td>
 		<td><%=list.get(i).getEvent_postday()%></td>
 		<td><%=list.get(i).getEvent_view()%></td>
 	</tr>
 <% }%>
 	<tr>
-		<td colspan="4" align="center"><a href="nav2_event_write.jsp">글쓰기</a></td>
+		<td colspan="4" align="center"><a href="event_write.jsp">글쓰기</a></td>
 	</tr>
 </table>
 <%@include file="..\\footer.jsp" %>

@@ -47,8 +47,8 @@ public class EventDAO {
 		pstmt=conn.prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		rs.next();
-		String no = rs.getString("max");
-	    return no;
+		String event_no = rs.getString("max");
+	    return event_no;
 	}
 	//=================================update_ok==================================================
 	public void update_ok(EventDTO dto) throws Exception {
@@ -74,10 +74,10 @@ public class EventDAO {
 		conn.close();
 	}
 	//=================================delete==================================================
-	public void delete(String no) throws Exception {
+	public void delete(String event_no) throws Exception {
 		
 		//쿼리생성
-		String sql="delete from event where event_no="+no;
+		String sql="delete from event where event_no="+event_no;
 		
 		//심부름꾼
 		PreparedStatement pstmt=conn.prepareStatement(sql);

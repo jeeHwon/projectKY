@@ -3,10 +3,10 @@
 <%@page import="dao.EventDAO" %>
 <%@page import="java.sql.*" %>
 <%
-	String no = request.getParameter("no");
+	String event_no = request.getParameter("event_no");
 
 	EventDAO dao=new EventDAO();
-	dao.delete(no); //메소드에 전달
+	dao.delete(event_no); //메소드에 전달
 	
-	response.sendRedirect("nav2_event_list.jsp");
+	response.sendRedirect("event_list.jsp");
 %>

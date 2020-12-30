@@ -20,5 +20,5 @@
 	
 	edDAO.insert(edDTO);
 	
-	response.sendRedirect("nav2_event_content.jsp?event_no="+event_no);
+	response.sendRedirect("event_content.jsp?event_no="+event_no);
 %>

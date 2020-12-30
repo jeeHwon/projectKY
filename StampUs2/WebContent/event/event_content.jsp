@@ -25,7 +25,7 @@
 function dat_update(event_dat_no, event_dat_content){
 	document.getElementById('dat_title').innerText='댓글 수정';
 	document.getElementById('dat_button').value='댓글 수정';
-	document.getElementById('event_dat_form').action='nav2_event_dat_update_ok.jsp';
+	document.getElementById('event_dat_form').action='event_dat_update_ok.jsp';
 	document.getElementById('event_dat_no').value=event_dat_no;
 	document.getElementById('event_dat_content').innerText=event_dat_content;	
 }
@@ -59,9 +59,9 @@ function dat_update(event_dat_no, event_dat_content){
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<a href="nav2_event_update.jsp?event_no=<%=event_no%>">수정</a>
-				<a href="nav2_event_delete.jsp?event_no=<%=event_no%>">삭제</a>
-				<a href="nav2_event_list.jsp">목록</a>
+				<a href="event_update.jsp?event_no=<%=event_no%>">수정</a>
+				<a href="event_delete.jsp?event_no=<%=event_no%>">삭제</a>
+				<a href="event_list.jsp">목록</a>
 			</td>
 		</tr>
 	</table>
@@ -78,7 +78,7 @@ function dat_update(event_dat_no, event_dat_content){
     </form>
    </div>  --%> 
 	<div class="event_dat_write">
-		<form name="event_dat_form" id="event_dat_form" method="post" action="nav2_event_dat_write_ok.jsp">
+		<form name="event_dat_form" id="event_dat_form" method="post" action="event_dat_write_ok.jsp">
 			<input type="hidden" name="event_dat_no" id="event_dat_no">
 			<input type="hidden" name="event_no" value="<%=edDTO.getEvent_no() %>">
 			<%-- <input type="hidden" name="study_my_no" value="<%=list.get(i).getEvent_my_no() %>"> --%>
@@ -104,7 +104,7 @@ function dat_update(event_dat_no, event_dat_content){
 				if(user_id.equals(datList.get(j).getUser_id())){
 				%>
 				<a href="javascript:dat_update(<%=datList.get(j).getEvent_dat_no()%>, '<%=datList.get(j).getEvent_dat_content() %>');">수정</a>
-				<a href="nav2_event_dat_delete.jsp?event_dat_no=<%=datList.get(j).getEvent_dat_no() %>&event_no=<%=event_no%>">삭제</a>
+				<a href="event_dat_delete.jsp?event_dat_no=<%=datList.get(j).getEvent_dat_no() %>&event_no=<%=event_no%>">삭제</a>
 				<%
 				}
 				%>

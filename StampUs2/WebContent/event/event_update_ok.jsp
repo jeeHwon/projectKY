@@ -12,7 +12,7 @@
 	String han="utf-8";
 	MultipartRequest multi =
 	new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());
-	String no = multi.getParameter("no");
+	String event_no = multi.getParameter("event_no");
 	String title = multi.getParameter("title");
 	String content = multi.getParameter("content");
 	String img = multi.getFilesystemName("img"); //서버에 저장되는 이름
@@ -21,7 +21,7 @@
 	   long fsize=file.length(); */ //파일크기
 	
 	EventDTO dto = new EventDTO();
-	dto.setEvent_no(no);
+	dto.setEvent_no(event_no);
 	dto.setEvent_title(title);
 	dto.setEvent_content(content);
 	if(img!=null) dto.setEvent_img(img);
@@ -29,5 +29,5 @@
 	EventDAO dao = new EventDAO();
 	dao.update_ok(dto); //메소드에 전달
 
-	response.sendRedirect("nav2_event_content.jsp?no=" + no);
+	response.sendRedirect("event_content.jsp?no=" + event_no);
 %>

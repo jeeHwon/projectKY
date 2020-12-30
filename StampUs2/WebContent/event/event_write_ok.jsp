@@ -27,7 +27,7 @@
 	dto.setEvent_img(img);
 	
 	EventDAO dao=new EventDAO();
-	String no = dao.write_ok(dto); //메소드에 전달
+	String event_no = dao.write_ok(dto); //메소드에 전달
 
-	response.sendRedirect("nav2_event_content.jsp?no="+no);
+	response.sendRedirect("event_content.jsp?event_no="+event_no);
 %>
