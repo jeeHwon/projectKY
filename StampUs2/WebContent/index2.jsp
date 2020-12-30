@@ -14,6 +14,7 @@
     <!-- CSS => 상대경로로 지정해주자-->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/swiper.css">
     
     <!-- 파비콘 =>웹브라우저 최상단에 뜨는 아이콘-->
     <link rel="shortcut icon" href="assets/icons/favicon.ico">
@@ -97,10 +98,18 @@
                    </div>
                </div>
            </div>
-            
         </div>
         <div class="slider">
-            <div><img src="assets/img/main_slider01.jpg" alt="main_slider01"></div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide ss1">Slider1</div>
+                    <div class="swiper-slide ss2">Slider2</div>
+                    <div class="swiper-slide ss3">Slider3</div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
         </div>
     </section>
     <!-- banner -->
@@ -109,5 +118,21 @@
     <script src="assets/js/jquery.min_1.12.4.js"></script>
     <script src="assets/js/modernizr-custom.js"></script><!-- =>html5 css3 감지 -->
     <script src="assets/js/ie-checker.js"></script><!-- =>익스플로러 ver 체크 -->
+    <script src="assets/js/swiper.min.js"></script><!-- =>배너 스와이프 기능 -->
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',   
+            },
+            autoplay: {
+                delay: 5000,
+            },
+            
+        });
+    </script>
 </body>
 </html>
