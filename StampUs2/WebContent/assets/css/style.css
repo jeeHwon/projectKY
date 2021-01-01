@@ -65,8 +65,8 @@
 .room_chart > div > div:last-child {margin-right: 0;}
 .room_chart > div > div .poster {position: relative;}
 .room_chart > div > div .poster img {display: block;}
-.room_chart > div > div .poster .rank {position: absolute; top: 17px; left: 0; width: 50px; height: 50px; line-height: 50px; background-color: #CB230C; text-align: center;}
-.room_chart > div > div .poster .rank strong {color: #fff; font-size: 18px;}
+.room_chart > div > div .poster .rank {position: absolute; top: 17px; left: 0; width: 50px; height: 50px; font-size: 22px; box-shadow: 3px 3px 8px rgba(0,0,0,0.5); line-height: 50px; background-color: #CB230C; text-align: center;}
+.room_chart > div > div .poster .rank strong {color: #fff; text-shadow: 2px 2px 3px rgba(0,0,0,1);}
 .room_chart > div > div .poster .mx {position: absolute; top: 17px; right: 17px;}
 .room_chart > div > div .poster .mx span {width: 103px; height: 25px; display: block;}
 .room_chart > div > div .poster .mx .dep05 {background-image: url(../img/icon_dep05.png); background-size: cover;}

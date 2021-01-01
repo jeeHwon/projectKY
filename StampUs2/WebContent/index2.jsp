@@ -229,14 +229,240 @@
                         </div>
                         <!--//chart_cont1-->
                         <div class="chart_cont2">
-                            
-                        </div><!--//chart_cont2-->
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_x_02.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>1</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep05 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_x ir_pm">study</span><strong>일주일 총거리 10km</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_f_02.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>2</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep10 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_f ir_pm">study</span><strong>건강한 아침식사 함께</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_w_02.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>3</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep20 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_w ir_pm">study</span><strong>기상후 모닝커피 인증</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_s_02.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>4</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep20 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_s ir_pm">study</span><strong>고3 수능 D-200일!!</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                        <!--//chart_cont2-->
                         <div class="chart_cont3">
-                            
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_w_03.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>1</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_w ir_pm">study</span><strong>평일아침 7시기상방</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_s_03.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>2</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep05 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_s ir_pm">study</span><strong>도서관에서 공부하기</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_x_03.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>3</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep20 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_x ir_pm">study</span><strong>홈요가 1주 2회~!</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_f_03.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>4</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep10 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_f ir_pm">study</span><strong>샐러드 도시락 인증방</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!--//chart_cont3-->
                         <div class="chart_cont4">
-                            
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_f_04.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>1</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_f ir_pm">study</span><strong>채식위주 식단인증방</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_w_04.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>2</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep10 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_w ir_pm">study</span><strong>아침 6시 기상 미션有</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_s_04.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>3</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep20 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_s ir_pm">study</span><strong>[부산]고2 노지각러들</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/poster_x_04.jpg" alt="">
+                                    </figure>
+                                    <div class="rank"><strong>4</strong></div>
+                                    <div class="mx">
+                                        <span class="icon dep05 ir_pm">deposit</span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon cate_x ir_pm">study</span><strong>헬스장 입구사진 인증</strong></h3>
+                                    <div class="infor_btn">
+                                        <a href="">상세보기</a>
+                                        <a href="">참여하기</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!--//chart_cont4-->
                     </div>
@@ -251,6 +477,7 @@
     <script src="assets/js/ie-checker.js"></script><!-- =>익스플로러 ver 체크 -->
     <script src="assets/js/swiper.min.js"></script><!-- =>배너 스와이프 기능 -->
     <script>
+        // 배너 이미지 슬라이드
         var mySwiper = new Swiper('.swiper-container', {
             navigation: {
                 nextEl: '.swiper-button-next',
@@ -262,8 +489,22 @@
             autoplay: {
                 delay: 5000,
             },
-            
         });
+        
+        // 인증방 차트 탭 메뉴
+        var roomBtn = $(".room_title> ul > li")
+        var roomCont = $(".room_chart > div")
+        roomCont.hide().eq(0).show()
+        roomBtn.click(function(e){
+            e.preventDefault()
+            var target = $(this)
+            var index = target.index()
+            roomBtn.removeClass("active")
+            target.addClass("active")
+            roomCont.css("display", "none")
+            roomCont.eq(index).css("display","block")
+        })
+        
     </script>
 </body>
 </html>
