@@ -497,6 +497,32 @@
     </section>
     <!-- //event -->
     
+    <section id="opening">
+       <div class="container">
+           <div class="row">
+               <div class="opening">
+                   <h2><span class="icon grand ir_pm">Grand Opening</span></h2>
+                   <strong class="date ir_pm">2021.01~2021.03</strong>
+                   <p class="desc">하루 세끼 인증만 하면 경품이 쏟아진다</p>
+                   <div class="open_box">
+                       <div class="div">
+                           <h3>건강식 코너</h3>
+                           <p><em>저염식</em><strong>저지방</strong>채식식단</p>
+                       </div>
+                       <div class="div">
+                           <h3>아침 식사</h3>
+                           <p><em>식사인증</em><strong>식단관리</strong>필수영양소</p>
+                       </div>
+                       <div class="div">
+                           <h3>점심 식사</h3>
+                           <p><em>도시락</em><strong>급식</strong>식당메뉴</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </section>
+    <!-- //opening -->
     
     <!-- 자바스크립트 라이브러리 -->
     <script src="assets/js/jquery.min_1.12.4.js"></script>

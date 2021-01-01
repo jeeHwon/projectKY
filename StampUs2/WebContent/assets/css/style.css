@@ -5,6 +5,7 @@
 #banner {position: relative;}
 #room {background: #f8f8f8;}
 #event {}
+#opening {margin: 17px 0; background: url(../img/bg01.jpg) no-repeat center top; background-size: cover;}
 
 /* 가운데 영역 */     
 .container{position: relative; width: 1280px; margin: 0 auto; background: rgba(0,0,0,0); }
@@ -40,7 +41,7 @@
 .banner_menu .bm_right li.white {margin-right: 10px;}
 .banner_menu .bm_right li.white a {width: 80px; background-color: #fff; color: #CB230C; padding: 7px 30px 9px 30px; display: inline-block; border: 1px solid #fff;}
 .banner_menu .bm_right li.red {margin-right: 0;}
-.banner_menu .bm_right li.red a {width: 80px; background-color: #CB230C; color: #fff; padding: 7px 30px 9px 30px; display: inline-block; border: 1px solid #DB5F4E;}
+.banner_menu .bm_right li.red a {width: 80px; background-color: #CB230C; color: #fff; padding: 7px 30px 9px 30px; display: inline-block; border: 1px solid #E68D80;}
 .banner_menu li.line:after {content: ''; width: 1px; height: 14px; background: #fff; position: absolute; right: -18px; top: 2px;}
 
 /* 슬라이드 */
@@ -93,6 +94,46 @@
 .event .event_left .event_box1 {float: left; width: 50%;}
 .event .event_left .event_box2 {float: left; width: 50%;}
 .event .event_right {float: left; width: 32%; height: 500px; background: #ccc;}
+
+/* 오프닝 */
+.opening {padding: 100px 0; text-align: center; color: #bb9b51;}
+.opening h2 {margin-bottom: 15px;}
+.opening h2 .grand {background-image: url(../img/icon_grand.png); background-size: cover; display: inline-block; width: 460px; height: 50px;} 
+.opening .date {background-image: url(../img/icon_date.png); background-size: cover; display: inline-block; width: 231px;  height:45px;}
+.opening .desc {font-size: 35px; font-weight: 300; padding-bottom: 20px; background: url(../img/bar.png) no-repeat bottom center; background-size: 100%;}
+.opening .open_box {overflow: hidden; padding: 20px 3% 0 3;}
+.opening .open_box > div {float: left; width: 27.333%; margin: 4% 3% 0 3%; box-sizing: border-box; background: rgba(0,0,0,0.5); border: 1px solid #D85543;}
+.opening .open_box > div h3 {color: #fff; font-weight: 300; border: 1px solid #E68D80; margin-top: -24px; font-size: 19px; display: inline-block; padding: 10px 20px; background: #CB230C;}
+.opening .open_box > div p {font-size: 23px; color: #fff; font-weight: 700; padding: 6% 0;}
+.opening .open_box > div em {display: block; font-weight: bold;}
+.opening .open_box > div strong {display: block; font-weight: bold;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
