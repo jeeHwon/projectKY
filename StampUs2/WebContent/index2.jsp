@@ -470,6 +470,33 @@
             </div>
         </div>
     </section>
+    <!-- //room -->
+    
+    <section id="event">
+        <div class="container">
+            <div class="row">
+                <div class="event">
+                    <h2>새로운 이벤트</h2>
+                    <div class="event_left">
+                        <div class="event_slider">
+                            <img src="assets/img/event01.jpg" alt="이벤트 이미지1">
+                        </div>
+                        <div class="event_box1">
+                            <img src="assets/img/event02.jpg" alt="이벤트 이미지2">
+                        </div>
+                        <div class="event_box2">
+                            <img src="assets/img/event03.jpg" alt="이벤트 이미지3">
+                        </div>
+                    </div>
+                    <div class="event_right">
+                        <img src="assets/img/event04.jpg" alt="이벤트 이미지4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //event -->
+    
     
     <!-- 자바스크립트 라이브러리 -->
     <script src="assets/js/jquery.min_1.12.4.js"></script>
@@ -504,6 +531,8 @@
             roomCont.css("display", "none")
             roomCont.eq(index).css("display","block")
         })
+        
+        // 인증방 차트 이미지 슬라이드 - 미구현
         
     </script>
 </body>
