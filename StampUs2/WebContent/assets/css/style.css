@@ -69,30 +69,19 @@
 .room_chart > div > div .poster .rank strong {color: #fff; font-size: 18px;}
 .room_chart > div > div .poster .mx {position: absolute; top: 17px; right: 17px;}
 .room_chart > div > div .poster .mx span {width: 103px; height: 25px; display: block;}
+.room_chart > div > div .poster .mx .dep05 {background-image: url(../img/icon_dep05.png); background-size: cover;}
+.room_chart > div > div .poster .mx .dep10 {background-image: url(../img/icon_dep10.png); background-size: cover;}
 .room_chart > div > div .poster .mx .dep15 {background-image: url(../img/icon_dep15.png); background-size: cover;}
+.room_chart > div > div .poster .mx .dep20 {background-image: url(../img/icon_dep20.png); background-size: cover;}
 .room_chart > div > div .infor {background: #fff; padding: 17px; border: 1px solid #d9d9d9;}
-.room_chart > div > div .infor h3 {color: #333; font-size: 30px; font-weight: 700;margin-bottom: 20px;}
+.room_chart > div > div .infor h3 {color: #333; font-size: 24px; font-weight: 700;margin-bottom: 20px;}
 .room_chart > div > div .infor h3 strong {}
-.room_chart > div > div .infor h3 span {width: 29px; height: 29px; display: inline-block; margin-top: 9px; vertical-align: -2px;}
-.room_chart > div > div .infor h3 span.cate01{background-image: url(../img/icon_cate01.png); background-size: cover;}
-.room_chart > div > div .infor h3 span.cate02{background-image: url(../img/icon_cate02.png); background-size: cover;}
-.room_chart > div > div .infor h3 span.cate03{background-image: url(../img/icon_cate01.png); background-size: cover;}
-.room_chart > div > div .infor h3 span.cate04{background-image: url(../img/icon_cate01.png); background-size: cover;}
+.room_chart > div > div .infor h3 span {width: 29px; height: 29px; display: inline-block; margin-top: 9px; margin-right: 3px; vertical-align: -5px;}
+.room_chart > div > div .infor h3 span.cate_s{background-image: url(../img/icon_cate_s.png); background-size: cover;}
+.room_chart > div > div .infor h3 span.cate_x{background-image: url(../img/icon_cate_x.png); background-size: cover;}
+.room_chart > div > div .infor h3 span.cate_f{background-image: url(../img/icon_cate_f.png); background-size: cover;}
+.room_chart > div > div .infor h3 span.cate_w{background-image: url(../img/icon_cate_w.png); background-size: cover;}
 .room_chart > div > div .infor .infor_btn a {display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -153,16 +153,16 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="assets/img/poster01.jpg" alt="">
+                                        <img src="assets/img/poster_s_01.jpg" alt="">
                                     </figure>
                                     <div class="rank"><strong>1</strong></div>
                                     <div class="mx">
-                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span class="icon dep10 ir_pm">deposit</span>
                                         <span></span>
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate02 ir_pm">study</span><strong>한강 주말런닝:)</strong></h3>
+                                    <h3><span class="icon cate_s ir_pm">study</span><strong>직장인 토익900점</strong></h3>
                                     <div class="infor_btn">
                                         <a href="">상세보기</a>
                                         <a href="">참여하기</a>
@@ -172,16 +172,16 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="assets/img/poster01.jpg" alt="">
+                                        <img src="assets/img/poster_x_01.jpg" alt="">
                                     </figure>
                                     <div class="rank"><strong>2</strong></div>
                                     <div class="mx">
-                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span class="icon dep05 ir_pm">deposit</span>
                                         <span></span>
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate01 ir_pm">study</span><strong>고3_매일인증반</strong></h3>
+                                    <h3><span class="icon cate_x ir_pm">study</span><strong>한강 주말런닝 :)</strong></h3>
                                     <div class="infor_btn">
                                         <a href="">상세보기</a>
                                         <a href="">참여하기</a>
@@ -191,7 +191,7 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="assets/img/poster01.jpg" alt="">
+                                        <img src="assets/img/poster_f_01.jpg" alt="">
                                     </figure>
                                     <div class="rank"><strong>3</strong></div>
                                     <div class="mx">
@@ -200,7 +200,7 @@
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate01 ir_pm">study</span><strong>고3_매일인증반</strong></h3>
+                                    <h3><span class="icon cate_f ir_pm">study</span><strong>다이어트 식단인증</strong></h3>
                                     <div class="infor_btn">
                                         <a href="">상세보기</a>
                                         <a href="">참여하기</a>
@@ -210,16 +210,16 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="assets/img/poster01.jpg" alt="">
+                                        <img src="assets/img/poster_w_01.jpg" alt="">
                                     </figure>
                                     <div class="rank"><strong>4</strong></div>
                                     <div class="mx">
-                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span class="icon dep20 ir_pm">deposit</span>
                                         <span></span>
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate01 ir_pm">study</span><strong>고3_매일인증반</strong></h3>
+                                    <h3><span class="icon cate_w ir_pm">study</span><strong>평일 새벽6시 기상!</strong></h3>
                                     <div class="infor_btn">
                                         <a href="">상세보기</a>
                                         <a href="">참여하기</a>
