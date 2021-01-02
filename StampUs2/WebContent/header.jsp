@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,16 +14,17 @@
     <title>StampUs</title>
     
     <!-- CSS => 상대경로로 지정해주자-->
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/swiper.css">
+    <link rel="stylesheet" href="<c:url value="/assets/css/reset.css"/>">
+    <link rel="stylesheet" href="<c:url value="/assets/css/style.css"/>">
+    <link rel="stylesheet" href="<c:url value="/assets/css/swiper.css"/>">
+
     
     <!-- 파비콘 =>웹브라우저 최상단에 뜨는 아이콘-->
-    <link rel="shortcut icon" href="assets/icons/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" href="assets/icons/favicon_72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="96x96" href="assets/icons/favicon_96.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/icons/favicon_144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="192x192" href="assets/icons/favicon_192.png" />
+    <link rel="shortcut icon" href="<c:url value="/assets/icons/favicon.ico"/>">
+    <link rel="apple-touch-icon-precomposed" href="<c:url value="/assets/icons/favicon_72.png"/>" />
+    <link rel="apple-touch-icon-precomposed" sizes="96x96" href="<c:url value="/assets/icons/favicon_96.png"/>" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<c:url value="/assets/icons/favicon_144.png"/>" />
+    <link rel="apple-touch-icon-precomposed" sizes="192x192" href="<c:url value="/assets/icons/favicon_192.png"/>" />
     
     <!-- 페이스북 메타 태그 -->
     <meta property="og:title" content="스탬프어스 StampUs" />
@@ -55,8 +58,8 @@
             <div class="row">
                 <div class="header">
                     <h1>
-                        <a href="#">
-                            <em><img src="assets/img/logo.png" alt="STAMPUS"></em>
+                        <a href="<c:url value="../index.jsp"/>">
+                            <em><img src="<c:url value="/assets/img/logo.png"/>" alt="STAMPUS"></em>
                         </a>
                     </h1>
                     <nav class="nav">

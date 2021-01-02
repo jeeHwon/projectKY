@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <section id="footer">
         <div id="footer_sns">
             <div class="container">
@@ -21,7 +22,7 @@
             <div class="container">
                 <div class="row">
                     <div class="footer_info">
-                        <h2><img src="assets/img/logo_footer.png" alt="StampUs"></h2>
+                        <h2><img src="<c:url value="/assets/img/logo_footer.png"/>" alt="STAMPUS"></h2>
                         <ul>
                             <li><a href="#">회사소개</a></li>
                             <li><a href="#">채용정보</a></li>
@@ -47,10 +48,10 @@
     <!-- //footer -->
     
     <!-- 자바스크립트 라이브러리 -->
-    <script src="assets/js/jquery.min_1.12.4.js"></script>
-    <script src="assets/js/modernizr-custom.js"></script><!-- =>html5 css3 감지 -->
-    <script src="assets/js/ie-checker.js"></script><!-- =>익스플로러 ver 체크 -->
-    <script src="assets/js/swiper.min.js"></script><!-- =>배너 스와이프 기능 -->
+    <script src="<c:url value="/assets/js/jquery.min_1.12.4.js"/>"></script>
+    <script src="<c:url value="/assets/js/modernizr-custom.js"/>"></script><!-- =>html5 css3 감지 -->
+    <script src="<c:url value="/assets/js/ie-checker.js"/>"></script><!-- =>익스플로러 ver 체크 -->
+    <script src="<c:url value="/assets/js/swiper.min.js"/>"></script><!-- =>배너 스와이프 기능 -->
     <script>
         // 배너 이미지 슬라이드
         var mySwiper = new Swiper('.swiper-container', {

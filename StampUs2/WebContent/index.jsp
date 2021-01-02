@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "header.jsp"%>
+<%@ include file="header.jsp"%>    
     <section id="banner">
         <div class="banner_menu">
            <h2 class="ir_so">인증샷 이벤트</h2>
@@ -631,4 +631,4 @@
         </div>
     </section>
     <!-- //help -->
-<%@ include file = "footer.jsp"%>
+<%@ include file="footer.jsp"%>   
