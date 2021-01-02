@@ -567,6 +567,146 @@
     </section>
     <!-- //review -->
     
+    <section id="help">
+        <div class="container">
+            <div class="row">
+                <div class="help">
+                    <article class="help_box1">
+                        <h3>공지사항</h3>
+                        <div class="notice">
+                            <ul>
+                                <li class="active"><a href="">전체 공지</a>
+                                    <ul>
+                                        <li>
+                                            <dl>
+                                                <dt><strong class="bar">운동</strong><em>2021.01.05</em></dt>
+                                                <dd>[위치인증]GPS 수신 동의를 하지 않은 경우 위치 인증을 받을 수 없습니다.</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt><strong class="bar">공부</strong><em>2021.01.02</em></dt>
+                                                <dd>[시간인증]인증 완료 시간을 초과한 경우에는 인증을 받을 수 없습니다.</dd>
+                                            </dl>                                                
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt><strong class="bar">전체</strong><em>2021.01.01</em></dt>
+                                                <dd>[결제]결제 문제시 아래의 주소 링크를 클릭하여 문제를 해결하세요.</dd>
+                                            </dl>                                            
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt><strong class="bar">운동</strong><em>2021.01.01</em></dt>
+                                                <dd>[시스템점검]2021.01.05 새벽 4시~6시 접속이 제한됩니다</dd>
+                                            </dl>                                            
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="">인증방 공지</a>
+                                    <ul style="display: none">
+                                        <li>
+                                            <dl>
+                                                <dt><strong class="bar">운동</strong><em>2021.01.05</em></dt>
+                                                <dd>[위치인증]GPS 수신 동의를 하셔야만 위치 인증을 받을 수 있습니다.</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt><strong class="bar">공부</strong><em>2021.01.02</em></dt>
+                                                <dd>[시간인증]인증 완료 시간을 초과한 경우에는 인증을 받을 수 없습니다.</dd>
+                                            </dl>                                                
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt><strong class="bar">전체</strong><em>2021.01.01</em></dt>
+                                                <dd>[결제]결제 문제시 아래의 주소 링크를 클릭하여 문제를 해결하세요.</dd>
+                                            </dl>                                            
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt><strong class="bar">운동</strong><em>2021.01.01</em></dt>
+                                                <dd>[시스템점검]2021.01.05 새벽 4시~6시 접속이 제한됩니다</dd>
+                                            </dl>                                            
+                                        </li>
+                                    </ul>                                
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="help_box2">
+                        <h3>할인카드</h3>
+                        <div class="card">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span><img src="assets/img/card01.jpg" alt="card01"></span>
+                                        <strong>T멤버십 일반</strong>
+                                        <em>5000원 결제시 1000원 추가적립 (1일 1회)</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span><img src="assets/img/card02.jpg" alt="card01"></span>
+                                        <strong>LG U+</strong>
+                                        <em>10000원 이상 결제시 200포인트 추가 적립</em>
+                                    </a>                                    
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span><img src="assets/img/card03.jpg" alt="card01"></span>
+                                        <strong>KT 멤버십 할인</strong>
+                                        <em>결제시 10% 추가적립 혜택 (1일 1회)</em>
+                                    </a>                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="help_box3">
+                        <h3>고객센터</h3>
+                        <div class="service">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span class="img_svg">
+                                            <img src="assets/img/icon_cus_mail.png" alt="메일문의">
+                                        </span>
+                                        <strong>메일문의</strong>
+                                    </a>
+                                </li>                                
+                                <li>
+                                    <a href="#">
+                                        <span class="img_svg">
+                                            <img src="assets/img/icon_cus_phone.png" alt="전화문의">
+                                        </span>
+                                        <strong>전화문의</strong>
+                                    </a>
+                                </li>                                
+                                <li>
+                                    <a href="#">
+                                        <span class="img_svg">
+                                            <img src="assets/img/icon_cus_FAQ.png" alt="자주묻는 질문">
+                                        </span>
+                                        <strong>자주묻는 질문</strong>
+                                    </a>
+                                </li>                                
+                                <li>
+                                    <a href="#">
+                                        <span class="img_svg">
+                                            <img src="assets/img/icon_cus_messenger.png" alt="카톡문의">
+                                        </span>
+                                        <strong>카톡문의</strong>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //help -->
+    
     <!-- 자바스크립트 라이브러리 -->
     <script src="assets/js/jquery.min_1.12.4.js"></script>
     <script src="assets/js/modernizr-custom.js"></script><!-- =>html5 css3 감지 -->
