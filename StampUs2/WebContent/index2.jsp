@@ -524,6 +524,49 @@
     </section>
     <!-- //opening -->
     
+    <section id="review">
+        <div class="container">
+            <div class="row">
+                <div class="review">
+                    <h2>인증방 후기</h2>
+                    <div class="review_left">
+                        <div class="play">
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 120 120" style="enable-background:new 0 0 120 120;" xml:space="preserve">
+                                <circle class="st0" cx="60" cy="60.4" r="56"/>
+                                <path class="st1" d="M81,65.4c4.8-2.8,4.8-7.2,0-10L53.5,39.6c-4.8-2.8-8.7-0.5-8.7,5v31.7c0,5.5,3.9,7.8,8.7,5L81,65.4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="review_right">
+                        <h3 class="title">100대 명산 등반 인증방</h3>
+                        <span class="release">2021년 1월 1일 완료</span>
+                        <div class="heart">
+                            <span class="icon heart2"></span>
+                            <span class="icon heart2"></span>
+                            <span class="icon heart2"></span>
+                            <span class="icon heart1"></span>
+                            <span class="icon heart0"></span>
+                            <strong>달성율 72.3%</strong>
+                        </div>
+                        <ul class="summary">
+                            <li class="category"><span class="bar">운동</span><span>등산</span></li>
+                            <li class="type"><span class="bar">20명</span><span>사진, 위치인증</span></li>
+                            <li class="desc">코로나가 점점 심해져 집에만 있는 시간이 길어졌습니다. 실내운동은 제한사항이 많아 등산을 취미로 가지기로 하였습니다. 스탬프어스 등산 카테고리에서 본 100대 명산 인증방은 지난 6개월간 꾸준히 진행 되던 방이었고 달성율과 인증도 활발하여 꼭 참여해 보고싶던 방이었습니다. 마침 결원이 생겨 참여하게 되었고 매주 등산 인증을 올리며 팀원들과 공유하는 재미에 푹 빠지고 말았습니다. 3개월 간 13곳의 산을 방문하였고, 그중 3번은 인증방 팀원들과 만나 산행을 가기도 하였습니다. 인증방 기간이 만료되어 아쉽지만 또 다른 등산 인증방을 만들어 참여하려고 합니다. 이번에는 나이를 20대 또래로 구성하여 젊은 산행 팀원을 모집해보면 좋을 것 같습니다. 여러분 꼭 등산하세요 꼭이요~ㅎㅎ 혹시 서울 경기 지역 등산에 관심있는 20대 후반은 쪽지 보내주세요!!~~:) </li>
+                        </ul>
+                        <span class="user_id">jeehyeok0114</span>
+                        <div class="btn">
+                            <a href="#" class="white">결과보기</a>
+                            <a href="#" class="red">프로필보기</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //review -->
+    
     <!-- 자바스크립트 라이브러리 -->
     <script src="assets/js/jquery.min_1.12.4.js"></script>
     <script src="assets/js/modernizr-custom.js"></script><!-- =>html5 css3 감지 -->

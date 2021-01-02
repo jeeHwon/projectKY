@@ -6,6 +6,7 @@
 #room {background: #f8f8f8;}
 #event {}
 #opening {margin: 17px 0; background: url(../img/bg01.jpg) no-repeat center top; background-size: cover;}
+#review {}
 
 /* 가운데 영역 */     
 .container{position: relative; width: 1280px; margin: 0 auto; background: rgba(0,0,0,0); }
@@ -108,6 +109,31 @@
 .opening .open_box > div em {display: block; font-weight: bold;}
 .opening .open_box > div strong {display: block; font-weight: bold;}
 
+/* 인증방 후기 */
+.review {padding: 100px 0; position: relative;}
+.review h2 {font-size: 30px; font-weight: 500; margin-bottom: 20px;}
+.review .review_left {position: relative; margin-right: 423px; height: 538px; background: #ccc url(../img/review01.jpg); background-size: cover;}
+.review .review_left .play {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px;}
+.review .review_left .play .st0 {fill: #fff; opacity: 0.3;}
+.review .review_left .play .st1 {fill: #fff;}
+.review .review_right {position: absolute; right: 0; top: 165px; width: 392px; height: 538px; padding: 34px; box-sizing: border-box; background: #f0f0f0;}
+.review .review_right .title {font-size: 28px; color: #000;}
+.review .review_right .release {font-size: 12px; color: #333;}
+.review .review_right .heart {padding: 13px 0;}
+.review .review_right .heart strong{font-size: 15px; padding-left: 5px;}
+.review .review_right .heart span{display: inline-block; width: 20px; height: 20px; vertical-align: -20%;}
+.review .review_right .heart .heart0 {background: url(../img/icon_heart_0.png); background-size: cover;}
+.review .review_right .heart .heart1 {background: url(../img/icon_heart_1.png); background-size: cover;}
+.review .review_right .heart .heart2 {background: url(../img/icon_heart_2.png); background-size: cover;}
+.review .review_right .summary {font-size: 13px;}
+.review .review_right .category {padding-bottom: 3px;}
+.review .review_right .type {padding-bottom: 10px;}
+.review .review_right .desc {height: 260px; overflow: hidden;}
+.review .review_right .user_id {font-size: 12px; font-weight: 500; color: #333;}
+.review .review_right .btn {overflow: hidden; margin-top: 2%; text-align: center;}
+.review .review_right .btn a {float: left; width: 49%; box-sizing: border-box; display: block; padding: 10px 30px 12px 30px;}
+.review .review_right .btn a.white {background-color: #fff; margin-right: 2%; color: #CB230C; border: 1px solid #CB230C;}
+.review .review_right .btn a.red {background-color: #CB230C; color: #fff; border: 1px solid #E68D80;}
 
 
 
