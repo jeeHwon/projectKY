@@ -64,12 +64,12 @@
                     </h1>
                     <nav class="nav">
                         <ul class="clearfix">
-                            <li><a href="#">인증방</a></li>
+                            <li><a href="<c:url value="/room/room_create.jsp"/>">인증방</a></li>
                             <li><a href="#">랭킹</a></li>
                             <li><a href="#">후기</a></li>
                             <li><a href="#">통계</a></li>
                             <li><a href="#">결제</a></li>
-                            <li><a href="#">이벤트</a></li>
+                            <li><a href="<c:url value="/event/event_list.jsp"/>">이벤트</a></li>
                             <li><a href="#">로그인</a></li>
                         </ul>
                     </nav>
