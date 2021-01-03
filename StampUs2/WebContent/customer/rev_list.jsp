@@ -11,6 +11,7 @@
    RevDao rdao=new RevDao();
    ArrayList<RevDto> list=rdao.list();
    pageContext.setAttribute("list", list);
+   String id=(String)session.getAttribute("id");  
 %>   
 <!DOCTYPE html>
 <html>
@@ -57,7 +58,15 @@ td {
 			}
 		%>
 		<tr>
-			<td colspan="4" align="center"><a href="rev_write.jsp">글쓰기 </a></td>
+		<%
+		if(id=="admin"){
+		%>
+			<td colspan="4" align="center">
+			<a href="rev_write.jsp">글쓰기 </a>
+			</td>
+		<%
+		}
+		%>	
 		</tr>
 	</table>
 

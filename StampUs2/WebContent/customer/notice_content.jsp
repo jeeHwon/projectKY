@@ -12,7 +12,7 @@
    // DB_Conn 클래스에서 content()실행
    NoticeDao ndao=new NoticeDao();
    NoticeDto ndto=ndao.content(notice_no);
-    
+   String id=(String)session.getAttribute("id");   
 %>    
 <!DOCTYPE html>
 <html>
@@ -49,8 +49,14 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
+		<%
+		if(id=="admin"){
+		%>
 			<a href="notice_update.jsp?notice_no=<%=ndto.getNotice_no()%>">수정</a> 
 			<a href="notice_delete.jsp?notice_no=<%=ndto.getNotice_no()%>">삭제</a> 
+		<%
+		}
+		%>
 			<a href="notice_list.jsp"> 목록 </a></td>
 		</tr>
 	</table>

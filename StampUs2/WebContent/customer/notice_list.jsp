@@ -9,6 +9,7 @@
    NoticeDao ndao=new NoticeDao();
    ArrayList<NoticeDto> list=ndao.list();
    pageContext.setAttribute("list", list);
+   String id=(String)session.getAttribute("id");  
 %>   
 <!DOCTYPE html>
 <html>
@@ -52,8 +53,15 @@ th, td {
 			}
 		%>
 		<tr>
-			<td colspan="3" align="center"><a href="notice_write.jsp">
-					글쓰기 </a></td>
+		<%
+		if(id=="admin"){
+		%>
+			<td colspan="3" align="center">
+			<a href="notice_write.jsp">글쓰기 </a>
+			</td>
+		<%
+		}
+		%>
 		</tr>
 	</table>
 
