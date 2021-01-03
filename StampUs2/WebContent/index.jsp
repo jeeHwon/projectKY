@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ include file="header.jsp"%>    
     <section id="banner">
         <div class="banner_menu">
@@ -17,8 +18,8 @@
                            <li class="line"><a href="#">공지사항</a></li>
                        </ul>
                        <ul>
-                           <li class="white"><a href="#">카테고리별</a></li>
-                           <li class="red"><a href="#">빠른 검색</a></li>
+                           <li class="white"><a href="<c:url value="/room/room_list.jsp"/>">카테고리별</a></li>
+                           <li class="red"><a href="<c:url value="/room/room_create.jsp"/>">방만들기</a></li>
                        </ul>
                    </div>
                </div>
