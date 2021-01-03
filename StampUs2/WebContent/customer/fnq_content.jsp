@@ -12,7 +12,7 @@
    // DB_Conn 클래스에서 content()실행
    FnqDao fdao=new FnqDao();
    FnqDto fdto=fdao.content(fnq_no);
-    
+   String id=(String)session.getAttribute("id");  
 %> 
 <!DOCTYPE html>
 <html>
@@ -51,9 +51,17 @@ th, td {
        <img src="img/<%=fdto.getFnq_img()%>" width="200"></td>
       </tr>
      <tr colsapn="2">  
-		<td align="center"><a href="fnq_update.jsp?fnq_no=<%=fdto.getFnq_no()%>">수정/</a>
+		<td align="center">
+		<%
+		if(id=="admin"){
+
+		%>
+		<a href="fnq_update.jsp?fnq_no=<%=fdto.getFnq_no()%>">수정/</a>
 		<a href="fnq_delete.jsp?fnq_no=<%=fdto.getFnq_no()%>">삭제/</a> 
-			<a href="fnq_list.jsp"> 목록 </a></td>
+		<%
+		}
+		%>
+		<a href="fnq_list.jsp"> 목록 </a></td>
 	  
      </tr>
     

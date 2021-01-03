@@ -12,7 +12,7 @@
    // DB_Conn 클래스에서 content()실행
    RevDao rdao=new RevDao();
    RevDto rdto=rdao.content(rev_no);
-    
+   String id=(String)session.getAttribute("id");   
 %>  
 <!DOCTYPE html>
 <html>
@@ -60,8 +60,14 @@ th, td {
 
      <tr >  
        <td colsapn="2" align="center">
+       <%
+		if(id=="admin"){
+		%>
 			<a href="rev_update.jsp?rev_no=<%=rdto.getRev_no()%>">수정</a> /
 			<a href="rev_delete.jsp?rev_no=<%=rdto.getRev_no()%>">삭제</a> / 
+		<%
+		}
+		%>
 			<a href="rev_list.jsp"> 목록 </a></td>
 	  </td>
 

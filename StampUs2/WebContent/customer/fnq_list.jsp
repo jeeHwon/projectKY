@@ -9,6 +9,7 @@
    FnqDao fdao=new FnqDao();
    ArrayList<FnqDto> list=fdao.list();
    pageContext.setAttribute("list", list);
+   String id=(String)session.getAttribute("id");  
 %>   
 <!DOCTYPE html>
 <html>
@@ -51,8 +52,15 @@ th, td {
 			}
 		%>
 		<tr>
-			<td colspan="3" align="center"><a href="fnq_write.jsp">
-					글올리기 </a></td>
+		<%
+		if(id=="admin"){
+		%>
+			<td colspan="3" align="center">
+			<a href="fnq_write.jsp">글올리기 </a>
+			</td>
+		<%
+		}
+		%>	
 		</tr>
 	</table>
 

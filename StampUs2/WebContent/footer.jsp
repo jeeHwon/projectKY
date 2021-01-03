@@ -47,56 +47,5 @@
     </section>
     <!-- //footer -->
     
-    <!-- 자바스크립트 라이브러리 -->
-    <script src="<c:url value="/assets/js/jquery.min_1.12.4.js"/>"></script>
-    <script src="<c:url value="/assets/js/modernizr-custom.js"/>"></script><!-- =>html5 css3 감지 -->
-    <script src="<c:url value="/assets/js/ie-checker.js"/>"></script><!-- =>익스플로러 ver 체크 -->
-    <script src="<c:url value="/assets/js/swiper.min.js"/>"></script><!-- =>배너 스와이프 기능 -->
-    <script>
-        // 배너 이미지 슬라이드
-        var mySwiper = new Swiper('.swiper-container', {
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',   
-            },
-            autoplay: {
-                delay: 5000,
-            },
-        });
-        
-        // 인증방 차트 탭 메뉴
-        var roomBtn = $(".room_title> ul > li")
-        var roomCont = $(".room_chart > div")
-        roomCont.hide().eq(0).show()
-        roomBtn.click(function(e){
-            e.preventDefault()
-            var target = $(this)
-            var index = target.index()
-            roomBtn.removeClass("active")
-            target.addClass("active")
-            roomCont.css("display", "none")
-            roomCont.eq(index).css("display","block")
-        })
-        
-        // 인증방 차트 이미지 슬라이드 - 미구현
-        
-        // 공지사항 탭 메뉴
-        var tapMenu = $(".notice")
-        
-        // 컨텐츠 내용 감추기
-        tapMenu.find("ul > li > ul").hide()
-        tapMenu.find("li.active > ul").show()
-        
-        function tabList(e){
-            e.preventDefault();     //#의 기능 차단
-            var target = $(this)
-            target.next().show().parent("li").addClass("active").siblings("li").removeClass("active").find("ul").hide()
-            //버튼 클릭 시 ul를 보여주고, 부모 li 태그에 클래스 추가하고, 형제 li 태그에 클래스 제거하고, 제거한 자식의 ul 태그를 숨긴다
-        }
-        tapMenu.find("ul > li> a").click(tabList).focus(tabList)
-    </script>
 </body>
 </html>
