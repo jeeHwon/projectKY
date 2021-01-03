@@ -11,6 +11,9 @@
 
 	 // request값을 읽어오기
     String review_no=request.getParameter("review_no");
+    String pager=request.getParameter("pager");
+    String cla=request.getParameter("cla");
+    String sword=request.getParameter("sword");
     
     // 쿼리 생성
     String sql="update review set review_view=review_view+1 where review_no="+review_no; 
@@ -19,5 +22,9 @@
     // 쿼리 실행
     stmt.executeUpdate(sql); 
     // 이동
-    response.sendRedirect("content.jsp?review_no="+review_no);
+    response.sendRedirect("review_content.jsp?review_no="+review_no+"&pager="+pager+"&cla="+cla+"&sword="+sword);
+%>
+<%
+	stmt.close();
+	conn.close();
 %>

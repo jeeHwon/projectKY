@@ -33,7 +33,7 @@
 	// 쿼리 생성
 	String sql="insert into review(review_no,user_id,review_title,review_content,";
 	sql=sql+"review_file,review_postday,hash) ";
-	sql=sql+" values(review_seq.nextval,?,?,?,?,TO_DATE(SYSDATE,'YYYY.MM.DD'),?)";
+	sql=sql+" values(review_seq.nextval,?,?,?,?,TO_DATE(SYSDATE,'YY.MM.DD HH24:MI:SS'),?)";
 	
 	// 심부름꾼 생성
 	PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -46,6 +46,9 @@
 	// 쿼리 실행
 	pstmt.executeUpdate();
 
-	// 이동(list.jsp)
-	response.sendRedirect("list.jsp");
+	// 이동
+	response.sendRedirect("review_list.jsp");
+%>
+<%
+	conn.close();
 %>
