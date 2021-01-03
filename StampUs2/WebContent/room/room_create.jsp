@@ -42,6 +42,7 @@
    <div class="container">
        <div class="row">
            <div class="roomCreate">
+           		<form method="post" id="frm" action="room_create_ok.jsp"  enctype="multipart/form-data">
                 <div class="left">
                     <h2 class="title">인증방 만들기</h2>
                     
@@ -198,9 +199,10 @@
                     
                     <div class="btn">
                         <a href="#" class="white">미리보기</a>
-                        <a href="#" class="red">방만들기</a>
+                        <a href="#" class="red" onclick="document.getElementById('frm').submit()">방만들기</a>
                     </div>
                 </div>
+                </form>
                    
                 <div class="right">
                     <h2 class="title">방 미리보기</h2>
