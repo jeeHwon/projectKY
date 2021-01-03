@@ -65,7 +65,7 @@ public class EventDAO {
 		pstmt.setString(1, dto.getEvent_title());
 		pstmt.setString(2, dto.getEvent_content());
 		pstmt.setString(3, dto.getEvent_img());
-		pstmt.setString(4, dto.getEvent_no());
+		pstmt.setInt(4, dto.getEvent_no());
 		
 		//쿼리실행
 		pstmt.executeUpdate();
@@ -89,9 +89,15 @@ public class EventDAO {
 		conn.close();
 	}
 	//=====================list.jsp===============================
-		public ArrayList<EventDTO> list() throws Exception{
-			//쿼리생성
+										//페이징처리를 위한 객체 전달받기
+ 		public ArrayList<EventDTO> list() throws Exception{
+			//쿼리생성 - 정렬된 데이터 가져오기
 			String sql="select * from event order by event_no desc";
+			//2 정렬된 데이터에서 순서번호 붙이기
+			sql="select rownum rnum, event_no, event_adm, event_title, event_postday, event_view from ("+sql+")";
+			//3.원하는 부분에 해당되는 데이터 가져오기
+			sql="select event_no, event_adm, event_title, event_postday, event_view from ("+sql+")"
+					+" where rnum between ? and ? ";
 			//심부름꾼
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			//쿼리실행
@@ -102,7 +108,7 @@ public class EventDAO {
 			
 			while(rs.next()) {
 				EventDTO dto=new EventDTO();
-				dto.setEvent_no(rs.getString("event_no"));
+				dto.setEvent_no(rs.getInt("event_no"));
 				dto.setEvent_title(rs.getString("event_title"));
 				dto.setEvent_postday(rs.getString("event_postday"));
 				dto.setEvent_view(rs.getString("event_view"));
@@ -122,13 +128,14 @@ public class EventDAO {
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			EventDTO dto=new EventDTO();
-			dto.setEvent_no(rs.getString("event_no"));
+			dto.setEvent_no(rs.getInt("event_no"));
 			dto.setEvent_title(rs.getString("event_title"));
 			dto.setEvent_content(rs.getString("event_content"));
 			dto.setEvent_img(rs.getString("event_img"));
 			dto.setEvent_postday(rs.getString("event_postday"));
 			dto.setEvent_view(rs.getString("event_view"));
-
+			
 			return dto; //return이 있으면 conn.close()안됨
 		}
+		
 }

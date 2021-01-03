@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="dao.EventDAO" %>
 <%@page import="java.sql.*" %>
 <%@page import="dto.EventDTO" %>
 <%
-	String event_no=request.getParameter("event_no");
+	int event_no=Integer.parseInt(request.getParameter("event_no"));
 
     EventDAO dao=new EventDAO();
 	EventDTO dto = dao.content(event_no);
+	session.setAttribute("user_id", "user1");
+	String user_id = session.getAttribute("user_id").toString();
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="index.css">
-</head>
-<body>
-<form method="post" action="event_update_ok.jsp" enctype="multipart/form-data">
-	<input type="hidden" name="no" value="<%=event_no%>">
+<jsp:include page="../header.jsp" />
+
+<section id="event_update">
+	<form method="post" action="event_update_ok.jsp" enctype="multipart/form-data">
+	<input type="hidden" name="event_no" value="<%=event_no%>">
+	<input type="hidden" name="user_id" value="<%=user_id%>">
 	<table width="600" align="center">
 		<tr>
 			<td>글번호</td>
@@ -51,6 +50,6 @@
 			</td>
 		</tr>
 	</table>
-</form>
-</body>
-</html>
+</section>
+
+<jsp:include page="../footer.jsp" />

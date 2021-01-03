@@ -12,7 +12,7 @@
 	String han="utf-8";
 	MultipartRequest multi =
 	new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());
-	String event_no = multi.getParameter("event_no");
+	int event_no = Integer.parseInt(multi.getParameter("event_no"));
 	String title = multi.getParameter("title");
 	String content = multi.getParameter("content");
 	String img = multi.getFilesystemName("img"); //서버에 저장되는 이름

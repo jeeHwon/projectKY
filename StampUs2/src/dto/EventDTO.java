@@ -1,12 +1,13 @@
 package dto;
 
 public class EventDTO {
-	private String event_no, event_adm, event_title, event_content, event_img, event_view, event_postday;
-	public String getEvent_no() {
+	private String event_adm, event_title, event_content, event_img, event_view, event_postday;
+	private int event_no;
+	public int getEvent_no() {
 		return event_no;
 	}
-	public void setEvent_no(String no) {
-		this.event_no = no;
+	public void setEvent_no(int event_no) {
+		this.event_no = event_no;
 	}
 	public String getEvent_adm() {
 		return event_adm;

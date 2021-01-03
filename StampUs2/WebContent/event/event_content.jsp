@@ -1,38 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="dao.EventDAO" %>
 <%@page import="java.sql.*" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="dto.EventDTO" %>
 <%@page import="dao.Event_dat_DAO" %>
 <%@page import="dto.Event_dat_DTO" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	session.setAttribute("user_id", "user1");
-
+<% 
 	String user_id = session.getAttribute("user_id").toString();
 	int event_no=Integer.parseInt(request.getParameter("event_no"));
     EventDAO dao=new EventDAO();
 	EventDTO edDTO = dao.content(event_no);
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="index.css">
-<script>
-function dat_update(event_dat_no, event_dat_content){
-	document.getElementById('dat_title').innerText='댓글 수정';
-	document.getElementById('dat_button').value='댓글 수정';
-	document.getElementById('event_dat_form').action='event_dat_update_ok.jsp';
-	document.getElementById('event_dat_no').value=event_dat_no;
-	document.getElementById('event_dat_content').innerText=event_dat_content;	
-}
-</script>
-</head>
-<body>
-<%@include file="..\\header.jsp" %>
+<jsp:include page="../header.jsp" />
+
+<section id="event_content">
 	<table width="600" align="center">
 		<tr>
 			<td>글번호</td>
@@ -67,21 +50,10 @@ function dat_update(event_dat_no, event_dat_content){
 	</table>
 	<!---------------------------댓글 관련 작업---------------------------->
     <!-- 댓글을 입력 폼  => 작성자, 내용, 비번 -->
-<%--    <div align="center">
-    <form name="dat" method="post" action="nav2_event_dat_write_ok.jsp">
-   	  <input type="hidden" name="study_dat_no" id="study_dat_no">
-	  <input type="hidden" name="event_no" value="<%=edDTO.getEvent_no() %>">
-      <input type="text" name="name" size="5" placeholder="작성자" id="name">
-      <input type="text" name="content" size="50" placeholder="댓글 내용" id="content">
-      <input type="text" name="pwd" size="5" placeholder="비밀번호">
-      <input type="submit" value="댓글달기">
-    </form>
-   </div>  --%> 
 	<div class="event_dat_write">
 		<form name="event_dat_form" id="event_dat_form" method="post" action="event_dat_write_ok.jsp">
 			<input type="hidden" name="event_dat_no" id="event_dat_no">
 			<input type="hidden" name="event_no" value="<%=edDTO.getEvent_no() %>">
-			<%-- <input type="hidden" name="study_my_no" value="<%=list.get(i).getEvent_my_no() %>"> --%>
 			<textarea name="event_dat_content" placeholder="댓글을 입력하세요" id="event_dat_content"></textarea>
 		<input id="dat_button" type="submit" value="댓글 작성">
 		</form>
@@ -115,6 +87,14 @@ function dat_update(event_dat_no, event_dat_content){
 		%>
 		</table>
 	</div>
-<%@include file="..\\footer.jsp" %>
-</body>
-</html>
+</section>
+<script>
+function dat_update(event_dat_no, event_dat_content){
+	document.getElementById('dat_title').innerText='댓글 수정';
+	document.getElementById('dat_button').value='댓글 수정';
+	document.getElementById('event_dat_form').action='event_dat_update_ok.jsp';
+	document.getElementById('event_dat_no').value=event_dat_no;
+	document.getElementById('event_dat_content').innerText=event_dat_content;	
+}
+</script>
+<jsp:include page="../footer.jsp" />
