@@ -31,7 +31,7 @@ td {
 </style>
 </head>
 <body>
-	<%@include file="header.jsp"%>
+	<jsp:include page="../header.jsp" />
 	<table width="1300" align="center">
 		<tr align="center">
 		<span align="center"> <h3><a href="center.jsp">고객센터></a></h3><h1><a href="rev_list.jsp">협력업체</a></h1></span>
@@ -70,7 +70,7 @@ td {
 		</tr>
 	</table>
 
-	<%@include file="footer.jsp"%>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>
 

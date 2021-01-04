@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">															
 <title>Insert title here</title>
 <style>
 table {
@@ -33,7 +33,7 @@ th, td {
 </style>
 </head>
 <body>
-	<%@include file="header.jsp"%>
+	<jsp:include page="../header.jsp" />
 	<h1 align="center"><a href="fnq_list.jsp">FAQ</a></h1>
 	<h3 align="center">stampus를 편리하게 이용해보세요</h3>
 	<table width="800" align="center">
@@ -69,6 +69,6 @@ th, td {
      </table>
    <form method="post" action="fnq_delete.jsp" id="del">
 	
-<%@include file="footer.jsp"%>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

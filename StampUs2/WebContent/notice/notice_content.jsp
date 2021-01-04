@@ -28,7 +28,7 @@
 </style>
 </head>
 <body>
-	<%@include file="header.jsp"%>
+	<jsp:include page="../header.jsp" />
 	<h1 align="center"><a href="notice_list.jsp">공지사항</a></h1>
 	<h3 align="center">stampus의 소식 및 안내사항을 확인하세요</h3>
 	<table width="600" align="center">
@@ -63,6 +63,6 @@
 	<form method="post" action="notice_delete.jsp" id="del">
 	      <input type="hidden" name="notice_no" value="<%=ndto.getNotice_no()%>">
 	
-		<%@include file="footer.jsp"%>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

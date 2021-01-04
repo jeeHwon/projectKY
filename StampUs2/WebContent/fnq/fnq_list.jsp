@@ -30,7 +30,7 @@ th, td {
 </style>
 </head>
 <body>
-	<%@include file="header.jsp"%>
+	<jsp:include page="../header.jsp" />
 	<span align="center"> <h3><a href="center.jsp">고객센터></a></h3><h1><a href="fnq_list.jsp">FQA</a></h1></span>
 	<h3 align="center">stampus를 편리하게 이용해보세요</h3>
 	<table width="600" align="center">
@@ -64,7 +64,7 @@ th, td {
 		</tr>
 	</table>
 
-	<%@include file="footer.jsp"%>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>
 

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="header.jsp"%>
+<jsp:include page="../header.jsp" />
 <h1 align="center"><고객센터></a></h1>
  <table width="1000" align="center">
  <tr>
@@ -21,6 +21,6 @@
  <td align="center" width="333"><a href="fnq_list.jsp"><h1>FAQ</h1></a></td>
  </tr>
 </table>
-<%@include file="footer.jsp"%>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

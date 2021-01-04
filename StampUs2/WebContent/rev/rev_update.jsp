@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<%@include file="header.jsp" %>
+<jsp:include page="../header.jsp" />
   <form method="post" action="rev_update_ok.jsp" enctype="multipart/form-data">
 	<input type="hidden" name="rev_no" value="<%=rdto.getRev_no()%>">
 	<table width="800" align="center">
@@ -57,6 +57,6 @@
   </table>
  </form>
 		
-<%@include file="footer.jsp" %>
+<jsp:include page="../footer.jsp" />
 </body> 
 </html> 

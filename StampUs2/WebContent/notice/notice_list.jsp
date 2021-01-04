@@ -30,7 +30,7 @@ th, td {
 </style>
 </head>
 <body>
-	<%@include file="header.jsp"%>
+	<jsp:include page="../header.jsp" />
 	<span align="center"> <h3><a href="center.jsp">고객센터></a></h3><h1><a href="notice_list.jsp">공지사항</a></h1></span>
 	<h3 align="center">stampus의 소식 및 안내사항을 확인하세요</h3>
 	<table width="600" align="center">
@@ -65,7 +65,7 @@ th, td {
 		</tr>
 	</table>
 
-	<%@include file="footer.jsp"%>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>
 
