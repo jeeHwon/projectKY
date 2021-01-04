@@ -60,15 +60,17 @@
                         <div class="s1_2">
                             <label for="r_start_day" class="ir_so">시작일</label>
                             <select id="r_start_day" name="r_start_day" class="ui_select">
-                                <option value="2021-02-01">2021년 2월 1일</option>
-                                <option value="2021-02-02">2021년 2월 2일</option>
+                            	<c:forEach var="i" begin="1" end="28" step="1">
+                                	<option value="2021-02-0${i}">2021년 2월 ${i}일</option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="s2_2">
                             <label for="r_end_day" class="ir_so">종료일</label>
                             <select id="r_end_day" name="r_end_day" class="ui_select">
-                                <option value="2021-02-03">2021년 2월 3일</option>
-                                <option value="2021-02-04">2021년 2월 4일</option>
+                            	<c:forEach var="i" begin="1" end="28" step="1">
+                                	<option value="2021-02-0${i}">2021년 2월 ${i}일</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
@@ -84,6 +86,8 @@
                             <select id="r_cate_big" name="r_cate_big" class="ui_select">
                                 <option value="s">공부</option>
                                 <option value="x">운동</option>
+                                <option value="w">기상</option>
+                                <option value="f">음식</option>
                             </select>
                         </div>
                         <div class="s2_3">
@@ -96,8 +100,9 @@
                         <div class="s3_3">
                             <label for="r_people" class="ir_so">인원수</label>
                             <select id="r_people" name="r_people" class="ui_select">
-                                <option value="2">2명</option>
-                                <option value="3">3명</option>
+								<c:forEach var="i" begin="2" end="8" step="1">
+									<option value="${i}">${i}명</option>
+								</c:forEach>
                             </select>
                         </div>
                     </div>
@@ -135,7 +140,7 @@
                     <div class="select">
                         <div class="s1_2 ui_radio box">
                             <div class="box_under">
-                                <input type="radio" name="r_deposit" id="r_deposit_5" value="5">5,000원&nbsp;&nbsp;
+                                <input type="radio" name="r_deposit" id="r_deposit_5" value="05">5,000원&nbsp;&nbsp;
                                 <input type="radio" name="r_deposit" id="r_deposit_10" value="10">10,000원&nbsp;&nbsp;
                                 <input type="radio" name="r_deposit" id="r_deposit_15" value="15">15,000원&nbsp;&nbsp;
                                 <input type="radio" name="r_deposit" id="r_deposit_20" value="20">20,000원&nbsp;&nbsp;

@@ -8,6 +8,8 @@
 <%
 	//cos.jar 라이브러리를 통해 파일을 업로드
 	String savePath =  request.getRealPath("room_data/");
+	String test2 = request.getSession().getServletContext().getRealPath("room_data");
+	
 	int size = 1024*1024*5;
 	String enco = "utf-8";
 	MultipartRequest multi = new MultipartRequest(request, savePath, size, enco,
@@ -26,7 +28,8 @@
 	String deposit = multi.getParameter("r_deposit");
 	String penalty = multi.getParameter("r_penalty");
 	String content = multi.getParameter("r_content");
-	String file_name = multi.getFilesystemName("r_img");
+	//String file_name = multi.getFilesystemName("r_img");	일단 중복 상관없이 db 저장된 파일명
+	String file_name = multi.getOriginalFileName("r_img");
 	String condition = multi.getParameter("r_condition");
 	
 	RoomDTO rdto = new RoomDTO();
@@ -48,11 +51,12 @@
 	rdao.insert(rdto);
 	
 	
-	
+	response.sendRedirect("room_list.jsp");
 	
 %>
 
 <%=savePath%>
+<%=test2%>
 <%=title%>
 <%=start_day %>
 <%=end_day %>
