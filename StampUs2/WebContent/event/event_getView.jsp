@@ -9,7 +9,9 @@
 	
 	//request값 불러오기
 	int event_no=Integer.parseInt(request.getParameter("event_no"));
-	
+    String pager=request.getParameter("pager");
+    String cla=request.getParameter("cla");
+    String sword=request.getParameter("sword");
 	//쿼리생성
 	String sql="update event set event_view=event_view+1 where event_no="+event_no;
 	//심부름꾼
@@ -17,5 +19,5 @@
 	//쿼리실행
 	db.stmt.executeUpdate(sql);
 	//이동
-	response.sendRedirect("event_content.jsp?event_no="+event_no);
+	response.sendRedirect("event_content.jsp?event_no="+event_no+"&pager="+pager+"&cla="+cla+"&sword="+sword);
 %>
