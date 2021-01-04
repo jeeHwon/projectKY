@@ -29,7 +29,7 @@
 </head>
 <body onload="init()">
 
-<%@include file="header.jsp" %>
+<jsp:include page="../header.jsp" />
   <form name="ky" method="post" action="fnq_update_ok.jsp" enctype="multipart/form-data">
 	<input type="hidden" name="fnq_no" value="<%=fnq_no%>">
 	<table width="1000" align="center">
@@ -74,6 +74,6 @@
   </table>
  </form>
 		
-<%@include file="footer.jsp" %>
+<jsp:include page="../footer.jsp" />
 </body> 
 </html> 

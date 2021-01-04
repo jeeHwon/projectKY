@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<%@include file="header.jsp" %>
+<jsp:include page="../header.jsp" />
   <form method="post" action="rev_write_ok.jsp" enctype="multipart/form-data">
 	<table width="800" align="center">
 	<tr>
@@ -42,6 +42,6 @@
   </table>
  </form>
 		
-<%@include file="footer.jsp" %>
+<jsp:include page="../footer.jsp" />
 </body> 
 </html> 

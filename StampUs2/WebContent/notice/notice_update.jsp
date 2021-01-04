@@ -21,7 +21,7 @@
 </head>
 <body>
 
-	<%@include file="header.jsp"%>
+	<jsp:include page="../header.jsp" />
 	<h1 align="center">
 		<a href="notice_list.jsp">공지사항</a>
 	</h1>
@@ -55,6 +55,6 @@
 		</table>
 	</form>
 
-	<%@include file="footer.jsp"%>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>
