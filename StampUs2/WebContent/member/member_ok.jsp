@@ -38,5 +38,5 @@ pstmt.setString(9, interest);
 
 pstmt.executeUpdate();
 
-response.sendRedirect("../index2.jsp");
+response.sendRedirect("../index.jsp");
 %>
