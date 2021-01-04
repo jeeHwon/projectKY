@@ -14,6 +14,7 @@
 <body>
 <form method="post" action="board_write_ok.jsp">
 <table width="600" align="center">
+<%@include file="header.jsp" %>
 	<tr>
 		<td align="center"> 제목 </td>
 		<td cols="30"><input type="text" name="title"></td>
@@ -31,5 +32,6 @@
 	</tr>
 </table>
 </form>
+<%@include file="footer.jsp" %>
 </body>
 </html>

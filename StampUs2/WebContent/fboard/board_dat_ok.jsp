@@ -4,10 +4,10 @@
 <%
 	/* dat table
 	create table fboard_dat(
-	id number(7), 
+	dat_no number(9),
 	name varchar(10),
 	content VARCHAR(30),
-	dat_id number(8),
+	dat_no_id number(9) default 0,
 	writeday date
 	);
 	
@@ -25,12 +25,13 @@
 	
 	// request값
 	request.setCharacterEncoding("utf-8");
+	String dat_no = request.getParameter("dat_no");
 	String dat_no_id = request.getParameter("dat_no_id");
 	String name = request.getParameter("name");
 	String content = request.getParameter("content");
 
-	String sql = "insert into fboard_dat (name, content, dat_no_id, writeday) ";
-	sql += " values (?, ?, ?, sysdate)";
+	String sql = "insert into fboard_dat (dat_no, name, content, writeday, dat_no_id) ";
+	sql += " values (fboard_dat_seq.nextval, ?, ?, sysdate, ?)";
 	
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, name);
@@ -39,7 +40,7 @@
 	
 	pstmt.executeUpdate();
 	
-	response.sendRedirect("board_content.jsp?dat_no="+dat_no_id);
+	response.sendRedirect("board_content.jsp?id="+dat_no_id);
 	
 	pstmt.close();
 	conn.close();

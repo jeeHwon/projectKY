@@ -13,13 +13,9 @@
     request.setCharacterEncoding("utf-8");
     String dat_no = request.getParameter("dat_no");
     String content = request.getParameter("content");
-    
-    String sql = "select * from fboard_dat where dat_no="+dat_no;
-    Statement stmt = conn.createStatement();
-    ResultSet rs = stmt.executeQuery(sql);
-    rs.next();
-    
-    sql = "update fboard_dat set content=? where dat_no=?";
+    String dat_no_id = request.getParameter("dat_no_id");
+   
+    String sql = "update fboard_dat set content=? where dat_no=?";
     
     PreparedStatement pstmt = conn.prepareStatement(sql);
     pstmt.setString(1, content);
@@ -27,7 +23,7 @@
     
     pstmt.executeUpdate();
     
-    response.sendRedirect("board_content.jsp?dat_no="+ rs.getString("dat_no_id"));
+    response.sendRedirect("board_content.jsp?id="+dat_no_id);
     
     
 %>

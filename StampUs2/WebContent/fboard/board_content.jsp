@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+
 <%
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
@@ -15,6 +16,7 @@
 	String pager = request.getParameter("pager");
 	String cla = request.getParameter("cla");
 	String word = request.getParameter("word");
+	//String name = session.getAttribute("userid").toString();
 	
 	//쿼리 생성
 	String sql = "select * from fboard where id=" +id;
@@ -41,6 +43,7 @@
 </head>
 <body>
 <table width="600" align="center">
+<%@include file="header.jsp" %>
 	<tr align="center">
 		<td align="center">제목 </td>
 		<td colspan="5"><%=rs.getString("title") %></td>
@@ -60,7 +63,7 @@
 	</tr>
 	<tr>
 		<td colspan="6" align="center">
-		<a href ="board_update.jsp?id=<%=rs.getInt("id") %>">수정</a>
+		<a href ="board_update.jsp?id=<%=rs.getInt("id")%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>">수정</a>
 		<a href ="board_delete.jsp?id=<%=rs.getInt("id")%>"> 삭제</a>
 		<a href ="board_list.jsp">목록보기</a></td>
 	</tr>
@@ -68,15 +71,6 @@
 
 </form>
 <!-- 댓글관련 함수 추가 -->
-<script>
-	function update(datid){
-		document.getElementById("dat").action="board_dat_update.jsp"
-		document.getElementById("submit").value="댓글수정"
-		document.getElementById("name").style.visibility="visible"
-		document.getElementById("content").style.visibility="visible"
-		document.dat.id.value=datid;
-	}
-</script>
 
 <div align="center">
 	<form id="dat" name="dat" method="post" action="board_dat_ok.jsp">
@@ -93,7 +87,7 @@
 	//DB 연결 => 위에서 이미 완료
 	
 	//쿼리 생성
-	sql = "select * from fboard_dat where dat_no_id="+id;
+	sql = "select * from fboard_dat where dat_no_id="+ id;
 	
 	//심부름꾼 생성 => 위에서 이미 완료
 			
@@ -109,14 +103,15 @@
 	%>
 	<tr>
 		<td width="60"><%=rs.getString("name") %></td>
-		<td><a href="board_dat_update.jsp?dat_id=<%=rs.getString("dat_no")%>"><%=rs.getString("content")%></a>
-		<td><a href ="board_dat_delete.jsp?dat_id=<%=rs.getInt("dat_no_id")%>"> X </a></td>
+		<td><a href="board_dat_update.jsp?dat_no=<%=rs.getString("dat_no")%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>"><%=rs.getString("content") %></a></td>
+		<td><a href ="board_dat_delete.jsp?dat_no=<%=rs.getString("dat_no")%>&dat_no_id=<%=rs.getString("dat_no_id")%>"> X </a></td>
 		<td width="100"><%=rs.getString("writeday") %></td>
 	</tr>
 	<%
 		} 
 	%>
 </table>
+<%@include file="footer.jsp" %>
 </div>
 </body>
 </html>

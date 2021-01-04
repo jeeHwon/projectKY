@@ -13,12 +13,12 @@
     /* 
     create table fboard
 	(
-	id number(7),
-	title varchar(20),
-	name varchar(10),
-	content varchar(2000),
-	readnum number(8) default 0,
-	writeday date);
+		id number(8),
+		title varchar(40),
+		name varchar(20),
+		content varchar(2000),
+		readnum number(8) default 0,
+		writeday date);
     
 	기본키 지정
     alter table fboard add constraint fboard_pk primary key (id);
@@ -46,15 +46,16 @@
     String word = "";
     if(request.getParameter("cla") == null){
     	sql = "select * from (select row_number() over (order by id) num, A.* from fboard A order by id) where num between " + index + " and " + (index + 10);
-    	
+    
     } else {
     	cla = request.getParameter("cla"); //검색필드
     	word = request.getParameter("word"); //검색단어
     	if(cla.equals("name")) {
-    		sql = "select * from (select * from fboard where name like '%" + word + "%' order by id desc) where id between " + index + " and " + (index + 10);
+    		sql = "select * from (select row_number() over (order by id) num, A.* from fboard A where name like '%" + word + "%' order by id) where num between " + index + " and " + (index + 10);
     		addsql = " where name like '%" + word + "%' ";
+
     	} else {
-    		sql = "select * from (select * from fboard where title like '%" + word + "%' order by id desc) where id between " + index + " and " + (index + 10);
+    		sql = "select * from (select row_number() over (order by id) num, A.* from fboard A where title like '%" + word + "%' order by id) where num between " + index + " and " + (index + 10);
     		addsql = " where title like '%" + word + "%' ";
     	}
     }
@@ -82,6 +83,7 @@
 </head>
 <body>
 <div align="center">
+
 	<form name="searchFrm" method="post" action="board_list.jsp">
 		<select name="cla">
 			<option value="name">이름</option>
@@ -172,9 +174,10 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><a href="board_write.jsp">글쓰기</a></td>
-		</tr>		
+			<td colspan="2" align="center"><a href="board_write.jsp">글쓰기</a></td>
+			<td colspan="2" align="center"><a href="board_list.jsp">목록보기</a></td>
 	</table>
+
 </body>
 </html>
 <%
