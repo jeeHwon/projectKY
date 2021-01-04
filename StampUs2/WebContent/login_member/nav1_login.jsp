@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="../index.css">
 <title>Insert title here</title>
 <style>
 #login {
@@ -49,12 +49,17 @@
 	color: #629c2c;
 	text-decoration:underline;
 }
+.f5 {
+	height:130px;	
+	margin : auto;
+}
 </style>
 </head>
 <body>
 	<div class="container">
-		<%@include file="header.jsp"%>
-		<div id="login" class=f4>
+		<%@include file="../header.jsp"%>
+		<div class="f5"></div>
+		<div id="login" class="f6">
 			<form mehtod="post" action="nav1_login_ok.jsp">
 				<input type="text" name="userid" placeholder="아이디" required>
 				<p>
@@ -74,11 +79,11 @@
 			</form>
 			<ul class="btm">
 				<li><a href=nav1_member.jsp>회원가입</a></li>
-				<li>아이디를 잊으셨나요?<a href=#>아이디 찾기</a></li>
-				<li>비밀번호를 잊으셨나요?<a href=#>비밀번호 찾기</a></li>
+				<li>아이디를 잊으셨나요?<a href="find_ID.jsp">아이디 찾기</a></li>
+				<li>비밀번호를 잊으셨나요?<a href="find_PW.jsp">비밀번호 찾기</a></li>
 			</ul>
 		</div>
-		<%@include file="footer.jsp"%>
+		<%@include file="../footer.jsp"%>
 	</div>
 </body>
 </html>

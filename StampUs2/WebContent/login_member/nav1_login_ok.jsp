@@ -16,9 +16,10 @@
 	
 	int result = dao.login(dto);
 	if(result == 1){
+		session.setAttribute("userid", userid);
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = 'index.jsp'");
+		script.println("location.href = '../index2.jsp'");
 		script.println("</script>");
 	}
 	else if(result == 0){
