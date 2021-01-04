@@ -12,6 +12,9 @@
 	int event_no=Integer.parseInt(request.getParameter("event_no"));
     EventDAO dao=new EventDAO();
 	EventDTO edDTO = dao.content(event_no);
+	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
+	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
+ 	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
 %>
 <jsp:include page="../header.jsp" />
 
@@ -44,7 +47,7 @@
 			<td colspan="2" align="center">
 				<a href="event_update.jsp?event_no=<%=event_no%>">수정</a>
 				<a href="event_delete.jsp?event_no=<%=event_no%>">삭제</a>
-				<a href="event_list.jsp">목록</a>
+				<a href="event_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록</a>
 			</td>
 		</tr>
 	</table>

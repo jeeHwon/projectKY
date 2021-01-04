@@ -8,25 +8,15 @@
 <%
    session.setAttribute("user_id", "user1");
 %>
-<%
-   request.setCharacterEncoding("utf-8");
-   String pager=request.getParameter("pager");
-   if(pager==null){
-      pager="1";
-   }
-   EventDTO eDTO = new EventDTO();
-   EventDAO2 eDAO = new EventDAO2();
+<%  
+    request.setCharacterEncoding("utf-8");
+	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
+	EventDTO eDTO = new EventDTO();
+	EventDAO2 eDAO = new EventDAO2();
     
     //==========검색============
-   String cla = "";
-   String sword = "";
-   if(request.getParameter("cla")!=null){
-      sword = request.getParameter("sword");
-      cla = request.getParameter("cla");
-   }
-   if(sword==null){//검색 조건이 없는 경우 => 모든 글 가져오기
-         sword="";
-   } 
+	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
+ 	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
     ArrayList<EventDTO> list=eDAO.pageList(cla,sword,pager);
 %>
 <script>
