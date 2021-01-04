@@ -3,8 +3,11 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 import dto.RoomDTO;
 
@@ -48,4 +51,67 @@ public class RoomDAO {
 		pstmt.executeUpdate();
 		pstmt.close();
 	}
+	
+	public ArrayList<RoomDTO> list() throws SQLException {
+		
+		String sql = "select * from room order by ROOM_NO desc";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		ArrayList<RoomDTO> list = new ArrayList<RoomDTO>();
+		while(rs.next()) {
+			RoomDTO rdto = new RoomDTO();
+			rdto.setId(rs.getInt("ROOM_NO"));
+			rdto.setTitle(rs.getString("ROOM_TITLE"));
+			rdto.setStart_day(rs.getString("ROOM_START_DAY"));
+			rdto.setEnd_day(rs.getString("ROOM_END_DAY"));
+			rdto.setCategory(rs.getString("ROOM_CATEGORY"));
+			rdto.setCategory2(rs.getString("ROOM_CATEGORY2"));
+			rdto.setPeople(rs.getInt("ROOM_PEOPLE"));
+			rdto.setCheck_day(rs.getString("ROOM_CHECK_DAY"));
+			rdto.setCerti_type(rs.getString("ROOM_CERTI_TYPE"));
+			rdto.setDeposit(rs.getString("ROOM_DEPOSIT"));
+			rdto.setPenalty(rs.getString("ROOM_PENALTY"));
+			rdto.setContent(rs.getString("ROOM_CONTENT"));
+			rdto.setFile_name(rs.getString("ROOM_FILE_NAME"));
+			rdto.setCondition(rs.getString("ROOM_CONDITION"));
+			list.add(rdto);
+		}
+		return list;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
