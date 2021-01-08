@@ -7,7 +7,7 @@
 	dat_no number(9),
 	name varchar(10),
 	content VARCHAR(30),
-	dat_no_id number(9) default 0,
+	dat_no_id number(9),
 	writeday date
 	);
 	
@@ -25,7 +25,6 @@
 	
 	// request값
 	request.setCharacterEncoding("utf-8");
-	String dat_no = request.getParameter("dat_no");
 	String dat_no_id = request.getParameter("dat_no_id");
 	String name = request.getParameter("name");
 	String content = request.getParameter("content");

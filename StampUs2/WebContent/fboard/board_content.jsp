@@ -74,9 +74,8 @@
 
 <div align="center">
 	<form id="dat" name="dat" method="post" action="board_dat_ok.jsp">
-		<input type="hidden" name="dat_no_id" value="<%=id%>">	
-		<input type="hidden" name="dat_no">
-		<td><%=rs.getString("name") %></td>
+		<input type="hidden" name="dat_no_id" value="<%=id%>">
+		<%=rs.getString("name") %>
 		<input type="text" name="content" size="50" placeholder="댓글내용" id="content">
 		<input type="submit" value="댓글달기" id="submit">
 	</form>
@@ -87,7 +86,7 @@
 	//DB 연결 => 위에서 이미 완료
 	
 	//쿼리 생성
-	sql = "select * from fboard_dat where dat_no_id="+ id;
+	sql = "select * from fboard_dat where dat_no_id="+ id+ " ORDER BY dat_no DESC";
 	
 	//심부름꾼 생성 => 위에서 이미 완료
 			
@@ -98,12 +97,14 @@
 <div align="center">
 <table align="center" width="600">
 	<%
+		
 		while(rs.next()) 
-		{ 
+		{
+			
 	%>
 	<tr>
 		<td width="60"><%=rs.getString("name") %></td>
-		<td><a href="board_dat_update.jsp?dat_no=<%=rs.getString("dat_no")%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>"><%=rs.getString("content") %></a></td>
+		<td><a href="javascript:board_mod('<%=rs.getString("dat_no")%>','<%=id %>')" id ="btn_dat_mod_<%=rs.getString("dat_no")%>"><%=rs.getString("content") %></a></td>
 		<td><a href ="board_dat_delete.jsp?dat_no=<%=rs.getString("dat_no")%>&dat_no_id=<%=rs.getString("dat_no_id")%>"> X </a></td>
 		<td width="100"><%=rs.getString("writeday") %></td>
 	</tr>
@@ -113,6 +114,31 @@
 </table>
 <%@include file="footer.jsp" %>
 </div>
+<script>
+IS_MOD = false;
+function board_mod(dat_no, dat_no_id) {
+	console.log(dat_no, dat_no_id);
+	if(!IS_MOD)
+	{
+		
+		var cts   = document.getElementById("btn_dat_mod_"+dat_no).innerHTML;
+		var html1 = "<input id='input_dat_mod_"+dat_no+"' type='text' value='"+cts+"'><button onclick=\"mod_ok("+dat_no+","+dat_no_id+");\">수정</button>";
+		document.getElementById("btn_dat_mod_"+dat_no).innerHTML = html1;
+		
+		console.log(html1);
+		
+		IS_MOD = true;
+	}
+	
+}
+function mod_ok(dat_no, dat_no_id) {
+	var mod_cts = document.getElementById("input_dat_mod_"+dat_no).value;
+	
+	console.log(mod_cts);
+	
+	location.href = "board_dat_update.jsp?dat_no="+dat_no+"&content="+mod_cts+"&dat_no_id="+dat_no_id;
+}
+</script>
 </body>
 </html>
 <%

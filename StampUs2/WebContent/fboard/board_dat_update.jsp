@@ -11,7 +11,7 @@
     Connection conn = DriverManager.getConnection(url, uid, upw);
     
     request.setCharacterEncoding("utf-8");
-    String dat_no = request.getParameter("dat_no");
+    int dat_no = Integer.parseInt(request.getParameter("dat_no"));
     String content = request.getParameter("content");
     String dat_no_id = request.getParameter("dat_no_id");
    
@@ -19,7 +19,7 @@
     
     PreparedStatement pstmt = conn.prepareStatement(sql);
     pstmt.setString(1, content);
-    pstmt.setString(2, dat_no);
+    pstmt.setInt(2, dat_no);
     
     pstmt.executeUpdate();
     
