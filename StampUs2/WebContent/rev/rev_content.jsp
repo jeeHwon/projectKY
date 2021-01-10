@@ -27,24 +27,28 @@ table {
 }
 
 th, td {
+	border-top: 1px solid #444444;
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
+td.button{font-size:15pt;}
+div.center{font-size:30pt;}
 </style>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
-	<h1 align="center"><a href="rev_list.jsp">협력업체</a></h1>
-	<h3 align="center">stampus의 업체를 확인하고 이용해보세요</h3>
+	<div align="center"  class="center">  
+	<a href="../customer/center.jsp">고객센터></a>
+	<a href="rev_list.jsp">협력업체</a>
+	</div>
 	<div align="center">
-	<table width="600" align="center">
-      <tr>
-     	<td rowspan="5">대표사진</td>
-     	<td  rowspan="5" align="center"><img src="img/<%=rdto.getRev_img()%>" width="200"></td>	
+	<table width="400" height="600" align="center">
+      <tr width="150" >
+     	<td colsapn="2" rowspan="5" align="center"><img src="img/<%=rdto.getRev_img()%>" width="200"></td>	
       </tr>
-     <tr>	
-       <td> 업체명 </td>
-       <td > <%=rdto.getRev_company()%> </td>
+     <tr >	
+       <td width="100" > 업체명 </td>
+       <td width="200" > <%=rdto.getRev_company()%> </td>
       </tr>
      <tr >  
        <td> 홈페이지주소 </td>
@@ -60,7 +64,7 @@ th, td {
      </tr>
 
      <tr >  
-       <td colsapn="2" align="center">
+       <td colsapn="2" align="center" class="button">
        <%
 		if(id=="admin"){
 		%>

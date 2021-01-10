@@ -13,7 +13,7 @@
   <div align="center">
 	<table width="1000" align="center">
 	<tr align="center">
-			<span><a href="center.jsp">고객센터></a><a href="fnq_list.jsp">FAQ</a></span>
+			<span><a href="../customer/center.jsp">고객센터></a></span>
 			<h1 align="center">
 				<a href="fnq_list.jsp">FAQ</a>
 			</h1>

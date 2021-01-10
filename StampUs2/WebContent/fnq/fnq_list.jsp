@@ -23,21 +23,35 @@ table {
 	border-collapse: collapse;
 }
 
-th, td {
-	border-bottom: 2px solid #444444;
-	padding: 10px;
+tr {
+	
+	padding: 5px;
+}
+div.center{font-size:30pt;}
+tr.top{
+border-bottom: 7px solid #444444;
+font-size:17pt;
+font-family:"HMKMRHD", sans-serif;
+}
+tr.mid{
+border-bottom:1px solid #444444;
+font-size:12pt;
+font-family:"HMKMRHD", sans-serif;
 }
 </style>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
-	<span align="center"> <h3><a href="../customer/center.jsp">고객센터></a></h3><h1><a href="fnq_list.jsp">FQA</a></h1></span>
-	<h3 align="center">stampus를 편리하게 이용해보세요</h3>
+	<div align="center" class="center"> 
+	<a href="../customer/center.jsp">고객센터></a>
+	<a href="fnq_list.jsp">FQA</a>
+	</div>
+	<p align="center">stampus를 편리하게 이용해보세요</p>
 	<div align="center">
-	<table width="2000" align="center">
-		<tr align="center">
+	<table width="1500" height="800" align="center">
+		<tr align="center" class="top">
 			<td>유형</td>
-			<td><h4>질문</h4></td>
+			<td>질문</td>
 			<td>자세히보기</td>
 		</tr>
 		<%
@@ -45,7 +59,7 @@ th, td {
 		    for(int i=0;i<list.size();i++)
 		    {
  		%>
-		<tr>
+		<tr class="mid">
 			<td align="center"><%=list.get(i).getFnq_type()%></td>
 			<td align="center"><%=list.get(i).getFnq_title()%></td>
 			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list.get(i).getFnq_no()%>">답변보기!</a></td>		</tr>
