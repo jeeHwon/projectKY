@@ -31,8 +31,9 @@ th, td {
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
-	<span align="center"> <h3><a href="center.jsp">고객센터></a></h3><h1><a href="notice_list.jsp">공지사항</a></h1></span>
+	<span align="center"> <h3><a href="../customer/center.jsp">고객센터></a></h3><h1><a href="notice_list.jsp">공지사항</a></h1></span>
 	<h3 align="center">stampus의 소식 및 안내사항을 확인하세요</h3>
+	<div align="center">
 	<table width="600" align="center">
 		<tr align="center">
 			<td><h4>제목</h4></td>
@@ -64,7 +65,7 @@ th, td {
 		%>
 		</tr>
 	</table>
-
+</div>
 <jsp:include page="../footer.jsp" />
 </body>
 </html>

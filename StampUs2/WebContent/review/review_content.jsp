@@ -53,6 +53,7 @@
 <body>
 <jsp:include page="../header.jsp" />
     <section id="review_content">
+    
 	  <table width="800" align="center">
 	    <tr>
 	      <td>제목</td>

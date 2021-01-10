@@ -9,18 +9,20 @@
 <body>
 <jsp:include page="../header.jsp" />
 <h1 align="center"><고객센터></a></h1>
+<div align="center">
  <table width=80% align="center">
- <tr>
+ <tr align="center">
  <td  width="333"><a href="../notice/notice_list.jsp"><img src="img/notice.png" width="200"></a></td>
  <td  width="333"><a href="../rev/rev_list.jsp"><img src="img/partners.png" width="200"></a></td>
  <td  width="333"><a href="../fnq/fnq_list.jsp"><img src="img/faq.png" width="200"></a></td>
  </tr>
- <tr>
+ <tr >
  <td align="center" width="333"><a href="../notice/notice_list.jsp"><h1>공지사항</h1></a></td>
  <td align="center" width="333"><a href="../rev/rev_list.jsp"><h1>협력업체</h1></a></td>
  <td align="center" width="333"><a href="../fnq/fnq_list.jsp"><h1>FAQ</h1></a></td>
  </tr>
 </table>
+</div>
 <jsp:include page="../footer.jsp" />
 </body>
 </html>

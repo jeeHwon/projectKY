@@ -10,6 +10,7 @@
 
 <jsp:include page="../header.jsp" />
   <form method="post" action="rev_write_ok.jsp" enctype="multipart/form-data">
+  <div align="center">
 	<table width="800" align="center">
 	<tr>
 	<td>등록시 주의사항</td>
@@ -40,6 +41,7 @@
    </tr>
   
   </table>
+  </div>
  </form>
 		
 <jsp:include page="../footer.jsp" />

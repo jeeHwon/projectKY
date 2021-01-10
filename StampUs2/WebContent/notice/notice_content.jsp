@@ -31,6 +31,7 @@
 	<jsp:include page="../header.jsp" />
 	<h1 align="center"><a href="notice_list.jsp">공지사항</a></h1>
 	<h3 align="center">stampus의 소식 및 안내사항을 확인하세요</h3>
+	<div align="center">
 	<table width="600" align="center">
 		<tr>
 			<td width="550" colspan="2"><%=ndto.getNotice_title()%></td>
@@ -60,6 +61,7 @@
 			<a href="notice_list.jsp"> 목록 </a></td>
 		</tr>
 	</table>
+	</div>
 	<form method="post" action="notice_delete.jsp" id="del">
 	      <input type="hidden" name="notice_no" value="<%=ndto.getNotice_no()%>">
 	

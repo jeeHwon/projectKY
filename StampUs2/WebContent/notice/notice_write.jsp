@@ -12,6 +12,7 @@
 	<h1 align="center"><a href="notice_list.jsp">공지사항</a></h1>
 	<h3 align="center">stampus의 소식 및 안내사항을 확인하세요</h3>
   <form method="post" action="notice_write_ok.jsp" enctype="multipart/form-data">
+  <div align="center">
 	<table width="800" align="center">
 	 <tr>
 	  <td> <h4>제 목 </h4></td>
@@ -29,7 +30,8 @@
 	  <tr align="center">
      <td colspan="2"><input type="submit" value="공지하기" ></td>
    </tr>
-	</table>	   
+	</table>	
+	</div>   
   </form>
  		
 <jsp:include page="../footer.jsp" />

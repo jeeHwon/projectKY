@@ -32,6 +32,7 @@
 <jsp:include page="../header.jsp" />
   <form name="ky" method="post" action="fnq_update_ok.jsp" enctype="multipart/form-data">
 	<input type="hidden" name="fnq_no" value="<%=fnq_no%>">
+	<div align="center">
 	<table width="1000" align="center">
 	<tr align="center">
 			<span><a href="center.jsp">고객센터></a><a href="fnq_list.jsp">FAQ</a></span>
@@ -72,6 +73,7 @@
    </tr>
   
   </table>
+  </div>
  </form>
 		
 <jsp:include page="../footer.jsp" />

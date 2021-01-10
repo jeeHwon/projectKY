@@ -34,6 +34,7 @@ th, td {
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
+	<div align="center">
 	<h1 align="center"><a href="fnq_list.jsp">FAQ</a></h1>
 	<h3 align="center">stampus를 편리하게 이용해보세요</h3>
 	<table width="800" align="center">
@@ -67,6 +68,7 @@ th, td {
     
 
      </table>
+     </div>
    <form method="post" action="fnq_delete.jsp" id="del">
 	
 <jsp:include page="../footer.jsp" />

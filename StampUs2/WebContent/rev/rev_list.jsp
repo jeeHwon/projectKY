@@ -34,7 +34,7 @@ td {
 	<jsp:include page="../header.jsp" />
 	<table width="1300" align="center">
 		<tr align="center">
-		<span align="center"> <h3><a href="center.jsp">고객센터></a></h3><h1><a href="rev_list.jsp">협력업체</a></h1></span>
+		<span align="center"> <h3><a href="../customer/center.jsp">고객센터></a></h3><h1><a href="rev_list.jsp">협력업체</a></h1></span>
 			<h3 align="center">stampus의 업체를 확인하고 이용해보세요</h3>
 		</tr>
 		<tr align="center">

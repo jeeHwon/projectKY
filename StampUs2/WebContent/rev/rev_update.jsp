@@ -25,6 +25,7 @@
 <jsp:include page="../header.jsp" />
   <form method="post" action="rev_update_ok.jsp" enctype="multipart/form-data">
 	<input type="hidden" name="rev_no" value="<%=rdto.getRev_no()%>">
+	<div align="center">
 	<table width="800" align="center">
 	<tr>
 	<td>등록시 주의사항</td>
@@ -55,6 +56,7 @@
    </tr>
   
   </table>
+  </div>
  </form>
 		
 <jsp:include page="../footer.jsp" />

@@ -29,6 +29,7 @@
 	<form method="post" action="notice_update_ok.jsp"
 		enctype="multipart/form-data">
 		<input type="hidden" name="notice_no" value="<%=notice_no%>">
+		<div align="center">
 		<table width="800" align="center">
 			<tr>
 				<td>
@@ -53,6 +54,7 @@
 				<td colspan="2"><input type="submit" value="수정하기"></td>
 			</tr>
 		</table>
+		</div>
 	</form>
 
 <jsp:include page="../footer.jsp" />

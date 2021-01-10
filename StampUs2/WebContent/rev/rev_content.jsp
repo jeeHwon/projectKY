@@ -36,6 +36,7 @@ th, td {
 	<jsp:include page="../header.jsp" />
 	<h1 align="center"><a href="rev_list.jsp">협력업체</a></h1>
 	<h3 align="center">stampus의 업체를 확인하고 이용해보세요</h3>
+	<div align="center">
 	<table width="600" align="center">
       <tr>
      	<td rowspan="5">대표사진</td>
@@ -72,6 +73,7 @@ th, td {
 	  </td>
 
      </table>
+     </div>
    <form method="post" action="rev_delete.jsp" id="del">
 	
 <jsp:include page="../footer.jsp" />
