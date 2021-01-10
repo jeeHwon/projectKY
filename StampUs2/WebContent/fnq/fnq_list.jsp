@@ -49,7 +49,7 @@ font-family:"HMKMRHD", sans-serif;
 	<p align="center">stampus를 편리하게 이용해보세요</p>
 	<div align="center">
 	<table width="1500" height="800" align="center">
-		<tr align="center" class="top">
+		<tr align="center" class="top" height="100">
 			<td>유형</td>
 			<td>질문</td>
 			<td>자세히보기</td>
@@ -59,7 +59,7 @@ font-family:"HMKMRHD", sans-serif;
 		    for(int i=0;i<list.size();i++)
 		    {
  		%>
-		<tr class="mid">
+		<tr class="mid" height="50">
 			<td align="center"><%=list.get(i).getFnq_type()%></td>
 			<td align="center"><%=list.get(i).getFnq_title()%></td>
 			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list.get(i).getFnq_no()%>">답변보기!</a></td>		</tr>
