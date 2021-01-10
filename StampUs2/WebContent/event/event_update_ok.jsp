@@ -13,6 +13,9 @@
 	MultipartRequest multi =
 	new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());
 	int event_no = Integer.parseInt(multi.getParameter("event_no"));
+	String pager= (multi.getParameter("pager") == null) ? "1" : multi.getParameter("pager");
+	String cla = (multi.getParameter("cla") == null) ? "" : multi.getParameter("cla");
+ 	String sword = (multi.getParameter("sword") == null) ? "" : multi.getParameter("sword");
 	String title = multi.getParameter("title");
 	String content = multi.getParameter("content");
 	String img = multi.getFilesystemName("img"); //서버에 저장되는 이름
@@ -29,5 +32,5 @@
 	EventDAO dao = new EventDAO();
 	dao.update_ok(dto); //메소드에 전달
 
-	response.sendRedirect("event_content.jsp?no=" + event_no);
+	response.sendRedirect("event_content.jsp?event_no="+event_no+"&pager="+pager+"&cla="+cla+"&sword="+sword);
 %>
