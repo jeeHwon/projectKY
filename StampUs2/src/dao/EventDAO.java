@@ -1,107 +1,179 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="dao.EventDAO" %>
-<%@page import="java.sql.*" %>
-<%@page import="java.util.ArrayList" %>
-<%@page import="dto.EventDTO" %>
-<%@page import="dao.Event_dat_DAO" %>
-<%@page import="dto.Event_dat_DTO" %>
-<% 
-	session.setAttribute("user_id", "admin");
+package dao;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-	int event_no=Integer.parseInt(request.getParameter("event_no"));
-    EventDAO dao=new EventDAO();
-	EventDTO edDTO = dao.content(event_no);
-	String user_id = session.getAttribute("user_id").toString();
-	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
-	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
- 	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
-%>
-<jsp:include page="../header.jsp" />
+import dto.EventDTO;
+import dto.Study_my_DTO;
 
-<section id="event_content">
-	<div class="container">
-		<div class="row">
-			<table width="600" align="center">
-				<tr>
-					<td>글번호</td>
-					<td><%=edDTO.getEvent_no()%></td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td><%=edDTO.getEvent_title()%></td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td>
-						<img src="img/<%=edDTO.getEvent_img()%>"><br>
-						<%=edDTO.getEvent_content()%>
-					</td>
-				</tr>
-				<tr>
-					<td>조회수</td>
-					<td><%=edDTO.getEvent_view()%></td>
-				</tr>
-				<tr>
-					<td>작성일</td>
-					<td><%=edDTO.getEvent_postday()%></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-					<%if(user_id.equals("admin")){ %>
-						<a href="event_update.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">수정</a>
-						<a href="event_delete.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">삭제</a>
-					<%} %>
-						<a href="event_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록</a>
-					</td>
-				</tr>
-			</table>
-			<!---------------------------댓글 관련 작업---------------------------->
-		    <!-- 댓글을 입력 폼  => 작성자, 내용, 비번 -->
-				<div class="event_dat_write">
-					<form name="event_dat_form" id="event_dat_form" method="post" action="event_dat_write_ok.jsp">
-						<input type="hidden" name="event_dat_no" id="event_dat_no">
-						<input type="hidden" name="event_no" value="<%=edDTO.getEvent_no() %>">
-						<textarea name="event_dat_content" placeholder="댓글을 입력하세요" id="event_dat_content"></textarea>
-					<input id="dat_button" type="submit" value="댓글 작성">
-					</form>
-				</div>
-		   <!----------------------댓글 출력---------------------->
-		  		<div class="event_dat_list" align="center">
-					<table>
-					<%
-						Event_dat_DAO edDAO = new Event_dat_DAO();
-						ArrayList<Event_dat_DTO> datList = edDAO.list(event_no);
-						
-						for(int j=0;j<datList.size();j++){	
-					%>
-					<tr>
-						<td><%=datList.get(j).getUser_id() %></td>
-						<td><%=datList.get(j).getEvent_dat_content() %></td>
-						<td><%=datList.get(j).getEvent_dat_day() %></td>
-						<td>
-							<%if(user_id.equals(datList.get(j).getUser_id())){%>
-							<a href="javascript:dat_update(<%=datList.get(j).getEvent_dat_no()%>, '<%=datList.get(j).getEvent_dat_content() %>');">수정</a>
-							<a href="event_dat_delete.jsp?event_dat_no=<%=datList.get(j).getEvent_dat_no() %>&event_no=<%=event_no%>">삭제</a>
-							<%}%>
-						</td>
-					</tr>
-					<%
-						}
-					%>
-					</table>
-				</div>	
-			</div>
-		</div>
-</section>
-<script>
-function dat_update(event_dat_no, event_dat_content){
-	document.getElementById('dat_title').innerText='댓글 수정';
-	document.getElementById('dat_button').value='댓글 수정';
-	document.getElementById('event_dat_form').action='event_dat_update_ok.jsp';
-	document.getElementById('event_dat_no').value=event_dat_no;
-	document.getElementById('event_dat_content').innerText=event_dat_content;	
+public class EventDAO {   
+      String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
+      String uid = "ky";
+      String upw = "1234";
+      Connection conn;
+      
+   public EventDAO() throws Exception{ //디폴트는 같은 패키지에서만 접근가능해서 퍼블릭
+      Class.forName("oracle.jdbc.driver.OracleDriver"); //기능은 무조건 메소드내에서만 실행되기때문에 생성자를 만든다
+      conn = DriverManager.getConnection(url, uid, upw);   
+   }
+   //=================================write_ok==================================================
+   public String write_ok(EventDTO dto) throws Exception {
+   
+      //쿼리생성
+      String sql="insert into event (event_no,event_adm, event_title, event_content, event_img, event_postday) ";
+      sql=sql +" values (event_no_seq.nextval,?,?,?,?,SYSDATE)";
+      
+      //심부름꾼
+      PreparedStatement pstmt=conn.prepareStatement(sql);
+      pstmt.setString(1, dto.getEvent_adm());
+      pstmt.setString(2, dto.getEvent_title());
+      pstmt.setString(3, dto.getEvent_content());
+      pstmt.setString(4, dto.getEvent_img());
+
+      //쿼리실행
+      pstmt.executeUpdate();
+      
+      //글을 올리자마자 content로 가기
+      sql="select max(event_no) as max from event"; //방금올린글 no 가져오기 
+      pstmt=conn.prepareStatement(sql);
+      ResultSet rs = pstmt.executeQuery();
+      rs.next();
+      String event_no = rs.getString("max");
+       return event_no;
+   }
+   //=================================update_ok==================================================
+   public void update_ok(EventDTO dto) throws Exception {
+      
+      //쿼리생성
+      String sql="update event set event_title=?, event_content=?, event_img=? where event_no=?";
+      
+      //심부름꾼
+      PreparedStatement pstmt=conn.prepareStatement(sql);
+      
+      if(dto.getEvent_img()==null) {
+         dto.setEvent_img("");
+      }
+      pstmt.setString(1, dto.getEvent_title());
+      pstmt.setString(2, dto.getEvent_content());
+      pstmt.setString(3, dto.getEvent_img());
+      pstmt.setInt(4, dto.getEvent_no());
+      
+      //쿼리실행
+      pstmt.executeUpdate();
+      
+      //자원해제
+      conn.close();
+   }
+   //=================================delete==================================================
+   public void delete(String event_no) throws Exception {
+      
+      //쿼리생성
+      String sql="delete from event where event_no="+event_no;
+      
+      //심부름꾼
+      PreparedStatement pstmt=conn.prepareStatement(sql);
+      
+      //쿼리실행
+      pstmt.executeUpdate();
+      
+      //자원해제
+      conn.close();
+   }
+      //=====================content.jsp===============================
+      public EventDTO content(int event_no) throws Exception{
+         
+         //쿼리생성
+         String sql="select * from event where event_no="+event_no;
+         //심부름꾼
+         PreparedStatement pstmt=conn.prepareStatement(sql);
+         //쿼리실행
+         ResultSet rs = pstmt.executeQuery();
+         rs.next();
+         EventDTO dto=new EventDTO();
+         dto.setEvent_no(rs.getInt("event_no"));
+         dto.setEvent_title(rs.getString("event_title"));
+         dto.setEvent_content(rs.getString("event_content"));
+         dto.setEvent_img(rs.getString("event_img"));
+         dto.setEvent_postday(rs.getString("event_postday"));
+         dto.setEvent_view(rs.getString("event_view"));
+         
+         return dto; //return이 있으면 conn.close()안됨
+      }
+         //=====================list.jsp===============================
+         public ArrayList<EventDTO> pageList(String cla, String sword,String pager) throws Exception{
+            
+             int index;  // limit에 들어갈 index번호 생성
+             String sql;
+             String addsql;
+            index=(Integer.parseInt(pager)-1)*10;
+            if(cla==""){//검색 조건이 없는 경우 => 모든 글 가져오기
+                sql="SELECT event_no,event_title,event_view,event_postday ";
+                 sql=sql+" FROM(SELECT ROWNUM AS RM, SELECT event_no,event_title,event_view,event_postday";
+                 sql=sql+" FROM(SELECT * FROM review ORDER BY event_no DESC)";
+                 sql=sql+") WHERE RM between "+index+" and " +(index+10);
+            } 
+            if(cla.equals("content")){   //content 필드 검색
+               sql="SELECT event_no,event_title,event_view,event_postday ";
+                 sql=sql+" FROM(SELECT ROWNUM AS RM, event_no,event_title,event_view,event_postday ";
+                 sql=sql+" FROM(SELECT * FROM event where event_content like '%"+sword+"%' ORDER BY event_no DESC)";
+                 sql=sql+") WHERE RM between "+index+" and "+(index+10);
+                 
+                 addsql="where event_content like '%"+sword+"%'";
+            }else{   //title 필드 검색
+               sql="SELECT event_no,event_title,event_view,event_postday ";
+                 sql=sql+" FROM(SELECT ROWNUM AS RM, event_no,event_title,event_view,event_postday ";
+                 sql=sql+" FROM(SELECT * FROM event where event_title like '%"+sword+"%' ORDER BY event_no DESC)";
+                 sql=sql+") WHERE RM between "+index+" and "+(index+10);
+                 
+                 addsql="where event_title like '%"+sword+"%'";
+            }
+             // 심부름꾼생성
+             PreparedStatement pstmt=conn.prepareStatement(sql);
+             // 쿼리 실행 => ResultSet
+             ResultSet rs=pstmt.executeQuery();
+             ArrayList<EventDTO> list=new ArrayList<EventDTO>();
+            
+            while(rs.next()) {
+               EventDTO dto=new EventDTO();
+               dto.setEvent_no(rs.getInt("event_no"));
+               dto.setEvent_title(rs.getString("event_title"));
+               dto.setEvent_postday(rs.getString("event_postday"));
+               dto.setEvent_view(rs.getString("event_view"));
+               
+               list.add(dto);
+            }
+            return list; //return이 있으면 conn.close()안됨
+         }
+         //===============================페이징=======================================
+         public int getTotalPage() throws Exception {
+               String sql="select count(*) as cnt from event";
+              PreparedStatement pstmt=conn.prepareStatement(sql);
+               ResultSet rs=pstmt.executeQuery();
+               rs.next();
+               int page_cnt;
+               page_cnt=rs.getInt("cnt")/10+1;
+               
+               if(rs.getInt("cnt")%10 == 0) 
+                   page_cnt--;
+               return page_cnt;
+         }
+         public int getPstart(int page_cnt, String pager) {
+             int pstart;
+                
+               pstart=Integer.parseInt(pager)/10; 
+               if(Integer.parseInt(pager)%10 ==0)
+                  pstart=pstart-1;
+               
+               pstart=Integer.parseInt(pstart+"1");
+               return pstart;
+         }
+         public int getPend(int page_cnt,int pstart) {
+            int pend=pstart+9;
+            if(page_cnt < pend)
+                  pend=page_cnt;
+            return pend;
+         }
 }
-</script>
-<jsp:include page="../footer.jsp" />
