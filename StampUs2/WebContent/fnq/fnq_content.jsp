@@ -22,37 +22,45 @@
 <style>
 table {
 	width: 70%;
-	border-top: 1px solid #444444;
+	border-top: 1px solid #000000;
 	border-collapse: collapse;
 }
 
 th, td {
-	border-bottom: 1px solid #444444;
+	border-bottom: 1px solid #000000;
 	padding: 10px;
 }
+td.nav{
+font-family:"HMKMRHD", sans-serif;
+font-size:16pt;
+}
+td.button{font-size:15pt;}
+div.center{font-size:30pt;}
 </style>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
+	<div align="center"  class="center">  
+	<a href="../customer/center.jsp">고객센터></a>
+	<a href="fnq_list.jsp">FQA</a>
+	</div>
 	<div align="center">
-	<h1 align="center"><a href="fnq_list.jsp">FAQ</a></h1>
-	<h3 align="center">stampus를 편리하게 이용해보세요</h3>
-	<table width="800" align="center">
-      <tr>
-     	<td width="200">유형</td>
+	<table width="800" height="800" align="center">
+      <tr height="50">
+     	<td width="200" class="nav">유형</td>
      	<td ><%=fdto.getFnq_type()%> </td>	
       </tr>
      <tr colspan="2">  
-       <td > 상세질문 </td>
+       <td class="nav"> 상세질문 </td>
        <td ><%=fdto.getFnq_q()%> </td>
       </tr>
      <tr colspan="2">  
-       <td > 답변 </td>
+       <td  class="nav"> 답변 </td>
        <td > <%=fdto.getFnq_a()%>
        <img src="img/<%=fdto.getFnq_img()%>" width="200"></td>
       </tr>
      <tr colsapn="2">  
-		<td align="center">
+		<td align="center" class="button">
 		<%
 		if(id=="admin"){
 

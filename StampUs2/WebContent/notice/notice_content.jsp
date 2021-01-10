@@ -21,20 +21,23 @@
 <title>Insert title here</title>
 <style>
    td,tr {
-    border:1px solid #cccccc;
+    border:1px solid #000000;
     
    }
- 
+ td.button{font-size:15pt; border:0px;}
+div.center{font-size:30pt;}
 </style>
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
-	<h1 align="center"><a href="notice_list.jsp">공지사항</a></h1>
-	<h3 align="center">stampus의 소식 및 안내사항을 확인하세요</h3>
-	<div align="center">
-	<table width="600" align="center">
+<jsp:include page="../header.jsp" />
+  <div align="center"  class="center">  
+		<a href="../customer/center.jsp">고객센터></a>
+		<a href="rev_list.jsp">협력업체</a>
+  </div>
+  <div align="center">
+	<table width="1000" height="600" align="center">
 		<tr>
-			<td width="550" colspan="2"><%=ndto.getNotice_title()%></td>
+			<td height="50" colspan="2"><%=ndto.getNotice_title()%></td>
 
 		</tr>
 		<tr>
@@ -49,7 +52,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center">
+			<td colspan="2" align="center"  class="button">
 		<%
 		if(id=="admin"){
 		%>

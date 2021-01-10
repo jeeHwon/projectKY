@@ -5,21 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+td {font-size:40pt;
+	font-family:"HMKMRHD", sans-serif;
+	font-weight:bold;
+	}
+</style>
 </head>
 <body>
 <jsp:include page="../header.jsp" />
-<h1 align="center"><고객센터></a></h1>
+
 <div align="center">
- <table width=80% align="center">
+ <table width=80% height="800" align="center">
+ <tr align="center"><td>고객센터</td></tr>
  <tr align="center">
- <td  width="333"><a href="../notice/notice_list.jsp"><img src="img/notice.png" width="200"></a></td>
- <td  width="333"><a href="../rev/rev_list.jsp"><img src="img/partners.png" width="200"></a></td>
- <td  width="333"><a href="../fnq/fnq_list.jsp"><img src="img/faq.png" width="200"></a></td>
+ <td><a href="../notice/notice_list.jsp"><img src="img/notice.PNG" width="30" height="300"></a></td>
+ <td><a href="../rev/rev_list.jsp"><img src="img/partners.PNG" width="30" height="300"></a></td>
+ <td><a href="../fnq/fnq_list.jsp"><img src="img/faq.PNG"  width="30" height="300"></a></td>
  </tr>
- <tr >
- <td align="center" width="333"><a href="../notice/notice_list.jsp"><h1>공지사항</h1></a></td>
- <td align="center" width="333"><a href="../rev/rev_list.jsp"><h1>협력업체</h1></a></td>
- <td align="center" width="333"><a href="../fnq/fnq_list.jsp"><h1>FAQ</h1></a></td>
+ <tr>
+ <td align="center" width="333"><a href="../notice/notice_list.jsp">공지사항</a></td>
+ <td align="center" width="333"><a href="../rev/rev_list.jsp">협력업체</a></td>
+ <td align="center" width="333"><a href="../fnq/fnq_list.jsp">FAQ</a></td>
  </tr>
 </table>
 </div>
