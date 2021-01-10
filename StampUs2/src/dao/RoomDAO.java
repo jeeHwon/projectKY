@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import dto.RoomDTO;
 
 public class RoomDAO {
@@ -28,8 +27,9 @@ public class RoomDAO {
 		//쿼리 생성
 		String sql = "insert into ROOM (ROOM_NO, ROOM_TITLE, ROOM_START_DAY, ROOM_END_DAY, ";
 		sql += " ROOM_CATEGORY, ROOM_CATEGORY2, ROOM_PEOPLE, ROOM_CHECK_DAY, ROOM_CERTI_TYPE, ";
-		sql += " ROOM_FILE_NAME, ROOM_PENALTY, ROOM_CONTENT, ROOM_DEPOSIT, ROOM_CONDITION) ";
-		sql += " values(ROOM_NO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+		sql += " ROOM_FILE_NAME, ROOM_PENALTY, ROOM_CONTENT, ROOM_DEPOSIT, ROOM_CONDITION, ROOM_WRITE_DAY) ";
+		sql += " values(ROOM_NO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE) ";
+		//String sql = "insert into ROOM values(ROOM_NO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, TO_DATE(SYSDATE,'yyyy-mm-dd')) ";
 		
 		//심부름꾼
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -74,10 +74,36 @@ public class RoomDAO {
 			rdto.setContent(rs.getString("ROOM_CONTENT"));
 			rdto.setFile_name(rs.getString("ROOM_FILE_NAME"));
 			rdto.setCondition(rs.getString("ROOM_CONDITION"));
+			rdto.setWrite_day(rs.getString("ROOM_WRITE_DAY"));
 			list.add(rdto);
 		}
 		return list;
 		
+	}
+	public RoomDTO content(String id) throws SQLException {
+		
+		String sql = "select * from room where ROOM_NO= "+id;
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		rs.next();
+		
+		RoomDTO rdto = new RoomDTO();
+		rdto.setId(rs.getInt("ROOM_NO"));
+		rdto.setTitle(rs.getString("ROOM_TITLE"));
+		rdto.setStart_day(rs.getString("ROOM_START_DAY"));
+		rdto.setEnd_day(rs.getString("ROOM_END_DAY"));
+		rdto.setCategory(rs.getString("ROOM_CATEGORY"));
+		rdto.setCategory2(rs.getString("ROOM_CATEGORY2"));
+		rdto.setPeople(rs.getInt("ROOM_PEOPLE"));
+		rdto.setCheck_day(rs.getString("ROOM_CHECK_DAY"));
+		rdto.setCerti_type(rs.getString("ROOM_CERTI_TYPE"));
+		rdto.setDeposit(rs.getString("ROOM_DEPOSIT"));
+		rdto.setPenalty(rs.getString("ROOM_PENALTY"));
+		rdto.setContent(rs.getString("ROOM_CONTENT"));
+		rdto.setFile_name(rs.getString("ROOM_FILE_NAME"));
+		rdto.setCondition(rs.getString("ROOM_CONDITION"));
+		rdto.setWrite_day(rs.getString("ROOM_WRITE_DAY"));
+		return rdto;
 	}
 	
 	

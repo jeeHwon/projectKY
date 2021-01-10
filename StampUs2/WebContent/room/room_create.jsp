@@ -61,7 +61,7 @@
                             <label for="r_start_day" class="ir_so">시작일</label>
                             <select id="r_start_day" name="r_start_day" class="ui_select">
                             	<c:forEach var="i" begin="1" end="28" step="1">
-                                	<option value="2021-02-0${i}">2021년 2월 ${i}일</option>
+                                	<option value="2021-02-${i}">2021년 2월 ${i}일</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -69,7 +69,7 @@
                             <label for="r_end_day" class="ir_so">종료일</label>
                             <select id="r_end_day" name="r_end_day" class="ui_select">
                             	<c:forEach var="i" begin="1" end="28" step="1">
-                                	<option value="2021-02-0${i}">2021년 2월 ${i}일</option>
+                                	<option value="2021-02-${i}">2021년 2월 ${i}일</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -92,9 +92,40 @@
                         </div>
                         <div class="s2_3">
                             <label for="r_cate_small" class="ir_so">세부항목</label>
-                            <select id="r_cate_small" name="r_cate_small" class="ui_select">
+                            <select name="r_cate_small" class="ui_select cate_small_def">
+                                <option>카테고리 선택</option>
+                            </select>
+                            <select id="cate_small_s" name="r_cate_small" class="ui_select cate_small">
                                 <option value="s_자격증">자격증</option>
+                                <option value="s_공무원">공무원</option>
+                                <option value="s_취업">취업</option>
+                                <option value="s_수능">수능</option>
                                 <option value="s_어학">어학</option>
+                                <option value="s_기타">기타</option>
+                            </select>
+                            <select id="cate_small_x" name="r_cate_small" class="ui_select cate_small">
+                                <option value="x_헬스">헬스</option>
+                                <option value="x_홈트레이닝">홈트레이닝</option>
+                                <option value="x_런닝">런닝</option>
+                                <option value="x_걸음수">걸음수</option>
+                                <option value="x_다이어트">다이어트</option>
+                                <option value="x_요가">요가</option>
+                            </select>
+                            <select id="cate_small_w" name="r_cate_small" class="ui_select cate_small">
+                                <option value="w_5시이전">5시이전</option>
+                                <option value="w_5시~5시59분">5시~5시59분</option>
+                                <option value="w_6시~6시59분">6시~6시59분</option>
+                                <option value="w_7시~7시59분">7시~7시59분</option>
+                                <option value="w_8시~8시59분">8시~8시59분</option>
+                                <option value="w_9시~9시59분">9시~9시59분</option>
+                            </select>
+                            <select id="cate_small_f" name="r_cate_small" class="ui_select cate_small">
+                                <option value="f_다이어트식단">다이어트식단</option>
+                                <option value="f_건강식단">건강식단</option>
+                                <option value="f_아침식사">아침식사</option>
+                                <option value="f_점심식사">점심식사</option>
+                                <option value="f_저녁식사">저녁식사</option>
+                                <option value="f_기타">기타</option>
                             </select>
                         </div>                            
                         <div class="s3_3">
@@ -140,7 +171,7 @@
                     <div class="select">
                         <div class="s1_2 ui_radio box">
                             <div class="box_under">
-                                <input type="radio" name="r_deposit" id="r_deposit_5" value="05">5,000원&nbsp;&nbsp;
+                                <input type="radio" name="r_deposit" id="r_deposit_5" value="5">5,000원&nbsp;&nbsp;
                                 <input type="radio" name="r_deposit" id="r_deposit_10" value="10">10,000원&nbsp;&nbsp;
                                 <input type="radio" name="r_deposit" id="r_deposit_15" value="15">15,000원&nbsp;&nbsp;
                                 <input type="radio" name="r_deposit" id="r_deposit_20" value="20">20,000원&nbsp;&nbsp;
@@ -219,8 +250,11 @@
        </div>
    </div>
 </section>
-
+<script src="../assets/js/jquery.min_1.12.4.js"></script>
+<script src="../assets/js/modernizr-custom.js"></script><!-- =>html5 css3 감지 -->
+<script src="../assets/js/ie-checker.js"></script><!-- =>익스플로러 ver 체크 -->  
 <script>
+	// 파일첨부시 방미리보기 div에 이미지 파일 썸네일 적용 함수
     function setThumbnail(event) {
         var reader = new FileReader()
         reader.onload = function (event) {
@@ -232,6 +266,41 @@
         }
         reader.readAsDataURL(event.target.files[0])
     }
+   
+	// 카테고리 선택시 그에 따른 세부카테고리 선택 함수
+	$(function (){
+		$('.cate_small').hide()
+		
+		$(document).on('change','#r_cate_big',function(){
+			$('.cate_small').hide()
+			$('.cate_small_def').hide()
+			if ($('select[name=r_cate_big]>option:selected').index() == 0){
+				$('.cate_small').removeAttr('name')
+				$('.cate_small_def').removeAttr('name')
+				$('#cate_small_s').attr({name:"r_cate_small"})
+				$('#cate_small_s').show()
+			}
+			if ($('select[name=r_cate_big]>option:selected').index() == 1){
+				$('.cate_small').removeAttr('name')
+				$('.cate_small_def').removeAttr('name')
+				$('#cate_small_x').attr({name:"r_cate_small"})
+				$('#cate_small_x').show()
+			}
+			if ($('select[name=r_cate_big]>option:selected').index() == 2){
+				$('.cate_small').removeAttr('name')
+				$('.cate_small_def').removeAttr('name')
+				$('#cate_small_w').attr({name:"r_cate_small"})
+				$('#cate_small_w').show()
+			}
+			if ($('select[name=r_cate_big]>option:selected').index() == 3){
+				$('.cate_small').removeAttr('name')
+				$('.cate_small_def').removeAttr('name')
+				$('#cate_small_f').attr({name:"r_cate_small"})
+				$('#cate_small_f').show()
+			}
+		})
+	})
+
 </script>
 
 <jsp:include page="../footer.jsp" />

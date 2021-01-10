@@ -9,6 +9,7 @@
 	RoomDAO rdao = new RoomDAO();
 	ArrayList<RoomDTO> list = rdao.list();
 	pageContext.setAttribute("list", list);
+	
 %>
 
 <jsp:include page="../header.jsp" />
@@ -44,12 +45,13 @@
 #roomList .roomList .room_list > div > div .poster .rank strong {color: #fff; text-shadow: 2px 2px 3px rgba(0,0,0,1);}
 #roomList .roomList .room_list > div > div .poster .mx {position: absolute; top: 17px; right: 17px;}
 #roomList .roomList .room_list > div > div .poster .mx span {width: 103px; height: 25px; display: block;}
-#roomList .roomList .room_list > div > div .poster .mx .dep05 {background-image: url(../assets/img/icon_dep05.png); background-size: cover;}
+#roomList .roomList .room_list > div > div .poster .mx .dep5 {background-image: url(../assets/img/icon_dep5.png); background-size: cover;}
 #roomList .roomList .room_list > div > div .poster .mx .dep10 {background-image: url(../assets/img/icon_dep10.png); background-size: cover;}
 #roomList .roomList .room_list > div > div .poster .mx .dep15 {background-image: url(../assets/img/icon_dep15.png); background-size: cover;}
 #roomList .roomList .room_list > div > div .poster .mx .dep20 {background-image: url(../assets/img/icon_dep20.png); background-size: cover;}
 #roomList .roomList .room_list > div > div .infor {background: #fff; padding: 17px; border: 1px solid #d9d9d9;}
-#roomList .roomList .room_list > div > div .infor h3 {color: #333; font-size: 24px; font-weight: 700;margin-bottom: 20px;}
+#roomList .roomList .room_list > div > div .infor .infor_title {width:260px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+#roomList .roomList .room_list > div > div .infor h3 {color: #333; font-size: 24px; font-weight: 700; margin-bottom: 20px;}
 #roomList .roomList .room_list > div > div .infor h3 strong {}
 #roomList .roomList .room_list > div > div .infor h3 span {width: 29px; height: 29px; display: inline-block; margin-top: 9px; margin-right: 3px; vertical-align: -5px;}
 #roomList .roomList .room_list > div > div .infor h3 span.cate_s{background-image: url(../assets/img/icon_cate_s.png); background-size: cover;}
@@ -92,12 +94,12 @@
                         </div>                    
                         <div class="cate_detail_02">
                             <ul>
-                                <li class="active"><a class="" href="#">헬스장</a></li>
+                                <li class="active"><a class="" href="#">헬스</a></li>
                                 <li><a class="" href="#">홈트레이닝</a></li>
                                 <li><a class="" href="#">런닝</a></li>
                                 <li><a class="" href="#">걸음수</a></li>
                                 <li><a class="" href="#">다이어트</a></li>
-                                <li><a class="" href="#">자유운동</a></li>
+                                <li><a class="" href="#">요가</a></li>
                             </ul>
                         </div>                         
                         <div class="cate_detail_03">
@@ -189,10 +191,10 @@
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate_${list[i].category} ir_pm">study</span><strong>${list[i].title}</strong></h3>
+                                    <div class="infor_title"><h3><span class="icon cate_${list[i].category} ir_pm">study</span><strong>${list[i].title}</strong></h3></div>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="room_content.jsp?r_id=${list[i].id}">상세보기</a>
+                                        <a href="room_content.jsp?r_id=${list[i].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -208,10 +210,10 @@
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate_${list[i+1].category} ir_pm">study</span><strong>${list[i+1].title}</strong></h3>
+                                    <div class="infor_title"><h3><span class="icon cate_${list[i+1].category} ir_pm">study</span><strong>${list[i+1].title}</strong></h3></div>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+1].id}">상세보기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+1].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -227,10 +229,10 @@
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate_${list[i+2].category} ir_pm">study</span><strong>${list[i+2].title}</strong></h3>
+                                    <div class="infor_title"><h3><span class="icon cate_${list[i+2].category} ir_pm">study</span><strong>${list[i+2].title}</strong></h3></div>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+2].id}">상세보기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+2].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -246,22 +248,16 @@
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate_${list[i+3].category} ir_pm">study</span><strong>${list[i+3].title}</strong></h3>
+                                    <div class="infor_title"><h3><span class="icon cate_${list[i+3].category} ir_pm">study</span><strong>${list[i+3].title}</strong></h3></div>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+3].id}">상세보기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+3].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </c:forEach>
-                    
-                    
-                    
-                    
-                    
-                    
                 </div>    
             </div>            
         </div>

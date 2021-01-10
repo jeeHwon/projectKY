@@ -3,7 +3,7 @@ package dto;
 public class RoomDTO {
 	private int id, people;
 	private String title, start_day, end_day, category, category2, condition, check_day;
-	private String certi_type, file_name, deposit, penalty, content;
+	private String certi_type, file_name, deposit, penalty, content, write_day;
 	public int getId() {
 		return id;
 	}
@@ -87,6 +87,12 @@ public class RoomDTO {
 	}
 	public void setDeposit(String deposit) {
 		this.deposit = deposit;
+	}
+	public String getWrite_day() {
+		return write_day;
+	}
+	public void setWrite_day(String write_day) {
+		this.write_day = write_day;
 	}  
 	
 
