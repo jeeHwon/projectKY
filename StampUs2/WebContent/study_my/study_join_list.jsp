@@ -3,13 +3,16 @@
 <%@ page import="dto.Study_join_DTO" %>
 <%@ page import="dao.Study_join_DAO" %>
 <%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-session.setAttribute("user_id", "user2");
+
+session.setAttribute("userid", "user1");
 
  Study_join_DAO sjDAO=new Study_join_DAO();
  
-ArrayList<Study_join_DTO> list = sjDAO.study_join_list(session.getAttribute("user_id").toString());
+ArrayList<Study_join_DTO> list = sjDAO.study_join_list(session.getAttribute("userid").toString());
 
+pageContext.setAttribute("list", list);
 
 %>
 <!DOCTYPE html>
@@ -22,17 +25,10 @@ ArrayList<Study_join_DTO> list = sjDAO.study_join_list(session.getAttribute("use
 <h1>현재 참여 중인 방 정보</h1>
 <div>
 <table>
-	<%
-	for(int i=0;i<list.size();i++)
-	{
-	%>
-	<tr>
-		<td><a href="study_my_write.jsp?study_no=<%=list.get(i).getStudy_no()%>"><%=list.get(i).getStudy_title() %></a></td>
-		<td><%=list.get(i).getStudy_end() %></td>
-	</tr>
-	<%
-	}
-	%>
+<c:forEach var="dto" items="${list}">
+	<a href="study_my_list.jsp?study_no=${dto.room_no}">${dto.room_title}</a>
+	<br>
+</c:forEach>
 </table>
 </div>
 </body>

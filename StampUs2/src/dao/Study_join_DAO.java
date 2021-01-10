@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import db.DB;
 import dto.Study_join_DTO;
-import dto.Study_my_DTO;
 
 public class Study_join_DAO 
 {
@@ -19,9 +18,10 @@ public class Study_join_DAO
 	
 	public ArrayList<Study_join_DTO> study_join_list(String user_id) throws Exception
 	{
-		String sql = "select sj.user_join_no, sj.user_id, sj.study_no, stu.study_title, stu.study_end, stu.study_img " + 
-				"from user_join sj, study stu " + 
-				"where sj.study_no=stu.study_no and sj.user_id='"+user_id+"'";
+		String sql = "select sj.user_join_no, sj.user_id, "
+				+ "r.room_no, r.room_title, r.room_start_day, r.room_end_day, r.room_category, r.room_category2, r.room_people, r.room_condition, r.room_check_day, r.room_certi_type, r.room_file_name, r.room_penalty, r.room_content, r.room_deposit " + 
+				"from user_join sj, room r " + 
+				"where sj.study_no=r.room_no and sj.user_id='"+user_id+"'";
 		db.stmt = db.conn.createStatement();
 		db.rs = db.stmt.executeQuery(sql);
 		
@@ -32,14 +32,23 @@ public class Study_join_DAO
 			sjDTO = new Study_join_DTO();
 			sjDTO.setUser_join_no(db.rs.getInt("user_join_no"));
 			sjDTO.setUser_id(db.rs.getString("user_id"));
-			sjDTO.setStudy_no(db.rs.getInt("study_no"));
-			sjDTO.setStudy_title(db.rs.getString("study_title"));
-			sjDTO.setStudy_end(db.rs.getString("study_end"));
-			sjDTO.setStudy_photo(db.rs.getString("study_img"));
+			sjDTO.setRoom_no(db.rs.getInt("room_no"));
+			sjDTO.setRoom_title(db.rs.getString("room_title"));
+			sjDTO.setRoom_start_day(db.rs.getString("room_start_day"));
+			sjDTO.setRoom_end_day(db.rs.getString("room_end_day"));
+			sjDTO.setRoom_category(db.rs.getString("room_category"));
+			sjDTO.setRoom_category2(db.rs.getString("room_category2"));
+			sjDTO.setRoom_people(db.rs.getInt("room_people"));
+			sjDTO.setRoom_condition(db.rs.getString("room_condition"));
+			sjDTO.setRoom_check_day(db.rs.getString("room_check_day"));
+			sjDTO.setRoom_certi_type(db.rs.getString("room_certi_type"));
+			sjDTO.setRoom_file_name(db.rs.getString("room_file_name"));
+			sjDTO.setRoom_penalty(db.rs.getString("room_penalty"));
+			sjDTO.setRoom_content(db.rs.getString("room_content"));
+			sjDTO.setRoom_deposit(db.rs.getString("room_deposit"));
 			
 			list.add(sjDTO);
 		}
-		
 
 		db.close();
 		
@@ -55,11 +64,13 @@ public class Study_join_DAO
 		db.pstmt = db.conn.prepareStatement(sql);
 		
 		db.pstmt.setString(1, sjDTO.getUser_id());
-		db.pstmt.setInt(2, sjDTO.getStudy_no());
+		db.pstmt.setInt(2, sjDTO.getRoom_no());
 		
 		db.pstmt.executeUpdate();
 		
 		db.close();
 	}
+	
+	
 	
 }

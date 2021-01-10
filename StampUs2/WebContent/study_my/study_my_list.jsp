@@ -3,16 +3,20 @@
 <%@ page import="dao.*" %>
 <%@ page import="dto.*" %>
 <%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	session.setAttribute("user_id", "user2");
 
-	String user_id = session.getAttribute("user_id").toString();
+	String user_id = session.getAttribute("userid").toString();
 	String study_no = request.getParameter("study_no");
 
 	Study_my_DAO sDAO = new Study_my_DAO();
+	 
 	
 	ArrayList<Study_my_DTO> list = sDAO.list(Integer.parseInt(study_no));
 	
+	ArrayList<GoalDTO> gList = sDAO.goalList(study_no);
+	
+	pageContext.setAttribute("gList", gList);
 	
 %>
 <!DOCTYPE html>
@@ -40,13 +44,28 @@
 <p>종료일</p>
 <p>해시태그</p>
 </div>
+<div class="goalList">
+<h2>오늘의 인증 현황</h2>
+<table>
+	<tr>
+		<th>아이디</th>
+		<th>인증현황</th>
+	</tr>
+		<c:forEach var="dto" items="${gList}">
+			<tr>
+				<td>${dto.user_id}</td>
+				<td>${dto.isgoal}</td>
+			</tr>
+		</c:forEach>
+	</table>
+</div>
 	<%
 	for(int i=0;i<list.size();i++)
 	{
 	%>
 		<div class="study_my_list">
 			<h3><%=list.get(i).getStudy_title() %></h3>
-			<img src="img/<%=list.get(i).getStudy_img()%>"/>
+			<img src="../img/<%=list.get(i).getStudy_img()%>"/>
 			<p><%=list.get(i).getStudy_content() %></p>
 			<p><%=list.get(i).getStudy_day() %></p>
 			<%
@@ -104,5 +123,6 @@
 	<%
 	}
 	%>
+	<div><a href="study_my_write.jsp?study_no=<%=study_no%>">글쓰기</a></div>
 </body>
 </html>

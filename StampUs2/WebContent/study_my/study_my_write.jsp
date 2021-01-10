@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <% 
 	
-	session.setAttribute("user_id", "user1");
 	String study_no=request.getParameter("study_no");
 
 %>

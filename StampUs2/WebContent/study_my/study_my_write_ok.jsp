@@ -18,7 +18,7 @@
 	String study_title = multi.getParameter("study_title");
 	String study_content = multi.getParameter("study_content");
 	String study_img = multi.getFilesystemName("study_img");
-	String user_id = session.getAttribute("user_id").toString();
+	String user_id = session.getAttribute("userid").toString();
 	
 	Study_my_DTO sDTO = new Study_my_DTO();
 	

@@ -3,7 +3,9 @@ package dao;
 import java.util.ArrayList;
 
 import db.DB;
+import dto.GoalDTO;
 import dto.Study_my_DTO;
+import dto.User_join_DTO;
 
 public class Study_my_DAO 
 {
@@ -152,6 +154,46 @@ public class Study_my_DAO
 		gDAO.deleteGoal(study_my_no);
 		
 		db.close();
+	}
+	
+	public ArrayList<GoalDTO> goalList(String study_no) throws Exception
+	{
+		User_join_DAO ujDAO = new User_join_DAO();
+		
+		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
+		
+		ujList = ujDAO.list(study_no);
+		
+		ArrayList<GoalDTO> gList = new ArrayList<GoalDTO>();
+		
+		GoalDAO gDAO = new GoalDAO();
+		gList = gDAO.roomDayGoal(study_no);
+	
+		ArrayList<String> user1 = new ArrayList<String>();
+		
+		for(int i=0;i<ujList.size();i++) 
+		{
+			user1.add(ujList.get(i).getUser_id());
+		}
+		
+		ArrayList<String> user2 = new ArrayList<String>();
+		
+		for(int i=0;i<gList.size();i++) 
+		{
+			user2.add(gList.get(i).getUser_id());
+		}
+		
+		user1.removeAll(user2);
+		
+		for(int i=0;i<user1.size();i++) 
+		{
+			GoalDTO gDTO = new GoalDTO();
+			gDTO.setUser_id(user1.get(i));
+			gDTO.setIsgoal("미인증");
+			gList.add(gDTO);
+		}
+		
+		return gList;
 	}
 	
 }

@@ -3,14 +3,13 @@
 <%@ page import ="dao.*" %>
 <%@ page import ="dto.*" %>
 <% 
-	session.setAttribute("user_id", "user2");	
 
 
 	request.setCharacterEncoding("utf-8");
 
 	String study_my_no = request.getParameter("study_my_no");
 	String study_dat_content=request.getParameter("study_dat_content");
-	String user_id =session.getAttribute("user_id").toString();
+	String user_id =session.getAttribute("userid").toString();
 	String study_no = request.getParameter("study_no");
 	
 	Study_dat_DAO sdDAO = new Study_dat_DAO();
