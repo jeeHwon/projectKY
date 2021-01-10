@@ -21,7 +21,7 @@
 <title>Insert title here</title>
 <style>
    td,tr {
-    border:1px solid #cccccc;
+    border:1px solid #000000;
     
    }
  td.button{font-size:15pt; border:0px;}

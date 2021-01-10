@@ -29,12 +29,12 @@ tr {
 }
 div.center{font-size:30pt;}
 tr.top{
-border-bottom: 7px solid #444444;
+border-bottom: 7px solid #000000;
 font-size:17pt;
 font-family:"HMKMRHD", sans-serif;
 }
 tr.mid{
-border-bottom:1px solid #444444;
+border-bottom:1px solid #000000;
 font-size:12pt;
 font-family:"HMKMRHD", sans-serif;
 }
@@ -49,7 +49,7 @@ font-family:"HMKMRHD", sans-serif;
 	<p align="center">stampus를 편리하게 이용해보세요</p>
 	<div align="center">
 	<table width="1500" height="800" align="center">
-		<tr align="center" class="top" height="100">
+		<tr align="center" class="top" height="50">
 			<td>유형</td>
 			<td>질문</td>
 			<td>자세히보기</td>

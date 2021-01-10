@@ -19,22 +19,22 @@
 <style>
 table {
 	width: 70%;
-	border-top: 1px double #444444;
+	border-top: 1px double #000000;
 	border-collapse: collapse;
 }
 
 th, td {
-	border-bottom: 2px solid #444444;
+	border-bottom: 2px solid #000000;
 	padding: 10px;
 }
 div.center{font-size:30pt;}
 tr.top{
-border-bottom:4px solid #444444;
+border-bottom:4px solid #000000;
 font-size:17pt;
 font-family:"HMKMRHD", sans-serif;
 }
 tr.mid{
-border-bottom:1px solid #444444;
+border-bottom:1px solid #000000;
 font-size:12pt;
 font-family:"HMKMRHD", sans-serif;
 }

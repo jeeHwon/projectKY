@@ -30,12 +30,12 @@ td {
 }
 div.center{font-size:30pt;}
 tr.top{
-border-bottom:4px solid #444444;
+border-bottom:4px solid #000000;
 font-size:17pt;
 font-family:"HMKMRHD", sans-serif;
 }
 tr.mid{
-border-bottom:1px solid #444444;
+border-bottom:1px solid #000000;
 font-size:12pt;
 font-family:"HMKMRHD", sans-serif;
 margin:0;

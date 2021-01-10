@@ -22,13 +22,13 @@
 <style>
 table {
 	width: 70%;
-	border-top: 1px solid #444444;
+	border-top: 1px solid #000000;
 	border-collapse: collapse;
 }
 
 th, td {
-	border-top: 1px solid #444444;
-	border-bottom: 1px solid #444444;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
 	padding: 10px;
 }
 td.button{font-size:15pt;}
