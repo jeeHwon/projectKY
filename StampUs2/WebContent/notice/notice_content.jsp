@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8"> 
-<title>Insert title here</title>
+<title>공지사항 상세페이지</title>
 <style>
    td,tr {
     border:1px solid #000000;
@@ -45,7 +45,7 @@ div.center{font-size:30pt;}
 			<td align="center"><img
 				src="img/<%=ndto.getNotice_file()%>" width="400"></td>
 		</tr>
-		<tr>
+		<tr height="50" >
 			<td>공지날짜 <%=ndto.getNotice_postday()%>
 			</td>
 			<td align="center">조회수<%=ndto.getNotice_view()%>

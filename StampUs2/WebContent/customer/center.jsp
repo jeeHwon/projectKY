@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>환영합니다!고객센터</title>
 <style>
 
 td {font-size:40pt;

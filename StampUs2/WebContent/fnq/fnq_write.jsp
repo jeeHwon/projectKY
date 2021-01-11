@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>FAQ작성</title>
     <link rel="stylesheet" href="index.css"> 
 </head>
 <body>

@@ -4,7 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css"> 
+    <link rel="stylesheet" href="index.css">
+    <title>공지사항 작성</title> 
 </head>
 <body>
 

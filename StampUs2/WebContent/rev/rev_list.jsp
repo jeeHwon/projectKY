@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>협력업체목록</title>
 <style>
 td {
 	border: 1px solid #cccccc;

@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자주묻는 질문과 답변</title>
 <style>
 table {
 	width: 70%;

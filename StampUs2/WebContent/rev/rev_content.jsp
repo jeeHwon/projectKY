@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>협력업체<%=rdto.getRev_company()%></title>
 <style>
 table {
 	width: 70%;

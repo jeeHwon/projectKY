@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="index.css"> 
+    <title>협력업체등록</title>
 </head>
 <body>
 
@@ -14,7 +15,7 @@
 	<table width="800" align="center">
 	<tr>
 	<td>등록시 주의사항</td>
-	<td><h3>신중하게 등록하셔야합니다. 금액은 굳이 안써도 됨</h3></td>
+	<td><h3>신중하게 등록하셔야합니다.</h3></td>
 	</tr>
    <tr>
      <td>업체명</td>

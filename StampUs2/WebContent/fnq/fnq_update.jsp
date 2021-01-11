@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FAQ수정</title>
  <script>
    // 성별, 취미, 태어난 해를 적용하여 처음 선택했던 값으로 표현되게
    function init()
