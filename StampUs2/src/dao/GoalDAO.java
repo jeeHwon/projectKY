@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import db.DB;
 import dto.GoalDTO;
@@ -15,39 +16,97 @@ public class GoalDAO {
 		db = new DB();
 	}
 	
+	public String getDateDay() throws Exception 
+	{
+
+	    String day = "";
+	     
+	    Calendar cal = Calendar.getInstance();
+	     
+	    int dayNum = cal.get(Calendar.DAY_OF_WEEK) ;
+
+	    switch(dayNum){
+	        case 1:
+	            day = "sun";
+	            break ;
+	        case 2:
+	            day = "mon";
+	            break ;
+	        case 3:
+	            day = "tue";
+	            break ;
+	        case 4:
+	            day = "wed";
+	            break ;
+	        case 5:
+	            day = "thu";
+	            break ;
+	        case 6:
+	            day = "fri";
+	            break ;
+	        case 7:
+	            day = "sat";
+	            break ;
+	             
+	    }
+	     
+	    return day ;
+	}
+
 	public void insertGoal(Study_my_DTO sDTO) throws Exception
 	{
-		if(sDTO.getStudy_img()!=null) 
-		{
-			String sql = "select * from (" + 
-					"select * from study_my " + 
-					"order by study_my_no desc" + 
-					") "+ 
-					"WHERE ROWNUM= 1";
-			
-			db.stmt=db.conn.createStatement();
-			db.rs = db.stmt.executeQuery(sql);
-			
-			db.rs.next();
-			
-			String title = db.rs.getString("study_title");
-			String content = db.rs.getString("study_content");
-			
-			if(title.contains("인증")||content.contains("인증")) 
-			{
-				sql = "insert into goal values(goal_seq.nextval, ?, ?, ?, sysdate, ?)";
-				
-				db.pstmt=db.conn.prepareStatement(sql);
-				db.pstmt.setString(1, sDTO.getUser_id());
-				db.pstmt.setInt(2, sDTO.getStudy_no());
-				db.pstmt.setString(3, "성공");
-				db.pstmt.setInt(4, db.rs.getInt("study_my_no"));
-				
-				db.pstmt.executeUpdate();
-			}
-			
-		}
+		String sql = "select room_check_day from room where room_no="+sDTO.getStudy_no();
+		db.stmt=db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		db.rs.next();
 		
+		String room_check_day = db.rs.getString("room_check_day"); 
+		
+		String day = getDateDay();
+		
+		System.out.println(day);
+		
+		if(room_check_day.contains(day)) 
+		{
+			if(sDTO.getStudy_img()!=null) 
+			{
+				sql = "select * from goal where to_char(goal_day, 'yyyymmdd')=to_char(sysdate, 'yyyymmdd') and user_id='"+sDTO.getUser_id()+"' and goal_room_no="+sDTO.getStudy_no();
+				db.stmt=db.conn.createStatement();
+				db.rs = db.stmt.executeQuery(sql);
+				
+				if(!db.rs.next()) {
+				
+					sql = "select * from (" + 
+							"select * from study_my " + 
+							"order by study_my_no desc" + 
+							") "+ 
+							"WHERE ROWNUM= 1";
+					
+					db.stmt=db.conn.createStatement();
+					db.rs = db.stmt.executeQuery(sql);
+					
+					db.rs.next();
+					
+					String title = db.rs.getString("study_title");
+					String content = db.rs.getString("study_content");
+					
+					if(title.contains("인증")||content.contains("인증")) 
+					{
+						sql = "insert into goal values(goal_seq.nextval, ?, ?, ?, sysdate, ?)";
+						
+						db.pstmt=db.conn.prepareStatement(sql);
+						db.pstmt.setString(1, sDTO.getUser_id());
+						db.pstmt.setInt(2, sDTO.getStudy_no());
+						db.pstmt.setString(3, "성공");
+						db.pstmt.setInt(4, db.rs.getInt("study_my_no"));
+						
+						db.pstmt.executeUpdate();
+					}
+				
+				}
+			
+			}
+		}
 		db.close();
 	}
 	
@@ -59,38 +118,17 @@ public class GoalDAO {
 		//인증이 있다면
 		if(sDTO.getStudy_my_no()!=0) 
 		{
-			String sql="select * from goal where study_my_no="+study_my_no;
+			String sql = "insert into goal values(goal_seq.nextval, ?, ?, ?, sysdate, ?)";
+				
+			db.pstmt=db.conn.prepareStatement(sql);
+			db.pstmt.setString(1, sDTO.getUser_id());
+			db.pstmt.setInt(2, sDTO.getStudy_no());
+			db.pstmt.setString(3, "성공");
+			db.pstmt.setInt(4, sDTO.getStudy_my_no());
 			
-			db.stmt=db.conn.createStatement();
-			db.rs = db.stmt.executeQuery(sql);
-			System.out.println("인증 if문");
+			db.pstmt.executeUpdate();
+			System.out.println("인증 생겨서 새로 입력");
 			
-			if(db.rs.next()) 
-			{
-				sql = "insert into goal values(goal_seq.nextval, ?, ?, ?, sysdate, ?)";
-				
-				db.pstmt=db.conn.prepareStatement(sql);
-				db.pstmt.setString(1, sDTO.getUser_id());
-				db.pstmt.setInt(2, sDTO.getStudy_no());
-				db.pstmt.setString(3, "성공");
-				db.pstmt.setInt(4, db.rs.getInt("study_my_no"));
-				
-				db.pstmt.executeUpdate();
-				System.out.println("결과값 있는 경우");
-			}
-			else 
-			{
-				sql = "insert into goal values(goal_seq.nextval, ?, ?, ?, sysdate, ?)";
-				
-				db.pstmt=db.conn.prepareStatement(sql);
-				db.pstmt.setString(1, sDTO.getUser_id());
-				db.pstmt.setInt(2, sDTO.getStudy_no());
-				db.pstmt.setString(3, "성공");
-				db.pstmt.setInt(4, sDTO.getStudy_my_no());
-				
-				db.pstmt.executeUpdate();
-				System.out.println("인증 없어서 새로 입력");
-			}
 			
 		}
 		//인증이 없다면
@@ -109,7 +147,7 @@ public class GoalDAO {
 				db.pstmt.setInt(1, db.rs.getInt("goal_no"));
 				
 				db.pstmt.executeUpdate();
-				System.out.println("인증 사라져서 실패로 작성");
+				System.out.println("인증 사라져서 인증 제거");
 			}
 			else 
 			{
@@ -155,6 +193,7 @@ public class GoalDAO {
 			
 			list.add(gDTO);
 		}
+				
 		return list;
 	}
 	

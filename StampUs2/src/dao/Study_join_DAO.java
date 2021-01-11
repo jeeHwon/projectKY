@@ -56,6 +56,37 @@ public class Study_join_DAO
 	
 	}
 		
+	public Study_join_DTO study_content(String room_no) throws Exception 
+	{
+		String sql = "select * from room where room_no="+room_no;
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		Study_join_DTO sjDTO = new Study_join_DTO();
+		
+		if(db.rs.next()) 
+		{
+			sjDTO.setRoom_no(db.rs.getInt("room_no"));
+			sjDTO.setRoom_title(db.rs.getString("room_title"));
+			sjDTO.setRoom_start_day(db.rs.getString("room_start_day"));
+			sjDTO.setRoom_end_day(db.rs.getString("room_end_day"));
+			sjDTO.setRoom_category(db.rs.getString("room_category"));
+			sjDTO.setRoom_category2(db.rs.getString("room_category2"));
+			sjDTO.setRoom_people(db.rs.getInt("room_people"));
+			sjDTO.setRoom_condition(db.rs.getString("room_condition"));
+			sjDTO.setRoom_check_day(db.rs.getString("room_check_day"));
+			sjDTO.setRoom_certi_type(db.rs.getString("room_certi_type"));
+			sjDTO.setRoom_file_name(db.rs.getString("room_file_name"));
+			sjDTO.setRoom_penalty(db.rs.getString("room_penalty"));
+			sjDTO.setRoom_content(db.rs.getString("room_content"));
+			sjDTO.setRoom_deposit(db.rs.getString("room_deposit"));
+		}
+
+		db.close();
+		
+		return sjDTO;
+	}
+	
 	
 	public void insert(Study_join_DTO sjDTO) throws Exception
 	{

@@ -10,13 +10,16 @@
 	String study_no = request.getParameter("study_no");
 
 	Study_my_DAO sDAO = new Study_my_DAO();
-	 
+	Study_join_DAO sjDAO = new Study_join_DAO(); 
 	
 	ArrayList<Study_my_DTO> list = sDAO.list(Integer.parseInt(study_no));
 	
 	ArrayList<GoalDTO> gList = sDAO.goalList(study_no);
 	
+	Study_join_DTO sjDTO=sjDAO.study_content(study_no);
+	
 	pageContext.setAttribute("gList", gList);
+	pageContext.setAttribute("sjDTO", sjDTO);
 	
 %>
 <!DOCTYPE html>
@@ -38,11 +41,12 @@
 </head>
 <body>
 <div class="roomInfo">
-<h1>방제목</h1>
-<p>설명</p>
-<p>요일</p>
-<p>종료일</p>
-<p>해시태그</p>
+<h1>${sjDTO.room_title }</h1>
+<p>${sjDTO.room_content }</p>
+<p>${sjDTO.room_check_day}</p>
+<p>시작일 ${sjDTO.room_start_day}</p>
+<p>종료일 ${sjDTO.room_end_day}</p>
+
 </div>
 <div class="goalList">
 <h2>오늘의 인증 현황</h2>

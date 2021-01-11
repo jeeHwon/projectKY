@@ -196,4 +196,6 @@ public class Study_my_DAO
 		return gList;
 	}
 	
+	
+	
 }

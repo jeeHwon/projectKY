@@ -8,7 +8,7 @@
 
 session.setAttribute("userid", "user1");
 
- Study_join_DAO sjDAO=new Study_join_DAO();
+Study_join_DAO sjDAO=new Study_join_DAO();
  
 ArrayList<Study_join_DTO> list = sjDAO.study_join_list(session.getAttribute("userid").toString());
 
