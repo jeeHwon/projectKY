@@ -1,34 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*" %> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="dao.ReviewDAO" %>
+<%@ page import="dto.ReviewDTO" %>
+<%@ page import="dao.Review_dat_DAO" %>
+<%@ page import="dto.Review_dat_DTO" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	// 세션변수 만들기
-	session.setAttribute("userid", "channy");  // (변수명,값)
+	session.setAttribute("userid", "test");  // (변수명,값)
 %>
 <%
 	//DB연결
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
-	String uid = "ky";
-	String upw = "1234";
-	Connection conn = DriverManager.getConnection(url, uid, upw);
+	ReviewDAO rdao=new ReviewDAO();
 
 	// request값 읽어오기
     String review_no=request.getParameter("review_no");
 	String user_id=session.getAttribute("userid").toString();
 	
- 	// 쿼리 생성
-    String sql="select * from review where review_no="+review_no;
- 	
- 	// 심부름꾼 생성
-    Statement stmt=conn.createStatement();
-    // 쿼리실행  => ResultSet에 저장
-    ResultSet rs=stmt.executeQuery(sql);
-    rs.next();
-    
+	ReviewDTO rdto=rdao.content(review_no);
+	pageContext.setAttribute("rdto",rdto);	
+	
 	// 해쉬태그 나누기
-	String[] hash=rs.getString("hash").split(",");
+	String[] hash=rdto.getHash().split(",");
 	String h1="";
 	for(int i=0;i<hash.length;i++)
 	{ 
@@ -53,26 +48,26 @@
 <body>
 <jsp:include page="../header.jsp" />
     <section id="review_content">
-    
+      <div align="center">
 	  <table width="800" align="center">
 	    <tr>
 	      <td>제목</td>
-	      <td colspan="5"><%=rs.getString("review_title")%></td>
+	      <td colspan="5"> ${rdto.review_title} </td>
 	    </tr>
 	    <tr>
 	      <td>작성자</td>
-	      <td><%=rs.getString("user_id")%></td>
+	      <td> ${rdto.user_id} </td>
 	      <td>작성일</td>
-	      <td><%=rs.getString("review_postday")%></td>
+	      <td> ${rdto.review_postday} </td>
 	      <td>조회수</td>
-	      <td><%=rs.getString("review_view")%></td>
+	      <td> ${rdto.review_view} </td>
 	    </tr>
 	    <tr>
-	      <td colspan="6"><img src="img/<%=rs.getString("review_file")%>"></td>
+	      <td colspan="6"><img src="img/${rdto.review_file}"></td>
 	    </tr>
 	    <tr>
 	      <td>내용</td>
-	      <td colspan="5"><%=rs.getString("review_content")%></td>
+	      <td colspan="5"> ${rdto.review_content} </td>
 	    </tr>
 	    <tr>
 	      <td>해시태그</td>
@@ -80,7 +75,7 @@
 	    </tr>
 	    <tr>
 	      <td colspan="6" align="center"> 
-	        <a href="review_update.jsp?review_no=<%=rs.getString("review_no")%>"> 수정 </a>
+	        <a href="review_update.jsp?review_no=${rdto.review_no}"> 수정 </a>
 	        <a href="#" onclick="del_ok()">삭제</a>
 	        <a href="review_list.jsp"> 목록 </a>
 	      </td>
@@ -115,31 +110,22 @@
 	  <!-- 댓글 출력 -->
 	  <%
 	     // Db연결 => 위에 있음
-	     
-	     // 쿼리생성
-	     sql="select * from review_dat where review_no="+review_no;
-	     // 심부름꾼 생성 => 위에 있음
-	     
-	     // 쿼리 실행후 => ResultSet
-	     rs=stmt.executeQuery(sql);
+	     Review_dat_DAO rddao=new Review_dat_DAO();
+	     ArrayList<Review_dat_DTO> rddto=rddao.review_content(review_no);
+	     pageContext.setAttribute("rddto",rddto);
 	  %>
 	   <div align="center">
 	     <table align="center" width="600">
 	     <!-- 레코드를 출력 -->
-	     <%
-	       while(rs.next())   // rs는 dat테이블
-	       {   // 하나의 tr에 하나의 레코드가 출력
-	     %>
-	      <tr>
-	        <td> <%=rs.getString("user_id")%> </td>  <!-- 작성자 -->
-	        <td> <%=rs.getString("review_dat_content")%></td>  <!-- 내용  -->
-	        <td> <%=rs.getString("review_dat_day")%> </td>  <!-- 작성일 -->
-	        <td> <a href="#" onclick="update(<%=rs.getString("review_dat_no")%>,'<%=rs.getString("user_id")%>','<%=rs.getString("review_dat_content")%>')"> 수정 </a> </td>
-	        <td> <a href="#" onclick="ddel(<%=rs.getString("review_dat_no")%>)"> 삭제 </a> </td>
-	      </tr>
-	     <%
-	       }
-	     %>
+	     <c:forEach items="${rddto}" var="rddto">
+	       <tr>
+	         <td> ${rddto.user_id} </td>  <!-- 작성자 -->
+	         <td> ${rddto.review_dat_content} </td>  <!-- 내용  -->
+	         <td> ${rddto.review_dat_day} </td>  <!-- 작성일 -->
+	         <td> <a href="#" onclick="update(${rddto.review_dat_no},'${rddto.user_id}','${rddto.review_dat_content}')"> 수정 </a> </td>
+	         <td> <a href="#" onclick="ddel(${rddto.review_dat_no})"> 삭제 </a> </td>
+	       </tr>
+	     </c:forEach>
 	     </table>
 	     <!-- 댓글의 수정폼 -->
 	     <form  id="dat_up" name="up" method="post" action="review_dat_update_ok.jsp">
@@ -178,12 +164,11 @@
 		    document.getElementById("dat_del").style.top=(y+100)+"px";
 	    }
 	   </script>
+	</div>   
     </section>
 <jsp:include page="../footer.jsp" />
 </body>
 </html>
 <%
-	rs.close();
-	stmt.close();
-	conn.close();
+	rdao.conn_close();
 %>
