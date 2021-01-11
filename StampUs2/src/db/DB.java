@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class DB 
 {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
+	private String url = "jdbc:oracle:thin:@222.232.45.48:1521:xe";
 	private String uid = "ky";
 	private String upw = "1234";
 	public Connection conn = null;
