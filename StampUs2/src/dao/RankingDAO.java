@@ -16,7 +16,55 @@ public class RankingDAO
 	{
 		db = new DB();
 	}
+	
+	//요일 칼럼 가져오기
+	public String getDays(int room_no) throws Exception
+	{
+		String sql = "select room_check_day from room where room_no="+room_no;
 		
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		db.rs.next();
+		
+		String check_day=db.rs.getString("room_check_day");
+		
+		String[] days=check_day.split(",");
+		
+		for(int i=0;i<days.length;i++) 
+		{
+			switch(days[i]) 
+			{
+				case "sun":days[i]="'1'";break;
+				case "mon":days[i]="'2'";break;
+				case "tue":days[i]="'3'";break;
+				case "wed":days[i]="'4'";break;
+				case "thu":days[i]="'5'";break;
+				case "fri":days[i]="'6'";break;
+				case "sat":days[i]="'7'";break;
+				
+			}
+		}
+		
+		String day = "";
+		
+		for(int i=0;i<days.length;i++) {
+			if(i!=days.length-1) 
+			{
+				day += days[i]+",";
+			}
+			else 
+			{
+				day += days[i];
+			}
+			
+		}
+		
+		
+		return day;
+		
+	}
+	
 	//유저의 방별 달성률
 	public ArrayList<RankingDTO> userRoomRate(String user_id) throws Exception
 	{
@@ -25,9 +73,7 @@ public class RankingDAO
 		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
 		
 		ujList = ujDAO.listById(user_id);
-		
-		System.out.println(ujList.size());
-		
+				
 		ArrayList<RankingDTO> list = new ArrayList<RankingDTO>();
 		
 		for(int i=0;i<ujList.size();i++) 
@@ -46,7 +92,12 @@ public class RankingDAO
 			
 				cnt = ujList.get(i).getCnt();
 			
-			 	rate = Math.round(certcnt/cnt*100)/100.0*100;		
+			 	rate = certcnt/cnt*100;
+			 	
+			 	String sRate = String.format("%.2f", rate);
+			 	
+			 	rate = Double.parseDouble(sRate);
+		
 			}
 			
 			sql = "select room_title from room where room_no="+ujList.get(i).getStudy_no();
@@ -75,167 +126,128 @@ public class RankingDAO
 	//방 랭킹
 	public ArrayList<RankingDTO> roomRanking() throws Exception
 	{
-		String sql = "select study_no, sum(end_day-sysdate) cnt from user_join group by study_no";
+		String sql = "select study_no from user_join group by study_no";
 		db.stmt= db.conn.createStatement();
 		db.rs = db.stmt.executeQuery(sql);
 		
 		ArrayList<RankingDTO> list = new ArrayList<RankingDTO>();
 		
+		User_join_DAO uDAO= new User_join_DAO();
+		
 		while(db.rs.next()) 
 		{
-			double totalcnt = db.rs.getDouble("cnt");
-			
-			if(totalcnt>0) 
-			{
-				sql = "select study_no, sum(trunc(sysdate-join_day)+1) cnt from user_join where study_no="+db.rs.getInt("study_no")+" group by study_no";
-
-			}
-			else 
-			{
-				sql = "select study_no, sum(trunc(end_day-join_day)+1) cnt from user_join where study_no="+db.rs.getInt("study_no")+" group by study_no";
-			}
-			
-			Statement stmt= db.conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			
 			ArrayList<User_join_DTO> ujList=new ArrayList<User_join_DTO>();
 			
-			while(rs.next()) 
-			{
-				User_join_DTO ujDTO = new User_join_DTO();
-				ujDTO.setCnt(rs.getDouble("cnt"));
-				ujDTO.setStudy_no(rs.getInt("study_no"));
+			ujList = uDAO.listByStudy(db.rs.getString("study_no"));
+			
+			sql = "select count(*) certcnt from goal where goal_room_no="+db.rs.getString("study_no");
+			Statement stmt= db.conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
 				
-				ujList.add(ujDTO);
-			}
-
-					
+			int certcnt=0;
+			double cnt=0.0;
+			double rate=0.0;
+				
+			rs.next();
+			
+			certcnt = rs.getInt("certcnt");
+			
 			for(int i=0;i<ujList.size();i++) 
 			{
-				sql = "select count(*) certcnt from goal where goal_room_no="+ujList.get(i).getStudy_no();
-				stmt= db.conn.createStatement();
-				rs = stmt.executeQuery(sql);
-				
-				int certcnt=0;
-				double cnt=0.0;
-				double rate=0.0;
-				
-				if(rs.next()) 
-				{
-				
-					certcnt = rs.getInt("certcnt");
-				
-					cnt = ujList.get(i).getCnt();
-				
-				 	rate = Math.round(certcnt/cnt*100)/100.0*100;
-				
-				}
-				
-				sql = "select room_title from room where room_no="+ujList.get(i).getStudy_no();
-				stmt= db.conn.createStatement();
-				rs = stmt.executeQuery(sql);
-				
-				String room_title="";
-				
-				if(rs.next()) {
-					room_title=rs.getString("room_title");
-				}
-				
-				RankingDTO rDTO = new RankingDTO();
-				
-				rDTO.setStudy_no(ujList.get(i).getStudy_no());
-				rDTO.setRoom_title(room_title);
-				rDTO.setRate(rate);
-				
-				list.add(rDTO);
+				cnt += ujList.get(i).getCnt();
+			}
+					
+			rate = certcnt/cnt*100;
+				 	
+			String sRate = String.format("%.2f", rate);
+				 	
+			rate = Double.parseDouble(sRate);
+					
+			sql = "select room_title from room where room_no="+db.rs.getString("study_no");
+			stmt= db.conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			String room_title="";
+			
+			if(rs.next()) {
+				room_title=rs.getString("room_title");
 			}
 			
-			Collections.sort(list, new RankingDTO());
+			RankingDTO rDTO = new RankingDTO();
 			
-			for(int i=0;i<list.size();i++) 
-			{
-				list.get(i).setRank(i+1);
-			}
-		
+			rDTO.setStudy_no(db.rs.getInt("study_no"));
+			rDTO.setRoom_title(room_title);
+			rDTO.setRate(rate);
+			
+			list.add(rDTO);
 		}
+			
+		Collections.sort(list, new RankingDTO());
+			
+		for(int i=0;i<list.size();i++) 
+		{
+			list.get(i).setRank(i+1);
+		}
+		
 		return list;
 	}
 	
 	//유저 랭킹
 	public ArrayList<RankingDTO> userRanking() throws Exception
 	{
-		String sql = "select user_id, sum(end_day-sysdate) cnt from user_join group by user_id";
+		String sql = "select user_id from user_join group by user_id";
 		db.stmt= db.conn.createStatement();
 		db.rs = db.stmt.executeQuery(sql);
 		
 		ArrayList<RankingDTO> list = new ArrayList<RankingDTO>();
 		
+		User_join_DAO uDAO= new User_join_DAO();
+		
 		while(db.rs.next()) 
 		{
-			double totalcnt=db.rs.getDouble("cnt");
-			
-			if(totalcnt>0) 
-			{
-				sql = "select user_id, sum(trunc(sysdate-join_day)+1) cnt from user_join where user_id='"+db.rs.getString("user_id")+"' group by user_id";
-			}
-			else 
-			{
-				sql = "select user_id, sum(trunc(end_day-join_day)+1) cnt from user_join where user_id='"+db.rs.getString("user_id")+"' group by user_id";
-			}
-			
-			Statement stmt = db.conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			
 			ArrayList<User_join_DTO> ujList=new ArrayList<User_join_DTO>();
 			
-			while(rs.next()) 
-			{
-				User_join_DTO ujDTO = new User_join_DTO();
-				ujDTO.setCnt(rs.getDouble("cnt"));
-				ujDTO.setUser_id(rs.getString("user_id"));
-				
-				ujList.add(ujDTO);
-			}
+			ujList = uDAO.listById(db.rs.getString("user_id"));
 			
+			sql = "select count(*) certcnt from goal where user_id='"+db.rs.getString("user_id")+"'";
+			Statement stmt= db.conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			rs.next();
+			
+			int certcnt=0;
+			double cnt=0.0;
+			double rate=0.0;
+			
+			certcnt = rs.getInt("certcnt");
 			
 			for(int i=0;i<ujList.size();i++) 
 			{
-				sql = "select count(*) certcnt from goal where user_id='"+ujList.get(i).getUser_id()+"'";
-				stmt= db.conn.createStatement();
-				rs = stmt.executeQuery(sql);
-				
-				int certcnt=0;
-				double cnt=0.0;
-				double rate=0.0;
-				
-				if(rs.next()) 
-				{
-				
-					certcnt = rs.getInt("certcnt");
-				
-					cnt = ujList.get(i).getCnt();
-				
-				 	rate = Math.round(certcnt/cnt*100)/100.0*100;
-				
-				}
-				
-				RankingDTO rDTO = new RankingDTO();
-				
-				rDTO.setUser_id(ujList.get(i).getUser_id());
-				rDTO.setRate(rate);
-				
-				list.add(rDTO);
+				cnt += ujList.get(i).getCnt();
 			}
 			
-			Collections.sort(list, new RankingDTO());
-			
-			for(int i=0;i<list.size();i++) 
-			{
-				list.get(i).setRank(i+1);
-			}
+			rate = certcnt/cnt*100;
+			 	
+			String sRate = String.format("%.2f", rate);
+			 	
+			rate = Double.parseDouble(sRate);
+			 	
+			RankingDTO rDTO = new RankingDTO();
+				
+			rDTO.setUser_id(db.rs.getString("user_id"));
+			rDTO.setRate(rate);
+				
+			list.add(rDTO);
 		
+		}	
+			
+		Collections.sort(list, new RankingDTO());
+			
+		for(int i=0;i<list.size();i++) 
+		{
+			list.get(i).setRank(i+1);
 		}
-		
+
 		return list;
 	}
 	
@@ -268,8 +280,12 @@ public class RankingDAO
 			
 		}
 		
-		rate = Math.round(certcnt/cnt*100)/100.0*100;
-		
+		rate = certcnt/cnt*100;
+	 	
+	 	String sRate = String.format("%.2f", rate);
+	 	
+	 	rate = Double.parseDouble(sRate);
+
 		return rate;
 		
 	}

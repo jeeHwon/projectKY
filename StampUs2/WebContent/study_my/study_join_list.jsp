@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
-session.setAttribute("userid", "user1");
+session.setAttribute("userid", "user2");
 
 Study_join_DAO sjDAO=new Study_join_DAO();
  
