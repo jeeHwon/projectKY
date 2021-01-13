@@ -127,7 +127,7 @@
 <section id="member">
 	<div class="container">
 		<div class="main">
-			<form action="nav1_member_ok.jsp" name="member" method="post"
+			<form action="member_ok.jsp" name="member" method="post"
 				onsubmit="return chkForm()">
 				<ul>
 					<li><label>사용자ID<br> <input type="text"

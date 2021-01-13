@@ -7,7 +7,7 @@
 	/* String userid = session.getAttribute("userid").toString(); */
 
 MemberDAO dao = new MemberDAO();
-MemberDTO dto = dao.userInfo("zz");
+MemberDTO dto = dao.userInfo("userid");
 String[] chkinterest = new String[5];
 String chkSex = "";
 if (dto.getSex() != null) {
