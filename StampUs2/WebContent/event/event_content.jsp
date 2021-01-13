@@ -18,12 +18,39 @@
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
 %>
+<style>
+#event h1{
+	border-bottom:1px solid black;
+	font-size:17;
+}
+#event{
+	font-size:17;
+	height:500px;
+	width:800px;
+	margin:100px 0 20px 0;
+	border-bottom:1px solid black;
+}
+.event_dat{
+	font-size:13;
+	height:300px;
+	width:400px;	
+}
+/* #event_dat_write>textarea{
+	width:500px; 안먹음
+} */
+
+</style>
 <jsp:include page="../header.jsp" />
 
 <section id="event_content">
 	<div class="container">
-		<div class="row">
-			<table width="600" align="center">
+		<div class="event_row" align="center">
+			<table id="event">
+				<tr>
+					<th colspan="2" align="center">
+						<h1>이벤트에 지금 참여하세요!</h1>
+					</th>
+				</tr>
 				<tr>
 					<td>글번호</td>
 					<td><%=edDTO.getEvent_no()%></td>
@@ -49,17 +76,17 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-					<%if(user_id.equals("admin")){ %>
+					<% if(user_id.equals("admin")){ %>
 						<a href="event_update.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">수정</a>
 						<a href="event_delete.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">삭제</a>
-					<%} %>
+					<% } %>
 						<a href="event_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록</a>
 					</td>
 				</tr>
 			</table>
 			<!---------------------------댓글 관련 작업---------------------------->
 		    <!-- 댓글을 입력 폼  => 작성자, 내용, 비번 -->
-				<div class="event_dat_write">
+				<div class="event_dat_write" id="event_dat_write">
 					<form name="event_dat_form" id="event_dat_form" method="post" action="event_dat_write_ok.jsp">
 						<input type="hidden" name="event_dat_no" id="event_dat_no">
 						<input type="hidden" name="event_no" value="<%=edDTO.getEvent_no() %>">
@@ -69,7 +96,7 @@
 				</div>
 		   <!----------------------댓글 출력---------------------->
 		  		<div class="event_dat_list" align="center">
-					<table>
+					<table class="event_dat">
 					<%
 						Event_dat_DAO edDAO = new Event_dat_DAO();
 						ArrayList<Event_dat_DTO> datList = edDAO.list(event_no);
@@ -81,15 +108,13 @@
 						<td><%=datList.get(j).getEvent_dat_content() %></td>
 						<td><%=datList.get(j).getEvent_dat_day() %></td>
 						<td>
-							<%if(user_id.equals(datList.get(j).getUser_id())){%>
-							<a href="javascript:dat_update(<%=datList.get(j).getEvent_dat_no()%>, '<%=datList.get(j).getEvent_dat_content() %>');">수정</a>
-							<a href="event_dat_delete.jsp?event_dat_no=<%=datList.get(j).getEvent_dat_no() %>&event_no=<%=event_no%>">삭제</a>
-							<%}%>
+							<% if(user_id.equals(datList.get(j).getUser_id())){ %>
+								<a href="javascript:dat_update(<%=datList.get(j).getEvent_dat_no()%>, '<%=datList.get(j).getEvent_dat_content() %>');">수정</a>
+								<a href="event_dat_delete.jsp?event_dat_no=<%=datList.get(j).getEvent_dat_no() %>&event_no=<%=event_no%>">삭제</a>
+							<% } %>
 						</td>
 					</tr>
-					<%
-						}
-					%>
+					<% } %>
 					</table>
 				</div>	
 			</div>
