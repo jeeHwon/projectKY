@@ -57,12 +57,48 @@ tr.page{
 	float:right;
 	font-size:17pt;
 }
+/* 이미지 슬라이더 */
+/* .event_img {
+    width: 70%;
+    padding: 50px;
+}
+.container{
+	width:300vw; 
+	display:inline;
+}
+.event_img_slider{
+	width:100vw;
+	display:inline;
+}
+
+.event_img{
+	width:100vw;
+	display:inline;
+} */
+.event_slider_container{
+	width:300vw;
+}
+.event_img_slider{
+	width:100vw;
+}
 </style>
 <section id="event_list">
-	<div class="container"  align="center">
-		<div class="row">
-<!-- 필드와 검색단어를 입력할 폼태그 -->
-	      <div class="form">
+	<div class="container" align="center">
+		<div class="row" style="overflow:hidden">
+			<!-- 이미지 슬라이더 -->
+			<div class="event_slider_container">
+				<div class="event_img_slider">
+				    <a href="#"><img src="eventImg/event_img1.jpg" alt="이벤트" class="event_img"></a>
+				</div>
+				<div class="event_img_slider">
+				    <a href="#"><img src="eventImg/event_img2.png" alt="이벤트" class="event_img"></a>
+				</div>
+				<div class="event_img_slider">
+				    <a href="#"><img src="eventImg/event_img3.jpg" alt="이벤트" class="event_img"></a>
+				</div>
+			</div>
+			<!-- 필드와 검색단어를 입력할 폼태그 -->
+			<div class="form">
 		      <form name="eventSearchFrm" action="event_list.jsp">
 		         <select name="cla">
 		            <option value="title">제목</option>         

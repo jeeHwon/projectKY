@@ -35,9 +35,10 @@
 	height:300px;
 	width:400px;	
 }
-/* #event_dat_write>textarea{
-	width:500px; 안먹음
-} */
+#event_dat_content{
+	width:500px; 
+	height:100px;
+}
 
 </style>
 <jsp:include page="../header.jsp" />
@@ -78,7 +79,7 @@
 					<td colspan="2" align="center">
 					<% if(user_id.equals("admin")){ %>
 						<a href="event_update.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">수정</a>
-						<a href="event_delete.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">삭제</a>
+						<a onclick="return chkDel()" href="event_delete.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">삭제</a>
 					<% } %>
 						<a href="event_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록</a>
 					</td>
@@ -110,7 +111,7 @@
 						<td>
 							<% if(user_id.equals(datList.get(j).getUser_id())){ %>
 								<a href="javascript:dat_update(<%=datList.get(j).getEvent_dat_no()%>, '<%=datList.get(j).getEvent_dat_content() %>');">수정</a>
-								<a href="event_dat_delete.jsp?event_dat_no=<%=datList.get(j).getEvent_dat_no() %>&event_no=<%=event_no%>">삭제</a>
+								<a onclick="chkDel()" href="event_dat_delete.jsp?event_dat_no=<%=datList.get(j).getEvent_dat_no() %>&event_no=<%=event_no%>">삭제</a>
 							<% } %>
 						</td>
 					</tr>
@@ -122,11 +123,16 @@
 </section>
 <script>
 function dat_update(event_dat_no, event_dat_content){
-	document.getElementById('dat_title').innerText='댓글 수정';
 	document.getElementById('dat_button').value='댓글 수정';
 	document.getElementById('event_dat_form').action='event_dat_update_ok.jsp';
 	document.getElementById('event_dat_no').value=event_dat_no;
 	document.getElementById('event_dat_content').innerText=event_dat_content;	
+}
+
+function chkDel(){
+	if(!confirm("삭제하시겠습니까?")){
+		return false;
+	}
 }
 </script>
 <jsp:include page="../footer.jsp" />
