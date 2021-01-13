@@ -39,7 +39,7 @@
 </style>
 <script>
 	var chk = new XMLHttpRequest();
-
+	
 	function idcheck() { //아이디 중복확인기능
 		var userid = document.member.userid.value;
 		if (userid == "") {
@@ -83,7 +83,32 @@
 	function chkForm() { //아이디와 닉네임 중복확인 여부를 체크하는 기능
 		var checkid = document.all.checkid.value;
 		var checknick = document.all.checknick.value;
-
+		if(document.member.userid.value.length<8){
+			alert("아이디는 8자이상 12자이내입니다 ")
+			document.member.userid.focus();
+			return false;
+		}
+		if(document.member.userid.value.length>12){
+			alert("아이디는 8자이상 12자이내입니다 ")
+			document.member.userid.focus();
+			return false;
+		}
+		if(document.member.pwd.value.length<4){
+			alert("비밀번호는 4자이상 10자이내입니다 ")
+			document.member.userid.focus();
+			return false;
+		}
+		if(document.member.pwd.value.length>10){
+			alert("비밀번호는 4자이상 10자이내입니다 ")
+			document.member.userid.focus();
+			return false;
+		}
+		if(document.member.pwd.value!=document.member.pwd1.value){
+			alert("비밀번호가 일치하지않습니다")
+			document.member.pwd1.value="";
+			document.member.pwd1.focus();
+			return false;
+		}
 		if (checkid == 0) {
 			alert("ID 중복체크를 하세요!");
 			return false;

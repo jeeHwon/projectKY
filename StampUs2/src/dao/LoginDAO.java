@@ -19,7 +19,7 @@ public class LoginDAO {
 	public LoginDAO() {
 		try {
 			String driver = "oracle.jdbc.driver.OracleDriver";
-			String url1 = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
+			String url1 = "jdbc:oracle:thin:@222.232.45.48:1521:xe";
 			String url2 = "jdbc:oracle:thin:@db.sarte.kr:1521:xe";
 			String uid = "ky";
 			String upw = "1234";
