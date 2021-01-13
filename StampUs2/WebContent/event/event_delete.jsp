@@ -6,7 +6,7 @@
 	String event_no = request.getParameter("event_no");
 
 	EventDAO dao=new EventDAO();
-	dao.delete(event_no); //메소드에 전달
+	dao.delete(event_no);
 	
 	response.sendRedirect("event_list.jsp");
 %>

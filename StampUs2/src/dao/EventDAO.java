@@ -12,19 +12,17 @@ public class EventDAO {
 	}
    //=================================write_ok==================================================
    public String write_ok(EventDTO dto) throws Exception {
-   
-      //쿼리생성
+
       sql="insert into event (event_no,event_adm, event_title, event_content, event_img, event_postday) ";
       sql=sql +" values (event_no_seq.nextval,?,?,?,?,SYSDATE)";
       
-      //심부름꾼
+
       db.pstmt=db.conn.prepareStatement(sql);
       db.pstmt.setString(1, dto.getEvent_adm());
       db.pstmt.setString(2, dto.getEvent_title());
       db.pstmt.setString(3, dto.getEvent_content());
       db.pstmt.setString(4, dto.getEvent_img());
 
-      //쿼리실행
       db.pstmt.executeUpdate();
       
       //글을 올리자마자 content로 가기
@@ -38,10 +36,8 @@ public class EventDAO {
    //=================================update_ok==================================================
    public void update_ok(EventDTO dto) throws Exception {
       
-      //쿼리생성
       String sql="update event set event_title=?, event_content=?, event_img=? where event_no=?";
-      
-      //심부름꾼
+ 
       db.pstmt=db.conn.prepareStatement(sql);
       
       if(dto.getEvent_img()==null) {
@@ -51,26 +47,21 @@ public class EventDAO {
       db.pstmt.setString(2, dto.getEvent_content());
       db.pstmt.setString(3, dto.getEvent_img());
       db.pstmt.setInt(4, dto.getEvent_no());
-      
-      //쿼리실행
+
       db.pstmt.executeUpdate();
-      
-      //자원해제
+
       db.close();
    }
    //=================================delete==================================================
    public void delete(String event_no) throws Exception {
-      
-      //쿼리생성
+	  sql="delete from event_dat where event_no="+event_no;
+	  db.pstmt=db.conn.prepareStatement(sql);	  
+	  db.pstmt.executeUpdate();
+	  
       sql="delete from event where event_no="+event_no;
-      
-      //심부름꾼
       db.pstmt=db.conn.prepareStatement(sql);
-      
-      //쿼리실행
       db.pstmt.executeUpdate();
-      
-      //자원해제
+
       db.close();
    }
       //=====================content.jsp===============================
