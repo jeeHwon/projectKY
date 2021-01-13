@@ -51,10 +51,11 @@ public class MemberDAO {
 	}
 	
 	public MemberDTO userInfo(String userid) throws Exception {
-		String sql = "select * from USER_MEMBER where USER_ID=" + userid;
+		String sql = "select * from USER_MEMBER where USER_ID='" + userid+"'";
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		MemberDTO dto = new MemberDTO();
+		rs.next();
 		dto.setAge(rs.getString("AGE"));
 		dto.setEmail(rs.getString("EMAIL"));
 		dto.setInterest(rs.getString("USER_INTEREST"));
