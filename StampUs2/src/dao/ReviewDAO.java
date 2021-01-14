@@ -30,7 +30,7 @@ public class ReviewDAO {
 		// 쿼리 생성
 		String sql="insert into review(review_no,user_id,review_title,review_content,";
 		sql=sql+"review_file,review_postday,hash) ";
-		sql=sql+" values(review_seq.nextval,?,?,?,?,TO_DATE(SYSDATE,'YY.MM.DD HH24:MI:SS'),?)";
+		sql=sql+" values(review_seq.nextval,?,?,?,?,SYSDATE,?)";
 		// 심부름꾼 생성
 		PreparedStatement pstmt=conn.prepareStatement(sql);
 		pstmt.setString(1, rdto.getUser_id());
@@ -94,7 +94,7 @@ public class ReviewDAO {
 	    {
 	    	//쿼리생성
 	    	sql="update review set review_title=?,review_content=?,review_file=?,";
-	    	sql=sql+"review_postday=TO_DATE(SYSDATE,'YY.MM.DD HH24:MI:SS'),hash=? where review_no=?";
+	    	sql=sql+"review_postday=SYSDATE,hash=? where review_no=?";
 	    	// 심부름꾼 생성
 	    	PreparedStatement pstmt=conn.prepareStatement(sql);
 	    	pstmt.setString(1, rdto.getReview_title());
@@ -147,7 +147,7 @@ public class ReviewDAO {
 	        sql=sql+" FROM(SELECT * FROM review where review_title like '%"+sword+"%' ORDER BY review_no DESC)";
 	        sql=sql+") WHERE RM between "+index+" and "+(index+10);        
 	    }
-	    else
+	    else 
 	    {
 	   	// hash 필드를 검색
 		    sql="SELECT review_no,review_title,review_view,review_postday,user_id ";

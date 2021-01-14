@@ -14,7 +14,7 @@
 	//DB연결
 	ReviewDAO rdao=new ReviewDAO();
 	//cos.jar 라이브러리를 통해 파일을 업로드시킨다..
-	String realPath = request.getRealPath("/img");
+	String realPath = application.getRealPath("/assets/img/review");
 	int size=1024*1024*10;
 	String han="utf-8";
 	MultipartRequest multi=new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());

@@ -15,11 +15,12 @@
 	ReviewDAO rdao=new ReviewDAO();
 	
 	//cos.jar 라이브러리를 통해 파일을 업로드시킨다..
-	String realPath = request.getRealPath("/img");
+	//String path="D:/WorkSpace/jsp/review_board/WebContent/assets/img/review";
+	String realPath = application.getRealPath("/assets/img/review");
 	int size=1024*1024*10;
 	String han="utf-8";
 	MultipartRequest multi=new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());
-	
+
 	// request값 가져오기
 	request.setCharacterEncoding("utf-8");
 	String user_id=session.getAttribute("userid").toString();
@@ -27,7 +28,7 @@
 	String review_content=multi.getParameter("review_content");
 	String review_file=multi.getFilesystemName("review_file");   // 서버에 저장되는 이름
 	String hash=String.join(",",multi.getParameterValues("hash"));
-
+	
 	//request값을 setter에 넣기
 	ReviewDTO rdto=new ReviewDTO();
 	rdto.setUser_id(user_id);
