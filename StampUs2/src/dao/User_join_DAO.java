@@ -10,7 +10,6 @@ public class User_join_DAO {
 
 	DB db = new DB();
 	
-	
 	public User_join_DAO()
 	{
 		db = new DB();
