@@ -196,6 +196,32 @@ public class GoalDAO {
 				
 		return list;
 	}
+		
+	//방별 아이디별 인증현황 가져오기
+	public ArrayList<GoalDTO> roomGoal(String study_no, String user_id) throws Exception
+	{
+		String sql = "select * from goal where goal_room_no="+study_no;
+		
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		ArrayList<GoalDTO> list = new ArrayList<GoalDTO>();
+		
+		while(db.rs.next()) 
+		{
+			GoalDTO gDTO=new GoalDTO();
+			
+			gDTO.setGoal_day(db.rs.getString("goal_day"));
+			gDTO.setGoal_no(db.rs.getInt("goal_no"));
+			gDTO.setGoal_room_no(db.rs.getInt("goal_room_no"));
+			gDTO.setIsgoal(db.rs.getString("isgoal"));
+			gDTO.setUser_id(db.rs.getString("user_id"));
+			
+			list.add(gDTO);
+		}
+				
+		return list;
+	}
 	
 	
 	//방별 오늘의 인증현황 가져오기

@@ -14,7 +14,7 @@
 	
 	ArrayList<Study_my_DTO> list = sDAO.list(Integer.parseInt(study_no));
 	
-	ArrayList<GoalDTO> gList = sDAO.goalList(study_no);
+	ArrayList<GoalDTO> gList = sDAO.isCertDay(study_no);
 	
 	Study_join_DTO sjDTO=sjDAO.study_content(study_no);
 	
@@ -55,6 +55,7 @@
 <p>종료일 ${sjDTO.room_end_day}</p>
 
 </div>
+
 <div class="goalList">
 <h2>오늘의 인증 현황</h2>
 <table>

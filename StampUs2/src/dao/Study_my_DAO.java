@@ -61,9 +61,7 @@ public class Study_my_DAO
 			
 			list.add(sDTO);
 		}
-		
-		db.close();
-		
+				
 		return list;
 	}
 	
@@ -156,6 +154,7 @@ public class Study_my_DAO
 		db.close();
 	}
 	
+	//오늘의 인증 처리
 	public ArrayList<GoalDTO> goalList(String study_no) throws Exception
 	{
 		User_join_DAO ujDAO = new User_join_DAO();
@@ -196,6 +195,74 @@ public class Study_my_DAO
 		return gList;
 	}
 	
+	// 오늘의 인증 현황
+	public ArrayList<GoalDTO> isCertDay(String study_no) throws Exception 
+	{
+		String sql = "select room_check_day from room where room_no="+study_no;
+		db.stmt=db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		db.rs.next();
+		
+		String room_check_day = db.rs.getString("room_check_day"); 
+		
+		GoalDAO gDAO = new GoalDAO();
+		
+		String day = gDAO.getDateDay();
+		
+		if(room_check_day.contains(day)) 
+		{
+			return goalList(study_no);
+		}
+		else 
+		{
+			return isHoliday(study_no);
+		}
+		
+	}
 	
+	//쉬는 날 처리
+	public ArrayList<GoalDTO> isHoliday(String study_no) throws Exception
+	{
+		User_join_DAO ujDAO = new User_join_DAO();
+		
+		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
+		
+		ujList = ujDAO.list(study_no);
+		
+		ArrayList<GoalDTO> gList = new ArrayList<GoalDTO>();
+		
+		ArrayList<String> user1 = new ArrayList<String>();
+		
+		for(int i=0;i<ujList.size();i++) 
+		{
+			user1.add(ujList.get(i).getUser_id());
+		}
+		
+		for(int i=0;i<user1.size();i++) 
+		{
+			GoalDTO gDTO = new GoalDTO();
+			gDTO.setUser_id(user1.get(i));
+			gDTO.setIsgoal("쉬는 날");
+			gList.add(gDTO);
+		}
+		
+		return gList;
+	}
+	
+	public ArrayList<GoalDTO> allGoalList(String study_no) throws Exception
+	{
+		GoalDAO gDAO = new GoalDAO();
+		
+		ArrayList<GoalDTO> list = new ArrayList<GoalDTO>();
+		
+		list = gDAO.roomGoal(study_no);
+		
+		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();		
+		
+		
+		
+		
+		return list;
+	}
 	
 }
