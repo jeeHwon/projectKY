@@ -9,7 +9,8 @@
 	RoomDAO rdao = new RoomDAO();
 	ArrayList<RoomDTO> list = rdao.list();
 	pageContext.setAttribute("list", list);
-	
+	String chk=request.getParameter("chk");
+	pageContext.setAttribute("chk", chk);	
 %>
 
 <jsp:include page="../header.jsp" />
@@ -194,7 +195,7 @@
                                     <div class="infor_title"><h3><span class="icon cate_${list[i].category} ir_pm">study</span><strong>${list[i].title}</strong></h3></div>
                                     <div class="infor_btn">
                                         <a href="room_content.jsp?r_id=${list[i].id}">상세보기</a>
-                                        <a href="room_content.jsp?r_id=${list[i].id}">참여하기</a>
+                                        <a href="../study_my/study_join_ok.jsp?room_no=${list[i].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +214,7 @@
                                     <div class="infor_title"><h3><span class="icon cate_${list[i+1].category} ir_pm">study</span><strong>${list[i+1].title}</strong></h3></div>
                                     <div class="infor_btn">
                                         <a href="room_content.jsp?r_id=${list[i+1].id}">상세보기</a>
-                                        <a href="room_content.jsp?r_id=${list[i+1].id}">참여하기</a>
+                                        <a href="../study_my/study_join_ok.jsp?room_no=${list[i+1].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +233,7 @@
                                     <div class="infor_title"><h3><span class="icon cate_${list[i+2].category} ir_pm">study</span><strong>${list[i+2].title}</strong></h3></div>
                                     <div class="infor_btn">
                                         <a href="room_content.jsp?r_id=${list[i+2].id}">상세보기</a>
-                                        <a href="room_content.jsp?r_id=${list[i+2].id}">참여하기</a>
+                                        <a href="../study_my/study_join_ok.jsp?room_no=${list[i+2].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -251,7 +252,7 @@
                                     <div class="infor_title"><h3><span class="icon cate_${list[i+3].category} ir_pm">study</span><strong>${list[i+3].title}</strong></h3></div>
                                     <div class="infor_btn">
                                         <a href="room_content.jsp?r_id=${list[i+3].id}">상세보기</a>
-                                        <a href="room_content.jsp?r_id=${list[i+3].id}">참여하기</a>
+                                        <a href="../study_my/study_join_ok.jsp?room_no=${list[i+3].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -301,6 +302,13 @@
             checkA.removeClass("checked")
             target.addClass("checked")
         })
+        
+        // 인증방 중복 참여시 경고창
+        var chk = ${chk}
+        if(chk==1)
+        {
+        	alert('이미 참여중인 방입니다')
+        }
     </script>
 
 <jsp:include page="../footer.jsp" />

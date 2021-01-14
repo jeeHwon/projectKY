@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
-session.setAttribute("userid", "user2");
+session.setAttribute("userid", "user1");
 
 Study_join_DAO sjDAO=new Study_join_DAO();
  
@@ -21,15 +21,25 @@ pageContext.setAttribute("list", list);
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<jsp:include page="../header.jsp" />
 <body>
-<h1>현재 참여 중인 방 정보</h1>
-<div>
-<table>
-<c:forEach var="dto" items="${list}">
-	<a href="study_my_list.jsp?study_no=${dto.room_no}">${dto.room_title}</a>
-	<br>
-</c:forEach>
-</table>
-</div>
+<section id="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+			<h1>현재 참여 중인 방 정보</h1>
+				<div>
+					<table>
+						<c:forEach var="dto" items="${list}">
+						<a href="study_my_list.jsp?study_no=${dto.room_no}">${dto.room_title}</a>
+							<br>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

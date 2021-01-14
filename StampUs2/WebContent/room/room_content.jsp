@@ -169,7 +169,7 @@
                 
                 <div class="preview_btn">
                     <a href="room_list.jsp" class="white">목록보기</a>
-                    <a href="#" class="red">참여하기</a>
+                    <a href="../study_my/study_join_ok.jsp?room_no=${rdto.id}" class="red">참여하기</a>
                 </div>
                 <!--//preview_btn-->
             </div>

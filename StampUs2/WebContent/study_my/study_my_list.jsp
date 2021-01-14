@@ -40,6 +40,13 @@
 </script>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
+
+<section id="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+			
 <div class="roomInfo">
 <h1>${sjDTO.room_title }</h1>
 <p>${sjDTO.room_content }</p>
@@ -128,5 +135,10 @@
 	}
 	%>
 	<div><a href="study_my_write.jsp?study_no=<%=study_no%>">글쓰기</a></div>
+	</div>
+	</div>
+	</div>
+	</section>
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>
