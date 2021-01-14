@@ -106,6 +106,16 @@ public class RoomDAO {
 		return rdto;
 	}
 	
+	public String getLastRoom() throws SQLException {
+		String sql = "SELECT * FROM room WHERE room_no = (SELECT max(room_no) FROM room)";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		rs.next();
+		return rs.getString("ROOM_NO");
+	}
+	
+
+	
 	
 	
 	

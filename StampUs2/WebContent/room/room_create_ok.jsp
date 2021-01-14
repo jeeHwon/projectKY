@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.oreilly.servlet.MultipartRequest" %>
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
-<%@page import="dto.RoomDTO" %>
-<%@page import="dao.RoomDAO" %>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@ page import="dao.*" %>
+<%@ page import="dto.*" %>
 
 <%
 	//cos.jar 라이브러리를 통해 파일을 업로드
@@ -14,8 +14,6 @@
 	String enco = "utf-8";
 	MultipartRequest multi = new MultipartRequest(request, savePath, size, enco,
 			new DefaultFileRenamePolicy());
-	
-	
 	
 	String title = multi.getParameter("r_title");
 	String start_day = multi.getParameter("r_start_day");
@@ -47,26 +45,41 @@
 	rdto.setFile_name(file_name);
 	rdto.setCondition(condition);
 	
+	//방 생성하기
 	RoomDAO rdao = new RoomDAO();
 	rdao.insert(rdto);
 	
+	//참여중인 방 생성하기
+	String room_no = rdao.getLastRoom();
+	rdto = rdao.content(room_no);
 	
-	response.sendRedirect("room_list.jsp");
+	Study_join_DAO sjDAO = new Study_join_DAO();
+	Study_join_DTO sjDTO = new Study_join_DTO();
+	
+	int chk = sjDAO.getInfo(session.getAttribute("userid").toString(), room_no);
+	
+	if(chk==0)
+	{
+	
+		sjDTO.setUser_id(session.getAttribute("userid").toString());
+		sjDTO.setRoom_no(rdto.getId());
+		sjDTO.setRoom_start_day(rdto.getStart_day());
+		sjDTO.setRoom_end_day(rdto.getEnd_day());
+		sjDTO.setRoom_deposit(rdto.getDeposit());
+		sjDTO.setRoom_penalty(rdto.getPenalty());
+	
+		sjDAO.insert(sjDTO);
+	
+		response.sendRedirect("room_list.jsp");
+	}
+	else
+	{
+		response.sendRedirect("room_list.jsp?chk="+chk);	
+	}
+	
+	
+	
 	
 %>
 
-<%=savePath%>
-<%=test2%>
-<%=title%>
-<%=start_day %>
-<%=end_day %>
-<%=category %>
-<%=category2 %>
-<%=people %>
-<%=check_day %>
-<%=certi_type %>
-<%=deposit %>
-<%=penalty %>
-<%=content %>
-<%=file_name %>
-<%=condition %>
+<%=room_no%>
