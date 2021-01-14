@@ -43,7 +43,7 @@ public class FnqDao {
     {
 
     	//쿼리 생성
-    	String sql = "select * from fnq";
+    	String sql = "select * from fnq ";
     	
     	//심부름꾼 생성
     	db.stmt = db.conn.createStatement();
