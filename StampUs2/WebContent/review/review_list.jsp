@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	// 세션변수 만들기
-	session.setAttribute("userid", "test");  // (변수명,값)
+	//session.setAttribute("userid", "test");  // (변수명,값)
 %>
 <%
 	//DB연결
