@@ -41,21 +41,22 @@
 	var chk = new XMLHttpRequest();
 	
 	function idcheck() { //아이디 중복확인기능
-		if(document.member.userid.value.length<8){
-			document.getElementById("idposible").innerHTML = "<span style='color:red'>아이디는 8자이상 12자이내입니다</span><br>"
+		var userid = document.member.userid.value;
+	
+		if(document.member.userid.value.length<6){
+			document.getElementById("idposible").innerHTML = "<span style='color:red'>아이디는 6자이상 12자이내입니다</span><br>"
 			document.member.userid.focus();
 			return false;
 		}
 		if(document.member.userid.value.length>12){
-			document.getElementById("idposible").innerHTML = "<span style='color:red'>아이디는 8자이상 12자이내입니다</span><br>"
+			document.getElementById("idposible").innerHTML = "<span style='color:red'>아이디는 6자이상 12자이내입니다</span><br>"
 			document.member.userid.focus();
 			return false;
 		}
-		var userid = document.member.userid.value;
 		if (userid == "") {
 			document.getElementById("idposible").innerHTML = "<span style='color:red'>아이디를 입력하세요</span><br>"
 		} else {
-			chk.open("get", "member_idcheck.jsp?userid=" + userid);
+			chk.open("post", "member_idcheck.jsp?userid=" + userid);
 			document.all.checkid.value = 1;
 			chk.send();
 
@@ -95,7 +96,7 @@
 		if (nickName == "") {
 			document.getElementById("nickposible").innerHTML = "<span style='color:red'>닉네임을 입력하세요</span><br>"
 		} else {
-			chk.open("get", "member_nickcheck.jsp?nickName=" + nickName);
+			chk.open("post", "member_nickcheck.jsp?nickName=" + nickName);
 			document.all.checknick.value = 1;
 			chk.send();
 
@@ -171,10 +172,10 @@
 					</label></li>
 					<li><label>핸드폰번호<br> <input type="text"
 							name="phoneNum" maxlength="11" size="15"
-							replaceholder="'-'없이 입력하세요.">
+							replaceholder="'-'없이 입력하세요." required>
 					</label></li>
 					<li><label>이메일<br> <input type="text"
-							name="email" size="30">
+							name="email" size="30" required>
 					</label></li>
 					<li>관심분야 <br> <input type="checkbox" name="interest"
 						value="0">공부 <input type="checkbox" name="interest"

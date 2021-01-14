@@ -5,9 +5,8 @@
 <%@ page import="dto.MemberDTO"%>
 <%
 	/* String userid = session.getAttribute("userid").toString(); */
-
 MemberDAO dao = new MemberDAO();
-MemberDTO dto = dao.userInfo("userid");
+MemberDTO dto = dao.userInfo("hong1234");
 String[] chkinterest = new String[5];
 String chkSex = "";
 if (dto.getSex() != null) {
@@ -67,6 +66,27 @@ if (dto.getInterest() != null) {
 	line-height:30px;
 }
 </style>
+<script>
+var xhttp = new XMLHttpRequest();
+function update(){
+	xhttp.open("post","mypage_update.jsp");
+	xhttp.onreadystatechange = function(){
+		if(xhttp.readyState == 4 && xhttp.status == 200){
+			document.getElementById("info").innerHTML = xhttp.responseText;
+		}
+	}
+	xhttp.send();
+}
+function del(){
+	xhttp.open("post","mypage_delete.jsp");
+	xhttp.onreadystatechange = function(){
+		if(xhttp.readyState == 4 && xhttp.status == 200){
+			document.getElementById("info").innerHTML = xhttp.responseText;
+		}
+	}
+	xhttp.send();
+}
+</script>
 <section id="mypage">
 	<div class="container">
 		<div class="row">
@@ -104,7 +124,10 @@ if (dto.getInterest() != null) {
 									<%=chkinterest[3]%> disabled>식단 <input type="checkbox"
 									name="interest" value="4" <%=chkinterest[4]%> disabled>기타
 							</label></li>
-							<li><input type="submit" value="수정하기" class="join"></li>
+							<li>
+							<input type="button" value="수정하기" class="join" onclick="update()">
+							<input type="button" value="탈퇴하기" onclick="del()">
+							</li>
 						</ul>
 					</form>
 				</div>

@@ -68,4 +68,26 @@ public class MemberDAO {
 		
 		return dto;
 	}
+	
+	public void update(MemberDTO dto) throws Exception {
+		String sql = "update USER_MEMBER set EMAIL=?, USER_INTEREST=?, "
+					+ " TEL=? where USER_ID=? ";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, dto.getEmail());
+		pstmt.setString(2, dto.getInterest());
+		pstmt.setString(3, dto.getPhoneNum());
+		pstmt.setString(4, dto.getUserid());
+		
+		pstmt.executeUpdate();
+		pstmt.close();
+		
+	}
+	
+	public void delete(String userid) throws Exception{
+		String sql = "delete from USER_MEMBER where USER_ID='"+userid+"'";
+		stmt = conn.createStatement();
+		stmt.executeUpdate(sql);
+		stmt.close();
+		conn.close();
+	}
 }
