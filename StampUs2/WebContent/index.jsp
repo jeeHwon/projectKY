@@ -14,11 +14,12 @@
                    </div>
                    <div class="bm_right">
                        <ul>
-                           <li class="line"><a href="#">고객센터</a></li>
-                           <li class="line"><a href="#">공지사항</a></li>
+                           <li class="line"><a href="<c:url value="/fboard/board_list.jsp"/>">자유게시판</a></li>
+                           <li class="line"><a href="<c:url value="/customer/center.jsp"/>">고객센터</a></li>
+                           <li class="line"><a href="<c:url value="/notice/notice_list.jsp"/>">공지사항</a></li>
                        </ul>
                        <ul>
-                           <li class="white"><a href="<c:url value="/room/room_list.jsp"/>">카테고리별</a></li>
+                           <li class="white"><a href="<c:url value="/study_my/study_join_list.jsp"/>">내인증방</a></li>
                            <li class="red"><a href="<c:url value="/room/room_create.jsp"/>">방만들기</a></li>
                        </ul>
                    </div>

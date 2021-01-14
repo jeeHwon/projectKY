@@ -66,7 +66,7 @@
                         <ul class="clearfix">
                             <li><a href="<c:url value="/room/room_list.jsp"/>">인증방</a></li>
                             <li><a href="#">랭킹</a></li>
-                            <li><a href="#">후기</a></li>
+                            <li><a href="<c:url value="/review/review_list.jsp"/>">후기</a></li>
                             <li><a href="#">통계</a></li>
                             <li><a href="#">결제</a></li>
                             <li><a href="<c:url value="/event/event_list.jsp"/>">이벤트</a></li>
