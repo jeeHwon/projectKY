@@ -70,7 +70,11 @@
                             <li><a href="#">통계</a></li>
                             <li><a href="#">결제</a></li>
                             <li><a href="<c:url value="/event/event_list.jsp"/>">이벤트</a></li>
-                            <li><a href="#">로그인</a></li>
+                            <%if(session.getAttribute("userid")==null){ %>
+								<li><a href="<c:url value="/login/log.jsp"/>">로그인</a></li>
+							<%} else{ %>
+                            <li><a href="#">로그아웃</a></li>
+                            <%} %>
                         </ul>
                     </nav>
                 </div>

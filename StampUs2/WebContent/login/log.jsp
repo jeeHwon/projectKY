@@ -61,7 +61,7 @@
 				<div class="container">
 					<div class="f5"></div>
 					<div id="login" class="f6">
-						<form mehtod="post" action="nav1_login_ok.jsp">
+						<form mehtod="post" action="login_ok.jsp">
 							<input type="text" name="userid" placeholder="아이디" required>
 							<p>
 								<input type="password" name="pwd" placeholder="비밀번호" required>
@@ -79,7 +79,7 @@
 								<button type="submit">로그인</button>
 						</form>
 						<ul class="btm">
-							<li><a href=nav1_member.jsp>회원가입</a></li>
+							<li><a href=../member/member.jsp>회원가입</a></li>
 							<li>아이디를 잊으셨나요?<a href="find_ID.jsp">아이디 찾기</a></li>
 							<li>비밀번호를 잊으셨나요?<a href="find_PW.jsp">비밀번호 찾기</a></li>
 						</ul>
