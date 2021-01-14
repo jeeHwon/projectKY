@@ -11,7 +11,7 @@ import dto.ReviewDTO;
 
 public class ReviewDAO {
 	// DB연결
-	String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
+	String url = "jdbc:oracle:thin:@222.232.45.48:1521:xe";
 	String uid = "ky";
 	String upw = "1234";
 	Connection conn;	
