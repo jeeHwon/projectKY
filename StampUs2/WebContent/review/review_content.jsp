@@ -24,11 +24,7 @@
 	
 	// 해쉬태그 나누기
 	String[] hash=rdto.getHash().split(",");
-	String h1="";
-	for(int i=0;i<hash.length;i++)
-	{ 
-		h1+=hash[i]+"  "; 
-	}
+	pageContext.setAttribute("hash",hash);
 %>
 <!DOCTYPE html>
 <html>
@@ -63,7 +59,10 @@
 	      <td> ${rdto.review_view} </td>
 	    </tr>
 	    <tr>
-	      <td colspan="6"><img src="img/${rdto.review_file}"></td>
+	      <td colspan="6">
+	        <img src="../assets/img/review/${rdto.review_file}"
+	        onerror="this.src='../assets/img/review/no-camera.png'" style="width:300px;">
+	      </td>
 	    </tr>
 	    <tr>
 	      <td>내용</td>
@@ -71,7 +70,11 @@
 	    </tr>
 	    <tr>
 	      <td>해시태그</td>
-	      <td><%=h1%></td>
+	      <td>
+	        <c:forEach items="${hash}" var="i">
+	          <a href="review_list.jsp?pager=1&cla=hash&sword=${i}"> ${i} </a>
+	        </c:forEach>
+	      </td>
 	    </tr>
 	    <tr>
 	      <td colspan="6" align="center"> 
@@ -102,7 +105,7 @@
 	  <div align="center">
 	    <form name="dat" method="post" action="review_dat_write_ok.jsp">
 	      <input type="hidden" name="review_no" value=<%=review_no%>> <!-- review 테이블의 "review_no" -->
-	      <input type="text" name="user_id" value=<%=user_id%>>
+	      <input type="text" name="user_id" value=<%=user_id%> readonly>
 	      <input type="text" name="review_dat_content" size="50" placeholder="댓글 내용">
 	      <input type="submit" value="댓글달기">
 	    </form>
@@ -131,7 +134,7 @@
 	     <form  id="dat_up" name="up" method="post" action="review_dat_update_ok.jsp">
 	      <input type="hidden" name="review_no" value=<%=review_no%>> <!-- review 테이블의 "review_no" -->
 	      <input type="hidden" name="review_dat_no">
-	      <input type="text" name="user_id" value=<%=user_id%>>
+	      <input type="text" name="user_id" value=<%=user_id%> readonly>
 	      <input type="text" name="review_dat_content" size="50" placeholder="댓글 내용">
 	      <input type="submit" value="댓글수정">
 	     </form>

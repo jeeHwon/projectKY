@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%	
-	// 로그인 안했을 시 로그인 페이지로 강제 이동
-	if(session.getAttribute("userid")==null){
-		response.sendRedirect("../login/log.jsp");
-	} 
-%>
 <jsp:include page="../header.jsp" />
 
 <style>
@@ -48,7 +42,7 @@
    <div class="container">
        <div class="row">
            <div class="roomCreate">
-           		<form method="post" id="frm" name="frm" action="room_create_ok.jsp"  enctype="multipart/form-data">
+           		<form method="post" id="frm" action="room_create_ok.jsp"  enctype="multipart/form-data">
                 <div class="left">
                     <h2 class="title">인증방 만들기</h2>
                     
@@ -65,12 +59,18 @@
                     <div class="select">
                         <div class="s1_2">
                             <label for="r_start_day" class="ir_so">시작일</label>
-                            <select id="r_start_day" name="r_start_day" class="ui_select"></select>
+                            <select id="r_start_day" name="r_start_day" class="ui_select">
+                            	<c:forEach var="i" begin="1" end="28" step="1">
+                                	<option value="2021-02-${i}">2021년 2월 ${i}일</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="s2_2">
                             <label for="r_end_day" class="ir_so">종료일</label>
                             <select id="r_end_day" name="r_end_day" class="ui_select">
-                            	<option>시작일을 선택하세요</option>
+                            	<c:forEach var="i" begin="1" end="28" step="1">
+                                	<option value="2021-02-${i}">2021년 2월 ${i}일</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
@@ -300,38 +300,7 @@
 			}
 		})
 	})
-	
-	// 오늘 날짜로부터 10일 구하는 함수
-	$(function (){
-		for(var i = 0; i < 10; i++){    
-			var today = new Date();
-			today.setDate(today.getDate() + i); 
-			
-			var year = today.getFullYear();
-			var month = today.getMonth() + 1;
-			var day = today.getDate();
-			var value = year+"-"+month+"-"+day
-			var option = $("<option value='"+value+"'>"+year+"년 "+month+"월 "+day+"일</option>");
-			$('#r_start_day').append(option);
-		}
-	})
-	
-	// 시작일로부터 60일 구하는 함수
-	$('#r_start_day').change(function() {
-		$('#r_end_day').empty();
-		var selectedDate = $('#r_start_day option:selected').val().split("-")
-		for(var i = 1; i < 60; i++){    
-			var targetDate = new Date(selectedDate[0], selectedDate[1], selectedDate[2])
-			targetDate.setDate(targetDate.getDate() + i); 
-			var year = targetDate.getFullYear();
-			var month = targetDate.getMonth();
-			var day = targetDate.getDate();
-			var value = year+"-"+month+"-"+day
-			var option = $("<option value='"+value+"'>"+year+"년 "+month+"월 "+day+"일</option>");
-			$('#r_end_day').append(option);
-		}
 
-	})
 </script>
 
 <jsp:include page="../footer.jsp" />

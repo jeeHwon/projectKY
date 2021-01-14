@@ -15,21 +15,26 @@
   {   
 	  var IText=document.getElementById("tag").value;  //id="tag"의 값을 받아서 가져온다
 	  var input = document.createElement('input'); //input태그 생성
-	  input.setAttribute("type","checkbox");
+	  input.setAttribute("type","text");
 	  input.setAttribute("name","hash"); //name값 추가 
 	  input.setAttribute("id","hash");
-	  input.setAttribute("checked","true");
-	  input.setAttribute("value","#"+IText);
+	  input.setAttribute("value",IText);
+	  input.setAttribute("readonly","true");
 	  document.getElementById("taglist").append(input);
-	  document.getElementById("taglist").append("#"+IText);
   }
   function delTag()
   {
 	  var h1=document.getElementById("hash");
 	  h1.remove();
   }
-
 </script>
+<style>
+  #hash {
+    width:100px;
+    display:inline;
+    border:none;
+  }
+</style>
 </head>
 <body>
 <jsp:include page="../header.jsp" />

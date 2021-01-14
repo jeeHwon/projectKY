@@ -1,5 +1,6 @@
 package dao;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -14,6 +15,38 @@ public class GoalDAO {
 	public GoalDAO() 
 	{
 		db = new DB();
+	}
+	
+	public String getDay(DayOfWeek dow) 
+	{
+		String day="";
+		
+		switch(dow.toString()){
+        case "SUNDAY":
+            day = "sun";
+            break ;
+        case "MONDAY":
+            day = "mon";
+            break ;
+        case "TUESDAY":
+            day = "tue";
+            break ;
+        case "WEDNESDAY":
+            day = "wed";
+            break ;
+        case "THURSDAY":
+            day = "thu";
+            break ;
+        case "FRIDAY":
+            day = "fri";
+            break ;
+        case "SATURDAY":
+            day = "sat";
+            break ;
+             
+    }
+		
+		return day;
 	}
 	
 	public String getDateDay() throws Exception 
@@ -251,29 +284,26 @@ public class GoalDAO {
 	}
 	
 	//방별 아이디별 특정 날짜의 인증현황 가져오기
-	public ArrayList<GoalDTO> roomDayGoal(String study_no, String goal_day) throws Exception
+	public GoalDTO roomDayGoal(String study_no, String goal_day, String user_id) throws Exception
 	{
-		String sql = "select * from goal where goal_room_no="+study_no+" and to_char(goal_day, 'YYYY-MM-DD')='"+goal_day+"'";
+		String sql = "select goal_no, user_id, goal_room_no, isgoal, to_char(goal_day, 'yyyy-mm-dd') goal_day from goal where user_id='"+user_id+"' and goal_room_no="+study_no+" and to_char(goal_day, 'YYYY-MM-DD')='"+goal_day+"'";
 				
 		db.stmt = db.conn.createStatement();
 		db.rs = db.stmt.executeQuery(sql);
 			
-		ArrayList<GoalDTO> list = new ArrayList<GoalDTO>();
+		GoalDTO gDTO = new GoalDTO();
 		
-		while(db.rs.next()) 
+		if(db.rs.next()) 
 		{
-			GoalDTO gDTO=new GoalDTO();
-			
 			gDTO.setGoal_day(db.rs.getString("goal_day"));
 			gDTO.setGoal_no(db.rs.getInt("goal_no"));
 			gDTO.setGoal_room_no(db.rs.getInt("goal_room_no"));
 			gDTO.setIsgoal(db.rs.getString("isgoal"));
 			gDTO.setUser_id(db.rs.getString("user_id"));
 			
-			list.add(gDTO);
 		}
 				
-		return list;
+		return gDTO;
 	}
 	
 	public ArrayList<GoalDTO> roomDayGoalById(String study_no, String goal_day, String user_id) throws Exception

@@ -7,12 +7,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	// 세션변수 만들기
-	//session.setAttribute("userid", "test");  // (변수명,값)
+	session.setAttribute("userid", "test");  // (변수명,값)
 %>
 <%
 	//DB연결
-	ReviewDAO rdao=new ReviewDAO();
-	
+	ReviewDAO rdao=new ReviewDAO();	
     request.setCharacterEncoding("utf-8");
 	//페이저 설정 => 현재 나타내고자 하는 페이지 값을 저장
     int pager=(request.getParameter("pager")==null) ? 1 : Integer.parseInt(request.getParameter("pager"));  
@@ -22,7 +21,6 @@
     ArrayList<ReviewDTO> list=rdao.list(cla,sword,pager);
     pageContext.setAttribute("list",list);
 %>	
-    
 <!DOCTYPE html>
 <html>
 <head>

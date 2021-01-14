@@ -11,7 +11,7 @@ import dto.Review_dat_DTO;
 
 public class Review_dat_DAO {
 	// DB연결
-	String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
+	String url = "jdbc:oracle:thin:@222.232.45.48:1521:xe";
 	String uid = "ky";
 	String upw = "1234";
 	Connection conn;
@@ -49,7 +49,7 @@ public class Review_dat_DAO {
 		// 쿼리 완성
 		String sql="insert into review_dat(review_dat_no,user_id,review_dat_content,";
 		sql=sql+"review_dat_day,review_no) "; 
-		sql=sql+" values(review_dat_seq.nextval,?,?,TO_DATE(SYSDATE,'YY.MM.DD HH24:MI:SS'),?)";
+		sql=sql+" values(review_dat_seq.nextval,?,?,SYSDATE,?)";
 		// 심부름꾼 생성
 		PreparedStatement pstmt=conn.prepareStatement(sql);
 		pstmt.setString(1, rddto.getUser_id());
@@ -89,7 +89,7 @@ public class Review_dat_DAO {
 	    if(connectId.equals(rs.getString("user_id")))
 	    {
 	    	sql="update review_dat set user_id=?,review_dat_content=?,";
-	        sql=sql+"review_dat_day=TO_DATE(SYSDATE,'YY.MM.DD HH24:MI:SS') where review_dat_no=?";
+	        sql=sql+"review_dat_day=SYSDATE where review_dat_no=?";
 	    	// 심부름꾼 생성
 	        PreparedStatement pstmt=conn.prepareStatement(sql);
 	        pstmt.setString(1, rddto.getUser_id());

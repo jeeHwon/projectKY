@@ -1,5 +1,6 @@
 package dao;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -245,79 +246,39 @@ public class Study_my_DAO
 	}
 	
 	//특정 쉬는 날 처리
-	public ArrayList<GoalDTO> isHoliday(String study_no, String goal_day) throws Exception
+	public GoalDTO isHoliday(String study_no, String goal_day, String user_id) throws Exception
 	{
-		User_join_DAO ujDAO = new User_join_DAO();
+		GoalDTO gDTO = new GoalDTO();
+	
+		gDTO.setUser_id(user_id);
+		gDTO.setGoal_day(goal_day);
+		gDTO.setIsgoal("쉬는 날");
 		
-		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
-		
-		ujList = ujDAO.list(study_no);
-		
-		ArrayList<GoalDTO> gList = new ArrayList<GoalDTO>();
-		
-		ArrayList<String> user1 = new ArrayList<String>();
-		
-		for(int i=0;i<ujList.size();i++) 
-		{
-			user1.add(ujList.get(i).getUser_id());
-		}
-		
-		for(int i=0;i<user1.size();i++) 
-		{
-			GoalDTO gDTO = new GoalDTO();
-			gDTO.setUser_id(user1.get(i));
-			gDTO.setGoal_day(goal_day);
-			gDTO.setIsgoal("쉬는 날");
-			gList.add(gDTO);
-		}
-		
-		return gList;
+		System.out.println(user_id+"/"+goal_day+"쉬는 날 처리");
+		return gDTO;
 	}
 	
 	//특정 날 인증
-	public ArrayList<GoalDTO> goalList(String study_no, String goal_day) throws Exception
+	public GoalDTO goalList(String study_no, String goal_day, String user_id) throws Exception
 	{
-		
-		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
-		
-		User_join_DAO ujDAO = new User_join_DAO();
-		ujList = ujDAO.list(study_no);
-		
-		ArrayList<GoalDTO> gList = new ArrayList<GoalDTO>();
-		
+		GoalDTO gDTO = new GoalDTO();
 		GoalDAO gDAO = new GoalDAO();
-		gList = gDAO.roomDayGoal(study_no, goal_day);
-	
-		ArrayList<String> user1 = new ArrayList<String>();
 		
-		for(int i=0;i<ujList.size();i++) 
+		gDTO = gDAO.roomDayGoal(study_no, goal_day, user_id);
+
+		if(gDTO.getIsgoal()==null) 
 		{
-			user1.add(ujList.get(i).getUser_id());
-		}
-		
-		ArrayList<String> user2 = new ArrayList<String>();
-		
-		for(int i=0;i<gList.size();i++) 
-		{
-			user2.add(gList.get(i).getUser_id());
-		}
-		
-		user1.removeAll(user2);
-		
-		for(int i=0;i<user1.size();i++) 
-		{
-			GoalDTO gDTO = new GoalDTO();
-			gDTO.setUser_id(user1.get(i));
+			gDTO.setUser_id(user_id);
 			gDTO.setIsgoal("미인증");
 			gDTO.setGoal_day(goal_day);
-			gList.add(gDTO);
 		}
 		
-		return gList;
+		System.out.println(user_id+" "+gDTO.getIsgoal()+goal_day);
+		return gDTO;
 	}
 	
 	// 특정날의 인증 현황
-	public ArrayList<GoalDTO> allCertDay(String study_no, String goal_day) throws Exception 
+	public ArrayList<GoalDTO> allCertDay(String study_no, String goal_day, String user_id, DayOfWeek dow) throws Exception 
 	{
 		String sql = "select room_check_day from room where room_no="+study_no;
 		db.stmt=db.conn.createStatement();
@@ -328,15 +289,19 @@ public class Study_my_DAO
 		
 		GoalDAO gDAO = new GoalDAO();
 		
-		String day = gDAO.getDateDay();
+		String day = gDAO.getDay(dow);
+		
+		ArrayList<GoalDTO> list = new ArrayList<GoalDTO>();
 		
 		if(room_check_day.contains(day)) 
 		{
-			return goalList(study_no, goal_day);
+			list.add(goalList(study_no, goal_day, user_id));
+			return list;
 		}
 		else 
 		{
-			return isHoliday(study_no, goal_day);
+			list.add(isHoliday(study_no, goal_day, user_id));
+			return list;
 		}
 		
 	}
@@ -350,10 +315,11 @@ public class Study_my_DAO
 		User_join_DAO ujDAO = new User_join_DAO();
 		
 		ujList = ujDAO.listByStudy(study_no);
-		
+	
 		for(int i=0;i<ujList.size();i++) {
 		
 			String day = ujList.get(i).getJoin_day();
+			String user_id = ujList.get(i).getUser_id();
 			String[] ymd = day.split("-");
 			int y = Integer.parseInt(ymd[0]);
 			int m = Integer.parseInt(ymd[1]);
@@ -361,17 +327,19 @@ public class Study_my_DAO
 			
 			LocalDate join_day = LocalDate.of(y, m, d);
 			LocalDate today = LocalDate.now();
-			
-			while(join_day!=today) 
+				
+			while(!(join_day.equals(today))) 
 			{
 				ArrayList<GoalDTO> glist=new ArrayList<GoalDTO>();
 				
-				glist = allCertDay(study_no, join_day.toString());
-				
+				DayOfWeek dow = join_day.getDayOfWeek();
+								
+				glist = allCertDay(study_no, join_day.toString(), user_id, dow);
+
 				list.addAll(glist);
 				
 				join_day=join_day.plusDays(1);
-	
+							
 			}
 		}
 		return list;

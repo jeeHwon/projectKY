@@ -39,6 +39,27 @@ public class User_join_DAO {
 		return list;
 	}
 	
+	public User_join_DTO listById(String study_no, String user_id) throws Exception
+	{
+		String sql = "select user_join_no, user_id, study_no, to_char(join_day, 'yyyy-mm-dd') join_day, to_char(end_day, 'yyyy-mm-dd') end_day, deposit, penalty from user_join where study_no="+study_no+" and user_id='"+user_id+"'";
+		
+		db.stmt=db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		User_join_DTO ujDTO = new User_join_DTO();
+		
+		if(db.rs.next()) 
+		{
+			ujDTO.setStudy_no(db.rs.getInt("study_no"));
+			ujDTO.setUser_id(db.rs.getString("user_id"));
+			ujDTO.setUser_join_no(db.rs.getInt("user_join_no"));
+			ujDTO.setJoin_day(db.rs.getString("join_day"));
+			ujDTO.setEnd_day(db.rs.getString("end_day"));
+		}
+		
+		return ujDTO;
+	}
+	
 	public ArrayList<User_join_DTO> listByStudy(String study_no) throws Exception
 	{
 		String sql = "select user_join_no, user_id, study_no, to_char(join_day, 'yyyy-mm-dd') join_day, to_char(end_day, 'yyyy-mm-dd') end_day, deposit, penalty from user_join "+
