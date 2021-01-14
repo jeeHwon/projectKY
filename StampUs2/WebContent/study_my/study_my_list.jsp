@@ -16,10 +16,13 @@
 	
 	ArrayList<GoalDTO> gList = sDAO.isCertDay(study_no);
 	
+	ArrayList<GoalDTO> allGList = sDAO.allGoalList(study_no);
+	
 	Study_join_DTO sjDTO=sjDAO.study_content(study_no);
 	
 	pageContext.setAttribute("gList", gList);
 	pageContext.setAttribute("sjDTO", sjDTO);
+	pageContext.setAttribute("allGList", allGList);
 	
 %>
 <!DOCTYPE html>
@@ -56,6 +59,23 @@
 
 </div>
 
+<div class="allGoalList">
+<h2>전체 인증 현황</h2>
+	<table>
+		<tr>
+			<th>아이디</th>
+			<th>인증현황</th>
+			<th>날짜</th>
+		</tr>
+		<c:forEach var="dto" items="${allGList}">
+			<tr>
+				<td>${dto.user_id}</td>
+				<td>${dto.isgoal}</td>
+				<td>${dto.goal_day }</td>
+			</tr>
+		</c:forEach>
+	</table>
+</div>
 <div class="goalList">
 <h2>오늘의 인증 현황</h2>
 <table>

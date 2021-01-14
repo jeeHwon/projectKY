@@ -8,7 +8,7 @@ import dto.User_join_DTO;
 
 public class User_join_DAO {
 
-	DB db = null;
+	DB db = new DB();
 	
 	
 	public User_join_DAO()
@@ -40,7 +40,58 @@ public class User_join_DAO {
 		return list;
 	}
 	
-	public ArrayList<User_join_DTO> listById(String user_id) throws Exception
+	public ArrayList<User_join_DTO> listByStudy(String study_no) throws Exception
+	{
+		String sql = "select user_join_no, user_id, study_no, to_char(join_day, 'yyyy-mm-dd') join_day, to_char(end_day, 'yyyy-mm-dd') end_day, deposit, penalty from user_join "+
+					"where study_no="+study_no;
+		
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		ArrayList<User_join_DTO> list = new ArrayList<User_join_DTO>();
+		
+		while(db.rs.next()) 
+		{
+			User_join_DTO ujDTO = new User_join_DTO();
+			ujDTO.setJoin_day(db.rs.getString("join_day"));
+			ujDTO.setStudy_no(db.rs.getInt("study_no"));
+			ujDTO.setUser_id(db.rs.getString("user_id"));
+			ujDTO.setUser_join_no(db.rs.getInt("user_join_no"));
+			ujDTO.setEnd_day(db.rs.getString("end_day"));
+			
+			list.add(ujDTO);
+
+		}
+		
+		return list;
+	}
+	
+	public User_join_DTO listByIdandStudy(String user_id, String study_no) throws Exception
+	{
+		String sql = "select user_join_no, user_id, study_no, to_char(join_day, 'yyyy-mm-dd') join_day, to_char(end_day, 'yyyy-mm-dd'), deposit, penalty from user_join "+
+					"where user_id='"+user_id+"' and study_no="+study_no;
+		
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		
+		User_join_DTO ujDTO = new User_join_DTO();
+		
+		if(db.rs.next()) 
+		{
+			ujDTO.setJoin_day(db.rs.getString("join_day"));
+			ujDTO.setStudy_no(db.rs.getInt("study_no"));
+			ujDTO.setUser_id(db.rs.getString("user_id"));
+			ujDTO.setUser_join_no(db.rs.getInt("user_join_no"));
+			ujDTO.setEnd_day(db.rs.getString("end_day"));
+			
+			
+		}
+		
+		return ujDTO;
+	}
+	
+	public ArrayList<User_join_DTO> countById(String user_id) throws Exception
 	{
 		String sql = "select study_no, end_day-sysdate cnt from user_join where user_id='"+user_id+"'";
 		db.stmt = db.conn.createStatement();
@@ -106,7 +157,7 @@ public class User_join_DAO {
 		return list;
 	}
 	
-	public ArrayList<User_join_DTO> listByStudy(String study_no) throws Exception
+	public ArrayList<User_join_DTO> countByStudy(String study_no) throws Exception
 	{
 		String sql = "select user_id, end_day-sysdate cnt from user_join where study_no='"+study_no+"'";
 		db.stmt = db.conn.createStatement();
@@ -172,7 +223,7 @@ public class User_join_DAO {
 		return list;
 	}
 	
-	public ArrayList<User_join_DTO> listAll() throws Exception
+	public ArrayList<User_join_DTO> countAll() throws Exception
 	{
 		String sql = "select end_day-sysdate cnt from user_join";
 		db.stmt = db.conn.createStatement();

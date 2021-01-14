@@ -1,5 +1,6 @@
 package dao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import db.DB;
@@ -9,7 +10,7 @@ import dto.User_join_DTO;
 
 public class Study_my_DAO 
 {
-	DB db = null;
+	DB db = new DB();
 	
 	
 	public Study_my_DAO()
@@ -35,7 +36,6 @@ public class Study_my_DAO
 		GoalDAO gDAO=new GoalDAO();
 		gDAO.insertGoal(sDTO);
 		
-		db.close();
 		
 	}
 	
@@ -84,7 +84,6 @@ public class Study_my_DAO
 		sDTO.setStudy_title(db.rs.getString("study_title"));
 		sDTO.setUser_id(db.rs.getString("user_id"));
 		
-		db.close();
 		
 		return sDTO;
 	}
@@ -113,9 +112,7 @@ public class Study_my_DAO
 			sDTO.setUser_id(db.rs.getString("user_id"));
 			
 		}
-		
-		db.close();
-		
+				
 		return sDTO;
 	}
 	
@@ -138,7 +135,6 @@ public class Study_my_DAO
 		GoalDAO gDAO=new GoalDAO();
 		gDAO.updateGoal(sDTO.getStudy_my_no());
 		
-		db.close();
 	}
 	
 	public void delete(String study_my_no) throws Exception
@@ -151,7 +147,6 @@ public class Study_my_DAO
 		GoalDAO gDAO=new GoalDAO();
 		gDAO.deleteGoal(study_my_no);
 		
-		db.close();
 	}
 	
 	//오늘의 인증 처리
@@ -249,19 +244,136 @@ public class Study_my_DAO
 		return gList;
 	}
 	
-	public ArrayList<GoalDTO> allGoalList(String study_no) throws Exception
+	//특정 쉬는 날 처리
+	public ArrayList<GoalDTO> isHoliday(String study_no, String goal_day) throws Exception
 	{
+		User_join_DAO ujDAO = new User_join_DAO();
+		
+		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
+		
+		ujList = ujDAO.list(study_no);
+		
+		ArrayList<GoalDTO> gList = new ArrayList<GoalDTO>();
+		
+		ArrayList<String> user1 = new ArrayList<String>();
+		
+		for(int i=0;i<ujList.size();i++) 
+		{
+			user1.add(ujList.get(i).getUser_id());
+		}
+		
+		for(int i=0;i<user1.size();i++) 
+		{
+			GoalDTO gDTO = new GoalDTO();
+			gDTO.setUser_id(user1.get(i));
+			gDTO.setGoal_day(goal_day);
+			gDTO.setIsgoal("쉬는 날");
+			gList.add(gDTO);
+		}
+		
+		return gList;
+	}
+	
+	//특정 날 인증
+	public ArrayList<GoalDTO> goalList(String study_no, String goal_day) throws Exception
+	{
+		
+		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
+		
+		User_join_DAO ujDAO = new User_join_DAO();
+		ujList = ujDAO.list(study_no);
+		
+		ArrayList<GoalDTO> gList = new ArrayList<GoalDTO>();
+		
+		GoalDAO gDAO = new GoalDAO();
+		gList = gDAO.roomDayGoal(study_no, goal_day);
+	
+		ArrayList<String> user1 = new ArrayList<String>();
+		
+		for(int i=0;i<ujList.size();i++) 
+		{
+			user1.add(ujList.get(i).getUser_id());
+		}
+		
+		ArrayList<String> user2 = new ArrayList<String>();
+		
+		for(int i=0;i<gList.size();i++) 
+		{
+			user2.add(gList.get(i).getUser_id());
+		}
+		
+		user1.removeAll(user2);
+		
+		for(int i=0;i<user1.size();i++) 
+		{
+			GoalDTO gDTO = new GoalDTO();
+			gDTO.setUser_id(user1.get(i));
+			gDTO.setIsgoal("미인증");
+			gDTO.setGoal_day(goal_day);
+			gList.add(gDTO);
+		}
+		
+		return gList;
+	}
+	
+	// 특정날의 인증 현황
+	public ArrayList<GoalDTO> allCertDay(String study_no, String goal_day) throws Exception 
+	{
+		String sql = "select room_check_day from room where room_no="+study_no;
+		db.stmt=db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		db.rs.next();
+		
+		String room_check_day = db.rs.getString("room_check_day"); 
+		
 		GoalDAO gDAO = new GoalDAO();
 		
+		String day = gDAO.getDateDay();
+		
+		if(room_check_day.contains(day)) 
+		{
+			return goalList(study_no, goal_day);
+		}
+		else 
+		{
+			return isHoliday(study_no, goal_day);
+		}
+		
+	}
+	
+	public ArrayList<GoalDTO> allGoalList(String study_no) throws Exception
+	{
 		ArrayList<GoalDTO> list = new ArrayList<GoalDTO>();
 		
-		list = gDAO.roomGoal(study_no);
+		ArrayList<User_join_DTO> ujList=new ArrayList<User_join_DTO>();
 		
-		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();		
+		User_join_DAO ujDAO = new User_join_DAO();
 		
+		ujList = ujDAO.listByStudy(study_no);
 		
+		for(int i=0;i<ujList.size();i++) {
 		
-		
+			String day = ujList.get(i).getJoin_day();
+			String[] ymd = day.split("-");
+			int y = Integer.parseInt(ymd[0]);
+			int m = Integer.parseInt(ymd[1]);
+			int d = Integer.parseInt(ymd[2]);
+			
+			LocalDate join_day = LocalDate.of(y, m, d);
+			LocalDate today = LocalDate.now();
+			
+			while(join_day!=today) 
+			{
+				ArrayList<GoalDTO> glist=new ArrayList<GoalDTO>();
+				
+				glist = allCertDay(study_no, join_day.toString());
+				
+				list.addAll(glist);
+				
+				join_day=join_day.plusDays(1);
+	
+			}
+		}
 		return list;
 	}
 	

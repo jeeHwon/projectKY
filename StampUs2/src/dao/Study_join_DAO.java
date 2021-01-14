@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 import db.DB;
 import dto.Study_join_DTO;
+import dto.User_join_DTO;
 
 public class Study_join_DAO 
 {
-	DB db = null;
+	DB db = new DB();
 	Study_join_DTO sjDTO = null;
 	ArrayList<Study_join_DTO> list=null;
 	
@@ -15,6 +16,8 @@ public class Study_join_DAO
 	{
 		db = new DB();
 	}
+	
+	
 	
 	public ArrayList<Study_join_DTO> study_join_list(String user_id) throws Exception
 	{

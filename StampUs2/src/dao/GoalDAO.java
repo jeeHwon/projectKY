@@ -9,7 +9,7 @@ import dto.Study_my_DTO;
 
 public class GoalDAO {
 
-	DB db = null;
+	DB db = new DB();
 	
 	public GoalDAO() 
 	{
@@ -107,7 +107,7 @@ public class GoalDAO {
 			
 			}
 		}
-		db.close();
+		
 	}
 	
 	public void updateGoal(int study_my_no) throws Exception
@@ -158,7 +158,7 @@ public class GoalDAO {
 			
 		}
 	
-		db.close();
+		
 	}
 	
 	public void deleteGoal(String study_my_no) throws Exception 
@@ -168,7 +168,7 @@ public class GoalDAO {
 		db.stmt = db.conn.createStatement();
 		db.stmt.executeUpdate(sql);
 		
-		db.close();
+		
 	}
 	
 	//방별 인증현황 가져오기
@@ -200,7 +200,7 @@ public class GoalDAO {
 	//방별 아이디별 인증현황 가져오기
 	public ArrayList<GoalDTO> roomGoal(String study_no, String user_id) throws Exception
 	{
-		String sql = "select * from goal where goal_room_no="+study_no;
+		String sql = "select goal_no, user_id, goal_room_no, isgoal, to_char(goal_day, 'yyyy-mm-dd') goal_day from goal where goal_room_no="+study_no+" user_id='"+user_id+"'";
 		
 		db.stmt = db.conn.createStatement();
 		db.rs = db.stmt.executeQuery(sql);
@@ -250,6 +250,56 @@ public class GoalDAO {
 		return list;
 	}
 	
+	//방별 아이디별 특정 날짜의 인증현황 가져오기
+	public ArrayList<GoalDTO> roomDayGoal(String study_no, String goal_day) throws Exception
+	{
+		String sql = "select * from goal where goal_room_no="+study_no+" and to_char(goal_day, 'YYYY-MM-DD')='"+goal_day+"'";
+				
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+			
+		ArrayList<GoalDTO> list = new ArrayList<GoalDTO>();
+		
+		while(db.rs.next()) 
+		{
+			GoalDTO gDTO=new GoalDTO();
+			
+			gDTO.setGoal_day(db.rs.getString("goal_day"));
+			gDTO.setGoal_no(db.rs.getInt("goal_no"));
+			gDTO.setGoal_room_no(db.rs.getInt("goal_room_no"));
+			gDTO.setIsgoal(db.rs.getString("isgoal"));
+			gDTO.setUser_id(db.rs.getString("user_id"));
+			
+			list.add(gDTO);
+		}
+				
+		return list;
+	}
+	
+	public ArrayList<GoalDTO> roomDayGoalById(String study_no, String goal_day, String user_id) throws Exception
+	{
+		String sql = "select * from goal where goal_room_no="+study_no+" and to_char(goal_day, 'YYYY-MM-DD')='"+goal_day+"' and user_id='"+user_id+"'";
+		
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+			
+		ArrayList<GoalDTO> list = new ArrayList<GoalDTO>();
+		
+		while(db.rs.next()) 
+		{
+			GoalDTO gDTO=new GoalDTO();
+			
+			gDTO.setGoal_day(db.rs.getString("goal_day"));
+			gDTO.setGoal_no(db.rs.getInt("goal_no"));
+			gDTO.setGoal_room_no(db.rs.getInt("goal_room_no"));
+			gDTO.setIsgoal(db.rs.getString("isgoal"));
+			gDTO.setUser_id(db.rs.getString("user_id"));
+			
+			list.add(gDTO);
+		}
+				
+		return list;
+	}
 	
 	
 }

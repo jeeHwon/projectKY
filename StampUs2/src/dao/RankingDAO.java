@@ -72,7 +72,7 @@ public class RankingDAO
 		
 		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
 		
-		ujList = ujDAO.listById(user_id);
+		ujList = ujDAO.countById(user_id);
 				
 		ArrayList<RankingDTO> list = new ArrayList<RankingDTO>();
 		
@@ -138,7 +138,7 @@ public class RankingDAO
 		{
 			ArrayList<User_join_DTO> ujList=new ArrayList<User_join_DTO>();
 			
-			ujList = uDAO.listByStudy(db.rs.getString("study_no"));
+			ujList = uDAO.countByStudy(db.rs.getString("study_no"));
 			
 			sql = "select count(*) certcnt from goal where goal_room_no="+db.rs.getString("study_no");
 			Statement stmt= db.conn.createStatement();
@@ -207,7 +207,7 @@ public class RankingDAO
 		{
 			ArrayList<User_join_DTO> ujList=new ArrayList<User_join_DTO>();
 			
-			ujList = uDAO.listById(db.rs.getString("user_id"));
+			ujList = uDAO.countById(db.rs.getString("user_id"));
 			
 			sql = "select count(*) certcnt from goal where user_id='"+db.rs.getString("user_id")+"'";
 			Statement stmt= db.conn.createStatement();
@@ -258,7 +258,7 @@ public class RankingDAO
 		
 		ArrayList<User_join_DTO> ujList = new ArrayList<User_join_DTO>();
 		
-		ujList = ujDAO.listById(user_id);
+		ujList = ujDAO.countById(user_id);
 		
 		int certcnt=0;
 		double cnt=0.0;

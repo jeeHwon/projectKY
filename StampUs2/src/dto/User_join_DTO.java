@@ -2,11 +2,29 @@ package dto;
 
 public class User_join_DTO 
 {
-	private int user_join_no, study_no;
-	private String user_id, join_day;
+	private int user_join_no, study_no, deposit, penalty;
+	private String user_id, join_day, end_day;
 	private double cnt;
 	
-	
+
+	public int getDeposit() {
+		return deposit;
+	}
+	public void setDeposit(int deposit) {
+		this.deposit = deposit;
+	}
+	public int getPenalty() {
+		return penalty;
+	}
+	public void setPenalty(int penalty) {
+		this.penalty = penalty;
+	}
+	public String getEnd_day() {
+		return end_day;
+	}
+	public void setEnd_day(String end_day) {
+		this.end_day = end_day;
+	}
 	
 	public double getCnt() {
 		return cnt;
