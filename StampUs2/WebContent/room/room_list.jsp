@@ -304,10 +304,14 @@
         })
         
         // 인증방 중복 참여시 경고창
-        var chk = ${chk}
+        var chk = ${chk}+"";
         if(chk==1)
         {
         	alert('이미 참여중인 방입니다')
+        }
+        else
+        {
+        	
         }
     </script>
 
