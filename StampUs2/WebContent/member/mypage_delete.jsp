@@ -5,13 +5,14 @@
 <%
 	/* String userid = session.getAttribute("userid").toString(); */
 MemberDAO dao = new MemberDAO();
-MemberDTO dto = dao.userInfo("hong1234");
+MemberDTO dto = dao.userInfo("dfd");
 %>
 <script>
+
 	var chk = new XMLHttpRequest();
 	function pwdchk(pwd) {
-		var pwd = document.all.pwd.value;
-		chk.open("post", "pwdcheck.jsp?pwd=" + pwd);
+		var userid = "<%=dto.getUserid()%>";
+		chk.open("post", "pwdcheck.jsp?pwd=" + pwd+"&userid="+userid);
 		chk.send();
 		chk.onreadystatechange = function() {
 			if (chk.readyState == 4) {
@@ -24,7 +25,13 @@ MemberDTO dto = dao.userInfo("hong1234");
 			}
 		}
 	}
-	var checkpw = document.all.pwchk.value;
+	
+	
+	var checkpw = "";
+	function init(){
+		checkpw = document.all.pwchk.value;
+	}
+	
 	function confirm(pwchk) {
 		if (checkpw == 0) {
 			pwchk.pwd.focus();
@@ -33,6 +40,7 @@ MemberDTO dto = dao.userInfo("hong1234");
 			return true;
 		}
 	}
+
 </script>
 <style>
 #info h3 {
@@ -52,10 +60,10 @@ MemberDTO dto = dao.userInfo("hong1234");
 	margin-top: 100px;
 }
 </style>
-<div id="info">
+<div id="info" onload="init()">
 	<div id="chkpwd">
-		<form name="pwchk" method="post" action="member_delete_ok.jsp" onsubmit="return confirm(this);">
-			<input type="hidden" name="pwchk" value=0>
+		<form name="all" method="post" action="member_delete_ok.jsp" onsubmit="return confirm(this);">
+			<input type="hidden" name="pwchk" value="0">
 			<h3>비밀번호를 입력해주세요.</h3>
 			<input type="password" name="pwd" onblur="pwdchk(this.value)">
 			<p>

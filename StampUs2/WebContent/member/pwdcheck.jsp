@@ -13,7 +13,8 @@ Class.forName(driver);
 Connection conn = DriverManager.getConnection(url1, uid, upw);
 
 String userid = request.getParameter("userid");
-String sql="select count(USER_PW) as cnt from USER_MEMBER where USER_ID='"+userid+"'";
+String pwd = request.getParameter("pwd");
+String sql="select count(USER_PW) as cnt from USER_MEMBER where USER_ID='"+userid+"' and USER_PW='"+pwd+"'";
 
 Statement stmt = conn.createStatement();
 
