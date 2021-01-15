@@ -12,8 +12,12 @@
    // DB_Conn 클래스에서 content()실행
    RevDao rdao=new RevDao();
    RevDto rdto=rdao.content(rev_no);
-   String id=(String)session.getAttribute("id");   
-%>  
+   String userid="";
+   if(session.getAttribute("userid")!=null)
+   {
+	   userid=session.getAttribute("userid").toString();
+   }  
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +70,7 @@ div.center{font-size:30pt;}
      <tr >  
        <td colsapn="2" align="center" class="button">
        <%
-		if(id=="admin"){
+		if(userid.equals("admin")){
 		%>
 			<a href="rev_update.jsp?rev_no=<%=rdto.getRev_no()%>">수정</a> /
 			<a href="rev_delete.jsp?rev_no=<%=rdto.getRev_no()%>">삭제</a> / 

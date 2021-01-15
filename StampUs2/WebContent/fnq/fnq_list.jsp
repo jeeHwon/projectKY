@@ -23,8 +23,12 @@
    pageContext.setAttribute("list", list4);
    
    
-   String id=(String)session.getAttribute("id");  
-%>
+   String userid="";
+   if(session.getAttribute("userid")!=null)
+   {
+      userid=session.getAttribute("userid").toString();
+   }  
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -204,7 +208,7 @@ th, td {
 	<table>
 	<tr>
 		<%
-		if(id=="admin"){
+		if(userid.equals("admin")){
 		%>
 			<td colspan="3" align="center">
 			<a href="fnq_write.jsp">글올리기 </a>

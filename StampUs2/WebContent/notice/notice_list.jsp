@@ -9,7 +9,11 @@
    NoticeDao ndao=new NoticeDao();
    ArrayList<NoticeDto> list=ndao.list();
    pageContext.setAttribute("list", list);
-   String id=(String)session.getAttribute("id");  
+   String userid="";
+   if(session.getAttribute("userid")!=null)
+   {
+      userid=session.getAttribute("userid").toString();
+   }  
 %>   
 <!DOCTYPE html>
 <html>
@@ -68,14 +72,16 @@ font-family:"HMKMRHD", sans-serif;
 		%>
 		<tr>
 		<%
-		if(id=="admin"){
+		if(userid.equals("admin")){
 		%>
 			<td colspan="3" align="center">
 			<a href="notice_write.jsp">글쓰기 </a>
 			</td>
-		<%
-		}
-		%>
+		<%} else{ %>
+        <td colspan="3" align="center">
+			<a href="notice_write.jsp"> </a>
+			</td>
+         <%} %>
 		</tr>
 	</table>
 </div>

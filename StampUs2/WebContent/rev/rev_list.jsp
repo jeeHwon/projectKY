@@ -11,8 +11,12 @@
    RevDao rdao=new RevDao();
    ArrayList<RevDto> list=rdao.list();
    pageContext.setAttribute("list", list);
-   String id=(String)session.getAttribute("id");  
-%>   
+   String userid="";
+   if(session.getAttribute("userid")!=null)
+   {
+      userid=session.getAttribute("userid").toString();
+   }  
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +78,7 @@ padding:0;
 		%>
 		<tr>
 		<%
-		if(id=="admin"){
+		if(userid.equals("admin")){
 		%>
 			<td colspan="4" align="center">
 			<a href="rev_write.jsp">글쓰기 </a>

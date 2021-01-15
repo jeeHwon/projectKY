@@ -12,7 +12,11 @@
    // DB_Conn 클래스에서 content()실행
    NoticeDao ndao=new NoticeDao();
    NoticeDto ndto=ndao.content(notice_no);
-   String id=(String)session.getAttribute("id");   
+   String userid="";
+   if(session.getAttribute("userid")!=null)
+   {
+      userid=session.getAttribute("userid").toString();
+   }  
 %>    
 <!DOCTYPE html>
 <html>
@@ -54,7 +58,7 @@ div.center{font-size:30pt;}
 		<tr>
 			<td colspan="2" align="center"  class="button">
 		<%
-		if(id=="admin"){
+		if(userid.equals("admin")){
 		%>
 			<a href="notice_update.jsp?notice_no=<%=ndto.getNotice_no()%>">수정</a> 
 			<a href="notice_delete.jsp?notice_no=<%=ndto.getNotice_no()%>">삭제</a> 

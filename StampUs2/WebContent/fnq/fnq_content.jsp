@@ -12,8 +12,12 @@
    // DB_Conn 클래스에서 content()실행
    FnqDao fdao=new FnqDao();
    FnqDto fdto=fdao.content(fnq_no);
-   String id=(String)session.getAttribute("id");  
-%> 
+   String userid="";
+   if(session.getAttribute("userid")!=null)
+   {
+      userid=session.getAttribute("userid").toString();
+   }  
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,8 +66,7 @@ div.center{font-size:30pt;}
      <tr colsapn="2">  
 		<td align="center" class="button">
 		<%
-		if(id=="admin"){
-
+		if(userid.equals("admin")){
 		%>
 		<a href="fnq_update.jsp?fnq_no=<%=fdto.getFnq_no()%>">수정/</a>
 		<a href="fnq_delete.jsp?fnq_no=<%=fdto.getFnq_no()%>">삭제/</a> 
