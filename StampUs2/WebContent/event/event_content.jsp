@@ -8,12 +8,10 @@
 <%@page import="dao.Event_dat_DAO" %>
 <%@page import="dto.Event_dat_DTO" %>
 <% 
-	session.setAttribute("user_id", "admin");
-
 	int event_no=Integer.parseInt(request.getParameter("event_no"));
     EventDAO dao=new EventDAO();
 	EventDTO edDTO = dao.content(event_no);
-	String user_id = session.getAttribute("user_id").toString();
+	String userid = session.getAttribute("userid").toString();
 	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
@@ -77,10 +75,10 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-					<% if(user_id.equals("admin")){ %>
+					<c:if test="${userid eq 'admin'}">
 						<a href="event_update.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">수정</a>
 						<a onclick="return chkDel()" href="event_delete.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">삭제</a>
-					<% } %>
+					</c:if>
 						<a href="event_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록</a>
 					</td>
 				</tr>
@@ -109,7 +107,7 @@
 						<td><%=datList.get(j).getEvent_dat_content() %></td>
 						<td><%=datList.get(j).getEvent_dat_day() %></td>
 						<td>
-							<% if(user_id.equals(datList.get(j).getUser_id())){ %>
+							<% if(userid.equals(datList.get(j).getUser_id())){ %>
 								<a href="javascript:dat_update(<%=datList.get(j).getEvent_dat_no()%>, '<%=datList.get(j).getEvent_dat_content() %>');">수정</a>
 								<a onclick="chkDel()" href="event_dat_delete.jsp?event_dat_no=<%=datList.get(j).getEvent_dat_no() %>&event_no=<%=event_no%>">삭제</a>
 							<% } %>
