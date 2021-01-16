@@ -6,7 +6,7 @@
 <%@page import="dto.EventDTO"%>
 <%
 	//cos.jar 라이브러리를 통해 파일을 업로드
-	String realPath = request.getRealPath("/img");
+	String realPath = "../img/event";
 		//슬래시나 역슬래시2개로 경로표기
 	int size=1024*1024*10;
 	String han="utf-8";
