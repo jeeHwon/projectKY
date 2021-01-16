@@ -102,7 +102,8 @@
 	}
 </SCRIPT>
 <!-- ========================================================================= -->	
-
+<jsp:include page="../left_nav.jsp" />
+<img src="fnqimg/faq.png">사람
 <span align="center"> <h3><a href="../customer/center.jsp">고객센터></a></h3><h1><a href="fnq_list.jsp">FQA</a></h1></span>
 <h3 align="center">stampus를 편리하게 이용해보세요</h3>
 <div>
