@@ -53,15 +53,7 @@ padding:0;
 <!-- ========================================================================= -->	
 
 <title>협력업체목록</title>
-<div style="position: fixed; left: 200px; top: 100px">
- <ul>
- 	<li>카카오톡</li>
- 	<li>전화문의</li>
- 	<li>줄문의</li>
- 	<li>호피문의</li>
- </ul>
- 
- </div>
+<jsp:include page="../left_nav.jsp" />
 
 
 	<div align="center" class="center"> 
