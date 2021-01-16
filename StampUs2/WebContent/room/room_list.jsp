@@ -6,11 +6,36 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
-	RoomDAO rdao = new RoomDAO();
-	ArrayList<RoomDTO> list = rdao.list();
-	pageContext.setAttribute("list", list);
-	String chk=request.getParameter("chk");
-	pageContext.setAttribute("chk", chk);	
+	request.setCharacterEncoding("utf-8");
+	String check = "";
+	String category = "";
+	if (request.getParameter("cate1")==null & request.getParameter("cate2")==null){
+		RoomDAO rdao = new RoomDAO();
+		ArrayList<RoomDTO> list = rdao.list();
+		pageContext.setAttribute("list", list);
+		String chk=request.getParameter("chk");
+		pageContext.setAttribute("chk", chk);	
+	} else{
+		String cate1 = request.getParameter("cate1");
+		String cate2 = request.getParameter("cate2");
+		switch (cate1){
+		case "공부":	category="s_";break;
+		case "운동":	category="x_";break;
+		case "기상":	category="w_";break;
+		case "음식":	category="f_";break;
+		default:category="_";break;
+		}
+		category = category + cate2;	
+		
+		RoomDAO rdao = new RoomDAO();
+		ArrayList<RoomDTO> list = rdao.cateList(category);
+		pageContext.setAttribute("list", list);
+		String chk=request.getParameter("chk");
+		pageContext.setAttribute("chk", chk);	
+	}
+	
+
+
 %>
 
 <jsp:include page="../header.jsp" />
@@ -162,9 +187,9 @@
                                 <li><a class="" href="#">추후추가</a></li>
                                 <li><a class="" href="#">추후추가</a></li>
                             </ul>
-                        </div> 
+                        </div>
                     </div>
-                    
+                    <div><a onclick="cate_search()">검색하기</a></div>
                     <h3>정렬</h3>
                     <div class="sort">
                         <ul>
@@ -173,7 +198,6 @@
                             <li><a href="">오래된순</a></li>
                             <li><a href="">마감임박순</a></li>
                         </ul>
-                        
                     </div>
                    
                     <h3>인증방 목록</h3>
@@ -313,6 +337,41 @@
         {
         	
         }
+        
+        //카테고리 검색시 파라미터 전송
+        function cate_search(){
+        	var activeCate = document.getElementsByClassName("active");
+        	cate1 = activeCate.item(0).innerText	        	
+        	cate2 = activeCate.item(1).innerText
+        	
+            var form = document.createElement('form');
+            form.setAttribute('method', 'post'); 
+            form.setAttribute('action', 'room_list.jsp');
+            document.charset = "utf-8";
+            params = {'cate1':cate1, 'cate2':cate2}
+            for ( var key in params) {
+                var hiddenField = document.createElement('input');
+                hiddenField.setAttribute('type', 'hidden'); 
+                hiddenField.setAttribute('name', key);
+                hiddenField.setAttribute('value', params[key]);
+                form.appendChild(hiddenField);
+            }
+            document.body.appendChild(form);
+            form.submit();
+        }
+        
+        // 선택한 카테고리 유지하는 함수(구현예정)
+        $(function (){
+        	var cate1 ='<%=request.getParameter("cate1")%>'
+        	var cate2 ='<%=request.getParameter("cate2")%>'
+        	if(cate2 != 'null'){
+        		
+        	}
+        	
+       
+        	
+        })
+        
     </script>
 
 <jsp:include page="../footer.jsp" />

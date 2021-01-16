@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dao.RoomDAO" %>
+<%@ page import="dto.RoomDTO" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+	RoomDAO rdao = new RoomDAO();
+	ArrayList<RoomDTO> list = rdao.list();
+	pageContext.setAttribute("list", list);
+	String chk=request.getParameter("chk");
+	pageContext.setAttribute("chk", chk);	
+%>
+
 <jsp:include page="../header.jsp" />
 
 <style>
@@ -34,12 +46,13 @@
 #roomList .roomList .room_list > div > div .poster .rank strong {color: #fff; text-shadow: 2px 2px 3px rgba(0,0,0,1);}
 #roomList .roomList .room_list > div > div .poster .mx {position: absolute; top: 17px; right: 17px;}
 #roomList .roomList .room_list > div > div .poster .mx span {width: 103px; height: 25px; display: block;}
-#roomList .roomList .room_list > div > div .poster .mx .dep05 {background-image: url(../assets/img/icon_dep05.png); background-size: cover;}
+#roomList .roomList .room_list > div > div .poster .mx .dep5 {background-image: url(../assets/img/icon_dep5.png); background-size: cover;}
 #roomList .roomList .room_list > div > div .poster .mx .dep10 {background-image: url(../assets/img/icon_dep10.png); background-size: cover;}
 #roomList .roomList .room_list > div > div .poster .mx .dep15 {background-image: url(../assets/img/icon_dep15.png); background-size: cover;}
 #roomList .roomList .room_list > div > div .poster .mx .dep20 {background-image: url(../assets/img/icon_dep20.png); background-size: cover;}
 #roomList .roomList .room_list > div > div .infor {background: #fff; padding: 17px; border: 1px solid #d9d9d9;}
-#roomList .roomList .room_list > div > div .infor h3 {color: #333; font-size: 24px; font-weight: 700;margin-bottom: 20px;}
+#roomList .roomList .room_list > div > div .infor .infor_title {width:260px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+#roomList .roomList .room_list > div > div .infor h3 {color: #333; font-size: 24px; font-weight: 700; margin-bottom: 20px;}
 #roomList .roomList .room_list > div > div .infor h3 strong {}
 #roomList .roomList .room_list > div > div .infor h3 span {width: 29px; height: 29px; display: inline-block; margin-top: 9px; margin-right: 3px; vertical-align: -5px;}
 #roomList .roomList .room_list > div > div .infor h3 span.cate_s{background-image: url(../assets/img/icon_cate_s.png); background-size: cover;}
@@ -82,12 +95,12 @@
                         </div>                    
                         <div class="cate_detail_02">
                             <ul>
-                                <li class="active"><a class="" href="#">헬스장</a></li>
+                                <li class="active"><a class="" href="#">헬스</a></li>
                                 <li><a class="" href="#">홈트레이닝</a></li>
                                 <li><a class="" href="#">런닝</a></li>
                                 <li><a class="" href="#">걸음수</a></li>
                                 <li><a class="" href="#">다이어트</a></li>
-                                <li><a class="" href="#">자유운동</a></li>
+                                <li><a class="" href="#">요가</a></li>
                             </ul>
                         </div>                         
                         <div class="cate_detail_03">
@@ -155,8 +168,8 @@
                     <h3>정렬</h3>
                     <div class="sort">
                         <ul>
-                            <li class="checked"><a href="">인기순</a></li>
-                            <li><a href="">최신순</a></li>
+                            <li class="checked"><a href="">최신순</a></li>
+                            <li><a href="">인기순</a></li>
                             <li><a href="">오래된순</a></li>
                             <li><a href="">마감임박순</a></li>
                         </ul>
@@ -164,418 +177,88 @@
                     </div>
                    
                     <h3>인증방 목록</h3>
+                    <c:forEach var="i" begin="0" end="${fn:length(list)-1}" step="4">
                     <div class="room_list">
                         <div class="list_cont1">
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/poster_s_01.jpg" alt="">
+                                        <img src="../assets/img/${list[i].file_name}" alt="">
                                     </figure>
-                                    <div class="rank"><strong>1</strong></div>
+                                    <div class="rank"><strong>${i+1}</strong></div>
                                     <div class="mx">
-                                        <span class="icon dep10 ir_pm">deposit</span>
+                                        <span class="icon dep${list[i].deposit} ir_pm">deposit</span>
                                         <span></span>
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate_s ir_pm">study</span><strong>직장인 토익900점</strong></h3>
+                                    <div class="infor_title"><h3><span class="icon cate_${list[i].category} ir_pm">study</span><strong>${list[i].title}</strong></h3></div>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="room_content.jsp?r_id=${list[i].id}">상세보기</a>
+                                        <a href="../study_my/study_join_ok.jsp?room_no=${list[i].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/poster_x_01.jpg" alt="">
+                                        <img src="../assets/img/${list[i+1].file_name}" alt="">
                                     </figure>
-                                    <div class="rank"><strong>2</strong></div>
+                                    <div class="rank"><strong>${i+2}</strong></div>
                                     <div class="mx">
-                                        <span class="icon dep05 ir_pm">deposit</span>
+                                        <span class="icon dep${list[i+1].deposit} ir_pm">deposit</span>
                                         <span></span>
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate_x ir_pm">study</span><strong>한강 주말런닝 :)</strong></h3>
+                                    <div class="infor_title"><h3><span class="icon cate_${list[i+1].category} ir_pm">study</span><strong>${list[i+1].title}</strong></h3></div>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+1].id}">상세보기</a>
+                                        <a href="../study_my/study_join_ok.jsp?room_no=${list[i+1].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/poster_f_01.jpg" alt="">
+                                        <img src="../assets/img/${list[i+2].file_name}" alt="">
                                     </figure>
-                                    <div class="rank"><strong>3</strong></div>
+                                    <div class="rank"><strong>${i+3}</strong></div>
                                     <div class="mx">
-                                        <span class="icon dep15 ir_pm">deposit</span>
+                                        <span class="icon dep${list[i+2].deposit} ir_pm">deposit</span>
                                         <span></span>
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate_f ir_pm">study</span><strong>다이어트 식단인증</strong></h3>
+                                    <div class="infor_title"><h3><span class="icon cate_${list[i+2].category} ir_pm">study</span><strong>${list[i+2].title}</strong></h3></div>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+2].id}">상세보기</a>
+                                        <a href="../study_my/study_join_ok.jsp?room_no=${list[i+2].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/poster_w_01.jpg" alt="">
+                                        <img src="../assets/img/${list[i+3].file_name}" alt="">
                                     </figure>
-                                    <div class="rank"><strong>4</strong></div>
+                                    <div class="rank"><strong>${i+4}</strong></div>
                                     <div class="mx">
-                                        <span class="icon dep20 ir_pm">deposit</span>
+                                        <span class="icon dep${list[i+3].deposit} ir_pm">deposit</span>
                                         <span></span>
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon cate_w ir_pm">study</span><strong>평일 새벽6시 기상!</strong></h3>
+                                    <div class="infor_title"><h3><span class="icon cate_${list[i+3].category} ir_pm">study</span><strong>${list[i+3].title}</strong></h3></div>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="room_content.jsp?r_id=${list[i+3].id}">상세보기</a>
+                                        <a href="../study_my/study_join_ok.jsp?room_no=${list[i+3].id}">참여하기</a>
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
-                        
                     </div>
-                    <div class="room_list">
-                        <div class="list_cont1">
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_s_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>1</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep10 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_s ir_pm">study</span><strong>직장인 토익900점</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_x_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>2</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep05 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_x ir_pm">study</span><strong>한강 주말런닝 :)</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_f_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>3</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep15 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_f ir_pm">study</span><strong>다이어트 식단인증</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_w_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>4</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep20 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_w ir_pm">study</span><strong>평일 새벽6시 기상!</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    <div class="room_list">
-                        <div class="list_cont1">
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_s_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>1</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep10 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_s ir_pm">study</span><strong>직장인 토익900점</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_x_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>2</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep05 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_x ir_pm">study</span><strong>한강 주말런닝 :)</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_f_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>3</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep15 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_f ir_pm">study</span><strong>다이어트 식단인증</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_w_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>4</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep20 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_w ir_pm">study</span><strong>평일 새벽6시 기상!</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    <div class="room_list">
-                        <div class="list_cont1">
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_s_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>1</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep10 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_s ir_pm">study</span><strong>직장인 토익900점</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_x_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>2</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep05 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_x ir_pm">study</span><strong>한강 주말런닝 :)</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_f_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>3</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep15 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_f ir_pm">study</span><strong>다이어트 식단인증</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_w_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>4</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep20 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_w ir_pm">study</span><strong>평일 새벽6시 기상!</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    <div class="room_list">
-                        <div class="list_cont1">
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_s_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>1</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep10 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_s ir_pm">study</span><strong>직장인 토익900점</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_x_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>2</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep05 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_x ir_pm">study</span><strong>한강 주말런닝 :)</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_f_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>3</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep15 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_f ir_pm">study</span><strong>다이어트 식단인증</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="../assets/img/poster_w_01.jpg" alt="">
-                                    </figure>
-                                    <div class="rank"><strong>4</strong></div>
-                                    <div class="mx">
-                                        <span class="icon dep20 ir_pm">deposit</span>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon cate_w ir_pm">study</span><strong>평일 새벽6시 기상!</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                   
-                    
+                    </c:forEach>
                 </div>    
             </div>            
         </div>
@@ -619,6 +302,17 @@
             checkA.removeClass("checked")
             target.addClass("checked")
         })
+        
+        // 인증방 중복 참여시 경고창
+        var chk = ${chk}+"";
+        if(chk==1)
+        {
+        	alert('이미 참여중인 방입니다')
+        }
+        else
+        {
+        	
+        }
     </script>
 
 <jsp:include page="../footer.jsp" />

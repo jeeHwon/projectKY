@@ -80,6 +80,43 @@ public class RoomDAO {
 		return list;
 		
 	}
+	
+	public ArrayList<RoomDTO> cateList(String category) throws SQLException{
+		
+		String sql = "select * from room where ROOM_CATEGORY2 = '"+category+"' order by ROOM_NO desc";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		ArrayList<RoomDTO> list = new ArrayList<RoomDTO>();
+		if(rs.next()) {
+			do {
+				RoomDTO rdto = new RoomDTO();
+				rdto.setId(rs.getInt("ROOM_NO"));
+				rdto.setTitle(rs.getString("ROOM_TITLE"));
+				rdto.setStart_day(rs.getString("ROOM_START_DAY"));
+				rdto.setEnd_day(rs.getString("ROOM_END_DAY"));
+				rdto.setCategory(rs.getString("ROOM_CATEGORY"));
+				rdto.setCategory2(rs.getString("ROOM_CATEGORY2"));
+				rdto.setPeople(rs.getInt("ROOM_PEOPLE"));
+				rdto.setCheck_day(rs.getString("ROOM_CHECK_DAY"));
+				rdto.setCerti_type(rs.getString("ROOM_CERTI_TYPE"));
+				rdto.setDeposit(rs.getString("ROOM_DEPOSIT"));
+				rdto.setPenalty(rs.getString("ROOM_PENALTY"));
+				rdto.setContent(rs.getString("ROOM_CONTENT"));
+				rdto.setFile_name(rs.getString("ROOM_FILE_NAME"));
+				rdto.setCondition(rs.getString("ROOM_CONDITION"));
+				rdto.setWrite_day(rs.getString("ROOM_WRITE_DAY"));
+				list.add(rdto);
+				
+			} while (rs.next());
+			
+		} else {
+			System.out.println("널이에유~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			return list();
+		}
+		return list;
+		
+		
+	}
 	public RoomDTO content(String id) throws SQLException {
 		
 		String sql = "select * from room where ROOM_NO= "+id;
