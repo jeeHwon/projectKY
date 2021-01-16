@@ -1,44 +1,37 @@
+<%@page import="javax.xml.ws.Response"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.sql.*" %>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
+<%@	page import="dto.FboardDto" %>
+<%@	page import="dao.FboardDao" %>
 <%
 
-	// DB 연결
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
-	String uid = "ky";
-	String upw = "1234";
-	Class.forName(driver);
-    Connection conn = DriverManager.getConnection(url, uid, upw);
-    
-    String realPath = request.getRealPath("/img");
-    int size = 1024 * 1024 * 10;
+	String realPath = request.getRealPath("/img");
+	int size = 1024 * 1024 * 10;
+	String han = "utf-8";
 	
-	//request값
-	request.setCharacterEncoding("utf-8");
-	String title = request.getParameter("title");
-	String name = request.getParameter("name");
-	String content = request.getParameter("content");
+	MultipartRequest multi = new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());
 	
-	//쿼리 생성
-	String sql = "insert into fboard(id, title, name, content, writeday)";
-	sql = sql + " values(fboard_seq.nextval,?, ?, ?, sysdate)";
+	String userid = session.getAttribute("userid").toString();
+	String title = multi.getParameter("title");
+	String content = multi.getParameter("content");
+	String fboard_img = multi.getFilesystemName("fboard_img");
 	
-	//심부름꾼 생성
-	PreparedStatement pstmt = conn.prepareStatement(sql);
+	FboardDto fdto = new FboardDto();
+	fdto.setUserid(userid);
+	fdto.setTitle(title);
+	fdto.setContent(content);
+	fdto.setFboard_img(fboard_img);
+	
+	FboardDao fdao = new FboardDao();
+	
+	fdao.write_ok(fdto);
 
-	pstmt.setString(1, title);
-	pstmt.setString(2, name);
-	pstmt.setString(3, content);
-	
-	//쿼리 실행
-	pstmt.executeUpdate();
-	
-	//이동
 	response.sendRedirect("board_list.jsp");
-	
-	pstmt.close();
-	conn.close();
+
 %>
 	
 	

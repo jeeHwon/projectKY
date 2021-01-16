@@ -1,26 +1,36 @@
+<%@page import="javax.xml.ws.Response"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
+<%@	page import="dto.FboardDto" %>
+<%@	page import="dao.FboardDao" %>
 <%
-
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
-	String uid = "ky";
-	String upw = "1234";
-	Class.forName(driver);
-    Connection conn = DriverManager.getConnection(url, uid, upw);
-    
-    request.setCharacterEncoding("utf-8");
-    String id = request.getParameter("id");
-    String title = request.getParameter("title");
-    String content = request.getParameter("content");
-  
-    String sql = "update fboard set title='"+title+"', content='"+content+"' where id=" +id;
-   	
-    Statement stmt = conn.createStatement();
-    
-    stmt.executeUpdate(sql);
-    
+	String realPath = request.getRealPath("/img");
+	int size = 1024 * 1024 * 10;
+	String han = "utf-8";
+	
+	MultipartRequest multi = new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());
+	
+	String pager = request.getParameter("pager");
+	String cla = request.getParameter("cla");
+	String word = request.getParameter("word");
+	String userid = session.getAttribute("userid").toString();
+	String title = multi.getParameter("title");
+	String content = multi.getParameter("content");
+	String fboard_img = multi.getFilesystemName("fboard_img");
+	
+	FboardDto fdto = new FboardDto();
+	fdto.setUserid(userid);
+	fdto.setTitle(title);
+	fdto.setContent(content);
+	fdto.setFboard_img(fboard_img);
+	
+	FboardDao fdao = new FboardDao();
+	
+	fdao.update_ok(fdto);
     response.sendRedirect("board_list.jsp");
     
 %>

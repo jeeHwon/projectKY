@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@	page import="dto.Fboard_datDto" %>
+<%@	page import="dao.Fboard_datDao" %>
 <%
 	/* dat table
 	create table fboard_dat(
@@ -16,31 +18,18 @@
 	create sequence fboard_dat_seq start with 1 increment by 1 maxvalue 1000000 nocycle; 
 	*/
     
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@211.205.104.35:1521:xe";
-	String uid = "ky";
-	String upw = "1234";
-	Class.forName(driver);
-    Connection conn = DriverManager.getConnection(url, uid, upw);
-	
-	// request값
 	request.setCharacterEncoding("utf-8");
+	String userid = session.getAttribute("userid").toString();
 	String dat_no_id = request.getParameter("dat_no_id");
-	String name = request.getParameter("name");
 	String content = request.getParameter("content");
 
-	String sql = "insert into fboard_dat (dat_no, name, content, writeday, dat_no_id) ";
-	sql += " values (fboard_dat_seq.nextval, ?, ?, sysdate, ?)";
+	Fboard_datDao fddao = new Fboard_datDao();
+	Fboard_datDto fddto = new Fboard_datDto();
+	fddto.setUserid(userid);
+	fddto.setDat_no_id(Integer.parseInt(dat_no_id));
+	fddto.setContent(content);
 	
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	pstmt.setString(1, name);
-	pstmt.setString(2, content);
-	pstmt.setString(3, dat_no_id);
-	
-	pstmt.executeUpdate();
-	
+	fddao.dat_insert(fddto);
 	response.sendRedirect("board_content.jsp?id="+dat_no_id);
 	
-	pstmt.close();
-	conn.close();
 %>
