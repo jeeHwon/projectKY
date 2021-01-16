@@ -11,7 +11,7 @@
 	int event_no=Integer.parseInt(request.getParameter("event_no"));
     EventDAO dao=new EventDAO();
 	EventDTO edDTO = dao.content(event_no);
-	String userid = session.getAttribute("userid").toString();
+	String userid = (String)session.getAttribute("userid")==null ? "" : (String)session.getAttribute("userid"); 
 	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
@@ -61,7 +61,7 @@
 				<tr>
 					<td>내용</td>
 					<td>
-						<img src="img/<%=edDTO.getEvent_img()%>"><br>
+						<img src="../img/<%=edDTO.getEvent_img()%>"><br>
 						<%=edDTO.getEvent_content()%>
 					</td>
 				</tr>
