@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="java.sql.*"%>
@@ -18,11 +19,15 @@
       userid=session.getAttribute("userid").toString();
    }  
 %>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8"> 
-<title>공지사항 상세페이지</title>
+
+<jsp:include page="../header.jsp" />
+
+<section id="notice_content">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+<!-- ========================================================================= -->	
+			
 <style>
    td,tr {
     border:1px solid #000000;
@@ -30,10 +35,9 @@
    }
  td.button{font-size:15pt; border:0px;}
 div.center{font-size:30pt;}
-</style>
-</head>
-<body>
-<jsp:include page="../header.jsp" />
+</style>			
+<!-- ========================================================================= -->	
+
   <div align="center"  class="center">  
 		<a href="../customer/center.jsp">고객센터></a>
 		<a href="rev_list.jsp">협력업체</a>
@@ -71,7 +75,11 @@ div.center{font-size:30pt;}
 	</div>
 	<form method="post" action="notice_delete.jsp" id="del">
 	      <input type="hidden" name="notice_no" value="<%=ndto.getNotice_no()%>">
-	
+<!-- ========================================================================= -->	
+		
+			</div>
+		</div>
+	</div>
+</section>
+
 <jsp:include page="../footer.jsp" />
-</body>
-</html>

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="java.sql.*"%>
@@ -17,32 +15,37 @@
    {
       userid=session.getAttribute("userid").toString();
    }  
-%>   
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">															
-<title>상세답변</title>
+%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:include page="../header.jsp" />
+
+<section id="fnq_content">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+<!-- ========================================================================= -->	
 <style>
-table {
+.fnq_content table {
 	width: 70%;
 	border-top: 1px solid #000000;
 	border-collapse: collapse;
 }
 
-th, td {
-	border-bottom: 1px solid #000000;
+.fnq_content th,td {
+	border-bottom: 3px solid #000000;
 	padding: 10px;
 }
-td.nav{
+.fnq_content td.nav{
 font-family:"HMKMRHD", sans-serif;
 font-size:16pt;
 }
-td.button{font-size:15pt;}
-div.center{font-size:30pt;}
+.fnq_content.td.button{font-size:15pt;}
+.fnq_content.div.center{font-size:30pt;}
 </style>
-</head>
-<body>
+<!-- ========================================================================= -->
+	<title>상세답변</title>			
 	<jsp:include page="../header.jsp" />
 	<div align="center"  class="center">  
 	<a href="../customer/center.jsp">고객센터></a>
@@ -81,7 +84,10 @@ div.center{font-size:30pt;}
      </table>
      </div>
    <form method="post" action="fnq_delete.jsp" id="del">
-	
+<!-- ========================================================================= -->	
+			</div>
+		</div>
+	</div>
+</section>
+
 <jsp:include page="../footer.jsp" />
-</body>
-</html>

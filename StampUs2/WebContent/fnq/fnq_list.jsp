@@ -1,6 +1,7 @@
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.*"%>
 <%@ page import="dao.FnqlistDao"%>
 <%@ page import="dto.FnqDto"%>
@@ -28,20 +29,24 @@
    {
       userid=session.getAttribute("userid").toString();
    }  
-%>   
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+%>  
+
+<jsp:include page="../header.jsp" />
+
+<section id="fnq_list">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+<!-- ========================================================================= -->	
+			
 <style>
-table {
+.fnq_list table {
 	width: 70%;
 	border-top: 0px;
 	border-collapse: collapse;
 }
 
-th, td {
+.fnq_list th, td {
 	border-bottom: 2px solid #444444;
 	padding: 10px;
 }
@@ -96,8 +101,8 @@ th, td {
 		}
 	}
 </SCRIPT>
-<body >
-<jsp:include page="../header.jsp" />
+<!-- ========================================================================= -->	
+
 <span align="center"> <h3><a href="../customer/center.jsp">고객센터></a></h3><h1><a href="fnq_list.jsp">FQA</a></h1></span>
 <h3 align="center">stampus를 편리하게 이용해보세요</h3>
 <div>
@@ -124,14 +129,16 @@ th, td {
 		    {
  		%>
  		<tr>
-			<td align="center" align="right"><%=list0.get(i).getFnq_type()%></td>
-			<td align="center"><%=list0.get(i).getFnq_title()%></td>
+			<td align="center" ><%=list0.get(i).getFnq_type()%></td>
+			<td align="center" ><%=list0.get(i).getFnq_title()%></td>
 			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list0.get(i).getFnq_no()%>">답변보기!</a></td>	
 		<tr>
 		<%
 			}
 		%>
 	</table>
+<!-- ========================================================================= -->	
+<!-- ========================================================================= -->		
 </div>
 <div align="center" >
 	<table id=all style="display: none;" align="center">
@@ -149,6 +156,7 @@ th, td {
 			}
 		%>
 	</table>
+<!-- ========================================================================= -->		
 	<table id=view1 style="display: none;" align="center" >
 		<%
 		    for(int i=0;i<list1.size();i++)
@@ -163,6 +171,7 @@ th, td {
 			}
 		%>
 	</table>
+<!-- ========================================================================= -->		
 	<table id=view2 style="display: none;" align="center" class="it">
 		<% 
 		    for(int i=0;i<list2.size();i++)
@@ -176,6 +185,7 @@ th, td {
 			}
 		%>
 	</table>
+<!-- ========================================================================= -->		
 	<table id=view3 style="display: none;" align="center" class="it">
 		<%
 		    for(int i=0;i<list3.size();i++)
@@ -190,6 +200,7 @@ th, td {
 			}
 		%>
 	</table>
+<!-- ========================================================================= -->		
 	<table id=view4 style="display: none;" align="center" >
 		<%
 		    for(int i=0;i<list4.size();i++)
@@ -219,7 +230,11 @@ th, td {
 		</tr>
 	</table>
 </div>	
-	<jsp:include page="../footer.jsp" />
-</body>
-</html>
+<!-- ========================================================================= -->	
 
+			</div>
+		</div>
+	</div>
+</section>
+
+<jsp:include page="../footer.jsp" />

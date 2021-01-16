@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="java.sql.*"%>
@@ -17,12 +18,15 @@
    {
 	   userid=session.getAttribute("userid").toString();
    }  
-%>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>협력업체<%=rdto.getRev_company()%></title>
+%>   
+<jsp:include page="../header.jsp" />
+
+<section id="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+<!-- ========================================================================= -->	
+			
 <style>
 table {
 	width: 70%;
@@ -37,10 +41,10 @@ th, td {
 }
 td.button{font-size:15pt;}
 div.center{font-size:30pt;}
-</style>
-</head>
-<body>
-	<jsp:include page="../header.jsp" />
+</style>	
+<!-- ========================================================================= -->	
+
+<title>협력업체<%=rdto.getRev_company()%></title>	
 	<div align="center"  class="center">  
 	<a href="../customer/center.jsp">고객센터></a>
 	<a href="rev_list.jsp">협력업체</a>
@@ -79,11 +83,15 @@ div.center{font-size:30pt;}
 		%>
 			<a href="rev_list.jsp"> 목록 </a></td>
 	  </td>
+<!-- ========================================================================= -->	
 
      </table>
-     </div>
-   <form method="post" action="rev_delete.jsp" id="del">
-	
+     </div>			
+			</div>
+		</div>
+	</div>
+</section>
+
 <jsp:include page="../footer.jsp" />
-</body>
-</html>
+ 
+

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.*"%>
 <%@ page import ="dao.NoticeDao" %>
 <%@page import="java.util.ArrayList" %>
@@ -14,12 +15,16 @@
    {
       userid=session.getAttribute("userid").toString();
    }  
-%>   
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>공지사항</title>
+%>  
+
+<jsp:include page="../header.jsp" />
+
+<section id="noice_list">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+<!-- ========================================================================= -->	
+			
 <style>
 table {
 	width: 70%;
@@ -43,9 +48,8 @@ font-size:12pt;
 font-family:"HMKMRHD", sans-serif;
 }
 </style>
-</head>
-<body>
-	<jsp:include page="../header.jsp" />
+<!-- ========================================================================= -->	
+
 	<div align="center"  class="center">  
 	<a href="../customer/center.jsp">고객센터></a>
 	<a href="notice_list.jsp">공지사항</a>
@@ -84,8 +88,13 @@ font-family:"HMKMRHD", sans-serif;
          <%} %>
 		</tr>
 	</table>
-</div>
+<!-- ========================================================================= -->	
+	
+</div>			
+			</div>
+		</div>
+	</div>
+</section>
+
 <jsp:include page="../footer.jsp" />
-</body>
-</html>
 
