@@ -53,6 +53,17 @@ padding:0;
 <!-- ========================================================================= -->	
 
 <title>협력업체목록</title>
+<div style="position: fixed; left: 200px; top: 100px">
+ <ul>
+ 	<li>카카오톡</li>
+ 	<li>전화문의</li>
+ 	<li>줄문의</li>
+ 	<li>호피문의</li>
+ </ul>
+ 
+ </div>
+
+
 	<div align="center" class="center"> 
 	<a href="../customer/center.jsp">고객센터></a>
 	<a href="rev_list.jsp">협력업체</a>
