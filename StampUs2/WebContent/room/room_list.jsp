@@ -55,6 +55,10 @@
 #roomList .roomList .cate_detail > div > ul > li a {display: block; padding: 15px 0; font-size: 18px; color: #666; font-weight: 700;}    
 #roomList .roomList .cate_detail > div > ul > li.active a {background: #CB230C; color: #fff;}
 
+#roomList .roomList .cate_search {width: 200px; height:30px; border-radius: 30px; margin-top:30px; margin-bottom: 30px; text-align: center; border: 1px solid #CB230C; background:#CB230C;}
+#roomList .roomList .cate_search ul li a {display: block; color: #fff; font-size: 18px;}
+#roomList .roomList .cate_search ul li a:hover {color: #333; }
+
 #roomList .roomList .sort {margin-bottom: 30px;}
 #roomList .roomList .sort ul {width: 380px; padding-left: 10px; border-bottom: 2px solid #c4c4c4;}
 #roomList .roomList .sort li {display: inline; position: relative; margin-right: 30px;}
@@ -189,14 +193,20 @@
                             </ul>
                         </div>
                     </div>
-                    <div><a onclick="cate_search()">검색하기</a></div>
+                    
+                    <div class="cate_search">
+                    	<ul>
+                    		<li><a href="#" onclick="cate_search()">카테고리로 검색하기</a></li>
+                    	</ul>
+                    </div>
+                    
                     <h3>정렬</h3>
                     <div class="sort">
                         <ul>
-                            <li class="checked"><a href="">최신순</a></li>
-                            <li><a href="">인기순</a></li>
-                            <li><a href="">오래된순</a></li>
-                            <li><a href="">마감임박순</a></li>
+                            <li class="checked"><a href="#" onclick="list_sort(0)">최신순</a></li>
+                            <li><a href="#" onclick="list_sort(1)">인기순</a></li>
+                            <li><a href="#" onclick="list_sort(2)">오래된순</a></li>
+                            <li><a href="#" onclick="list_sort(3)">마감임박순</a></li>
                         </ul>
                     </div>
                    
@@ -360,18 +370,11 @@
             form.submit();
         }
         
-        // 선택한 카테고리 유지하는 함수(구현예정)
-        $(function (){
-        	var cate1 ='<%=request.getParameter("cate1")%>'
-        	var cate2 ='<%=request.getParameter("cate2")%>'
-        	if(cate2 != 'null'){
-        		
-        	}
+        function list_sort(n){
         	
-       
-        	
-        })
+        }
         
+
     </script>
 
 <jsp:include page="../footer.jsp" />
