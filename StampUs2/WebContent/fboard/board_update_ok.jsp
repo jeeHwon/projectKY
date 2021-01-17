@@ -19,12 +19,14 @@
  	int id = Integer.parseInt(multi.getParameter("id"));
 	String title = multi.getParameter("title");
 	String content = multi.getParameter("content");
-	String fboard_img = multi.getFilesystemName("fboard_img");
+	
+	String fboard_img = (multi.getFilesystemName("fboard_img") == null) ? "" : multi.getFilesystemName("fboard_img");
 	
 	FboardDto fdto = new FboardDto();
 	fdto.setId(id);
 	fdto.setTitle(title);
 	fdto.setContent(content);
+
 	fdto.setFboard_img(fboard_img);
 	
 	FboardDao fdao = new FboardDao();

@@ -8,6 +8,9 @@
 <%@	page import="dto.FboardDto" %>
 <%@	page import="dao.FboardDao" %>
 <%
+	session.setAttribute("userid", "test");
+%>
+<%
 
 	String realPath = request.getRealPath("/img");
 	int size = 1024 * 1024 * 10;

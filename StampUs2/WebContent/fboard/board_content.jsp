@@ -69,8 +69,9 @@
 <div align="center">
 <table align="center" width="600">
 <%
+	
 	Fboard_datDao fddao = new Fboard_datDao();
-	ArrayList<Fboard_datDto> datList = fddao.list(id);
+	ArrayList<Fboard_datDto> datList = fddao.dat_content(String.valueOf(id));
 	
 	for(int i = 0; i < datList.size(); i++){
 	

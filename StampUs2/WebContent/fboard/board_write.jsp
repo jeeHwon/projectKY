@@ -8,26 +8,21 @@
 <jsp:include page="../header.jsp" />
 <style>
 	table {
+    	display:inline;
 	    margin: 30px auto;
     	width: 80vw;
     }
 </style>
 <section id="fboard_write">
-<div class="container">
-	<div class="row">
-		<div class="fboard_write">
-			<form method="post" action="board_write_ok.jsp" enctype="multipart/form-data">
+	<div align="center">
+		<form method="post" action="board_write_ok.jsp" enctype="multipart/form-data">
 			<table>
 				<tr>
-					<td align="center">제목</td>
-					<td><input type="text" name="title"></td>
-					<td>사진 첨부</td>
-					<td><input type="file" name="fboard_img"></td>
+					<td>제목 <input type="text" name="title">
+					   사진 첨부<input type="file" name="fboard_img"></td>
 				</tr>
-			</table>
-			<table>
 				<tr>
-					<td align="center"><textarea cols="80" rows="30" name="content"></textarea></td>
+					<td><textarea cols="80" rows="30" name="content"></textarea></td>
 				</tr>
 				<tr>
 					<td align="center"><input type="submit" value="글쓰기"></td>
@@ -35,7 +30,5 @@
 			</table>
 		</form>
 	</div>
-</div>
-</div>
 </section>
 <jsp:include page="../footer.jsp" />

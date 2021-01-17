@@ -6,6 +6,10 @@
 <%@	page import="dao.FboardDao" %>
 
 <%
+	session.setAttribute("userid", "test");
+%>
+
+<%
 	String userid = (String)session.getAttribute("userid");
 	
 	request.setCharacterEncoding("utf-8");
@@ -29,7 +33,7 @@
 		<div class="row">
 		<div class="div_fboardlist">
 <div align="center">
-	<form name="searchFrm" method="post" action="board_list.jsp">
+	<form name="searchFrm" method="post" action="board_list.jsp" enctype="multipart/form-data">
 		<select name="cla">
 			<option value="name">이름</option>
 			<option value="title">제목</option>
@@ -139,8 +143,8 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><a href="board_write.jsp">글쓰기</a></td>
-			<td colspan="2" align="center"><a href="board_list.jsp">목록보기</a></td>
+			<td colspan="3" align="center"><a href="board_write.jsp">글쓰기</a></td>
+			<td colspan="1" align="center"><a href="board_list.jsp">목록보기</a></td>
 	</table>
 	</div>
 		</div>

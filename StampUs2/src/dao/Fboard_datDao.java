@@ -28,7 +28,7 @@ public class Fboard_datDao {
 		
 		db.close();
 	}
-	public ArrayList<Fboard_datDto> list(int dat_no_id) throws SQLException {
+	public ArrayList<Fboard_datDto> dat_content(String dat_no_id) throws SQLException {
 		String sql = "select * from fboard_dat where dat_no_id=" + dat_no_id + " order by dat_no desc";
 		
 		db.stmt = db.conn.createStatement();
