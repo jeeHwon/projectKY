@@ -12,6 +12,9 @@
 	    margin: 30px auto;
     	width: 80vw;
     }
+    td {
+		border:1px solid #cccccc;
+	}
 </style>
 <section id="fboard_write">
 	<div align="center">

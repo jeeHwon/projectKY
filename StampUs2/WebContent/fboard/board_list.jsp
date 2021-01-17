@@ -27,6 +27,9 @@
 	    margin: 30px auto;
     	width: 80vw;
     }
+    td {
+		border:1px solid #cccccc;
+	}
 </style>
 <section id="sec_fboardlist">
 	<div class="container">
@@ -66,7 +69,7 @@
 %>
 		<!-- 사용자가 클릭하여 이동할 수 있는 페이지 출력 -->
 		<tr>
-			<td colspan="4" align="center">
+			<td colspan="3" align="center">
 			<%
 				//총 페이지 값을 구하기 => 총 레코드수/ 페이지당 레코드수
 				int page_cnt = fdao.get_total_page_cnt();
@@ -141,10 +144,11 @@
 			} 
 			%>
 			</td>
+			<td align="center">
+			<a href="board_write.jsp">글쓰기</a>
+			<a href="board_list.jsp">목록보기</a>
+			</td>
 		</tr>
-		<tr>
-			<td colspan="3" align="center"><a href="board_write.jsp">글쓰기</a></td>
-			<td colspan="1" align="center"><a href="board_list.jsp">목록보기</a></td>
 	</table>
 	</div>
 		</div>
