@@ -33,6 +33,13 @@
 		String chk=request.getParameter("chk");
 		pageContext.setAttribute("chk", chk);	
 	}
+	if(request.getParameter("sort")!=null){
+		RoomDAO rdao = new RoomDAO();
+		ArrayList<RoomDTO> list = rdao.sort_list(request.getParameter("sort"));
+		pageContext.setAttribute("list", list);
+		String chk=request.getParameter("chk");
+		pageContext.setAttribute("chk", chk);	
+	}
 	
 
 
@@ -371,7 +378,18 @@
         }
         
         function list_sort(n){
-        	
+            var form = document.createElement('form');
+            form.setAttribute('method', 'post'); 
+            form.setAttribute('action', 'room_list.jsp');
+            document.charset = "utf-8";
+            params = {'sort':n}
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden'); 
+            hiddenField.setAttribute('name', 'sort');
+            hiddenField.setAttribute('value', n);
+            form.appendChild(hiddenField);
+            document.body.appendChild(form);
+            form.submit();
         }
         
 
