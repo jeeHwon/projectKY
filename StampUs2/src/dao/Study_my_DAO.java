@@ -37,6 +37,7 @@ public class Study_my_DAO
 		GoalDAO gDAO=new GoalDAO();
 		gDAO.insertGoal(sDTO);
 		
+		db.close();
 		
 	}
 	
@@ -62,7 +63,9 @@ public class Study_my_DAO
 			
 			list.add(sDTO);
 		}
-				
+		
+		db.close();
+		
 		return list;
 	}
 	
@@ -85,6 +88,7 @@ public class Study_my_DAO
 		sDTO.setStudy_title(db.rs.getString("study_title"));
 		sDTO.setUser_id(db.rs.getString("user_id"));
 		
+		db.close();
 		
 		return sDTO;
 	}
@@ -113,6 +117,8 @@ public class Study_my_DAO
 			sDTO.setUser_id(db.rs.getString("user_id"));
 			
 		}
+		
+		db.close();
 				
 		return sDTO;
 	}
@@ -136,6 +142,8 @@ public class Study_my_DAO
 		GoalDAO gDAO=new GoalDAO();
 		gDAO.updateGoal(sDTO.getStudy_my_no());
 		
+		db.close();
+		
 	}
 	
 	public void delete(String study_my_no) throws Exception
@@ -147,6 +155,8 @@ public class Study_my_DAO
 		
 		GoalDAO gDAO=new GoalDAO();
 		gDAO.deleteGoal(study_my_no);
+		
+		db.close();
 		
 	}
 	
@@ -205,6 +215,8 @@ public class Study_my_DAO
 		
 		String day = gDAO.getDateDay();
 		
+		db.close();
+		
 		if(room_check_day.contains(day)) 
 		{
 			return goalList(study_no);
@@ -213,6 +225,8 @@ public class Study_my_DAO
 		{
 			return isHoliday(study_no);
 		}
+		
+		
 		
 	}
 	

@@ -13,7 +13,7 @@
 	Study_join_DAO sjDAO = new Study_join_DAO(); 
 	
 	ArrayList<Study_my_DTO> list = sDAO.list(Integer.parseInt(study_no));
-	
+	sDAO = new Study_my_DAO();
 	ArrayList<GoalDTO> gList = sDAO.isCertDay(study_no);
 	
 	pageContext.setAttribute("list",list);
@@ -160,7 +160,7 @@ $(function (){
     
 	.study_dat_list {clear:both;}
 	.study_dat_list table{width:100%;}
-	.study_dat_list table a{font-size:12px; !important}
+	.study_dat_list table a{font-size:12px !important; padding-right:0px !important;}
 
 	#study_dat_write{display: none;}
 	#roomContent::after{clear:both;content:"";display:block;}
@@ -294,10 +294,10 @@ $(function (){
 						{	
 				%>
 				<tr>
-					<td><%=datList.get(j).getUser_id() %></td>
-					<td><%=datList.get(j).getStudy_dat_content() %></td>
-					<td><%=datList.get(j).getStudy_dat_day() %></td>
-					<td>
+					<td width="20%"><%=datList.get(j).getUser_id() %></td>
+					<td width="40%"><%=datList.get(j).getStudy_dat_content() %></td>
+					<td width="20%"><%=datList.get(j).getStudy_dat_day() %></td>
+					<td width="20%">
 							<%
 							if(user_id.equals(datList.get(j).getUser_id()))
 							{

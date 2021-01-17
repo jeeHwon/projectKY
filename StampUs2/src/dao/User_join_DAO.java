@@ -36,6 +36,7 @@ public class User_join_DAO {
 			list.add(ujDTO);
 		}
 		
+		db.close();
 		return list;
 	}
 	
@@ -56,6 +57,8 @@ public class User_join_DAO {
 			ujDTO.setJoin_day(db.rs.getString("join_day"));
 			ujDTO.setEnd_day(db.rs.getString("end_day"));
 		}
+		
+		db.close();
 		
 		return ujDTO;
 	}
@@ -82,6 +85,7 @@ public class User_join_DAO {
 			list.add(ujDTO);
 
 		}
+		db.close();
 		
 		return list;
 	}
@@ -107,6 +111,8 @@ public class User_join_DAO {
 			
 			
 		}
+		
+		db.close();
 		
 		return ujDTO;
 	}
@@ -174,6 +180,8 @@ public class User_join_DAO {
 			
 		}
 		
+		db.close();
+		
 		return list;
 	}
 	
@@ -240,6 +248,8 @@ public class User_join_DAO {
 			
 		}
 		
+		db.close();
+		
 		return list;
 	}
 	
@@ -281,6 +291,8 @@ public class User_join_DAO {
 
 		}
 
+		db.close();
+		
 		return list;
 	}
 	

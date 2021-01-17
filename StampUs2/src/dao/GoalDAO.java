@@ -141,6 +141,8 @@ public class GoalDAO {
 			}
 		}
 		
+		db.close();
+		
 	}
 	
 	public void updateGoal(int study_my_no) throws Exception
@@ -200,7 +202,7 @@ public class GoalDAO {
 		
 		db.stmt = db.conn.createStatement();
 		db.stmt.executeUpdate(sql);
-		
+		db.close();
 		
 	}
 	
@@ -227,6 +229,8 @@ public class GoalDAO {
 			list.add(gDTO);
 		}
 				
+		db.close();
+		
 		return list;
 	}
 		
@@ -252,6 +256,8 @@ public class GoalDAO {
 			
 			list.add(gDTO);
 		}
+		
+		db.close();
 				
 		return list;
 	}
@@ -280,6 +286,8 @@ public class GoalDAO {
 			list.add(gDTO);
 		}
 				
+		db.close();
+		
 		return list;
 	}
 	
@@ -302,7 +310,9 @@ public class GoalDAO {
 			gDTO.setUser_id(db.rs.getString("user_id"));
 			
 		}
-				
+		
+		db.close();
+		
 		return gDTO;
 	}
 	
@@ -327,7 +337,9 @@ public class GoalDAO {
 			
 			list.add(gDTO);
 		}
-				
+			
+		db.close();
+		
 		return list;
 	}
 	
