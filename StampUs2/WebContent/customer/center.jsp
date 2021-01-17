@@ -15,7 +15,7 @@ td {font-size:40pt;
 </head>
 <body>
 <jsp:include page="../header.jsp" />
-
+<jsp:include page="../left_nav.jsp" />
 <div align="center">
  <table width=80% height="800" align="center">
  <tr align="center"><td>고객센터</td></tr>

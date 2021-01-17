@@ -43,7 +43,7 @@ td.button{font-size:15pt;}
 div.center{font-size:30pt;}
 </style>	
 <!-- ========================================================================= -->	
-
+<jsp:include page="../left_nav.jsp" />
 <title>협력업체<%=rdto.getRev_company()%></title>	
 	<div align="center"  class="center">  
 	<a href="../customer/center.jsp">고객센터></a>

@@ -37,7 +37,7 @@
 div.center{font-size:30pt;}
 </style>			
 <!-- ========================================================================= -->	
-
+<jsp:include page="../left_nav.jsp" />
   <div align="center"  class="center">  
 		<a href="../customer/center.jsp">고객센터></a>
 		<a href="rev_list.jsp">협력업체</a>

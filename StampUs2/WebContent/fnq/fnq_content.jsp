@@ -45,6 +45,7 @@ font-size:16pt;
 .fnq_content.div.center{font-size:30pt;}
 </style>
 <!-- ========================================================================= -->
+<jsp:include page="../left_nav.jsp" />
 	<title>상세답변</title>			
 	<jsp:include page="../header.jsp" />
 	<div align="center"  class="center">  
