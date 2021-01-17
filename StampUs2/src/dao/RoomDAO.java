@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dto.RoomDTO;
+import dto.User_join_DTO;
 
 public class RoomDAO {
 	String driver = "oracle.jdbc.driver.OracleDriver";
@@ -194,6 +195,15 @@ public class RoomDAO {
 		rs.next();
 		return rs.getString("ROOM_NO");
 	}
+	
+	public int getCurrentPeople(String r_id) throws SQLException {
+		String sql = "SELECT COUNT(*) AS CNT FROM user_join WHERE STUDY_NO = "+r_id;
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		rs.next();
+		return rs.getInt("CNT");
+	}
+	
 	
 
 	

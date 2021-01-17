@@ -55,7 +55,9 @@
 	pageContext.setAttribute("penalty", penalty);	
 	
 	
-	
+	//현재 참여중인 인원수
+	int currentPeople = rdao.getCurrentPeople(r_id);
+	pageContext.setAttribute("currentPeople", currentPeople);
 	
 	pageContext.setAttribute("rdto", rdto);
 
@@ -125,7 +127,7 @@
                     <div class="preview_img" style="background: #ccc url(../assets/img/${rdto.file_name});"></div>
                     <div class="current_people">
                         <span><strong class="left">현재인원</strong></span>
-                        <span><strong class="right">1 / ${rdto.people} </strong></span>
+                        <span><strong class="right">${currentPeople} / ${rdto.people} </strong></span>
                     </div>
                 </div>
                 <!--//preview_left-->
