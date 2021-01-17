@@ -5,8 +5,8 @@
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.io.*" %>
-<%@	page import="dto.FboardDto" %>
-<%@	page import="dao.FboardDao" %>
+<%@	page import="pro_fboard.dto.FboardDto" %>
+<%@	page import="pro_fboard.dao.FboardDao" %>
 <%
 
 	String realPath = request.getRealPath("/img");

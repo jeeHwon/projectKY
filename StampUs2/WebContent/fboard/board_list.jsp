@@ -2,43 +2,33 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@	page import="java.util.ArrayList" %>
-<%@	page import="dto.FboardDto" %>
-<%@	page import="dao.FboardDao" %>
+<%@	page import="pro_fboard.dto.FboardDto" %>
+<%@	page import="pro_fboard.dao.FboardDao" %>
 
 <%
 	String userid = (String)session.getAttribute("userid");
+	
 	request.setCharacterEncoding("utf-8");
-    String pager = request.getParameter("pager");
     FboardDto fdto = new FboardDto();
     FboardDao fdao = new FboardDao();
-    
-    String cla = request.getParameter("cla");
-    String word = request.getParameter("word");
+    String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
+    String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
+ 	String word = (request.getParameter("word") == null) ? "" : request.getParameter("word");
     ArrayList<FboardDto> list = fdao.list(cla, word, pager);
-    /* 
-    create table fboard
-	(
-		id number(8),
-		title varchar(40),
-		name varchar(20),
-		content varchar(2000),
-		readnum number(8) default 0,
-		writeday date);
-    
-	기본키 지정
-    alter table fboard add constraint fboard_pk primary key (id);
-	시퀀스 생성
-    create sequence fboard_seq start with 1 increment by 1 maxvalue 1000000 nocycle; */
-    
-    
+
 %>   
 <jsp:include page="header.jsp" />
+<style>
+	table {
+	    margin: 30px auto;
+    	width: 80vw;
+    }
+</style>
 <section id="sec_fboardlist">
 	<div class="container">
 		<div class="row">
 		<div class="div_fboardlist">
 <div align="center">
-
 	<form name="searchFrm" method="post" action="board_list.jsp">
 		<select name="cla">
 			<option value="name">이름</option>
@@ -48,10 +38,7 @@
 		<input type="submit" value="검색">
 	</form>
 </div>
-
-
 <table>
-
 	<tr align="center">
 		<td> 번호 </td>
 		<td> 제목 </td>
@@ -64,11 +51,11 @@
 	{
 %>
 	<tr>
-		<td align="center"><%=fdto.getId() %></td>
-		<td><a href="board_readnum.jsp?id=<%=fdto.getId()%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>"><%=fdto.getTitle() %></a></td>
-		<td align="center"><%=fdto.getUserid()%></td>
-		<td align="center"><%=fdto.getReadnum() %></td>
-		<td align="center"><%=fdto.getWriteday() %></td>
+		<td align="center"><%=list.get(i).getId()%></td>
+		<td><a href="board_readnum.jsp?id=<%=list.get(i).getId()%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>"><%=list.get(i).getTitle() %></a></td>
+		<td align="center"><%=list.get(i).getUserid()%></td>
+		<td align="center"><%=list.get(i).getReadnum()%></td>
+		<td align="center"><%=list.get(i).getWriteday()%></td>
 	</tr>
 <%
 	}
@@ -87,43 +74,68 @@
 				}
 			%>
 			<!--10페이지 이전 페이지 이동  -->
-			<%if(pstart != 1)
-			{ 
+			<%
+			if(pstart != 1) { 
 			%>
-			<a href="board_list.jsp?pager=<%=pstart-1%>&cla=<%=cla%>&word=<%=word%>">&#60;&#60;</a>
-			<%} else{%>
+			<a href="board_list.jsp?pager=<%=pstart-1%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>">&#60;&#60;</a>
+			<%
+			} else{
+			%>
 				&#60;&#60;
-			<%} %>
+			<%
+			} 
+			%>
 			
 			<!-- 1페이지 이전 페이지 이동-->
-			<%if(Integer.parseInt(pager) != 1){ %>
+			<%
+			if(Integer.parseInt(pager) != 1){ 
+			%>
 				<a href="board_list.jsp?pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&word=<%=word%>">&#60;</a>
-			<%} else{%>
+			<%
+			} else{
+			%>
 				&#60;
-			<%} %>
+			<%
+			}
+			%>
 			
 			<!-- pstart ~ pend 페이지출력 현재페이지는 색 변경 -->
 			<%  
 				for(int i= pstart; i<=pend; i++){
 					String str = "";
-					if(Integer.parseInt(pager) == i) str="style='color:red;'";
+					if(Integer.parseInt(pager) == i) 
+						str="style='color:red;'";
 			%>
 				<a href="board_list.jsp?pager=<%=i%>&cla=<%=cla%>&word=<%=word%>" <%=str%>><%=i %></a>
-			<%} %>
+			<%
+			} 
+			%>
 			
 			<!-- 1페이지 이후 페이지 이동-->
-			<%if(Integer.parseInt(pager) != page_cnt){ %>
-				<a href="board_list.jsp?pager=<%=pager+1%>&cla=<%=cla%>&word=<%=word%>">&#62;</a>
-			<%} else{%>
+			<%
+			if(Integer.parseInt(pager) != page_cnt){ 
+			%>
+				<a href="board_list.jsp?pager=<%=Integer.parseInt(pager)+1%>&cla=<%=cla%>&word=<%=word%>">&#62;</a>
+			<%
+			} else{
+			%>
 				&#62;
-			<%} %>
+			<%
+			} 
+			%>
 			
 			<!--10페이지 이후 페이지 이동  -->
-			<%if(pend != page_cnt){ %>
+			<%
+			if(pend != page_cnt){
+			%>
 				<a href="board_list.jsp?pager=<%=pend+1%>&cla=<%=cla%>&word=<%=word%>">&#62;&#62;</a>
-			<%} else{%>
+			<%
+			} else{
+			%>
 				&#62;&#62;
-			<%} %>
+			<%
+			} 
+			%>
 			</td>
 		</tr>
 		<tr>

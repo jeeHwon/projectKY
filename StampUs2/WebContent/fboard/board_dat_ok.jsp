@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-<%@	page import="dto.Fboard_datDto" %>
-<%@	page import="dao.Fboard_datDao" %>
+<%@	page import="pro_fboard.dto.Fboard_datDto" %>
+<%@	page import="pro_fboard.dao.Fboard_datDao" %>
 <%
 	/* dat table
 	create table fboard_dat(
@@ -26,7 +26,7 @@
 	Fboard_datDao fddao = new Fboard_datDao();
 	Fboard_datDto fddto = new Fboard_datDto();
 	fddto.setUserid(userid);
-	fddto.setDat_no_id(Integer.parseInt(dat_no_id));
+	fddto.setDat_no_id(Integer.parseInt(request.getParameter("dat_no_id")));
 	fddto.setContent(content);
 	
 	fddao.dat_insert(fddto);

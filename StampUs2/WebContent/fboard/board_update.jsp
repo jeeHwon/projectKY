@@ -1,29 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@	page import="dto.FboardDto"%>
-<%@	page import="dao.FboardDao"%>
+<%@	page import="pro_fboard.dto.FboardDto"%>
+<%@	page import="pro_fboard.dao.FboardDao"%>
 <%
 	int id = Integer.parseInt(request.getParameter("id"));
 	FboardDao fdao = new FboardDao();
 	FboardDto fdto = fdao.content(id);
 	session.setAttribute("userid", "user1");
-	
 	String userid = session.getAttribute("userid").toString();
-	String pager = request.getParameter("pager");
-	String cla = request.getParameter("cla");
-	String word = request.getParameter("word");
+	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
+	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
+ 	String word = (request.getParameter("word") == null) ? "" : request.getParameter("word");
+	
 %>
-<jsp:include page="/header.jsp" />
+<jsp:include page="header.jsp" />
+<style>
+	table {
+	    margin: 30px auto;
+    	width: 80vw;
+    }
+</style>
 <section id="fboard_update">
 	<div class="container">
 		<div class="row">
 			<div class="fboard_update">
-				<form method="post" action="board_update_ok.jsp">
-					<input type="hidden" name="id" value="<%=id%>"> <input
-						type="hidden" name="pager" value="<%=pager%>"> <input
-						type="hidden" name="cla" value="<%=cla%>"> <input
-						type="hidden" name="word" value="<%=word%>">
+				<form method="post" action="board_update_ok.jsp" enctype="multipart/form-data">
+					<input type="hidden" name="id" value="<%=id%>"> 
+					<input type="hidden" name="userid" value="<%=userid%>"> 
+					<input type="hidden" name="pager" value="<%=pager%>">
+					<input type="hidden" name="cla" value="<%=cla%>"> 
+					<input type="hidden" name="word" value="<%=word%>">
 					<table width="600" align="center">
 						<tr>
 							<td>제목</td>
@@ -40,12 +47,10 @@
 					</table>
 					<table width="600" align="center">
 						<tr>
-							<td height="400"><textarea cols="80" rows="30"
-									name="content"></textarea></td>
+							<td height="400"><textarea cols="80" rows="30" name="content"></textarea></td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center"><input type="submit"
-								value="수정하기"></td>
+							<td colspan="2" align="center"><input type="submit" value="수정하기"></td>
 						</tr>
 					</table>
 				</form>

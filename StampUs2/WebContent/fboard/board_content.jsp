@@ -2,22 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@	page import="java.util.ArrayList" %>
-<%@	page import="dto.FboardDto" %>
-<%@	page import="dao.FboardDao" %>
-<%@	page import="dto.Fboard_datDto" %>
-<%@	page import="dao.Fboard_datDao" %>
+<%@	page import="pro_fboard.dto.FboardDto" %>
+<%@	page import="pro_fboard.dao.FboardDao" %>
+<%@	page import="pro_fboard.dto.Fboard_datDto" %>
+<%@	page import="pro_fboard.dao.Fboard_datDao" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	int id = Integer.parseInt(request.getParameter("id"));
 	FboardDao fdao = new FboardDao();
 	FboardDto fdto = fdao.content(id);
 	String userid = session.getAttribute("userid").toString();
-	String pager = request.getParameter("pager");
-	String cla = request.getParameter("cla");
-	String word = request.getParameter("word");
+	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
+	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
+ 	String word = (request.getParameter("word") == null) ? "" : request.getParameter("word");
 	
 %>
 <jsp:include page="header.jsp" />
+<style>
+	table {
+	    margin: 30px auto;
+    	width: 80vw;
+    }
+</style>
 <section id="fboard_content">
 	<div class="container">
 		<div class="row">
@@ -70,7 +76,7 @@
 	
 %>
 	<tr>
-		<td width="60"><%=fdto.getUserid() %></td>
+		<td width="60"><%=datList.get(i).getUserid() %></td>
 		<td><a href="javascript:board_mod('<%=datList.get(i).getDat_no()%>','<%=id %>')" id ="btn_dat_mod_<%=datList.get(i).getDat_no()%>"><%=datList.get(i).getContent() %></a></td>
 		<td><a href ="board_dat_delete.jsp?dat_no=<%=datList.get(i).getDat_no()%>&dat_no_id=<%=datList.get(i).getDat_no_id()%>"> X </a></td>
 		<td width="100"><%=datList.get(i).getWriteday()%></td>
