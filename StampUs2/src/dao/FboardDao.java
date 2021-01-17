@@ -78,17 +78,17 @@ public class FboardDao {
 
 		if (type == null) {
 			sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A) where num between "
-					+ index + " and " + (index + 10);
+					+ index + " and " + (index + 20);
 
 		} else {
 			if (type.equals("userid")) {
 				sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A where userid like '%"
-						+ word + "%') where num between " + index + " and " + (index + 10);
+						+ word + "%') where num between " + index + " and " + (index + 20);
 				addsql = " where userid like '%" + word + "%' ";
 
 			} else {
 				sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A where title like '%"
-						+ word + "%') where num between " + index + " and " + (index + 10);
+						+ word + "%') where num between " + index + " and " + (index + 20);
 				addsql = " where title like '%" + word + "%' ";
 			}
 		}

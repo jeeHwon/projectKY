@@ -153,6 +153,9 @@
 <script>
 	function init(){
 		document.searchFrm.cla.value="<%=cla%>"
+		if (document.searchFrm.cla.value==""){
+		 	  document.searchFrm.cla.value="title"
+		   }
 	}
 </script>
 <jsp:include page="../footer.jsp" />

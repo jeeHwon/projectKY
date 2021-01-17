@@ -3,6 +3,9 @@
 <%@ page import="java.sql.*" %>
 <%@	page import="dao.Fboard_datDao" %>
 <%
+	session.setAttribute("userid", "test");
+%>
+<%
 
     String dat_no = request.getParameter("dat_no");
     String dat_no_id = request.getParameter("dat_no_id");

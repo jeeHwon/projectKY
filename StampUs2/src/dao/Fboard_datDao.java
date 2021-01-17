@@ -38,6 +38,8 @@ public class Fboard_datDao {
 		
 		while(db.rs.next()) {
 			Fboard_datDto fddto = new Fboard_datDto();
+			fddto.setDat_no_id(db.rs.getInt("dat_no_id"));
+			fddto.setDat_no(db.rs.getInt("dat_no"));
 			fddto.setUserid(db.rs.getString("userid"));
 			fddto.setContent(db.rs.getString("content"));
 			fddto.setWriteday(db.rs.getString("writeday"));
