@@ -77,18 +77,18 @@ public class FboardDao {
 		String addsql = "";
 
 		if (type == null) {
-			sql = "select * from (select row_number() over (order by id) num, A.* from fboard A order by id) where num between "
+			sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A) where num between "
 					+ index + " and " + (index + 10);
 
 		} else {
 			if (type.equals("userid")) {
-				sql = "select * from (select row_number() over (order by id) num, A.* from fboard A where userid like '%"
-						+ word + "%' order by id) where num between " + index + " and " + (index + 10);
+				sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A where userid like '%"
+						+ word + "%') where num between " + index + " and " + (index + 10);
 				addsql = " where userid like '%" + word + "%' ";
 
 			} else {
-				sql = "select * from (select row_number() over (order by id) num, A.* from fboard A where title like '%"
-						+ word + "%' order by id) where num between " + index + " and " + (index + 10);
+				sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A where title like '%"
+						+ word + "%') where num between " + index + " and " + (index + 10);
 				addsql = " where title like '%" + word + "%' ";
 			}
 		}
@@ -153,7 +153,7 @@ public class FboardDao {
 		return index;
 	}
 	public FboardDto content(int id) throws SQLException {
-		String sql = "select * from fboard where id=" +id;
+		String sql = "select * from fboard where id=" + id;
 		
 		db.pstmt = db.conn.prepareStatement(sql);
 		db.rs = db.pstmt.executeQuery();
