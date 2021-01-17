@@ -4,21 +4,17 @@
 <%@ page import="dto.*" %>
 <%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@include file="study_my_header.jsp" %>
 <%
-String user_id = session.getAttribute("userid").toString();
-String study_no = request.getParameter("study_no");
 
-Study_my_DAO sDAO = new Study_my_DAO();
+sDAO = new Study_my_DAO();
 
 ArrayList<GoalDTO> allGList = sDAO.allGoalList(study_no);
 pageContext.setAttribute("allGList", allGList);
 
 %>    
-<jsp:include page="../header.jsp" />
-
-<section id="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
-	<div class="container">
-		<div class="row">
+<div id="study_list">
+		<div class="study_my_list">
 			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
 				<div class="allGoalList">
 				<h2>전체 인증 현황</h2>
@@ -39,6 +35,5 @@ pageContext.setAttribute("allGList", allGList);
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-<jsp:include page="../footer.jsp" />
+</div>
+<%@include file="study_my_footer.jsp" %>
