@@ -21,6 +21,11 @@ ul.mylist{border:5px solid #BBBBBB;
 <div style="position: fixed; left: 150px; top: 100px">
 <ul class="mylist">
 		<hr>
+		<li>
+		<input type="button" value="   <<   " onclick="history.back(-1);">
+		<input type="button" value="   >>   " onclick="history.forward(+1);">
+		</li>
+		<hr>
         <li><a href="#" class="at">홈페이지</a></li>
         <hr>
         <li><a href="#" class="at">인증방목록</a></li>
