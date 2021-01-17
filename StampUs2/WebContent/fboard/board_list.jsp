@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@	page import="java.util.ArrayList" %>
-<%@	page import="pro_fboard.dto.FboardDto" %>
-<%@	page import="pro_fboard.dao.FboardDao" %>
+<%@	page import="dto.FboardDto" %>
+<%@	page import="dao.FboardDao" %>
 
 <%
 	String userid = (String)session.getAttribute("userid");
@@ -17,7 +17,7 @@
     ArrayList<FboardDto> list = fdao.list(cla, word, pager);
 
 %>   
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 <style>
 	table {
 	    margin: 30px auto;
@@ -151,4 +151,4 @@
 		document.searchFrm.cla.value="<%=cla%>"
 	}
 </script>
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />

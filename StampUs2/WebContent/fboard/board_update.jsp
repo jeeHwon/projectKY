@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@	page import="pro_fboard.dto.FboardDto"%>
-<%@	page import="pro_fboard.dao.FboardDao"%>
+<%@	page import="dto.FboardDto"%>
+<%@	page import="dao.FboardDao"%>
 <%
 	int id = Integer.parseInt(request.getParameter("id"));
 	FboardDao fdao = new FboardDao();
@@ -14,7 +14,7 @@
  	String word = (request.getParameter("word") == null) ? "" : request.getParameter("word");
 	
 %>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 <style>
 	table {
 	    margin: 30px auto;
@@ -59,4 +59,4 @@
 		</div>
 	</div>
 </section>
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />

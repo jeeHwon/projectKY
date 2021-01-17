@@ -5,7 +5,7 @@
 	session.setAttribute("userid", "user1");
 	String userid = (String)session.getAttribute("userid");
 %>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 <style>
 	table {
 	    margin: 30px auto;
@@ -38,4 +38,4 @@
 </div>
 </div>
 </section>
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />

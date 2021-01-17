@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@	page import="java.util.ArrayList" %>
-<%@	page import="pro_fboard.dto.FboardDto" %>
-<%@	page import="pro_fboard.dao.FboardDao" %>
-<%@	page import="pro_fboard.dto.Fboard_datDto" %>
-<%@	page import="pro_fboard.dao.Fboard_datDao" %>
+<%@	page import="dto.FboardDto" %>
+<%@	page import="dao.FboardDao" %>
+<%@	page import="dto.Fboard_datDto" %>
+<%@	page import="dao.Fboard_datDao" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	int id = Integer.parseInt(request.getParameter("id"));
@@ -17,7 +17,7 @@
  	String word = (request.getParameter("word") == null) ? "" : request.getParameter("word");
 	
 %>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 <style>
 	table {
 	    margin: 30px auto;
@@ -115,4 +115,4 @@
 		location.href = "board_dat_update.jsp?dat_no="+dat_no+"&content="+mod_cts+"&dat_no_id="+dat_no_id;
 	}
 </script>
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />
