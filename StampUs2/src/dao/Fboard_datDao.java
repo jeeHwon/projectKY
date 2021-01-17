@@ -32,7 +32,7 @@ public class Fboard_datDao {
 		String sql = "select * from fboard_dat where dat_no_id=" + dat_no_id + " order by dat_no desc";
 		
 		db.stmt = db.conn.createStatement();
-		db.rs = db.pstmt.executeQuery(sql);
+		db.rs = db.stmt.executeQuery(sql);
 		
 		ArrayList<Fboard_datDto> list = new ArrayList<Fboard_datDto>();
 		

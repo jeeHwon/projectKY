@@ -2,6 +2,7 @@ package dto;
 
 public class Fboard_datDto {
 	String userid, content, writeday;
+	int dat_no, dat_no_id;
 	
 	public String getUserid() {
 		return userid;
@@ -9,8 +10,6 @@ public class Fboard_datDto {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	int dat_no, dat_no_id;
-	
 	
 	public String getContent() {
 		return content;

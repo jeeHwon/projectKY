@@ -19,7 +19,7 @@
 			<form method="post" action="board_write_ok.jsp" enctype="multipart/form-data">
 			<table>
 				<tr>
-					<td>제목</td>
+					<td align="center">제목</td>
 					<td><input type="text" name="title"></td>
 					<td>사진 첨부</td>
 					<td><input type="file" name="fboard_img"></td>
