@@ -25,7 +25,7 @@
 <style>
 	table {
 	    margin: 30px auto;
-    	width: 80vw;
+    	width: 60vw;
     }
     td {
 		border:1px solid #cccccc;
@@ -36,7 +36,7 @@
 		<div class="row">
 		<div class="div_fboardlist">
 <div align="center">
-	<form name="searchFrm" method="post" action="board_list.jsp" enctype="multipart/form-data">
+	<form name="searchFrm" method="post" action="board_list.jsp">
 		<select name="cla">
 			<option value="name">이름</option>
 			<option value="title">제목</option>

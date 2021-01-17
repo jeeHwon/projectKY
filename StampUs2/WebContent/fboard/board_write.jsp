@@ -10,7 +10,7 @@
 	table {
     	display:inline;
 	    margin: 30px auto;
-    	width: 80vw;
+    	width: 60vw;
     }
     td {
 		border:1px solid #cccccc;
