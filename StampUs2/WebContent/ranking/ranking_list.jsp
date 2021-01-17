@@ -5,7 +5,6 @@
 <%@ page import="dto.*" %>
 <%@ page import="java.util.*" %>
 <%
-	session.setAttribute("userid", "user1");
 
 	String user_id = session.getAttribute("userid").toString();
 
@@ -25,13 +24,12 @@
 	pageContext.setAttribute("urlist", urlist);
 	
  %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<jsp:include page="../header.jsp" />
+
+<section id="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
 <div>
 <h1>내 전체 달성률</h1>
 <p>${urate} % </p>
@@ -66,5 +64,8 @@
 </c:forEach>
 </table>
 </div>
-</body>
-</html>
+</div>
+</div>
+</div>
+</section>
+<jsp:include page="../footer.jsp" />

@@ -93,16 +93,15 @@ public class Study_join_DAO
 	
 	public void insert(Study_join_DTO sjDTO) throws Exception
 	{
-		String sql = "insert into user_join values(user_join_seq.nextval, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into user_join values(user_join_seq.nextval, ?, ?, sysdate, ?, ?, ?)";
 		
 		db.pstmt = db.conn.prepareStatement(sql);
 		
 		db.pstmt.setString(1, sjDTO.getUser_id());
 		db.pstmt.setInt(2, sjDTO.getRoom_no());
-		db.pstmt.setString(3, sjDTO.getRoom_start_day());
-		db.pstmt.setString(4, sjDTO.getRoom_end_day());
-		db.pstmt.setString(5, sjDTO.getRoom_deposit());
-		db.pstmt.setString(6, sjDTO.getRoom_penalty());
+		db.pstmt.setString(3, sjDTO.getRoom_end_day());
+		db.pstmt.setString(4, sjDTO.getRoom_deposit());
+		db.pstmt.setString(5, sjDTO.getRoom_penalty());
 		
 		db.pstmt.executeUpdate();
 		

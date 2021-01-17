@@ -19,7 +19,6 @@
 	
 		sjDTO.setUser_id(session.getAttribute("userid").toString());
 		sjDTO.setRoom_no(rdto.getId());
-		sjDTO.setRoom_start_day(rdto.getStart_day());
 		sjDTO.setRoom_end_day(rdto.getEnd_day());
 		sjDTO.setRoom_deposit(rdto.getDeposit());
 		sjDTO.setRoom_penalty(rdto.getPenalty());

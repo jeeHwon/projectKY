@@ -9,13 +9,12 @@
 	Study_my_DAO sDAO= new Study_my_DAO();
 	Study_my_DTO sDTO = sDAO.content(study_my_no);
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<jsp:include page="../header.jsp" />
+
+<section id="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
+	<div class="container">
+		<div class="row">
+			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
 <div class="container">
 		<h1>인증 글수정</h1>
         	<div class="updateForm">
@@ -41,5 +40,8 @@
          		</form>
          	</div>           
 	</div>
-</body>
-</html>
+	</div>
+	</div>
+	</div>
+	</section>
+	<jsp:include page="../footer.jsp" />
