@@ -40,16 +40,16 @@
                     <div class="swiper-slide ss2">
                        <div class="container">
                            <div class="row">
-                                <h2>인증샷<em>With StampUs</em></h2>
-                                <p>당신의 일상을 공유 하세요</p>                               
+                                <h2>목표달성<em>With StampUs</em></h2>
+                                <p>한걸음씩 나아가는 당신을 응원합니다</p>                               
                            </div>
                        </div>              
                     </div>
                     <div class="swiper-slide ss3">
                        <div class="container">
                            <div class="row">
-                                <h2>인증샷<em>With StampUs</em></h2>
-                                <p>당신의 일상을 공유 하세요</p>                               
+                                <h2>우리, 같이<em>With StampUs</em></h2>
+                                <p>같은 목표를 가진 사람들이 함께합니다</p>                               
                            </div>
                        </div>                  
                     </div>
@@ -103,7 +103,7 @@
                                     </figure>
                                     <div class="rank"><strong>2</strong></div>
                                     <div class="mx">
-                                        <span class="icon dep05 ir_pm">deposit</span>
+                                        <span class="icon dep5 ir_pm">deposit</span>
                                         <span></span>
                                     </div>
                                 </div>
