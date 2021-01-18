@@ -59,7 +59,7 @@ div.center{font-size:30pt;}
       </tr>
      <tr >  
        <td> 홈페이지주소 </td>
-       <td > <%=rdto.getRev_addr()%> </td>
+       <td > <a href="<%=rdto.getRev_addr()%>" target="_blank"><%=rdto.getRev_addr()%></a> </td>
       </tr>
      <tr >  
        <td> 연락처 </td>

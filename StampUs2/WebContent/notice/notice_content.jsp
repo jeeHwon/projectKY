@@ -30,11 +30,24 @@
 			
 <style>
    td,tr {
+   	
     border:1px solid #000000;
     
    }
  td.button{font-size:15pt; border:0px;}
 div.center{font-size:30pt;}
+#body1{
+	border-top: 0px solid #000000;
+	border-bottom: 0px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 0px solid #000000;
+}
+#body2{
+	border-top: 0px solid #000000;
+	border-bottom: 0px solid #000000;
+	border-left: 0px solid #000000;
+	border-right: 1px solid #000000;
+}
 </style>			
 <!-- ========================================================================= -->	
 <jsp:include page="../left_nav.jsp" />
@@ -48,14 +61,13 @@ div.center{font-size:30pt;}
 
 		</tr>
 		<tr>
-			<td><pre><%=ndto.getNotice_content()%></pre></td>
-			<td align="center"><img
-				src="img/<%=ndto.getNotice_file()%>" width="400"></td>
+			<td id="body1"><pre><%=ndto.getNotice_content()%></pre></td>
+			<td align="center" id="body2"><img src="img/<%=ndto.getNotice_file()%>" width="400"></td>
 		</tr>
 		<tr height="50" >
-			<td>공지날짜 <%=ndto.getNotice_postday()%>
+			<td>공지날짜 : <%=ndto.getNotice_postday()%>
 			</td>
-			<td align="center">조회수<%=ndto.getNotice_view()%>
+			<td align="center" >조회수<%=ndto.getNotice_view()%>
 			</td>
 		</tr>
 		<tr>

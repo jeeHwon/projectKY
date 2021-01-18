@@ -42,13 +42,14 @@ border-bottom:4px solid #000000;
 font-size:17pt;
 font-family:"HMKMRHD", sans-serif;
 }
-tr.mid{공지사항
+tr.mid{
 border-bottom:1px solid #000000;
 font-size:12pt;
 font-family:"HMKMRHD", sans-serif;
 }
-#index {font-size : 20px;
+#index {font-size : 30px;
 		background-color: #ffcc99;
+		font-weight:bold;
 }
 </style>
 <!-- ========================================================================= -->	
