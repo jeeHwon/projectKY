@@ -6,6 +6,9 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	session.setAttribute("userid", "test");
+%>
+<%
 	//DB연결
 	ReviewDAO rdao=new ReviewDAO();	
     request.setCharacterEncoding("utf-8");
@@ -29,10 +32,18 @@
     }
   </script>
   <style>
+    #review_list
+    {
+    	background-image: url("../assets/img/main_banner2.jpg");
+    	background-repeat:no-repeat;
+    	background-size:cover;
+    }
   	.review table
   	{
   		margin-top:20px;
   		border-collapse:collapse;
+  		text-align:center;
+  		background:white;
   	}
   	.review table tr
   	{
@@ -47,6 +58,7 @@
     .review table td
     {
     	border-bottom: 1px solid black;
+    	padding:20px 5px;
     }
   </style>
 </head>

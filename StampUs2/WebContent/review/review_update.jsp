@@ -36,6 +36,39 @@
 	  h1.remove();
   }
 </script>
+<style>
+  #hash {
+    width:100px;
+    display:inline;
+    border:none;
+    background:#f2f2f2;
+  }
+  #review_update
+    {
+    	background-image: url("../assets/img/main_banner2.jpg");
+    	background-repeat:no-repeat;
+    	background-size:cover;
+    }
+  	.review table
+  	{
+  		margin-top:20px;
+  		border-collapse:collapse;
+  		background:white;
+  	}
+  	.review table tr
+  	{
+  		font-size:16px;
+  	}
+    .review table td
+    {
+    	border: 1px solid black;
+    	padding:20px 5px;
+    }
+    .review table td:nth-child(odd)
+    {
+    	background: #f2f2f2;
+    }
+</style>
 </head>
 <body>
 	<section id="review_update">

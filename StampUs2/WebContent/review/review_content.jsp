@@ -30,6 +30,35 @@
 <jsp:include page="../header.jsp" />
 <style>
   #dat_del,#dat_up,#del {visibility:hidden;}
+  #review_content
+    {
+    	background-image: url("../assets/img/main_banner2.jpg");
+    	background-repeat:no-repeat;
+    	background-size:cover;
+    }
+  	.review table
+  	{
+  		margin-top:20px;
+  		border-collapse:collapse;
+  		background:white;
+  	}
+  	.review table tr
+  	{
+  		font-size:16px;
+  	}
+    .review table td
+    {
+    	border-bottom: 1px solid black;
+    	padding:20px 5px;
+    }
+    .review #content_table td:nth-child(odd)
+    {
+    	background: #f2f2f2;
+    }
+    #content_photo
+    {
+    	background:white;
+    }
 </style>
 <script>
   function del_ok()
@@ -42,7 +71,7 @@
     <section id="review_content">
      <div class="container">
 	  <div class="review" align="center">
-	  <table width="800" align="center">
+	  <table width="800" align="center" id="content_table">
 	    <tr>
 	      <td>제목</td>
 	      <td colspan="5"> ${rdto.review_title} </td>
@@ -56,7 +85,7 @@
 	      <td> ${rdto.review_view} </td>
 	    </tr>
 	    <tr>
-	      <td colspan="6">
+	      <td colspan="6" id="content_photo">
 	        <img src="../assets/img/review/${rdto.review_file}"
 	        onerror="this.src='../assets/img/review/no-camera.png'" style="width:300px;">
 	      </td>
@@ -103,7 +132,7 @@
 	    <form name="dat" method="post" action="review_dat_write_ok.jsp">
 	      <input type="hidden" name="review_no" value=<%=review_no%>> <!-- review 테이블의 "review_no" -->
 	      <input type="text" name="user_id" value=<%=user_id%> readonly>
-	      <input type="text" name="review_dat_content" size="50" placeholder="댓글 내용">
+	      <input type="text" name="review_dat_content" size="85" placeholder="댓글 내용">
 	      <input type="submit" value="댓글달기">
 	    </form>
 	   </div>  
@@ -115,7 +144,7 @@
 	     pageContext.setAttribute("rddto",rddto);
 	  %>
 	   <div align="center">
-	     <table align="center" width="600">
+	     <table align="center" width="800" id="dat_table">
 	     <!-- 레코드를 출력 -->
 	     <c:forEach items="${rddto}" var="rddto">
 	       <tr>
