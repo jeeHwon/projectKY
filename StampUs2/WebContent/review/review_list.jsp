@@ -6,9 +6,6 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	session.setAttribute("userid", "test");
-%>
-<%
 	//DB연결
 	ReviewDAO rdao=new ReviewDAO();	
     request.setCharacterEncoding("utf-8");
