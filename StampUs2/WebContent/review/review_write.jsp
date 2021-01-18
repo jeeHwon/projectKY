@@ -1,15 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>   
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%
-	// 세션변수 만들기
-	session.setAttribute("userid", "test");  // (변수명,값)
-%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>후기 글쓰기</title>
+<jsp:include page="../header.jsp" />
 <script>
   function addTag()
   {   
@@ -37,9 +34,9 @@
 </style>
 </head>
 <body>
-<jsp:include page="../header.jsp" />
     <section id="review_write">
-      <div align="center">
+     <div class="container">
+	  <div class="review" align="center">
 	      <form method="post" action="review_write_ok.jsp" enctype="multipart/form-data">
 		    <table width="800" align="center">
 		      <tr>
@@ -72,7 +69,8 @@
 		      </tr>          
 		    </table>
 		  </form>
-	</div>  
+	  </div>
+	 </div>  
 	</section>	
 <jsp:include page="../footer.jsp" />  
 </body>

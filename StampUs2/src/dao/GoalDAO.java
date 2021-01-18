@@ -153,16 +153,26 @@ public class GoalDAO {
 		//인증이 있다면
 		if(sDTO.getStudy_my_no()!=0) 
 		{
-			String sql = "insert into goal values(goal_seq.nextval, ?, ?, ?, sysdate, ?)";
-				
-			db.pstmt=db.conn.prepareStatement(sql);
-			db.pstmt.setString(1, sDTO.getUser_id());
-			db.pstmt.setInt(2, sDTO.getStudy_no());
-			db.pstmt.setString(3, "성공");
-			db.pstmt.setInt(4, sDTO.getStudy_my_no());
+			String sql="select * from goal where study_my_no="+study_my_no;
+			db.stmt=db.conn.createStatement();
+			db.rs = db.stmt.executeQuery(sql);
 			
-			db.pstmt.executeUpdate();
-			System.out.println("인증 생겨서 새로 입력");
+			if(db.rs.next()) {
+				return;			
+			}
+			else {
+				sql = "insert into goal values(goal_seq.nextval, ?, ?, ?, sysdate, ?)";
+				
+				db.pstmt=db.conn.prepareStatement(sql);
+				db.pstmt.setString(1, sDTO.getUser_id());
+				db.pstmt.setInt(2, sDTO.getStudy_no());
+				db.pstmt.setString(3, "성공");
+				db.pstmt.setInt(4, sDTO.getStudy_my_no());
+				
+				db.pstmt.executeUpdate();
+				System.out.println("인증 생겨서 새로 입력");
+			}
+			
 			
 			
 		}

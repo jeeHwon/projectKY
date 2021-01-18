@@ -3,9 +3,9 @@
 <%@ page import="dao.MemberDAO"%>
 <%@ page import="dto.MemberDTO"%>
 <%
-	/* String userid = session.getAttribute("userid").toString(); */
+String userid = session.getAttribute("userid").toString();
 MemberDAO dao = new MemberDAO();
-MemberDTO dto = dao.userInfo("dfd");
+MemberDTO dto = dao.userInfo(userid);
 %>
 <script>
 

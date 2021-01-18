@@ -2,22 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ page import="dao.*" %>
 <%@ page import="dto.*" %>
+<%@include file="study_my_header.jsp" %>
 <%
 	String study_my_no=request.getParameter("study_my_no");
-	String study_no = request.getParameter("study_no");
+	
 
-	Study_my_DAO sDAO= new Study_my_DAO();
+	sDAO= new Study_my_DAO();
 	Study_my_DTO sDTO = sDAO.content(study_my_no);
 %>
-<jsp:include page="../header.jsp" />
+<style>
+.study_my_list table{ width:100%;}
+.study_my_list tr { line-height: 40px;}
+.study_my_list input[type="text"] { display: inline-block; width:100%; padding:5px;}
+.study_my_list textarea {display: inline-block; width:100%; padding:5px; height: 400px;}
+#button{font-size: 18px; float:right; box-sizing: border-box; display: inline-block; margin-top:5px; padding: 10px 30px 12px 30px; background-color: #CB230C; margin-right: 1%; margin-left: 1%; color: #fff; border: 1px solid #E68D80;}
+#button:hover{background: #E68D80; border-color: #CB230C; color: #fff;}
+</style>
 
-<section id="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
-	<div class="container">
-		<div class="row">
-			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
-<div class="container">
-		<h1>인증 글수정</h1>
-        	<div class="updateForm">
+
+<div id="study_list">
+		
+        	<div class="study_my_list">
+        	<h2><strong>인증 글수정</strong></h2>
          		<form name="updateForm" method="post" action="study_my_update_ok.jsp" enctype="multipart/form-data">
 	         		<input type="hidden" name="study_my_no" value="<%=study_my_no %>">
 	         		<input type="hidden" name="study_no" value="<%=study_no %>">
@@ -34,14 +40,10 @@
 		         		    <td><input type="file" name="study_img"></td>
 		         		</tr>
 		         		<tr>
-		         			<td colspan="2"><input type="submit" value="글수정"></td>
+		         			<td colspan="2"><input id="button" type="submit" value="글수정"></td>
 		         		</tr>
 	         		</table>
          		</form>
          	</div>           
 	</div>
-	</div>
-	</div>
-	</div>
-	</section>
-	<jsp:include page="../footer.jsp" />
+<%@include file="study_my_footer.jsp" %>

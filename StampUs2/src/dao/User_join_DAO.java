@@ -133,6 +133,8 @@ public class User_join_DAO {
 			
 			String day = rDAO.getDays(db.rs.getInt("study_no"));
 			
+			System.out.println(day);
+			
 			String baseDaySql = "SELECT count(A.DT) " + 
 					"FROM ( SELECT TO_CHAR (SDT + LEVEL - 1, 'YYYY-MM-DD') DT, " + 
 					"              TO_CHAR (SDT + LEVEL - 1, 'D') D " + 
@@ -163,8 +165,11 @@ public class User_join_DAO {
 			
 			}
 			
+			System.out.println(sql);
+			
 			Statement stmt = db.conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
+			
 			
 			if(rs.next()) 
 			{
@@ -180,7 +185,7 @@ public class User_join_DAO {
 			
 		}
 		
-		db.close();
+		
 		
 		return list;
 	}
@@ -248,7 +253,6 @@ public class User_join_DAO {
 			
 		}
 		
-		db.close();
 		
 		return list;
 	}

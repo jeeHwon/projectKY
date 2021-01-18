@@ -156,13 +156,12 @@ $(function (){
     #roomContent .study_my_list a.red:hover {background: #E68D80; border-color: #CB230C; color: #fff;}  
     
     .study_my_list .content{font-size: 18px; padding: 20px;}
-    .study_my_list .writeday{font-size: 18px; text-align: right; margin-right: 3%; padding-bottom:15px;}
+    .study_my_list .writeday{font-size: 18px; text-align: right;}
     
-	.study_dat_list {clear:both;}
-	.study_dat_list table{width:100%;}
-	.study_dat_list table a{font-size:12px !important; padding-right:0px !important; padding-top:0px !important; padding-bottom:0px !important}
-	.study_dat_list table td{border-bottom: 1px solid #222; padding:10px !important;}
-
+	.study_my_list table{width:100%;}
+	.study_my_list table a{font-size:12px !important; padding-right:0px !important;}
+	.study_my_list tr{line-height: 30px;}
+	.study_my_list table td{border-bottom: 1px solid #222; padding:10px !important;}
 
 	#study_dat_write{display: none;}
 	#roomContent::after{clear:both;content:"";display:block;}
@@ -185,9 +184,9 @@ $(function (){
         		<div class="title"><strong>${rdto.title}</strong></div>
         	</div>
         	<div class="preview_btn">
-                    <a href="study_join_list.jsp" class="white">인증방 목록보기</a>
+                    <a href="study_my_list.jsp?study_no=<%=study_no %>" class="white">방으로 돌아가기</a>
                     <a href="study_my_cert.jsp?study_no=<%=study_no%>" class="white">전체 인증 현황 보기</a>
-                    <a href="study_my_write.jsp?study_no=<%=study_no%>" class="red">글쓰기</a>
+                    <a href="study_my_write.jsp?study_no=<%=study_no%>" class="white">글쓰기</a>
              </div>
              </div>
              <div id="flexContent">
@@ -248,48 +247,3 @@ $(function (){
 			</div>
                </div>
             </div>
-    		<%@ include file="study_my_content.jsp" %>
-			</div>
-		</div>
-    </div>   
-</section>    
-<div id="clear">
-
-</div>
-	
-
-<script src="../assets/js/modernizr-custom.js"></script><!-- =>html5 css3 감지 -->
-<script src="../assets/js/ie-checker.js"></script><!-- =>익스플로러 ver 체크 -->   
-<script>
-    //인증요일 비활성화
-   	var day_li = $(".day > ul > li.day")
-
-	$(document).ready(function() { 
-		var check_day = '<c:out value="${check_day}"/>'
-		day_li.addClass('deactive')
-		dayList = ['mon','tue','wed','thu','fri','sat','sun']
-		for(var i=0; i<dayList.length; i++) {
-			if(check_day.includes(dayList[i])){
-				$('#'+dayList[i]).removeClass('deactive')
-			}
-		}
-	})
-	
-	//인증타입 비활성화
-   	var type_li = $(".type > ul > li.type")
-
-	$(document).ready(function() { 
-		var certi_type = '<c:out value="${certi_type}"/>'
-		type_li.addClass('deactive')
-		typeList = ['pic','txt','mov','tim','spa']
-		for(var i=0; i<typeList.length; i++) {
-			if(certi_type.includes(typeList[i])){
-				$('#'+typeList[i]).removeClass('deactive')
-			}
-		}
-	})
-
-    
-    
-</script>
-<jsp:include page="../footer.jsp" />
