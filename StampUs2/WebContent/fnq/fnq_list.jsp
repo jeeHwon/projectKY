@@ -7,7 +7,7 @@
 <%@ page import="dto.FnqDto"%>
 <%
    // list메소드를 포함한 클래스 객체를 생성
-   FnqlistDao fdao=new FnqlistDao ();
+   FnqlistDao fdao=new FnqlistDao();
    ArrayList<FnqDto> list0=fdao.list0();
    pageContext.setAttribute("list", list0);
    
@@ -41,14 +41,17 @@
 			
 <style>
 .fnq_list table {
-	width: 70%;
+	width: 100%;
 	border-top: 0px;
 	border-collapse: collapse;
 }
 
 .fnq_list th, td {
-	border-bottom: 2px solid #444444;
+	border-bottom: 1px solid #444444;
 	padding: 10px;
+}
+#index {font-size : 20px;
+		background-color: orangered;
 }
 </style>
 <SCRIPT LANGUAGE="JavaScript">
@@ -103,13 +106,12 @@
 </SCRIPT>
 <!-- ========================================================================= -->	
 <jsp:include page="../left_nav.jsp" />
-<img src="fnqimg/faq.png">사람
-<span align="center"> <h3><a href="../customer/center.jsp">고객센터></a></h3><h1><a href="fnq_list.jsp">FQA</a></h1></span>
+<img src="fnqimg/faq.png">
 <h3 align="center">stampus를 편리하게 이용해보세요</h3>
-<div>
-<table align="center"   padding="0" cellspacing="0" >
+
+<table align="center" width=100%  padding="0" cellspacing="0" id="index">
 	<tr align="center">
-		<td>유형 <select
+		<td width="130">유형 <select
 			onChange="change(this.options[this.selectedIndex].value)">
 				<option>:::선택하세요:::</option>
 				<option value="전체">전체</option>
@@ -119,20 +121,20 @@
 				<option value="사이트이용">사이트이용</option>
 		</select>
 		</td>
-		<td><h4>질문</h4></td>
-		<td>자세히보기</td>
+		<td width="1000">질문</td>
+		<td width="130"></td>
 	</tr>
 	</table>
-	<table id=all0 align="center" >
+	<table id=all0 align="center" height="900">
 			<%
     // 출력
 		    for(int i=0;i<list0.size();i++)
 		    {
  		%>
  		<tr>
-			<td align="center" ><%=list0.get(i).getFnq_type()%></td>
-			<td align="center" ><%=list0.get(i).getFnq_title()%></td>
-			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list0.get(i).getFnq_no()%>">답변보기!</a></td>	
+			<td align="center"  width="130"><%=list0.get(i).getFnq_type()%></td>
+			<td align="center"  width="1000"><%=list0.get(i).getFnq_title()%></td>
+			<td align="center"  width="100"><a href="fnq_content.jsp?fnq_no=<%=list0.get(i).getFnq_no()%>">답변보기!</a></td>	
 		<tr>
 		<%
 			}
@@ -140,77 +142,77 @@
 	</table>
 <!-- ========================================================================= -->	
 <!-- ========================================================================= -->		
-</div>
-<div align="center" >
-	<table id=all style="display: none;" align="center">
+
+
+	<table id=all style="display: none;" align="center" height="900">
 			<%
     // 출력
 		    for(int i=0;i<list0.size();i++)
 		    {
  		%>
  		<tr >
-			<td align="center" width="200" align="right"> <%=list0.get(i).getFnq_type()%></td>
+			<td align="center" width="130" align="right"> <%=list0.get(i).getFnq_type()%></td>
 			<td align="center" width="1000"><%=list0.get(i).getFnq_title()%></td>
-			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list0.get(i).getFnq_no()%>">답변보기!</a></td>	
+			<td align="center"  width="100"><a href="fnq_content.jsp?fnq_no=<%=list0.get(i).getFnq_no()%>">답변보기!</a></td>	
 		<tr>
 		<%
 			}
 		%>
 	</table>
 <!-- ========================================================================= -->		
-	<table id=view1 style="display: none;" align="center" >
+	<table id=view1 style="display: none;" align="center" height="900">
 		<%
 		    for(int i=0;i<list1.size();i++)
 		    {
  		%>
  		<tr>
-			<td align="center" width="200" align="right"><%=list1.get(i).getFnq_type()%></td>
+			<td align="center" width="130" align="right"><%=list1.get(i).getFnq_type()%></td>
 			<td align="center" width="1000"><%=list1.get(i).getFnq_title()%></td>
-			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list1.get(i).getFnq_no()%>">답변보기!</a></td>	
+			<td align="center"  width="100"><a href="fnq_content.jsp?fnq_no=<%=list1.get(i).getFnq_no()%>">답변보기!</a></td>	
 		<td>
 		<%
 			}
 		%>
 	</table>
 <!-- ========================================================================= -->		
-	<table id=view2 style="display: none;" align="center" class="it">
+	<table id=view2 style="display: none;" align="center" height="900">
 		<% 
 		    for(int i=0;i<list2.size();i++)
 		    {
  		%><tr>
-			<td align="center" width="200" align="right"><%=list2.get(i).getFnq_type()%></td>
+			<td align="center" width="130" align="right"><%=list2.get(i).getFnq_type()%></td>
 			<td align="center" width="1000"><%=list2.get(i).getFnq_title()%></td>
-			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list2.get(i).getFnq_no()%>">답변보기!</a></td>	
+			<td align="center"  width="100"><a href="fnq_content.jsp?fnq_no=<%=list2.get(i).getFnq_no()%>">답변보기!</a></td>	
 			</tr>
 		<%
 			}
 		%>
 	</table>
 <!-- ========================================================================= -->		
-	<table id=view3 style="display: none;" align="center" class="it">
+	<table id=view3 style="display: none;" align="center" height="900">
 		<%
 		    for(int i=0;i<list3.size();i++)
 		    {
  		%>
  		<tr>
-			<td align="center" width="200" align="right"><%=list3.get(i).getFnq_type()%></td>
+			<td align="center" width="130" align="right"><%=list3.get(i).getFnq_type()%></td>
 			<td align="center" width="1000"><%=list3.get(i).getFnq_title()%></td>
-			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list3.get(i).getFnq_no()%>">답변보기!</a></td>	
+			<td align="center"  width="100"><a href="fnq_content.jsp?fnq_no=<%=list3.get(i).getFnq_no()%>">답변보기!</a></td>	
 		</tr>
 		<%
 			}
 		%>
 	</table>
 <!-- ========================================================================= -->		
-	<table id=view4 style="display: none;" align="center" >
+	<table id=view4 style="display: none;" align="center" height="900">
 		<%
 		    for(int i=0;i<list4.size();i++)
 		    {
  		%>
  		<tr>
-			<td align="center" width="200" align="right"><%=list4.get(i).getFnq_type()%></td>
+			<td align="center" width="130" align="right"><%=list4.get(i).getFnq_type()%></td>
 			<td align="center" width="1000"><%=list4.get(i).getFnq_title()%></td>
-			<td align="center"><a href="fnq_content.jsp?fnq_no=<%=list4.get(i).getFnq_no()%>">답변보기!</a></td>	
+			<td align="center"  width="100"><a href="fnq_content.jsp?fnq_no=<%=list4.get(i).getFnq_no()%>">답변보기!</a></td>	
 		</tr>
 		<%
 			}
@@ -230,7 +232,7 @@
 		%>	
 		</tr>
 	</table>
-</div>	
+	
 <!-- ========================================================================= -->	
 
 			</div>

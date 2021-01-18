@@ -47,6 +47,9 @@ border-bottom:1px solid #000000;
 font-size:12pt;
 font-family:"HMKMRHD", sans-serif;
 }
+#index {font-size : 20px;
+		background-color: #ffcc99;
+}
 </style>
 <!-- ========================================================================= -->	
 <jsp:include page="../left_nav.jsp" />
@@ -54,8 +57,8 @@ font-family:"HMKMRHD", sans-serif;
 	<img src="noticeimg/notice.png">
 	</div>
 	<div align="center">
-	<table width=100% height="800" align="center">
-		<tr align="center" class="top" height="100">
+	<table width=100% height="800" align="center" >
+		<tr align="center" class="top" height="100" id="index">
 			<td>제목</td>
 			<td>조회수</td>
 			<td>작성날짜</td>

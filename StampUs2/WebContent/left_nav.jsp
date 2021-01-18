@@ -18,7 +18,7 @@ ul.mylist{border:5px solid #BBBBBB;
 
 </style>    
     
-<div style="position: fixed; left: 150px; top: 100px">
+<div style="position: fixed; left: 130px; top: 100px">
 <ul class="mylist">
 		<hr>
 		<li>

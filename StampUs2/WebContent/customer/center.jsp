@@ -17,7 +17,7 @@ td {font-size:40pt;
 <jsp:include page="../header.jsp" />
 <jsp:include page="../left_nav.jsp" />
 <div align="center">
- <table width=80% height="800" align="center">
+ <table width=60% height="800" align="center">
  <tr align="center"><td>고객센터</td></tr>
  <tr align="center">
  <td><a href="../notice/notice_list.jsp"><img src="img/notice.PNG" width="30" height="300"></a></td>
