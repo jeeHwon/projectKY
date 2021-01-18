@@ -65,7 +65,7 @@ public class FboardDao {
 		db.pstmt.executeUpdate();
 	}
 
-	public ArrayList<FboardDto> list(String type, String word, String pager) throws SQLException {
+	public ArrayList<FboardDto> list(String cla, String word, String pager) throws SQLException {
 
 		int index = get_index(pager);
 
@@ -74,40 +74,43 @@ public class FboardDao {
 		// 검색필드와 검색단어의 값을 request
 		// 쿼리 생성
 		String sql;
-		String addsql = "";
 
-		if (type == null) {
-			sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A) where num between "
-					+ index + " and " + (index + 20);
-
-		} else {
-			if (type.equals("userid")) {
-				sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A where userid like '%"
-						+ word + "%') where num between " + index + " and " + (index + 20);
-				addsql = " where userid like '%" + word + "%' ";
-
-			} else {
-				sql = "select * from (select row_number() over (order by writeday desc) num, A.* from fboard A where title like '%"
-						+ word + "%') where num between " + index + " and " + (index + 20);
-				addsql = " where title like '%" + word + "%' ";
-			}
-		}
-
+		if(cla==""){//검색 조건이 없는 경우 => 모든 글 가져오기
+            sql = "SELECT id, readnum, title, content, userid, writeday ";
+            sql += " FROM(SELECT ROWNUM AS RM, SELECT id, readnum, title, content, userid, writeday";
+            sql += " FROM(SELECT * FROM fboard ORDER BY writeday DESC)";
+            sql += ") WHERE RM between "+ index +" and " + (index + 10);
+        } 
+        if(cla.equals("userid")){   //content 필드 검색
+        	sql= "SELECT id, title, content, userid, writeday ";
+	        sql += " FROM(SELECT ROWNUM AS RM, id, readnum, title, content, userid, writeday ";
+	        sql += " FROM(SELECT * FROM fboard where userid like '%" + word + "%' ORDER BY writeday DESC)";
+	        sql += ") WHERE RM between " + index + " and " + (index + 10);
+             
+        }else{   //title 필드 검색
+        	sql = "SELECT id, readnum, title, content, userid, writeday ";
+            sql += " FROM(SELECT ROWNUM AS RM, id, readnum, title, content, userid, writeday ";
+            sql += " FROM(SELECT * FROM fboard where title like '%" + word + "%' ORDER BY writeday DESC)";
+            sql += ") WHERE RM between " + index + " and "+(index + 10);
+             
+        }
+		
+		
 		db.pstmt = db.conn.prepareStatement(sql);
 		db.rs = db.pstmt.executeQuery();
 
 		ArrayList<FboardDto> list = new ArrayList<FboardDto>();
-
 		while (db.rs.next()) {
 			FboardDto fdto = new FboardDto();
 			fdto.setId(db.rs.getInt("id"));
 			fdto.setTitle(db.rs.getString("title"));
-			fdto.setUserid(db.rs.getNString("userid"));
-			fdto.setReadnum(db.rs.getInt("readnum"));
+			fdto.setUserid(db.rs.getString("userid"));
+			fdto.setContent(db.rs.getNString("content"));
 			fdto.setWriteday(db.rs.getString("writeday"));
-
+            
 			list.add(fdto);
 		}
+ 
 		return list;
 	}
 

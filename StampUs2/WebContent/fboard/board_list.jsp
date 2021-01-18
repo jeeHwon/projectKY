@@ -12,6 +12,7 @@
 <%
 	String userid = (String)session.getAttribute("userid");
 	
+
 	request.setCharacterEncoding("utf-8");
     FboardDto fdto = new FboardDto();
     FboardDao fdao = new FboardDao();
@@ -19,7 +20,8 @@
     String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
  	String word = (request.getParameter("word") == null) ? "" : request.getParameter("word");
     ArrayList<FboardDto> list = fdao.list(cla, word, pager);
-
+    
+    
 %>   
 <jsp:include page="../header.jsp" />
 <style>
@@ -38,7 +40,7 @@
 <div align="center">
 	<form name="searchFrm" method="post" action="board_list.jsp">
 		<select name="cla">
-			<option value="name">이름</option>
+			<option value="userid">이름</option>
 			<option value="title">제목</option>
 		</select>
 		<input type="text" name="word" value="<%=word%>">
