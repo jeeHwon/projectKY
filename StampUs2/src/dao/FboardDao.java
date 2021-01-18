@@ -74,27 +74,22 @@ public class FboardDao {
 		// 검색필드와 검색단어의 값을 request
 		// 쿼리 생성
 		String sql;
-
-		if(cla==""){//검색 조건이 없는 경우 => 모든 글 가져오기
+		if("".equals(cla)){//검색 조건이 없는 경우 => 모든 글 가져오기
             sql = "SELECT id, readnum, title, content, userid, writeday ";
-            sql += " FROM(SELECT ROWNUM AS RM, SELECT id, readnum, title, content, userid, writeday";
+            sql += " FROM(SELECT ROWNUM AS RM, id, readnum, title, content, userid, writeday";
             sql += " FROM(SELECT * FROM fboard ORDER BY writeday DESC)";
-            sql += ") WHERE RM between "+ index +" and " + (index + 10);
-        } 
-        if(cla.equals("userid")){   //content 필드 검색
-        	sql= "SELECT id, title, content, userid, writeday ";
+            sql += ") WHERE RM between "+ index +" and " + (index + 20);
+        } else if("userid".equals(cla)){   //content 필드 검색
+        	sql= "SELECT id, readnum, title, content, userid, writeday ";
 	        sql += " FROM(SELECT ROWNUM AS RM, id, readnum, title, content, userid, writeday ";
 	        sql += " FROM(SELECT * FROM fboard where userid like '%" + word + "%' ORDER BY writeday DESC)";
-	        sql += ") WHERE RM between " + index + " and " + (index + 10);
-             
-        }else{   //title 필드 검색
+	        sql += ") WHERE RM between " + index + " and " + (index + 20);
+        } else {   //title 필드 검색
         	sql = "SELECT id, readnum, title, content, userid, writeday ";
             sql += " FROM(SELECT ROWNUM AS RM, id, readnum, title, content, userid, writeday ";
             sql += " FROM(SELECT * FROM fboard where title like '%" + word + "%' ORDER BY writeday DESC)";
-            sql += ") WHERE RM between " + index + " and "+(index + 10);
-             
-        }
-		
+            sql += ") WHERE RM between " + index + " and "+(index + 20);
+        }		
 		
 		db.pstmt = db.conn.prepareStatement(sql);
 		db.rs = db.pstmt.executeQuery();
@@ -105,7 +100,8 @@ public class FboardDao {
 			fdto.setId(db.rs.getInt("id"));
 			fdto.setTitle(db.rs.getString("title"));
 			fdto.setUserid(db.rs.getString("userid"));
-			fdto.setContent(db.rs.getNString("content"));
+			fdto.setContent(db.rs.getString("content"));
+			fdto.setReadnum(db.rs.getInt("readnum"));
 			fdto.setWriteday(db.rs.getString("writeday"));
             
 			list.add(fdto);
@@ -120,7 +116,7 @@ public class FboardDao {
 		db.pstmt = db.conn.prepareStatement(sql);
 		db.rs = db.pstmt.executeQuery();
 		db.rs.next();
-		int page_cnt = (int) Math.ceil(db.rs.getInt("cnt") * 0.1);
+		int page_cnt = (int) Math.ceil(db.rs.getInt("cnt") * 0.05);
 
 		if(db.rs.getInt("cnt")%10 == 0) 
             page_cnt--;
