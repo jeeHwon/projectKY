@@ -6,8 +6,8 @@
 <%@page import="dto.EventDTO" %>
 <%@page import="java.util.ArrayList" %>
 <%
-	String userid=(String)session.getAttribute("userid"); // 세션받지말고 if문으로 처리 , admin만 세션받기 
-
+	String userid=(String)session.getAttribute("userid");
+	String sort = (request.getParameter("sort") == null) ? "" : request.getParameter("sort");
 	request.setCharacterEncoding("utf-8");
 	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
 	EventDTO eDTO = new EventDTO();
@@ -16,7 +16,7 @@
     //==========검색============
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
-    ArrayList<EventDTO> list=eDAO.pageList(cla,sword,pager);
+    ArrayList<EventDTO> list=eDAO.list(sort,cla,sword,pager);
 %>
 <jsp:include page="../header.jsp" />
 <style>
@@ -137,6 +137,23 @@ ul {
 .cate_title li a {display: block; padding: 15px 0; font-size: 18px; color: #666; font-weight: 700;}    
 .cate_title li.active a {background: #CB230C; color: #fff;}
 .cate_title{padding: 50px 0; position: relative;}  
+
+/*정렬*/
+
+.sort {
+	float:left;	
+	padding:83px 0 0 0;
+}
+.sort li{
+	display:inline;
+	font-size:20px;
+	padding:0 15px 0 0;
+}
+
+.sort ul {
+    width: 380px;
+    padding-left: 10px;
+}
 </style>
 <section id="event_slider">
 	<div class="container">
@@ -187,25 +204,34 @@ ul {
 			            <li><a class="" href="#">관심집중</a></li>
 			            <li><a class="" href="#">NEW</a></li>
 			            <li><a class="" href="#">마감임박</a></li>
+			            <li><a class="" href="#">당첨자발표</a></li>
 			        </ul>
 			    </div>
                 <div class="event_left">
                     <div class="event_slider">
-                        <img src="../assets/img/event01.jpg" alt="이벤트 이미지1">
+                        <a href="#"><img src="../assets/img/event01.jpg" alt="이벤트 이미지1"></a>
                     </div>
                     <div class="event_box1">
-                        <img src="../assets/img/event02.jpg" alt="이벤트 이미지2">
+                        <a href="#"><img src="../assets/img/event02.jpg" alt="이벤트 이미지2"></a>
                     </div>
                     <div class="event_box2">
-                        <img src="../assets/img/event03.jpg" alt="이벤트 이미지3">
+                        <a href="#"><img src="../assets/img/event03.jpg" alt="이벤트 이미지3"></a>
                     </div>
                 </div>
                 <div class="event_right">
-                    <img src="../assets/img/event04.jpg" alt="이벤트 이미지4">
+                     <a href="#"><img src="../assets/img/event04.jpg" alt="이벤트 이미지4"></a>
                 </div>
             </div>
 			<!--==================검색=====================-->
 			<div class="flist">
+                <div class="sort">
+                    <ul>
+                        <li class="checked"><a href="event_list.jsp">최신순</a></li>
+                        <li><a href="event_list.jsp?sort=1">인기순</a></li>
+                        <li><a href="event_list.jsp?sort=2">오래된순</a></li>
+                        <li><a href="event_list.jsp?sort=3">마감임박순</a></li>
+                    </ul>
+                </div>
 				<div class="form">
 					<form name="eventSearchFrm" action="event_list.jsp">
 						<select name="cla">
@@ -225,47 +251,49 @@ ul {
 					<%for (int i = 0; i < list.size(); i++) {	%>
 					<tr class="mid" height="50">
 						<td align="center"><%=list.get(i).getEvent_no()%></td>
-						<td align="center"><a
-							href="event_getView.jsp?event_no=<%=list.get(i).getEvent_no()%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>"><%=list.get(i).getEvent_title()%></a></td>
+						<td align="center">
+							<a href="event_getView.jsp?event_no=<%=list.get(i).getEvent_no()%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>"><%=list.get(i).getEvent_title()%></a>
+						</td>
 						<td align="center"><%=list.get(i).getEvent_postday()%></td>
 						<td align="center"><%=list.get(i).getEvent_view()%></td>
 					</tr>
 					<% }%>
 					<c:if test="${userid eq 'admin'}">
 						<tr class="bottom" height="50">
-							<td colspan="4" align="center" id=""><a
-								href="event_write.jsp">글쓰기</a></td>
+						<td colspan="4" align="center" id="">
+							<a href="event_write.jsp">글쓰기</a>
+						</td>
 						</tr>
 					</c:if>
 					<tr class="page" height="50">
 						<td colspan="4" align="center">
-							<%
+					  <%
 				         // 총 페이지값을 구하기  
 				          int page_cnt=eDAO.getTotalPage();
 				          int pstart=eDAO.getPstart(page_cnt,pager);
 				          int pend=eDAO.getPend(page_cnt,pstart); 
 				      %> <!-- 이전페이지 --> <!-- 현재 페이지 그룹 이전 10페이지 --> 
 				      <% if(pstart != 1){//(현재페이지에 출력되는 그룹이 가장 첫번재 그룹이냐 => pstart=1)  %>
-							<a href="event_list.jsp?pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">
 								◀◀ </a> <% }else{ %> ◀◀ <% }%> <!-- 현재페이지 기준 1페이지 이전 --> <% if(Integer.parseInt(pager) != 1){ %>
-							<a href="event_list.jsp?pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">◀
+							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">◀
 						</a> 
 						<% }else { %> ◀ 
 						<% } for(int i=pstart;i<=pend;i++){
 				             String str="";
 				            if(Integer.parseInt(pager) == i)
 				               str="style='color:red;'";  %> 
-				               <a href="event_list.jsp?pager=<%=i%>&cla=<%=cla%>&sword=<%=sword%>" <%=str%>> <%=i%>
+				               <a href="event_list.jsp?sort=<%=sort%>&pager=<%=i%>&cla=<%=cla%>&sword=<%=sword%>" <%=str%>> <%=i%>
 						</a> 
 						<!-- 페이지네이션 --> 
 						<% }%> <!-- 다음페이지 --> 
 						<!-- 현재페이지 기준 1페이지 이후 --> 
 						<% if(Integer.parseInt(pager) != page_cnt){%>
-							<a href="event_list.jsp?pager=<%=Integer.parseInt(pager)+1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)+1%>&cla=<%=cla%>&sword=<%=sword%>">
 								▶ </a> 
 						<%}else{ %> ▶ <% }%> <!-- 현재페이지 기준 다음 그룹으로 이동 -->
 						<%if(page_cnt != pend){%>
-							<a href="event_list.jsp?pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>"> ▶▶ </a> 
+							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>"> ▶▶ </a> 
 						<% }else{ %> ▶▶ <%} %>
 						</td>
 					</tr>
