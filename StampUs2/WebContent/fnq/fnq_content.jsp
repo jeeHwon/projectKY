@@ -34,7 +34,7 @@
 }
 
 .fnq_content th,td {
-	border-bottom: 3px solid #000000;
+	border-bottom: 1.5px solid #000000;
 	padding: 10px;
 }
 .fnq_content td.nav{
@@ -43,11 +43,12 @@ font-size:16pt;
 }
 .fnq_content.td.button{font-size:15pt;}
 .fnq_content.div.center{font-size:30pt;}
+.button {border-bottom:0px;}
 </style>
 <!-- ========================================================================= -->
 <jsp:include page="../left_nav.jsp" />
 	<title>상세답변</title>			
-	<jsp:include page="../header.jsp" />
+
 	<div align="center"  class="center">  
 	<a href="../customer/center.jsp">고객센터></a>
 	<a href="fnq_list.jsp">FQA</a>
@@ -67,7 +68,7 @@ font-size:16pt;
        <td > <%=fdto.getFnq_a()%>
        <img src="img/<%=fdto.getFnq_img()%>" width="200"></td>
       </tr>
-     <tr colsapn="2">  
+     <tr colsapn="2" id="button">  
 		<td align="center" class="button">
 		<%
 		if(userid.equals("admin")){

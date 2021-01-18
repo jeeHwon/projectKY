@@ -53,6 +53,8 @@
 #index {font-size : 20px;
 		background-color: orangered;
 }
+
+#body {height : 800px;}
 </style>
 <SCRIPT LANGUAGE="JavaScript">
 	function change(style) {
@@ -125,7 +127,8 @@
 		<td width="130"></td>
 	</tr>
 	</table>
-	<table id=all0 align="center" height="900">
+<div id="body">
+	<table id=all0 align="center">
 			<%
     // 출력
 		    for(int i=0;i<list0.size();i++)
@@ -144,7 +147,7 @@
 <!-- ========================================================================= -->		
 
 
-	<table id=all style="display: none;" align="center" height="900">
+	<table id=all class="tab" style="display: none;" align="center" >
 			<%
     // 출력
 		    for(int i=0;i<list0.size();i++)
@@ -160,7 +163,7 @@
 		%>
 	</table>
 <!-- ========================================================================= -->		
-	<table id=view1 style="display: none;" align="center" height="900">
+	<table id=view1 class="tab" style="display: none;" align="center" >
 		<%
 		    for(int i=0;i<list1.size();i++)
 		    {
@@ -175,7 +178,7 @@
 		%>
 	</table>
 <!-- ========================================================================= -->		
-	<table id=view2 style="display: none;" align="center" height="900">
+	<table id=view2 class="tab" style="display: none;" align="center" >
 		<% 
 		    for(int i=0;i<list2.size();i++)
 		    {
@@ -189,7 +192,7 @@
 		%>
 	</table>
 <!-- ========================================================================= -->		
-	<table id=view3 style="display: none;" align="center" height="900">
+	<table id=view3 class="tab" style="display: none;" align="center" >
 		<%
 		    for(int i=0;i<list3.size();i++)
 		    {
@@ -204,7 +207,7 @@
 		%>
 	</table>
 <!-- ========================================================================= -->		
-	<table id=view4 style="display: none;" align="center" height="900">
+	<table id=view4 class="tab" style="display: none;" align="center" >
 		<%
 		    for(int i=0;i<list4.size();i++)
 		    {
@@ -232,7 +235,7 @@
 		%>	
 		</tr>
 	</table>
-	
+	</div>
 <!-- ========================================================================= -->	
 
 			</div>
