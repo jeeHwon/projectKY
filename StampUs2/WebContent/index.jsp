@@ -22,7 +22,9 @@
                            <li class="line"><a href="<c:url value="/notice/notice_list.jsp"/>">공지사항</a></li>
                        </ul>
                        <ul>
+                           <%if(session.getAttribute("userid")!=null){ %>
                            <li class="white"><a href="<c:url value="/study_my/study_join_list.jsp"/>">내인증방</a></li>
+                           <%} %>
                            <li class="red"><a href="<c:url value="/room/room_create.jsp"/>">방만들기</a></li>
                        </ul>
                    </div>
