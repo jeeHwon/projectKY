@@ -4,10 +4,6 @@
 <%@ page import="dao.Review_dat_DAO" %>
 <%@ page import="dto.Review_dat_DTO" %>
 <%
-	// 세션변수 만들기
-	session.setAttribute("userid", "test");  // (변수명,값)
-%>
-<%
 	//DB연결
 	Review_dat_DAO rddao=new Review_dat_DAO();
 	

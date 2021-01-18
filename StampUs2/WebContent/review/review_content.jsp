@@ -8,10 +8,6 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	// 세션변수 만들기
-	session.setAttribute("userid", "test");  // (변수명,값)
-%>
-<%
 	//DB연결
 	ReviewDAO rdao=new ReviewDAO();
 
@@ -31,6 +27,7 @@
 <head>
 <meta charset="UTF-8">
 <title>후기 내용</title>
+<jsp:include page="../header.jsp" />
 <style>
   #dat_del,#dat_up,#del {visibility:hidden;}
 </style>
@@ -42,9 +39,9 @@
 </script>
 </head>
 <body>
-<jsp:include page="../header.jsp" />
     <section id="review_content">
-      <div align="center">
+     <div class="container">
+	  <div class="review" align="center">
 	  <table width="800" align="center">
 	    <tr>
 	      <td>제목</td>
@@ -167,7 +164,8 @@
 		    document.getElementById("dat_del").style.top=(y+100)+"px";
 	    }
 	   </script>
-	</div>   
+	  </div>   
+	 </div>   
     </section>
 <jsp:include page="../footer.jsp" />
 </body>

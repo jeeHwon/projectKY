@@ -4,10 +4,6 @@
 <%@ page import="dao.ReviewDAO" %>
 <%@ page import="dto.ReviewDTO" %>
 <%
-	// 세션변수 만들기
-	session.setAttribute("userid", "test");  // (변수명,값)
-%>
-<%
 	//DB연결
 	ReviewDAO rdao=new ReviewDAO();
 	// request값 읽어오기
