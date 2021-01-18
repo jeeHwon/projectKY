@@ -160,7 +160,9 @@ $(function (){
     
 	.study_dat_list {clear:both;}
 	.study_dat_list table{width:100%;}
-	.study_dat_list table a{font-size:12px !important; padding-right:0px !important;}
+	.study_dat_list table a{font-size:12px !important; padding-right:0px !important; padding-top:0px !important; padding-bottom:0px !important}
+	.study_dat_list table td{border-bottom: 1px solid #222; padding:10px !important;}
+
 
 	#study_dat_write{display: none;}
 	#roomContent::after{clear:both;content:"";display:block;}

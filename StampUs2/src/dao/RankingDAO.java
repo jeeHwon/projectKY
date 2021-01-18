@@ -94,8 +94,15 @@ public class RankingDAO
 			
 				cnt = ujList.get(i).getCnt();
 			
-			 	rate = certcnt/cnt*100;
-			 	
+				if(cnt!=0) {
+				
+					rate = certcnt/cnt*100;
+				}
+				else 
+				{
+					rate = 0.0;
+				}
+				
 			 	String sRate = String.format("%.2f", rate);
 			 	
 			 	rate = Double.parseDouble(sRate);
@@ -158,9 +165,16 @@ public class RankingDAO
 			{
 				cnt += ujList.get(i).getCnt();
 			}
-					
-			rate = certcnt/cnt*100;
-				 	
+			
+			if(cnt!=0) 
+			{
+				rate = certcnt/cnt*100;
+			}
+			else 
+			{
+				rate = 0.0;
+			}
+			
 			String sRate = String.format("%.2f", rate);
 				 	
 			rate = Double.parseDouble(sRate);
@@ -228,8 +242,14 @@ public class RankingDAO
 				cnt += ujList.get(i).getCnt();
 			}
 			
-			rate = certcnt/cnt*100;
-			 	
+			if(cnt!=0) {
+				rate = certcnt/cnt*100;
+			}
+			else 
+			{
+				rate = 0.0;
+			}
+			
 			String sRate = String.format("%.2f", rate);
 			 	
 			rate = Double.parseDouble(sRate);
@@ -281,9 +301,15 @@ public class RankingDAO
 			}
 			
 		}
+		if(cnt!=0) 
+		{
+			rate = certcnt/cnt*100;
+		}
+		else 
+		{
+			rate = 0.0;
+		}
 		
-		rate = certcnt/cnt*100;
-	 	
 	 	String sRate = String.format("%.2f", rate);
 	 	
 	 	rate = Double.parseDouble(sRate);
