@@ -34,6 +34,8 @@ ul.mylist{border:5px solid #BBBBBB;
         <hr>
         <li><a href="../event/event_list.jsp" class="at">이벤트</a></li>
         <hr>
+        <li><a href="../customer/center.jsp" class="at">고객센터</a></li>
+        <hr>
         <li><a href="#" onclick="window.open('https://open.kakao.com/o/sSgNRIQc', '카카오톡'); return false" color:#FFFFFF;>카카오톡 문의</a>
         <li width="30"><img src="../customer/img/qr.png"></li>
         </li>

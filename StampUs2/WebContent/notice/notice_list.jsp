@@ -27,7 +27,7 @@
 			
 <style>
 table {
-	width: 70%;
+	
 	border-top: 1px double #000000;
 	border-collapse: collapse;
 }
@@ -52,13 +52,11 @@ font-family:"HMKMRHD", sans-serif;
 <jsp:include page="../left_nav.jsp" />
 	<div align="center"  class="center">
 	<img src="noticeimg/notice.png">
-	<a href="../customer/center.jsp">고객센터></a>
-	<a href="notice_list.jsp">공지사항</a>
 	</div>
 	<div align="center">
-	<table height="800" align="center">
+	<table width=100% height="800" align="center">
 		<tr align="center" class="top" height="100">
-			<td><h4>제목</h4></td>
+			<td>제목</td>
 			<td>조회수</td>
 			<td>작성날짜</td>
 		</tr>

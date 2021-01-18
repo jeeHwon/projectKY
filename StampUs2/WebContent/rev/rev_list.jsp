@@ -36,7 +36,7 @@ td {
 	border-right: none;
 	border-bottom: none;
 }
-div.center{font-size:30pt;}
+
 tr.top{
 border-bottom:4px solid #000000;
 font-size:17pt;
@@ -46,8 +46,7 @@ tr.mid{
 border-bottom:1px solid #000000;
 font-size:12pt;
 font-family:"HMKMRHD", sans-serif;
-margin:0;
-padding:0;
+
 }
 </style>
 <!-- ========================================================================= -->	
@@ -56,12 +55,10 @@ padding:0;
 <jsp:include page="../left_nav.jsp" />
 	<img src="revimg/rev.png">
 	<div align="center" class="center"> 
-	<a href="../customer/center.jsp">고객센터></a>
-	<a href="rev_list.jsp">협력업체</a>
 	</div>
 	<p align="center">stampus를 편리하게 이용해보세요</p>
 	<div align="center">
-	<table width="1500" height="800" align="center">
+	<table width=100%  height="800" align="center">
 		<tr align="center" class="top" height="100">
 			<td>대표사진</td>
 			<td>업체명</td>
@@ -73,7 +70,7 @@ padding:0;
 		    for(int i=0;i<list.size();i++)
 		    {
  		%>	
-		<tr align="center" class="mid" height="50"> 
+		<tr align="center" class="mid" height="70"> 
 			<td align="center"><img src="img/<%=list.get(i).getRev_img()%>" width="200"></td>
 			<td align="center"><%=list.get(i).getRev_company()%></td>
 			<td align="center"><%=list.get(i).getRev_addr()%></td>
