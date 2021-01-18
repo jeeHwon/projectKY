@@ -17,7 +17,7 @@ pageContext.setAttribute("allGList", allGList);
 		<div class="study_my_list">
 			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
 				<div class="allGoalList">
-				<h2>전체 인증 현황</h2>
+				<h2><strong>전체 인증 현황</strong></h2>
 					<table>
 						<tr>
 							<th>아이디</th>
@@ -27,7 +27,8 @@ pageContext.setAttribute("allGList", allGList);
 						<c:forEach var="dto" items="${allGList}">
 							<tr>
 								<td>${dto.user_id}</td>
-								<td>${dto.isgoal}</td>
+								<td>${dto.isgoal}
+								</td>
 								<td>${dto.goal_day }</td>
 							</tr>
 						</c:forEach>

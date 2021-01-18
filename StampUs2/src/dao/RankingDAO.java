@@ -21,46 +21,48 @@ public class RankingDAO
 	public String getDays(int room_no) throws Exception
 	{
 		String sql = "select room_check_day from room where room_no="+room_no;
+
 		
 		db.stmt = db.conn.createStatement();
 		db.rs = db.stmt.executeQuery(sql);
-		
-		db.rs.next();
-		
-		String check_day=db.rs.getString("room_check_day");
-		
-		String[] days=check_day.split(",");
-		
-		for(int i=0;i<days.length;i++) 
-		{
-			switch(days[i]) 
-			{
-				case "sun":days[i]="'1'";break;
-				case "mon":days[i]="'2'";break;
-				case "tue":days[i]="'3'";break;
-				case "wed":days[i]="'4'";break;
-				case "thu":days[i]="'5'";break;
-				case "fri":days[i]="'6'";break;
-				case "sat":days[i]="'7'";break;
-				
-			}
-		}
-		
 		String day = "";
 		
-		for(int i=0;i<days.length;i++) {
-			if(i!=days.length-1) 
+		if(db.rs.next()) { 
+			
+			
+			String check_day=db.rs.getString("room_check_day");
+			
+			String[] days=check_day.split(",");
+			
+			for(int i=0;i<days.length;i++) 
 			{
-				day += days[i]+",";
-			}
-			else 
-			{
-				day += days[i];
+				switch(days[i]) 
+				{
+					case "sun":days[i]="'1'";break;
+					case "mon":days[i]="'2'";break;
+					case "tue":days[i]="'3'";break;
+					case "wed":days[i]="'4'";break;
+					case "thu":days[i]="'5'";break;
+					case "fri":days[i]="'6'";break;
+					case "sat":days[i]="'7'";break;
+					
+				}
 			}
 			
+			
+			for(int i=0;i<days.length;i++) {
+				if(i!=days.length-1) 
+				{
+					day += days[i]+",";
+				}
+				else 
+				{
+					day += days[i];
+				}
+				
+			}
+		
 		}
-		
-		
 		return day;
 		
 	}
