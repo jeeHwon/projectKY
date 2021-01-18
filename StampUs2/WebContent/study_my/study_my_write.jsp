@@ -2,12 +2,18 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@include file="study_my_header.jsp" %>
-	<div class="container">
-		<div class="row">
-			<div class="본인 파일의 이름으로 지정하세요(추후 css 적용위해)">
-	<div class="container">
-		<h1>인증 글쓰기</h1>
-        	<div class="writeForm">
+<style>
+.study_my_list table{ width:100%;}
+.study_my_list tr { line-height: 40px;}
+.study_my_list input[type="text"] { display: inline-block; width:100%; padding:5px;}
+.study_my_list textarea {display: inline-block; width:100%; padding:5px; height: 400px;}
+#button{font-size: 18px; float:right; box-sizing: border-box; display: inline-block; margin-top:5px; padding: 10px 30px 12px 30px; background-color: #CB230C; margin-right: 1%; margin-left: 1%; color: #fff; border: 1px solid #E68D80;}
+#button:hover{background: #E68D80; border-color: #CB230C; color: #fff;}
+</style>
+	<div id="study_list">
+	<div class="study_my_list">
+		<h2><strong>인증 글쓰기</strong></h2>
+        	
          		<form name="writeForm" method="post" action="study_my_write_ok.jsp" enctype="multipart/form-data">
          		<input type="hidden" name="study_no" value="<%=study_no %>">
 	         		<table>
@@ -23,13 +29,11 @@
 		         		    <td><input type="file" name="study_img"></td>
 		         		</tr>
 		         		<tr>
-		         			<td colspan="2"><input type="submit" value="글쓰기"></td>
+		         			<td colspan="2"><input id="button" type="submit" value="글쓰기"></td>
 		         		</tr>
 	         		</table>
          		</form>
          	</div>           
 	</div>
-	</div>
-	</div>
-	</div>
+
 <%@include file="study_my_footer.jsp" %>

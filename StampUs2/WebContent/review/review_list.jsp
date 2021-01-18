@@ -6,10 +6,6 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	// 세션변수 만들기
-	session.setAttribute("userid", "test");  // (변수명,값)
-%>
-<%
 	//DB연결
 	ReviewDAO rdao=new ReviewDAO();	
     request.setCharacterEncoding("utf-8");
@@ -25,17 +21,39 @@
 <html>
 <head>
 <title>후기 리스트</title>
+<jsp:include page="../header.jsp" />
   <script>
     function init()
     {
     	document.se.cla.value="<%=cla%>";
     }
   </script>
+  <style>
+  	.review table
+  	{
+  		margin-top:20px;
+  		border-collapse:collapse;
+  	}
+  	.review table tr
+  	{
+  		font-size:16px;
+  	}
+    .review table tr:first-child
+    {
+    	font-size:20px;
+    	background:#CB230C;
+    	color:white;
+    }
+    .review table td
+    {
+    	border-bottom: 1px solid black;
+    }
+  </style>
 </head>
 <body onload="init()">
-<jsp:include page="../header.jsp" />
 	<section id="review_list">
-	  <div align="center">
+	 <div class="container">
+	  <div class="review" align="center">
         <!-- 필드와 검색단어를 입력할 폼태그 -->
 	    <div align="center">
 	     <form name="se" method="post" action="review_list.jsp">
@@ -89,13 +107,13 @@
 		         if(pstart != 1)//(현재페이지에 출력되는 그룹이 가장 첫번쨰 그룹이냐=> pstart=1)
 		         {
 		       %>
-		       <a href="review_list.jsp?pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">◀◀</a>
+		       <a href="review_list.jsp?pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">&lt;&lt;</a>
 		       <%
 		         }
 		         else
 		         {
 		       %>
-		       		◀◀
+		       		&lt;&lt;
 		       <%
 		         }
 		       %>
@@ -104,13 +122,13 @@
 		         if(pager !=1)
 		         {	 
 		       %>
-		       <a href="review_list.jsp?pager=<%=pager-1%>&cla=<%=cla%>&sword=<%=sword%>">◀</a>
+		       <a href="review_list.jsp?pager=<%=pager-1%>&cla=<%=cla%>&sword=<%=sword%>">&lt;</a>
 		       <%
 		         }
 		         else
 		         {
 		       %>                 
-		                      ◀
+		          &lt;
 		       <%
 		         }
 		         for(int i=pstart;i<=pend;i++)
@@ -130,13 +148,13 @@
 		         if(pager != page_cnt)
 		         { 
 		       %>
-		       <a href="review_list.jsp?pager=<%=pager+1%>&cla=<%=cla%>&sword=<%=sword%>">▶</a>
+		       <a href="review_list.jsp?pager=<%=pager+1%>&cla=<%=cla%>&sword=<%=sword%>">&gt;</a>
 		       <%
 		         }
 		         else
 		         {
 		       %>
-		                         ▶
+		          &gt;
 		       <% 
 		         }
 		       %>
@@ -145,13 +163,13 @@
 		         if(page_cnt != pend)
 		         {
 		       %>
-		         <a href="review_list.jsp?pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>">▶▶</a>
+		         <a href="review_list.jsp?pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>">&gt;&gt;</a>
 		       <%
 		         }
 		         else
 		         {
 		       %>
-		       		▶▶
+		       		&gt;&gt;
 		       <%
 		         }
 		       %>  	      
@@ -161,7 +179,8 @@
 		      <td colspan="5" align="center"> <a href="review_write.jsp"> 글쓰기 </a> </td>
 		    </tr>
 		  </table>
-	  </div>	    
+	  </div>	  
+	 </div>   
 	</section>
 <jsp:include page="../footer.jsp" />   
 </body>

@@ -141,7 +141,7 @@ $(function (){
 	#roomContetn .goalList table tr {border-bottom: 1px solid black; line-height: 40px;}    
     #roomContent .goalList table th {border-bottom: 1px solid black; width:160px;}
 
-	#roomContent #study_list {order:1; width:60%; height: 100%;}
+	#roomContent #study_list {order:1; width:65%; height: 100%;}
 	#roomContent .study_my_list { margin-left:2%; padding:20px; border:1px solid black; border-radius: 10px; height: 100%; margin-bottom: 20px;}
 	#roomContent .study_my_list h2 {font-size:24px; padding: 20px; border-bottom: 1px solid black;}
 	#roomContent .study_my_list h3 {font-size:18px; padding: 20px; border-bottom: 1px solid black;}
@@ -156,7 +156,7 @@ $(function (){
     #roomContent .study_my_list a.red:hover {background: #E68D80; border-color: #CB230C; color: #fff;}  
     
     .study_my_list .content{font-size: 18px; padding: 20px;}
-    .study_my_list .writeday{font-size: 18px; text-align: right;}
+    .study_my_list .writeday{font-size: 18px; text-align: right; margin-right: 3%; padding-bottom:15px;}
     
 	.study_dat_list {clear:both;}
 	.study_dat_list table{width:100%;}
@@ -183,7 +183,7 @@ $(function (){
         		<div class="title"><strong>${rdto.title}</strong></div>
         	</div>
         	<div class="preview_btn">
-                    <a href="study_join_list.jsp" class="white">목록보기</a>
+                    <a href="study_join_list.jsp" class="white">인증방 목록보기</a>
                     <a href="study_my_cert.jsp?study_no=<%=study_no%>" class="white">전체 인증 현황 보기</a>
                     <a href="study_my_write.jsp?study_no=<%=study_no%>" class="red">글쓰기</a>
              </div>

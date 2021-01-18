@@ -141,7 +141,7 @@ $(function (){
 	#roomContetn .goalList table tr {border-bottom: 1px solid black; line-height: 40px;}    
     #roomContent .goalList table th {border-bottom: 1px solid black; width:160px;}
 
-	#roomContent #study_list {order:1; width:60%; height: 100%;}
+	#roomContent #study_list {order:1; width:65%; height: 100%;}
 	#roomContent .study_my_list { margin-left:2%; padding:20px; border:1px solid black; border-radius: 10px; height: 100%; margin-bottom: 20px;}
 	#roomContent .study_my_list h2 {font-size:24px; padding: 20px; border-bottom: 1px solid black;}
 	#roomContent .study_my_list h3 {font-size:18px; padding: 20px; border-bottom: 1px solid black;}
@@ -183,9 +183,9 @@ $(function (){
         		<div class="title"><strong>${rdto.title}</strong></div>
         	</div>
         	<div class="preview_btn">
-                    <a href="study_join_list.jsp" class="white">목록보기</a>
+                    <a href="study_my_list.jsp?study_no=<%=study_no %>" class="white">방으로 돌아가기</a>
                     <a href="study_my_cert.jsp?study_no=<%=study_no%>" class="white">전체 인증 현황 보기</a>
-                    <a href="study_my_write.jsp?study_no=<%=study_no%>" class="red">글쓰기</a>
+                    <a href="study_my_write.jsp?study_no=<%=study_no%>" class="white">글쓰기</a>
              </div>
              </div>
              <div id="flexContent">

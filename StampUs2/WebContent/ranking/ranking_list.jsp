@@ -9,13 +9,15 @@
 	String user_id = session.getAttribute("userid").toString();
 
 	RankingDAO rDAO = new RankingDAO();
-	
 	ArrayList<RankingDTO> ulist = rDAO.userRoomRate(user_id);
 	
+	rDAO = new RankingDAO();
 	double urate=rDAO.userRate(user_id);
 	
+	rDAO = new RankingDAO();
 	ArrayList<RankingDTO> rlist = rDAO.roomRanking();
 	
+	rDAO = new RankingDAO();
 	ArrayList<RankingDTO> urlist = rDAO.userRanking();
 	
 	pageContext.setAttribute("ulist", ulist);
