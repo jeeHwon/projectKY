@@ -66,7 +66,7 @@ font-size:16pt;
      <tr colspan="2">  
        <td  class="nav"> 답변 </td>
        <td > <%=fdto.getFnq_a()%>
-       <img src="img/<%=fdto.getFnq_img()%>" width="200"></td>
+       <img src="img/fnq/<%=fdto.getFnq_img()%>" width="200"></td>
       </tr>
      <tr colsapn="2" id="button">  
 		<td align="center" class="button">

@@ -62,7 +62,7 @@ div.center{font-size:30pt;}
 		</tr>
 		<tr>
 			<td id="body1"><pre><%=ndto.getNotice_content()%></pre></td>
-			<td align="center" id="body2"><img src="img/<%=ndto.getNotice_file()%>" width="400"></td>
+			<td align="center" id="body2"><img src="img/notice/<%=ndto.getNotice_file()%>" width="400"></td>
 		</tr>
 		<tr height="50" >
 			<td>공지날짜 : <%=ndto.getNotice_postday()%>
