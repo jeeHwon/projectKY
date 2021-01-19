@@ -124,7 +124,7 @@
             <div class="roomPreview">
                 <h2>Preview</h2>
                 <div class="preview_left">
-                    <div class="preview_img" style="background: #ccc url(../assets/img/${rdto.file_name});"></div>
+                    <div class="preview_img" style="background: #ccc url(../img/room/${rdto.file_name});"></div>
                     <div class="current_people">
                         <span><strong class="left">현재인원</strong></span>
                         <span><strong class="right">${currentPeople} / ${rdto.people} </strong></span>

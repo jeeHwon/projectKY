@@ -7,8 +7,8 @@
 
 <%
 	//cos.jar 라이브러리를 통해 파일을 업로드
-	String savePath =  request.getRealPath("room_data/");
-	String test2 = request.getSession().getServletContext().getRealPath("room_data");
+	String savePath =  request.getRealPath("/img/room/");
+	//String test2 = request.getSession().getServletContext().getRealPath("room_data");
 	
 	int size = 1024*1024*5;
 	String enco = "utf-8";
@@ -82,4 +82,4 @@
 	
 %>
 
-<%=room_no%>
+<%=savePath%>

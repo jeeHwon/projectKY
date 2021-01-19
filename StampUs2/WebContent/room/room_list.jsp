@@ -224,7 +224,7 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/${list[i].file_name}" alt="">
+                                        <img src="../img/room/${list[i].file_name}" alt="">
                                     </figure>
                                     <div class="rank"><strong>${i+1}</strong></div>
                                     <div class="mx">
@@ -243,7 +243,7 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/${list[i+1].file_name}" alt="">
+                                        <img src="../img/room/${list[i+1].file_name}" alt="">
                                     </figure>
                                     <div class="rank"><strong>${i+2}</strong></div>
                                     <div class="mx">
@@ -262,7 +262,7 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/${list[i+2].file_name}" alt="">
+                                        <img src="../img/room/${list[i+2].file_name}" alt="">
                                     </figure>
                                     <div class="rank"><strong>${i+3}</strong></div>
                                     <div class="mx">
@@ -281,7 +281,7 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/${list[i+3].file_name}" alt="">
+                                        <img src="../img/room/${list[i+3].file_name}" alt="">
                                     </figure>
                                     <div class="rank"><strong>${i+4}</strong></div>
                                     <div class="mx">
