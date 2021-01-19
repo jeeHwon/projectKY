@@ -86,8 +86,8 @@
 	    </tr>
 	    <tr>
 	      <td colspan="6" id="content_photo">
-	        <img src="../assets/img/review/${rdto.review_file}"
-	        onerror="this.src='../assets/img/review/no-camera.png'" style="width:300px;">
+	        <img src="../img/review/${rdto.review_file}"
+	        onerror="this.src='../img/review/no-camera.png'" style="width:300px;">
 	      </td>
 	    </tr>
 	    <tr>
