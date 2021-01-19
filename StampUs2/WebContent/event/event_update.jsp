@@ -39,7 +39,7 @@
 						<td>내용</td>
 						<td>
 							<input type="file" name="img"><p>
-								<img src="../img/<%=dto.getEvent_img()%>"><p>
+								<img src="../img/event/<%=dto.getEvent_img()%>"><p>
 							<textarea name="content" rows="4" cols="40"><%=dto.getEvent_content()%></textarea>
 						</td>
 					</tr>

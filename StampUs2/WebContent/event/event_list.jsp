@@ -138,8 +138,11 @@ ul {
 .cate_title li.active a {background: #CB230C; color: #fff;}
 .cate_title{padding: 50px 0; position: relative;}  
 
-/*정렬*/
-
+/*======================정렬======================*/
+.sort .selected{
+    font-weight: 500;
+    color: #CB230C;
+}
 .sort {
 	float:left;	
 	padding:83px 0 0 0;
@@ -149,7 +152,6 @@ ul {
 	font-size:20px;
 	padding:0 15px 0 0;
 }
-
 .sort ul {
     width: 380px;
     padding-left: 10px;
@@ -226,10 +228,10 @@ ul {
 			<div class="flist">
                 <div class="sort">
                     <ul>
-                        <li class="checked"><a href="event_list.jsp">최신순</a></li>
-                        <li><a href="event_list.jsp?sort=1">인기순</a></li>
-                        <li><a href="event_list.jsp?sort=2">오래된순</a></li>
-                        <li><a href="event_list.jsp?sort=3">마감임박순</a></li>
+                        <li><a <%if(sort.equals("")){%>class="selected"<% }%> href="event_list.jsp">최신순</a></li>
+                        <li><a <%if(sort.equals("1")){%>class="selected"<% }%> href="event_list.jsp?sort=1">인기순</a></li>
+                        <li><a <%if(sort.equals("2")){%>class="selected"<% }%> href="event_list.jsp?sort=2">오래된순</a></li>
+                        <li><a <%if(sort.equals("3")){%>class="selected"<% }%> href="event_list.jsp?sort=3">마감임박순</a></li>
                     </ul>
                 </div>
 				<div class="form">
@@ -278,7 +280,7 @@ ul {
 								◀◀ </a> <% }else{ %> ◀◀ <% }%> <!-- 현재페이지 기준 1페이지 이전 --> <% if(Integer.parseInt(pager) != 1){ %>
 							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">◀
 						</a> 
-						<% }else { %> ◀ 
+						<% }else { %> ◀
 						<% } for(int i=pstart;i<=pend;i++){
 				             String str="";
 				            if(Integer.parseInt(pager) == i)

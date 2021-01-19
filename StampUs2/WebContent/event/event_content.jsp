@@ -61,7 +61,7 @@
 				<tr>
 					<td>내용</td>
 					<td>
-						<img src="../img/<%=edDTO.getEvent_img()%>"><br>
+						<img src="../img/event/<%=edDTO.getEvent_img()%>"><br>
 						<%=edDTO.getEvent_content()%>
 					</td>
 				</tr>
