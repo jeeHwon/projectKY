@@ -12,7 +12,7 @@
 %>
 <%
 
-	String realPath = request.getRealPath("/img/fboard/");
+	String realPath = request.getRealPath("/img/fboard_img");
 	int size = 1024 * 1024 * 10;
 	String han = "utf-8";
 	
