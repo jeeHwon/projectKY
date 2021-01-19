@@ -58,8 +58,12 @@ tr.page{
 	float:right;
 	font-size:17pt;
 }
-
-
+button i {/*검색아이콘*/
+	color:#CB230C;
+	background:white;
+	padding:0 0 0 10px;
+	cursor:pointer;
+}
 /*===================== 이미지 슬라이더==================== */
 .event_slider input[id*="slide"]{
     display: none;
@@ -157,6 +161,7 @@ ul {
     padding-left: 10px;
 }
 </style>
+<script src="https://kit.fontawesome.com/066a49883d.js" crossorigin="anonymous"></script>
 <section id="event_slider">
 	<div class="container">
 		<div class="row">
@@ -239,8 +244,9 @@ ul {
 						<select name="cla">
 							<option value="title">제목</option>
 							<option value="content">내용</option>
-						</select> <input type="text" name="sword" value="<%=sword%>"> <input
-							type="submit" value="검색">
+						</select> 
+						<input type="text" name="sword" value="<%=sword%>"> 
+						<button><i class="fas fa-search fa-2x"></i></button> 
 					</form>
 				</div>
 				<table>
@@ -277,10 +283,12 @@ ul {
 				      %> <!-- 이전페이지 --> <!-- 현재 페이지 그룹 이전 10페이지 --> 
 				      <% if(pstart != 1){//(현재페이지에 출력되는 그룹이 가장 첫번재 그룹이냐 => pstart=1)  %>
 							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">
-								◀◀ </a> <% }else{ %> ◀◀ <% }%> <!-- 현재페이지 기준 1페이지 이전 --> <% if(Integer.parseInt(pager) != 1){ %>
-							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">◀
-						</a> 
-						<% }else { %> ◀
+								<i class="fas fa-angle-double-left"></i></a> 
+					  <% }else{ %><i class="fas fa-angle-double-left"></i> <% }%> <!-- 현재페이지 기준 1페이지 이전 --> <% if(Integer.parseInt(pager) != 1){ %>
+							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">
+								<i class="fas fa-angle-left"></i>
+							</a> 
+						<% }else { %> <i class="fas fa-angle-left"></i>
 						<% } for(int i=pstart;i<=pend;i++){
 				             String str="";
 				            if(Integer.parseInt(pager) == i)
@@ -292,11 +300,14 @@ ul {
 						<!-- 현재페이지 기준 1페이지 이후 --> 
 						<% if(Integer.parseInt(pager) != page_cnt){%>
 							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)+1%>&cla=<%=cla%>&sword=<%=sword%>">
-								▶ </a> 
-						<%}else{ %> ▶ <% }%> <!-- 현재페이지 기준 다음 그룹으로 이동 -->
+								<i class="fas fa-angle-right"></i>
+						    </a> 
+						<%}else{ %><i class="fas fa-angle-right"></i><% }%> <!-- 현재페이지 기준 다음 그룹으로 이동 -->
 						<%if(page_cnt != pend){%>
-							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>"> ▶▶ </a> 
-						<% }else{ %> ▶▶ <%} %>
+							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>">
+								<i class="fas fa-angle-double-right"></i>
+							</a> 
+						<% }else{ %> <i class="fas fa-angle-double-right"></i> <%} %>
 						</td>
 					</tr>
 				</table>
