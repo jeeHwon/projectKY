@@ -7,7 +7,7 @@
 <%@ page import="dao.*" %>
 <%@ page import="dto.*" %>
 <%
-	String realPath =request.getRealPath("/img");
+	String realPath =request.getRealPath("/img/study_my/");
 	int size = 1024*1024*10;
 	String han = "utf-8";
 	
