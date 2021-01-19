@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="dao.EventDAO" %>
+<%@page import="dao.Event_winnerDAO" %>
 <%@page import="java.sql.*" %>
-<%@page import="dto.EventDTO" %>
+<%@page import="dto.Event_winnerDTO" %>
 <%@page import="java.util.ArrayList" %>
 <%
 	String userid=(String)session.getAttribute("userid");
 	String sort = (request.getParameter("sort") == null) ? "" : request.getParameter("sort");
 	request.setCharacterEncoding("utf-8");
 	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
-	EventDTO eDTO = new EventDTO();
-	EventDAO eDAO = new EventDAO();
+	Event_winnerDTO eDTO = new Event_winnerDTO();
+	Event_winnerDAO eDAO = new Event_winnerDAO();
     
     //==========검색============
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
-    ArrayList<EventDTO> list=eDAO.list(sort,cla,sword,pager);
+    ArrayList<Event_winnerDTO> list=eDAO.list(sort,cla,sword,pager);
 %>
 <jsp:include page="../header.jsp" />
 <style>
@@ -143,22 +143,15 @@ ul {
 .cate_title{padding: 50px 0; position: relative;}  
 
 /*======================정렬======================*/
-.sort .selected{
+h3{
+	font-size: 30px;
     font-weight: 500;
-    color: #CB230C;
+    margin-top:70px;
+    float:left;
 }
-.sort {
-	float:left;	
-	padding:83px 0 0 0;
-}
-.sort li{
-	display:inline;
-	font-size:20px;
-	padding:0 15px 0 0;
-}
-.sort ul {
-    width: 380px;
-    padding-left: 10px;
+.checked{
+    background: #CB230C;
+    color: #fff;
 }
 </style>
 <script src="https://kit.fontawesome.com/066a49883d.js" crossorigin="anonymous"></script>
@@ -170,7 +163,7 @@ ul {
 </section>
 
 <!-- list -->
-<section id="event_list">
+<section id="event_winner_list">
 	<div class="container" align="center">
 		<div class="row">
 			<!-- ==============이미지 슬라이더 =================-->
@@ -207,11 +200,11 @@ ul {
 			<div class="event">
 			    <div class="cate_title" id="cate">
 			        <ul>
-			            <li class="active"><a class="nav_sub_a" href="#">오늘의 추천</a></li>
+			            <li><a href="#">오늘의 추천</a></li>
 			            <li><a class="" href="#">관심집중</a></li>
 			            <li><a class="" href="#">NEW</a></li>
 			            <li><a class="" href="#">마감임박</a></li>
-			            <li><a class="" href="#">당첨자발표</a></li>
+			            <li class="active"><a class="nav_sub_a" href="event_winner_list.jsp">당첨자발표</a></li>
 			        </ul>
 			    </div>
                 <div class="event_left">
@@ -231,16 +224,9 @@ ul {
             </div>
 			<!--==================검색=====================-->
 			<div class="flist">
-                <div class="sort">
-                    <ul>
-                        <li><a <%if(sort.equals("")){%>class="selected"<% }%> href="event_list.jsp">최신순</a></li>
-                        <li><a <%if(sort.equals("1")){%>class="selected"<% }%> href="event_list.jsp?sort=1">인기순</a></li>
-                        <li><a <%if(sort.equals("2")){%>class="selected"<% }%> href="event_list.jsp?sort=2">오래된순</a></li>
-                        <li><a <%if(sort.equals("3")){%>class="selected"<% }%> href="event_list.jsp?sort=3">마감임박순</a></li>
-                    </ul>
-                </div>
+                <h3>당첨자발표</h3>
 				<div class="form">
-					<form name="eventSearchFrm" action="event_list.jsp">
+					<form name="eventSearchFrm" action="event_winner_list.jsp">
 						<select name="cla">
 							<option value="title">제목</option>
 							<option value="content">내용</option>
@@ -258,12 +244,12 @@ ul {
 					</tr>
 					<%for (int i = 0; i < list.size(); i++) {	%>
 					<tr class="mid" height="50">
-						<td align="center"><%=list.get(i).getEvent_no()%></td>
+						<td align="center"><%=list.get(i).getEvent_winner_no()%></td>
 						<td align="center">
-							<a href="event_getView.jsp?event_no=<%=list.get(i).getEvent_no()%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>"><%=list.get(i).getEvent_title()%></a>
+							<a href="event_winner_getView.jsp?event_winner_no=<%=list.get(i).getEvent_winner_no()%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>"><%=list.get(i).getEvent_winner_title()%></a>
 						</td>
-						<td align="center"><%=list.get(i).getEvent_postday()%></td>
-						<td align="center"><%=list.get(i).getEvent_view()%></td>
+						<td align="center"><%=list.get(i).getEvent_winner_postday()%></td>
+						<td align="center"><%=list.get(i).getEvent_winner_view()%></td>
 					</tr>
 					<% }%>
 					<c:if test="${userid eq 'admin'}">
@@ -282,10 +268,10 @@ ul {
 				          int pend=eDAO.getPend(page_cnt,pstart); 
 				      %> <!-- 이전페이지 --> <!-- 현재 페이지 그룹 이전 10페이지 --> 
 				      <% if(pstart != 1){//(현재페이지에 출력되는 그룹이 가장 첫번재 그룹이냐 => pstart=1)  %>
-							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">
 								<i class="fas fa-angle-double-left"></i></a> 
 					  <% }else{ %><i class="fas fa-angle-double-left"></i> <% }%> <!-- 현재페이지 기준 1페이지 이전 --> <% if(Integer.parseInt(pager) != 1){ %>
-							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">
 								<i class="fas fa-angle-left"></i>
 							</a> 
 						<% }else { %> <i class="fas fa-angle-left"></i>
@@ -293,18 +279,18 @@ ul {
 				             String str="";
 				            if(Integer.parseInt(pager) == i)
 				               str="style='color:red;'";  %> 
-				               <a href="event_list.jsp?sort=<%=sort%>&pager=<%=i%>&cla=<%=cla%>&sword=<%=sword%>" <%=str%>> <%=i%>
+				               <a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=i%>&cla=<%=cla%>&sword=<%=sword%>" <%=str%>> <%=i%>
 						</a> 
 						<!-- 페이지네이션 --> 
 						<% }%> <!-- 다음페이지 --> 
 						<!-- 현재페이지 기준 1페이지 이후 --> 
 						<% if(Integer.parseInt(pager) != page_cnt){%>
-							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)+1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)+1%>&cla=<%=cla%>&sword=<%=sword%>">
 								<i class="fas fa-angle-right"></i>
 						    </a> 
 						<%}else{ %><i class="fas fa-angle-right"></i><% }%> <!-- 현재페이지 기준 다음 그룹으로 이동 -->
 						<%if(page_cnt != pend){%>
-							<a href="event_list.jsp?sort=<%=sort%>&pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>">
 								<i class="fas fa-angle-double-right"></i>
 							</a> 
 						<% }else{ %> <i class="fas fa-angle-double-right"></i> <%} %>

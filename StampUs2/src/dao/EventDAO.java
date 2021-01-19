@@ -1,5 +1,6 @@
 package dao;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import db.DB;
 import dto.EventDTO;
@@ -87,8 +88,6 @@ public class EventDAO {
 			orderby=" order by event_view desc)";
 		}else if(sort.equals("2")) {
 			orderby=" order by event_postday)";
-		}else if(sort.equals("3")) {
-			orderby=" order by event_no)";			
 		}else {
 			orderby=" order by event_no desc)";
 		}
@@ -97,7 +96,7 @@ public class EventDAO {
 		if(cla==""){//검색 조건이 없는 경우 => 모든 글 가져오기
 			sql="SELECT event_no,event_title,event_view,event_postday ";
 			sql=sql+" FROM(SELECT ROWNUM AS RM, SELECT event_no,event_title,event_view,event_postday";
-			sql=sql+" FROM(SELECT * FROM review "+orderby;
+			sql=sql+" FROM(SELECT * FROM event "+orderby;
 			sql=sql+") WHERE RM between "+index+" and " +(index+10);
 		} 
 		if(cla.equals("content")){   //content 필드 검색
@@ -158,5 +157,14 @@ public class EventDAO {
 		if(page_cnt < pend)
 			pend=page_cnt;
 		return pend;
+	}
+	//=================이벤트제목가져오기======================
+	public String getEvent_title(int event_no) throws SQLException {
+		sql="select event_title from event where event_no="+event_no;
+		db.pstmt = db.conn.prepareStatement(sql);
+		db.rs = db.pstmt.executeQuery();
+		db.rs.next();
+		return db.rs.getString("event_title");
+		
 	}
 }
