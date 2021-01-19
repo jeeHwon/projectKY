@@ -8,7 +8,7 @@
 <%@ page import="dto.*" %>
 <%
 
-	String realPath = request.getRealPath("/img");
+	String realPath = request.getRealPath("/img/study_my/");
 	int size = 1024*1024*10;
 	String han = "utf-8";
 	
@@ -25,7 +25,7 @@
 	sDTO.setStudy_no(Integer.parseInt(study_no));
 	sDTO.setStudy_title(study_title);
 	sDTO.setStudy_content(study_content);
-	sDTO.setStudy_img(study_img);
+	if(study_img!=null)sDTO.setStudy_img(study_img);
 	sDTO.setUser_id(user_id);
 	
 	Study_my_DAO sDAO = new Study_my_DAO();
