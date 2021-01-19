@@ -68,7 +68,7 @@
                             <li><a href="<c:url value="/ranking/ranking_list.jsp"/>">랭킹</a></li>
                             <li><a href="<c:url value="/review/review_list.jsp"/>">후기</a></li>
                             <li><a href="#">통계</a></li>
-                            <li><a href="#">결제</a></li>
+                            <li><a href="<c:url value="/pay/pay_charge.jsp"/>">결제</a></li>
                             <li><a href="<c:url value="/event/event_list.jsp"/>">이벤트</a></li>
                             <%if(session.getAttribute("userid")==null){ %>
 								<li><a href="<c:url value="/login/log.jsp"/>">로그인</a></li>
