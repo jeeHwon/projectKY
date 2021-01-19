@@ -8,11 +8,11 @@
 <%@	page import="dto.FboardDto" %>
 <%@	page import="dao.FboardDao" %>
 <%
-	session.setAttribute("userid", "test");
+	session.getAttribute("userid");
 %>
 <%
 
-	String realPath = request.getRealPath("/img");
+	String realPath = request.getRealPath("/img/fboard/");
 	int size = 1024 * 1024 * 10;
 	String han = "utf-8";
 	

@@ -3,7 +3,7 @@
 <%@ page import="java.sql.*" %>
 <%@	page import="dao.Fboard_datDao" %>
 <%
-	session.setAttribute("userid", "test");
+	session.getAttribute("userid");
 %>
 <%
 

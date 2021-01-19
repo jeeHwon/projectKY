@@ -6,7 +6,7 @@
 <%@	page import="dao.FboardDao" %>
 
 <%
-	session.setAttribute("userid", "test");
+	session.getAttribute("userid");
 %>
 
 <%

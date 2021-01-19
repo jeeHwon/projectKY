@@ -4,7 +4,7 @@
 <%@	page import="dto.Fboard_datDto" %>
 <%@	page import="dao.Fboard_datDao" %>
 <%
-	session.setAttribute("userid", "test");
+	session.getAttribute("userid");
 %>
 <%
 	request.setCharacterEncoding("utf-8");

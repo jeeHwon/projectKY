@@ -7,7 +7,7 @@
 	int id = Integer.parseInt(request.getParameter("id"));
 	FboardDao fdao = new FboardDao();
 	FboardDto fdto = fdao.content(id);
-	session.setAttribute("userid", "user1");
+	session.getAttribute("userid");
 	String userid = session.getAttribute("userid").toString();
 	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
