@@ -1,6 +1,11 @@
 package dao;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import db.DB;
@@ -298,6 +303,63 @@ public class User_join_DAO {
 		db.close();
 		
 		return list;
+	}
+	
+	public void getPenalty() throws Exception
+	{
+		String sql = "select user_join_no, user_id, study_no, deposit, penalty, cur_deposit, room_check_day "
+				+ "from user_join, room where user_join.study_no=room.room_no";
+		
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		while(db.rs.next()) 
+		{
+			String room_check_day = db.rs.getString("room_check_day");
+			LocalDate yesterday = LocalDate.now().minusDays(1);
+			
+			DayOfWeek dow=yesterday.getDayOfWeek();
+			
+			GoalDAO gDAO = new GoalDAO();
+			
+			String day=gDAO.getDay(dow);
+			
+			String yday = yesterday.format(DateTimeFormatter.BASIC_ISO_DATE);
+			
+			if(room_check_day.contains(day)) 
+			{
+				sql = "select * from goal where user_id=? and goal_room_no=? and to_char(goal_day, 'YYYYMMDD')=?";
+				PreparedStatement pstmt = db.conn.prepareStatement(sql);
+				pstmt.setString(1, db.rs.getString("user_id"));
+				pstmt.setString(2, db.rs.getString("study_no"));
+				pstmt.setString(3, yday);
+				
+				ResultSet rs = pstmt.executeQuery();
+				
+				if(!rs.next()) 
+				{
+					sql="update user_join set cur_deposit=? where user_join_no=?";
+					
+					double deposit = db.rs.getDouble("deposit");
+					deposit = deposit*(db.rs.getDouble("penalty")/100.0);
+					double cur_deposit = db.rs.getDouble("cur_deposit")-deposit;
+					
+					System.out.println("cur_deposit"+cur_deposit);
+					System.out.println("penalty"+db.rs.getDouble("penalty"));
+					
+					pstmt= db.conn.prepareStatement(sql);
+					pstmt.setDouble(1, cur_deposit);
+					pstmt.setString(2, db.rs.getString("user_join_no"));
+					
+					pstmt.executeUpdate();
+					
+				}
+				
+			}
+			
+			
+		}
+		
 	}
 	
 }

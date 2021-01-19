@@ -184,6 +184,7 @@ $(function (){
         	<div class="room_title">
         		<div class="title"><strong>${rdto.title}</strong></div>
         	</div>
+        	<div class="money">내 보증금</div>
         	<div class="preview_btn">
                     <a href="study_join_list.jsp" class="white">인증방 목록보기</a>
                     <a href="study_my_cert.jsp?study_no=<%=study_no%>" class="white">전체 인증 현황 보기</a>
