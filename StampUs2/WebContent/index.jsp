@@ -96,8 +96,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_s ir_pm">study</span><strong>직장인 토익900점</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -115,8 +115,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_x ir_pm">study</span><strong>한강 주말런닝 :)</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -134,8 +134,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_f ir_pm">study</span><strong>다이어트 식단인증</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -153,8 +153,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_w ir_pm">study</span><strong>평일 새벽6시 기상!</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -175,8 +175,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_x ir_pm">study</span><strong>일주일 총거리 10km</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -194,8 +194,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_f ir_pm">study</span><strong>건강한 아침식사 함께</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -213,8 +213,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_w ir_pm">study</span><strong>기상후 모닝커피 인증</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -232,8 +232,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_s ir_pm">study</span><strong>고3 수능 D-200일!!</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>                            
@@ -254,8 +254,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_w ir_pm">study</span><strong>평일아침 7시기상방</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -273,8 +273,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_s ir_pm">study</span><strong>도서관에서 공부하기</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -292,8 +292,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_x ir_pm">study</span><strong>홈요가 1주 2회~!</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -311,8 +311,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_f ir_pm">study</span><strong>샐러드 도시락 인증방</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -333,8 +333,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_f ir_pm">study</span><strong>채식위주 식단인증방</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -352,8 +352,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_w ir_pm">study</span><strong>아침 6시 기상 미션有</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -371,8 +371,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_s ir_pm">study</span><strong>[부산]고2 노지각러들</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
@@ -390,8 +390,8 @@
                                 <div class="infor">
                                     <h3><span class="icon cate_x ir_pm">study</span><strong>헬스장 입구사진 인증</strong></h3>
                                     <div class="infor_btn">
-                                        <a href="">상세보기</a>
-                                        <a href="">참여하기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">상세보기</a>
+                                        <a href="<c:url value="/room/room_list.jsp"/>">참여하기</a>
                                     </div>
                                 </div>
                             </div>
