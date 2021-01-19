@@ -51,7 +51,7 @@ div.center{font-size:30pt;}
 	<div align="center">
 	<table width="400" height="600" align="center">
       <tr width="150" >
-     	<td colsapn="2" rowspan="5" align="center"><img src="img/rev/<%=rdto.getRev_img()%>" width="200"></td>	
+     	<td colsapn="2" rowspan="5" align="center"><img src="../img/rev/<%=rdto.getRev_img()%>" width="200"></td>	
       </tr>
      <tr >	
        <td width="100" > 업체명 </td>

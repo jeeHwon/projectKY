@@ -71,7 +71,7 @@ font-family:"HMKMRHD", sans-serif;
 		    {
  		%>	
 		<tr align="center" class="mid" height="70"> 
-			<td align="center"><img src="img/rev/<%=list.get(i).getRev_img()%>" width="200"></td>
+			<td align="center"><img src="../img/rev/<%=list.get(i).getRev_img()%>" width="200"></td>
 			<td align="center"><%=list.get(i).getRev_company()%></td>
 			<td align="center"><%=list.get(i).getRev_addr()%></td>
 			<td align="center"><a href="rev_content.jsp?rev_no=<%=list.get(i).getRev_no()%>">click!</a></td>
