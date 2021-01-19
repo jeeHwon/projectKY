@@ -149,7 +149,7 @@ ul {
 }
 .sort {
 	float:left;	
-	padding:83px 0 0 0;
+	padding:83px 0 0 10px;
 }
 .sort li{
 	display:inline;
@@ -160,8 +160,14 @@ ul {
     width: 380px;
     padding-left: 10px;
 }
+h3{
+	font-size: 30px;
+    font-weight: 500;
+    margin-top:70px;
+    float:left;
+}
 </style>
-<script src="https://kit.fontawesome.com/066a49883d.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/066a49883d.js" crossorigin="an	onymous"></script>
 <section id="event_slider">
 	<div class="container">
 		<div class="row">
@@ -211,7 +217,7 @@ ul {
 			            <li><a class="" href="#">관심집중</a></li>
 			            <li><a class="" href="#">NEW</a></li>
 			            <li><a class="" href="#">마감임박</a></li>
-			            <li><a class="" href="#">당첨자발표</a></li>
+			            <li><a class="" href="../event_winner/event_winner_list.jsp">당첨자발표</a></li>
 			        </ul>
 			    </div>
                 <div class="event_left">
@@ -231,12 +237,13 @@ ul {
             </div>
 			<!--==================검색=====================-->
 			<div class="flist">
+				<h3>이벤트목록</h3>
                 <div class="sort">
                     <ul>
                         <li><a <%if(sort.equals("")){%>class="selected"<% }%> href="event_list.jsp">최신순</a></li>
                         <li><a <%if(sort.equals("1")){%>class="selected"<% }%> href="event_list.jsp?sort=1">인기순</a></li>
-                        <li><a <%if(sort.equals("2")){%>class="selected"<% }%> href="event_list.jsp?sort=2">오래된순</a></li>
-                        <li><a <%if(sort.equals("3")){%>class="selected"<% }%> href="event_list.jsp?sort=3">마감임박순</a></li>
+                        <li><a <%if(sort.equals("2")){%>class="selected"<% }%> href="event_list.jsp?sort=2">마감임박순</a></li>
+                        <li><a href="../event_winner/event_winner_list.jsp">당첨자보기</a></li>
                     </ul>
                 </div>
 				<div class="form">
