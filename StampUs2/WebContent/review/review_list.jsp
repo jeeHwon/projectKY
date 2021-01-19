@@ -9,7 +9,9 @@
 	//DB연결
 	ReviewDAO rdao=new ReviewDAO();	
     request.setCharacterEncoding("utf-8");
-	//페이저 설정 => 현재 나타내고자 하는 페이지 값을 저장
+    String user_id=(session.getAttribute("userid")==null) ? "" : session.getAttribute("userid").toString();
+	
+    //페이저 설정 => 현재 나타내고자 하는 페이지 값을 저장
     int pager=(request.getParameter("pager")==null) ? 1 : Integer.parseInt(request.getParameter("pager"));  
     String cla=(request.getParameter("cla") == null) ? "" : request.getParameter("cla");
     String sword=(request.getParameter("sword") == null) ? "" : request.getParameter("sword");
@@ -26,6 +28,16 @@
     function init()
     {
     	document.se.cla.value="<%=cla%>";
+    }
+    function review_write()
+    {
+    	if("<%=user_id%>" == "")
+		{
+		  alert("로그인하세요");
+		  return false;
+		}
+		else
+			window.location.href="review_write.jsp";
     }
   </script>
   <style>
@@ -185,7 +197,7 @@
 		      </td>
 		    </tr>
 		    <tr>
-		      <td colspan="5" align="center"> <a href="review_write.jsp"> 글쓰기 </a> </td>
+		      <td colspan="5" align="center"> <a href="#" onclick="review_write()"> 글쓰기 </a> </td>
 		    </tr>
 		  </table>
 	  </div>	  

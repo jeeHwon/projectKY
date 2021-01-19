@@ -35,6 +35,26 @@
 	  var h1=document.getElementById("hash");
 	  h1.remove();
   }
+  function update_check()
+  {
+	  if(document.getElementById("review_title").value=="")
+	  {
+		  alert("제목을 입력하세요");
+		  return false;
+	  }
+	  else if(document.getElementById("review_content").value=="")
+	  {
+		  alert("내용을 입력하세요");
+		  return false;
+	  }
+	  else if(document.getElementById("hash")==null)
+	  {
+		  alert("해시태그를 입력하세요");
+		  return false;
+	  }	
+	  else
+		  return true;
+  }
 </script>
 <style>
   #hash {
@@ -74,22 +94,22 @@
 	<section id="review_update">
 	 <div class="container">
 	  <div class="review" align="center">
-	      <form method="post" action="review_update_ok.jsp" enctype="multipart/form-data">
+	      <form method="post" action="review_update_ok.jsp" enctype="multipart/form-data" onsubmit="return update_check()">
 		    <input type="hidden" name="review_no" value=<%=review_no%>>
 		    <table width="800" align="center">
 		      <tr>
 		        <td> 제목 </td>
-		        <td> <input type="text" name="review_title" value="${rdto.review_title}"> </td>
+		        <td> <input type="text" name="review_title" id="review_title" value="${rdto.review_title}"> </td>
 		      </tr>
 		      <tr>
 		        <td> 첨부사진 </td>
 		        <td>
-		          <input type="file" name="review_file"> 
+		          <input type="file" name="review_file" id="review_file"> 
 		        </td>
 		      </tr>
 		      <tr>
 		        <td> 내용 </td>
-		        <td> <textarea cols="80" rows="10" name="review_content">${rdto.review_content}</textarea> </td>
+		        <td> <textarea cols="80" rows="10" name="review_content" id="review_content">${rdto.review_content}</textarea> </td>
 		      </tr>
 		      <tr>
 		        <td> 해쉬태그 </td>

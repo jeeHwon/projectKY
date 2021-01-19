@@ -13,7 +13,7 @@
 
 	// request값 읽어오기
     String review_no=request.getParameter("review_no");
-	String user_id=session.getAttribute("userid").toString();
+	String user_id=(session.getAttribute("userid")==null) ? "" : session.getAttribute("userid").toString();
 	
 	ReviewDTO rdto=rdao.content(review_no);
 	pageContext.setAttribute("rdto",rdto);	
@@ -63,7 +63,23 @@
 <script>
   function del_ok()
   {
-	  document.getElementById("del").style.visibility="visible";
+	  if("<%=user_id%>"=="")
+		  {
+		  	alert("로그인하세요")
+		  	return false
+		  }
+	  else
+	  	document.getElementById("del").style.visibility="visible";
+  }
+  function update_ok()
+  {
+	  if("<%=user_id%>"=="")
+	  {
+	  	alert("로그인하세요");
+	  	return false;
+	  }
+      else
+    	  window.location.href="review_update.jsp?review_no=${rdto.review_no}";
   }
 </script>
 </head>
@@ -104,7 +120,7 @@
 	    </tr>
 	    <tr>
 	      <td colspan="6" align="center"> 
-	        <a href="review_update.jsp?review_no=${rdto.review_no}"> 수정 </a>
+	        <a href="#" onclick="update_ok()"> 수정 </a>
 	        <a href="#" onclick="del_ok()">삭제</a>
 	        <a href="review_list.jsp"> 목록 </a>
 	      </td>
@@ -129,10 +145,10 @@
 	  <!-- 댓글 관련 작업 -->
 	  <!-- 댓글을 입력 폼  => 작성자, 내용, 비번 -->
 	  <div align="center">
-	    <form name="dat" method="post" action="review_dat_write_ok.jsp">
+	    <form name="dat" method="post" action="review_dat_write_ok.jsp" onsubmit="return dat_write()">
 	      <input type="hidden" name="review_no" value=<%=review_no%>> <!-- review 테이블의 "review_no" -->
 	      <input type="text" name="user_id" value=<%=user_id%> readonly>
-	      <input type="text" name="review_dat_content" size="85" placeholder="댓글 내용">
+	      <input type="text" name="review_dat_content" id="review_dat_content" size="85" placeholder="댓글 내용">
 	      <input type="submit" value="댓글달기">
 	    </form>
 	   </div>  
@@ -172,25 +188,56 @@
 	     </form>
 	   </div>
 	   <script>
+	    function dat_write()
+	    {
+	    	if("<%=user_id%>"=="")
+			{
+			    alert("로그인하세요");
+			    return false;
+			}
+	    	else if(document.getElementById("review_dat_content").value=="")
+	    	{
+	    	    alert("댓글을 입력하세요");
+			    return false;
+	    	}
+	    	else
+	    		return true;
+	    }
 	    function update(review_dat_no,user_id,review_dat_content)
 	    {
-	    	document.up.review_dat_no.value=review_dat_no;
-	    	document.up.user_id.value=user_id;
-	    	document.up.review_dat_content.value=review_dat_content;
-	     	var x=event.clientX;
-	 	    var y=event.clientY;
-	 	    document.getElementById("dat_up").style.visibility="visible";
-		    document.getElementById("dat_up").style.left=(x-500)+"px";
-		    document.getElementById("dat_up").style.top=(y+100)+"px";
+	    	if("<%=user_id%>"=="")
+			  {
+			  	alert("로그인하세요");
+			  	return false;
+			  }
+		  	else
+		  	{
+			  document.up.review_dat_no.value=review_dat_no;
+			  document.up.user_id.value=user_id;
+			  document.up.review_dat_content.value=review_dat_content;
+			  var x=event.clientX;
+			  var y=event.clientY;
+			  document.getElementById("dat_up").style.visibility="visible";
+			  document.getElementById("dat_up").style.left=(x-500)+"px";
+			  document.getElementById("dat_up").style.top=(y+100)+"px";
+		  	}
 	    }
 	    function ddel(review_dat_no)
 	    {
-	    	document.del.review_dat_no.value=review_dat_no;
-	       	var x=event.clientX;
-	 	    var y=event.clientY;
-	 	    document.getElementById("dat_del").style.visibility="visible";
-		    document.getElementById("dat_del").style.left=(x-130)+"px";
-		    document.getElementById("dat_del").style.top=(y+100)+"px";
+	    	if("<%=user_id%>"=="")
+			{
+			  alert("로그인하세요");
+			  return false;
+			}
+		  	else
+		  	{
+		  	  document.del.review_dat_no.value=review_dat_no;
+		      var x=event.clientX;
+		 	  var y=event.clientY;
+		 	  document.getElementById("dat_del").style.visibility="visible";
+			  document.getElementById("dat_del").style.left=(x-130)+"px";
+			  document.getElementById("dat_del").style.top=(y+100)+"px";
+		  	}
 	    }
 	   </script>
 	  </div>   
