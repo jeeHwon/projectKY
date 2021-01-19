@@ -10,6 +10,6 @@
 	MemberDAO mdao = new MemberDAO();
 	mdao.pay_charge(userid, total_bill);
 	
-	//response.sendRedirect("pay_charge_fin.jsp");
+	response.sendRedirect("pay_charge.jsp");
 	
 %>

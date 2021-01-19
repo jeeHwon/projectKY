@@ -95,8 +95,8 @@ public class MemberDAO {
 	public void pay_charge(String userid, String total_bill) throws SQLException {
 		String sql = "update USER_MEMBER set USER_MONEY = USER_MONEY + ? where USER_ID = ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, userid);
-		pstmt.setString(2, total_bill);
+		pstmt.setString(1, total_bill);
+		pstmt.setString(2, userid);
 		pstmt.executeUpdate();
 		pstmt.close();
 	}
