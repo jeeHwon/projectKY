@@ -17,6 +17,7 @@
 	height: 40px;
 	border: 1px solid #b71c1c;
 	font-size: 20px;
+	margin-top:10px;
 }
 
 #login button {
@@ -27,6 +28,7 @@
 	color: white;
 	background-color: #b71c1c;
 	border: 0px solid #b71c1c;
+	margin-top:10px;
 }
 
 #login span {
