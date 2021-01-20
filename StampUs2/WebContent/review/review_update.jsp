@@ -65,7 +65,7 @@
   }
   #review_update
     {
-    	background-image: url("../assets/img/main_banner2.jpg");
+    	background-image: url("../img/review/background.jpg");
     	background-repeat:no-repeat;
     	background-size:cover;
     }

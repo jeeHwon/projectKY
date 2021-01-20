@@ -32,7 +32,7 @@
   #dat_del,#dat_up,#del {visibility:hidden;}
   #review_content
     {
-    	background-image: url("../assets/img/main_banner2.jpg");
+    	background-image: url("../img/review/background.jpg");
     	background-repeat:no-repeat;
     	background-size:cover;
     }

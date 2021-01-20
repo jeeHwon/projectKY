@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.sql.*" %> 
+<%@ page import="java.sql.*" %> 
 <%@ page import="dao.ReviewDAO" %>
 <%@ page import="dto.ReviewDTO" %>
 <%@ page import="java.util.ArrayList"%>
@@ -43,7 +43,7 @@
   <style>
     #review_list
     {
-    	background-image: url("../assets/img/main_banner2.jpg");
+    	background-image: url("../img/review/background.jpg");
     	background-repeat:no-repeat;
     	background-size:cover;
     }
