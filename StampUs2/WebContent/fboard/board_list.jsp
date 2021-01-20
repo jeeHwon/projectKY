@@ -25,19 +25,69 @@
 %>   
 <jsp:include page="../header.jsp" />
 <style>
+	.fboard_list {
+		width: 1100px;
+	}
 	table {
-	    margin: 30px auto;
-    	width: 60vw;
-    }
-    td {
-		border:1px solid #cccccc;
+		width:1100px;
+		border-top: 1px double #222;
+		border-collapse: collapse;
+	}
+	tr {
+		padding: 5px;
+	}
+	tr.page{
+	font-size:17pt;
+	height:100px;
+
+	}
+	tr.mid {
+	border-bottom:1px solid #222;
+	font-size:12pt;
+	}
+	.form{
+		width:30%;
+		padding:80px 0 15px 0;
+		float:right;
+		font-size:17pt;
+	}
+	h3{
+		font-size: 30px;
+	    font-weight: 500;
+	    margin-top:70px;
+	    float:left;
 	}
 </style>
 <section id="sec_fboardlist">
 	<div class="container">
 		<div class="row">
-		<div class="div_fboardlist">
-<div align="center">
+		
+<div class="fboard_list">
+<h3>자유게시판</h3>
+<table>
+	<tr align="center" class="top" height="50">
+		<td> 번호 </td>
+		<td> 이름 </td>
+		<td> 제목 </td>
+		<td> 조회수 </td>
+		<td> 등록일 </td>
+	</tr>
+<%
+	for(int i = 0; i < list.size(); i++)
+	{
+%>
+	<tr class="mid" height="50">
+		<td align="center"><%=list.get(i).getId()%></td>
+		<td align="center"><%=list.get(i).getUserid()%></td>
+		<td align="center"><a href="board_readnum.jsp?id=<%=list.get(i).getId()%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>"><%=list.get(i).getTitle() %></a></td>
+		<td align="center"><%=list.get(i).getReadnum()%></td>
+		<td align="center"><%=list.get(i).getWriteday()%></td>
+	</tr>
+	
+<%
+	}
+%>
+<div class="form">
 	<form name="searchFrm" method="post" action="board_list.jsp">
 		<select name="cla">
 			<option value="userid">이름</option>
@@ -47,31 +97,10 @@
 		<input type="submit" value="검색">
 	</form>
 </div>
-<table>
-	<tr align="center">
-		<td> 번호 </td>
-		<td> 제목 </td>
-		<td> 이름 </td>
-		<td> 조회수 </td>
-		<td> 등록일 </td>
-	</tr>
-<%
-	for(int i = 0; i < list.size(); i++)
-	{
-%>
-	<tr>
-		<td align="center"><%=list.get(i).getId()%></td>
-		<td><a href="board_readnum.jsp?id=<%=list.get(i).getId()%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>"><%=list.get(i).getTitle() %></a></td>
-		<td align="center"><%=list.get(i).getUserid()%></td>
-		<td align="center"><%=list.get(i).getReadnum()%></td>
-		<td align="center"><%=list.get(i).getWriteday()%></td>
-	</tr>
-<%
-	}
-%>
 		<!-- 사용자가 클릭하여 이동할 수 있는 페이지 출력 -->
-		<tr>
-			<td colspan="3" align="center">
+		<tr class="page" height="50">
+			<td colspan="5" align="center">
+			
 			<%
 				//총 페이지 값을 구하기 => 총 레코드수/ 페이지당 레코드수
 				int page_cnt = fdao.get_total_page_cnt();
@@ -146,15 +175,19 @@
 			} 
 			%>
 			</td>
+			</tr>
+			<tr>
 			<td align="center">
-			<a href="board_write.jsp">글쓰기</a>
-			<a href="board_list.jsp">목록보기</a>
+				<a href="board_write.jsp">글쓰기</a>
+				<a href="board_list.jsp">목록보기</a>
 			</td>
 		</tr>
+
+	
 	</table>
 	</div>
-		</div>
-	</div>
+</div>
+</div>
 </section>
 <script>
 	function init(){

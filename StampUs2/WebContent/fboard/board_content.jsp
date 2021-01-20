@@ -18,21 +18,18 @@
 	
 %>
 <jsp:include page="../header.jsp" />
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-
 
 <style>
 	table {
 	    margin: 30px auto;
-    	width: 60vw;
+    	width: 40vw;
     }
     td {
 		border:1px solid #cccccc;
 	}
+	th {
+		border:1px solid #cccccc;
+		}
 </style>
 <section id="fboard_content">
 	<div class="container">
@@ -41,7 +38,7 @@
 <table class="table">
 	<thead class="thead-dark">
 		<tr>
-			<th align="center">제목 </td>
+			<th align="center">제목 </th>
 			<td colspan="5"><%=fdto.getTitle()%></td>
 	</tr>
 	<tr align="center">
