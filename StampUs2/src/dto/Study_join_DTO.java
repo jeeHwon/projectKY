@@ -3,10 +3,17 @@ package dto;
 public class Study_join_DTO 
 {
 	private int user_join_no, room_no, room_people;
-	private String user_id, room_title, room_start_day, room_end_day, room_category, room_category2, room_condition, room_check_day, room_certi_type, room_file_name, room_penalty, room_content, room_deposit;
+	private String user_id, room_title, room_start_day, room_end_day, room_category, room_category2, room_condition, room_check_day, room_certi_type, room_file_name, room_penalty, room_content, room_deposit, cur_deposit;
 	
 	
+		
 	
+	public String getCur_deposit() {
+		return cur_deposit;
+	}
+	public void setCur_deposit(String cur_deposit) {
+		this.cur_deposit = cur_deposit;
+	}
 	public int getUser_join_no() {
 		return user_join_no;
 	}

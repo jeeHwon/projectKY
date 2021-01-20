@@ -14,7 +14,9 @@
 		ArrayList<RoomDTO> list = rdao.list();
 		pageContext.setAttribute("list", list);
 		String chk=request.getParameter("chk");
+		String dchk=request.getParameter("dchk");
 		pageContext.setAttribute("chk", chk);	
+		pageContext.setAttribute("dchk", dchk);
 	} else{
 		String cate1 = request.getParameter("cate1");
 		String cate2 = request.getParameter("cate2");
@@ -31,14 +33,18 @@
 		ArrayList<RoomDTO> list = rdao.cateList(category);
 		pageContext.setAttribute("list", list);
 		String chk=request.getParameter("chk");
+		String dchk=request.getParameter("dchk");
 		pageContext.setAttribute("chk", chk);	
+		pageContext.setAttribute("dchk", dchk);
 	}
 	if(request.getParameter("sort")!=null){
 		RoomDAO rdao = new RoomDAO();
 		ArrayList<RoomDTO> list = rdao.sort_list(request.getParameter("sort"));
 		pageContext.setAttribute("list", list);
 		String chk=request.getParameter("chk");
-		pageContext.setAttribute("chk", chk);	
+		String dchk=request.getParameter("dchk");
+		pageContext.setAttribute("chk", chk);
+		pageContext.setAttribute("dchk", dchk);
 	}
 	
 
@@ -349,6 +355,17 @@
         if(chk==1)
         {
         	alert('이미 참여중인 방입니다')
+        }
+        else
+        {
+        	
+        }
+        
+        // 인증방 보증금 부족시 경고창
+        var dchk = ${dchk}+"";
+        if(dchk==1)
+        {
+        	alert('보증금이 부족합니다. 충전해주세요')
         }
         else
         {

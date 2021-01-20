@@ -2,16 +2,24 @@ package dto;
 
 public class User_join_DTO 
 {
-	private int user_join_no, study_no, deposit, penalty;
+	private int user_join_no, study_no, penalty;
+	private double deposit, cur_deposit;
 	private String user_id, join_day, end_day;
 	private double cnt;
 	
 
-	public int getDeposit() {
+	
+	public double getDeposit() {
 		return deposit;
 	}
-	public void setDeposit(int deposit) {
+	public void setDeposit(double deposit) {
 		this.deposit = deposit;
+	}
+	public double getCur_deposit() {
+		return cur_deposit;
+	}
+	public void setCur_deposit(double cur_deposit) {
+		this.cur_deposit = cur_deposit;
 	}
 	public int getPenalty() {
 		return penalty;

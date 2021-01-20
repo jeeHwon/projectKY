@@ -93,7 +93,7 @@ public class Study_join_DAO
 	
 	public void insert(Study_join_DTO sjDTO) throws Exception
 	{
-		String sql = "insert into user_join values(user_join_seq.nextval, ?, ?, sysdate, ?, ?, ?)";
+		String sql = "insert into user_join values(user_join_seq.nextval, ?, ?, sysdate, ?, ?, ?, ?)";
 		
 		db.pstmt = db.conn.prepareStatement(sql);
 		
@@ -102,6 +102,7 @@ public class Study_join_DAO
 		db.pstmt.setString(3, sjDTO.getRoom_end_day());
 		db.pstmt.setString(4, sjDTO.getRoom_deposit());
 		db.pstmt.setString(5, sjDTO.getRoom_penalty());
+		db.pstmt.setNString(6, sjDTO.getCur_deposit());
 		
 		db.pstmt.executeUpdate();
 		
@@ -127,6 +128,43 @@ public class Study_join_DAO
 		}
 		else 
 		{
+			return 0;
+		}
+		
+	}
+	
+	public int inDeposit(String user_id, String study_no) throws Exception
+	{
+		String sql = "select user_money from user_member where user_id='"+user_id+"'";
+		
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		db.rs.next();
+		
+		int user_money = db.rs.getInt("user_money");
+		
+		sql = "select room_deposit from room where room_no="+study_no;
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		db.rs.next();
+		
+		int deposit = db.rs.getInt("room_deposit")*1000;
+		System.out.println("deposit"+deposit+"usermoney"+user_money);
+		if(deposit>user_money) 
+		{
+			return 1;
+		}
+		else 
+		{
+			sql = "update user_member set user_money=? where user_id=?";
+			
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.pstmt.setInt(1, user_money-deposit);
+			db.pstmt.setString(2, user_id);
+			db.pstmt.executeUpdate();
+			
 			return 0;
 		}
 		
