@@ -15,6 +15,8 @@
 		pageContext.setAttribute("list", list);
 		String chk=request.getParameter("chk");
 		String dchk=request.getParameter("dchk");
+		String pchk=request.getParameter("pchk");
+		pageContext.setAttribute("pchk", pchk);
 		pageContext.setAttribute("chk", chk);	
 		pageContext.setAttribute("dchk", dchk);
 	} else{
@@ -34,8 +36,10 @@
 		pageContext.setAttribute("list", list);
 		String chk=request.getParameter("chk");
 		String dchk=request.getParameter("dchk");
+		String pchk=request.getParameter("pchk");
 		pageContext.setAttribute("chk", chk);	
 		pageContext.setAttribute("dchk", dchk);
+		pageContext.setAttribute("pchk", pchk);
 	}
 	if(request.getParameter("sort")!=null){
 		RoomDAO rdao = new RoomDAO();
@@ -43,8 +47,10 @@
 		pageContext.setAttribute("list", list);
 		String chk=request.getParameter("chk");
 		String dchk=request.getParameter("dchk");
+		String pchk=request.getParameter("pchk");
 		pageContext.setAttribute("chk", chk);
 		pageContext.setAttribute("dchk", dchk);
+		pageContext.setAttribute("pchk", pchk);
 	}
 	
 
@@ -366,6 +372,17 @@
         if(dchk==1)
         {
         	alert('보증금이 부족합니다. 충전해주세요')
+        }
+        else
+        {
+        	
+        }
+        
+     	// 인증방 인원 다 찼을 경우 경고창
+        var pchk = ${pchk}+"";
+        if(pchk==1)
+        {
+        	alert('정원이 다 찬 방입니다')
         }
         else
         {

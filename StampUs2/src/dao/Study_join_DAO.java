@@ -1,5 +1,8 @@
 package dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import db.DB;
@@ -164,9 +167,7 @@ public class Study_join_DAO
 			db.pstmt.setInt(1, user_money-deposit);
 			db.pstmt.setString(2, user_id);
 			db.pstmt.executeUpdate();
-			
-			db.close();
-			
+						
 			return 0;
 		}
 		
@@ -185,4 +186,32 @@ public class Study_join_DAO
 		return (int)(c_deposit*1000);
 	}
 	
+	public int isMaxPeople(String study_no) throws Exception
+	{
+		String sql = "SELECT COUNT(*) AS CNT FROM user_join WHERE STUDY_NO = "+study_no;
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		db.rs.next();
+		
+		int cnt = db.rs.getInt("CNT");
+		
+		
+		sql = "select room_people from room where room_no="+study_no;
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		db.rs.next();
+			
+		int people = db.rs.getInt("room_people");
+		
+		if((people-cnt)==0) 
+		{
+			return 1;
+		}
+		else 
+		{
+			return 0;
+		}
+	}
 }

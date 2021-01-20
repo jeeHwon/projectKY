@@ -60,23 +60,30 @@
 	
 	if(chk==0)
 	{
-	
 		int dchk=sjDAO.inDeposit(session.getAttribute("userid").toString(), room_no);
 		
 		if(dchk==0)
 		{
-			sjDTO.setUser_id(session.getAttribute("userid").toString());
-			sjDTO.setRoom_no(rdto.getId());
-			sjDTO.setRoom_start_day(rdto.getStart_day());
-			sjDTO.setRoom_end_day(rdto.getEnd_day());
-			sjDTO.setRoom_deposit(rdto.getDeposit());
-			sjDTO.setRoom_penalty(rdto.getPenalty());
-			sjDTO.setCur_deposit(rdto.getDeposit());
-		
-			sjDAO.insert(sjDTO);
-		
-			response.sendRedirect("room_list.jsp");
-		
+			int pchk = sjDAO.isMaxPeople(room_no);
+			
+			if(pchk==0)
+			{
+				sjDTO.setUser_id(session.getAttribute("userid").toString());
+				sjDTO.setRoom_no(rdto.getId());
+				sjDTO.setRoom_start_day(rdto.getStart_day());
+				sjDTO.setRoom_end_day(rdto.getEnd_day());
+				sjDTO.setRoom_deposit(rdto.getDeposit());
+				sjDTO.setRoom_penalty(rdto.getPenalty());
+				sjDTO.setCur_deposit(rdto.getDeposit());
+			
+				sjDAO.insert(sjDTO);
+			
+				response.sendRedirect("room_list.jsp");
+			}
+			else
+			{
+				response.sendRedirect("../room/room_list.jsp?pchk="+pchk);
+			}
 		}
 		else
 		{
