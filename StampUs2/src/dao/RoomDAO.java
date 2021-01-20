@@ -204,7 +204,26 @@ public class RoomDAO {
 		return rs.getInt("CNT");
 	}
 	
-	
+	public int inDeposit(String user_id, String deposit) throws Exception
+	{
+		String sql = "select user_money from user_member where user_id='"+user_id+"'";
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		rs.next();
+		
+		int d = Integer.parseInt(deposit)*1000;
+		int user_money = rs.getInt("user_money");
+		
+		if(user_money<d) 
+		{
+			return 1;
+		}
+		else 
+		{
+			return 0;
+		}
+		
+	}
 
 	
 	

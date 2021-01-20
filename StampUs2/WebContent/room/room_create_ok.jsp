@@ -47,7 +47,15 @@
 	
 	//방 생성하기
 	RoomDAO rdao = new RoomDAO();
-	rdao.insert(rdto);
+	int dchk=rdao.inDeposit(session.getAttribute("userid").toString(), deposit);
+	
+	if(dchk==0){
+		rdao.insert(rdto);
+	}
+	else
+	{
+		response.sendRedirect("../room/room_list.jsp?dchk="+dchk);
+	}
 	
 	//참여중인 방 생성하기
 	String room_no = rdao.getLastRoom();
@@ -60,7 +68,7 @@
 	
 	if(chk==0)
 	{
-		int dchk=sjDAO.inDeposit(session.getAttribute("userid").toString(), room_no);
+		dchk=sjDAO.inDeposit(session.getAttribute("userid").toString(), room_no);
 		
 		if(dchk==0)
 		{
