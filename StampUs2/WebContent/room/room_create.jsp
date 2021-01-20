@@ -6,6 +6,9 @@
 	if(session.getAttribute("userid")==null){
 		response.sendRedirect("../login/log.jsp");
 	} 
+
+	String dchk=request.getParameter("dchk");
+	pageContext.setAttribute("dchk", dchk);
 %>
 <jsp:include page="../header.jsp" />
 
@@ -332,6 +335,13 @@
 		}
 
 	})
+	
+	//보증금 부족시 방 생성되지 않게
+	var dchk = ${dchk}+"";
+	if(dchk==1)
+	{
+		alert('보증금이 부족합니다. 충전해주세요');
+	}
 </script>
 
 <jsp:include page="../footer.jsp" />

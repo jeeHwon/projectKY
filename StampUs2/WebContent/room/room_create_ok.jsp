@@ -51,57 +51,32 @@
 	
 	if(dchk==0){
 		rdao.insert(rdto);
-	}
-	else
-	{
-		response.sendRedirect("../room/room_list.jsp?dchk="+dchk);
-	}
-	
-	//참여중인 방 생성하기
-	String room_no = rdao.getLastRoom();
-	rdto = rdao.content(room_no);
-	
-	Study_join_DAO sjDAO = new Study_join_DAO();
-	Study_join_DTO sjDTO = new Study_join_DTO();
-	
-	int chk = sjDAO.getInfo(session.getAttribute("userid").toString(), room_no);
-	
-	if(chk==0)
-	{
-		dchk=sjDAO.inDeposit(session.getAttribute("userid").toString(), room_no);
+		//참여중인 방 생성하기
+		String room_no = rdao.getLastRoom();
+		rdto = rdao.content(room_no);
 		
-		if(dchk==0)
-		{
-			int pchk = sjDAO.isMaxPeople(room_no);
-			
-			if(pchk==0)
-			{
-				sjDTO.setUser_id(session.getAttribute("userid").toString());
-				sjDTO.setRoom_no(rdto.getId());
-				sjDTO.setRoom_start_day(rdto.getStart_day());
-				sjDTO.setRoom_end_day(rdto.getEnd_day());
-				sjDTO.setRoom_deposit(rdto.getDeposit());
-				sjDTO.setRoom_penalty(rdto.getPenalty());
-				sjDTO.setCur_deposit(rdto.getDeposit());
-			
-				sjDAO.insert(sjDTO);
-			
-				response.sendRedirect("room_list.jsp");
-			}
-			else
-			{
-				response.sendRedirect("../room/room_list.jsp?pchk="+pchk);
-			}
-		}
-		else
-		{
-			response.sendRedirect("../room/room_list.jsp?dchk="+dchk);
-		}
+		Study_join_DAO sjDAO = new Study_join_DAO();
+		Study_join_DTO sjDTO = new Study_join_DTO();
+		
+		sjDTO.setUser_id(session.getAttribute("userid").toString());
+		sjDTO.setRoom_no(rdto.getId());
+		sjDTO.setRoom_start_day(rdto.getStart_day());
+		sjDTO.setRoom_end_day(rdto.getEnd_day());
+		sjDTO.setRoom_deposit(rdto.getDeposit());
+		sjDTO.setRoom_penalty(rdto.getPenalty());
+		sjDTO.setCur_deposit(rdto.getDeposit());
+				
+		sjDAO.insert(sjDTO);
+				
+		response.sendRedirect("room_list.jsp");
+		
 	}
 	else
 	{
-		response.sendRedirect("room_list.jsp?chk="+chk);	
+		response.sendRedirect("../room/room_create.jsp?dchk="+dchk);
 	}
+	
+	
 	
 	
 	
