@@ -599,7 +599,7 @@
                         <div class="service">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="mail/mailForm.jsp">
                                         <span class="img_svg">
                                             <img src="assets/img/icon_cus_mail.png" alt="메일문의">
                                         </span>
@@ -615,7 +615,7 @@
                                     </a>
                                 </li>                                
                                 <li>
-                                    <a href="#">
+                                    <a href="fnq/fnq_list.jsp" >
                                         <span class="img_svg">
                                             <img src="assets/img/icon_cus_FAQ.png" alt="자주묻는 질문">
                                         </span>
@@ -623,7 +623,7 @@
                                     </a>
                                 </li>                                
                                 <li>
-                                    <a href="#">
+                                    <a href="#" onclick="window.open('https://open.kakao.com/o/sSgNRIQc', '카카오톡'); return false">
                                         <span class="img_svg">
                                             <img src="assets/img/icon_cus_messenger.png" alt="카톡문의">
                                         </span>
