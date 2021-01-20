@@ -344,6 +344,11 @@ public class User_join_DAO {
 					deposit = deposit*(db.rs.getDouble("penalty")/100.0);
 					double cur_deposit = db.rs.getDouble("cur_deposit")-deposit;
 					
+					if(cur_deposit<0) 
+					{
+						cur_deposit=0;
+					}
+					
 					System.out.println("cur_deposit"+cur_deposit);
 					System.out.println("penalty"+db.rs.getDouble("penalty"));
 					

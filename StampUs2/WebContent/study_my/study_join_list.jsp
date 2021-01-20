@@ -59,7 +59,7 @@ pageContext.setAttribute("list", list);
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/${list[i].room_file_name}" alt="">
+                                        <img src="../img/room/${list[i].room_file_name}" alt="">
                                     </figure>
                                     <div class="mx">
                                         <span class="icon dep${list[i].room_deposit} ir_pm">deposit</span>
@@ -78,7 +78,7 @@ pageContext.setAttribute("list", list);
                             
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/${list[i+1].room_file_name}" alt="">
+                                        <img src="../img/room/${list[i+1].room_file_name}" alt="">
                                     </figure>
                                     <div class="mx">
                                         <span class="icon dep${list[i+1].room_deposit} ir_pm">deposit</span>
@@ -99,7 +99,7 @@ pageContext.setAttribute("list", list);
                            
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/${list[i+2].room_file_name}" alt="">
+                                        <img src="../img/room/${list[i+2].room_file_name}" alt="">
                                     </figure>
                                     <div class="mx">
                                         <span class="icon dep${list[i+2].room_deposit} ir_pm">deposit</span>
@@ -118,7 +118,7 @@ pageContext.setAttribute("list", list);
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="../assets/img/${list[i+3].room_file_name}" alt="">
+                                        <img src="../img/room/${list[i+3].room_file_name}" alt="">
                                     </figure>
                                     <div class="mx">
                                         <span class="icon dep${list[i+3].room_deposit} ir_pm">deposit</span>
