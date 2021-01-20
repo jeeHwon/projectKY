@@ -18,6 +18,13 @@
 	
 %>
 <jsp:include page="../header.jsp" />
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
 <style>
 	table {
 	    margin: 30px auto;
@@ -31,10 +38,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="fboard_content">
-<table width="600" align="center">
-	<tr align="center">
-		<td align="center">제목 </td>
-		<td colspan="5"><%=fdto.getTitle()%></td>
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th align="center">제목 </td>
+			<td colspan="5"><%=fdto.getTitle()%></td>
 	</tr>
 	<tr align="center">
 		<td align="center"> 이름 </td>
@@ -47,7 +55,10 @@
 	<tr>
 	<tr height ="400">
 		<td align="center"> 내용 </td>
-		<td colspan="5"><%=fdto.getContent() %></td>
+		<% if (!"".equals(fdto.getFboard_img())) { %>
+		<td colspan="5" id="content_photo"><img src=<%=fdto.getFboard_img() %> style="width:300px; height:300px;">
+		<% } %>
+		<br><%=fdto.getContent() %></td>
 	</tr>
 	<tr>
 		<td colspan="6" align="center">

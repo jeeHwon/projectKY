@@ -12,11 +12,12 @@
 %>
 <%
 
-	String realPath = request.getRealPath("/img/fboard_img");
+	String realPath = request.getRealPath("/img/fboard_img/");
 	int size = 1024 * 1024 * 10;
 	String han = "utf-8";
 	
-	MultipartRequest multi = new MultipartRequest(request,realPath,size,han,new DefaultFileRenamePolicy());
+	MultipartRequest multi = new MultipartRequest(request, realPath, size, han, new DefaultFileRenamePolicy());
+	
 	
 	String userid = session.getAttribute("userid").toString();
 	String title = multi.getParameter("title");
@@ -27,7 +28,7 @@
 	fdto.setUserid(userid);
 	fdto.setTitle(title);
 	fdto.setContent(content);
-	fdto.setFboard_img(fboard_img);
+	fdto.setFboard_img(realPath + fboard_img);
 	
 	FboardDao fdao = new FboardDao();
 	
@@ -36,6 +37,4 @@
 	response.sendRedirect("board_list.jsp");
 
 %>
-	
-	
    
