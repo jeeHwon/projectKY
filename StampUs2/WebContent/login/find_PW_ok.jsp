@@ -30,7 +30,7 @@ history.go(-1);
 %>
 <script type="text/javascript">
 alert("찾으시는 비밀번호는  <%=pw%> 입니다.");
-	location.href = "nav1_login.jsp";
+	location.href = "log.jsp";
 </script>
 <%
 	}

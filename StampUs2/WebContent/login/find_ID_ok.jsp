@@ -28,7 +28,7 @@ history.go(-1);
 %>
 <script type="text/javascript">
 alert("찾으시는 계정은  <%=id%> 입니다.");
-	location.href = "nav1_login.jsp";
+	location.href = "log.jsp";
 </script>
 <%
 	}
