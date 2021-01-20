@@ -165,11 +165,24 @@ public class Study_join_DAO
 			db.pstmt.setString(2, user_id);
 			db.pstmt.executeUpdate();
 			
+			db.close();
+			
 			return 0;
 		}
 		
 	}
 	
-	
+	public int getCur_deposit(String user_id, String study_no) throws Exception 
+	{
+		String sql = "select cur_deposit from user_join where user_id='"+user_id+"' and study_no="+study_no;
+		db.stmt = db.conn.createStatement();
+		db.rs = db.stmt.executeQuery(sql);
+		
+		db.rs.next();
+		
+		double c_deposit = db.rs.getDouble("cur_deposit");
+		
+		return (int)(c_deposit*1000);
+	}
 	
 }

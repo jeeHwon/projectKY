@@ -16,9 +16,14 @@
 	sDAO = new Study_my_DAO();
 	ArrayList<GoalDTO> gList = sDAO.isCertDay(study_no);
 	
+	sjDAO = new Study_join_DAO();
+	int cur_deposit = sjDAO.getCur_deposit(user_id, study_no);
+	
 	pageContext.setAttribute("list",list);
 
 	pageContext.setAttribute("gList", gList);
+	
+	pageContext.setAttribute("cur_deposit", cur_deposit);
 	
 	String r_id = request.getParameter("r_id");
 	RoomDAO rdao = new RoomDAO();
@@ -129,8 +134,8 @@ $(function (){
     #roomContent .preview_left .type_box {width: 35px; display: inline-block;}
     #roomContent .preview_left .money_1 {font-size: 18px; margin-top: 20px; text-align: left; color: #fff;}
     #roomContent .preview_left .money_2 {font-size: 18px; margin-top: 10px; text-align: left; color: #fff;}
-    #roomContent .preview_left .money_1_box {width: 133px; display: inline-block;}
-    #roomContent .preview_left .money_2_box {width: 115px; display: inline-block;}
+    #roomContent .preview_left .money_1_box {width: 80px; display: inline-block;}
+    #roomContent .preview_left .money_2_box {width: 80px; display: inline-block;}
     #roomContent .preview_left .text_box {position: absolute; margin-top: 30px; margin-left: 10px; width: 330px; height: 120px; border: 1px solid white; border-radius: 10px; padding:10px; text-align: left; overflow: hidden;}
     #roomContent .preview_left .text_box p {font-size: 16px; color: #fff;}
     #roomContent .preview_left .wrapper{height:500px;}
@@ -224,8 +229,8 @@ $(function (){
    
                         </ul>
                     </div>
-                    <div class="money_1"><strong>보증금<span class="money_1_box"></span>패널티</strong></div>
-                    <div class="money_2">${rdto.deposit},000원<span class="money_2_box"></span>-${penalty}원</div>
+                    <div class="money_1"><strong>보증금<span class="money_1_box"></span>패널티<span class="money_1_box"></span>남은 보증금</strong></div>
+                    <div class="money_2">${rdto.deposit},000원<span class="money_2_box"></span>-${penalty}원<span class="money_2_box"></span>${cur_deposit}원</div>
                     <div class="text_box">
                         <p>${rdto.content}</p>
                     </div>
