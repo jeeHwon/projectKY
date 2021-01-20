@@ -23,11 +23,13 @@ td {font-size:40pt;
  <td><a href="../notice/notice_list.jsp"><img src="img/notice.PNG" width="30" height="300"></a></td>
  <td><a href="../rev/rev_list.jsp"><img src="img/partners.PNG" width="30" height="300"></a></td>
  <td><a href="../fnq/fnq_list.jsp"><img src="img/faq.PNG"  width="30" height="300"></a></td>
+ <td><a href="../mail/mailForm.jsp"><img src="img/mail.PNG"  width="30" height="300"></a></td>
  </tr>
  <tr>
  <td align="center" width="333"><a href="../notice/notice_list.jsp">공지사항</a></td>
  <td align="center" width="333"><a href="../rev/rev_list.jsp">협력업체</a></td>
  <td align="center" width="333"><a href="../fnq/fnq_list.jsp">FAQ</a></td>
+ <td align="center" width="333"><a href="../mail/mailForm.jsp">문의메일</a></td>
  </tr>
 </table>
 </div>
