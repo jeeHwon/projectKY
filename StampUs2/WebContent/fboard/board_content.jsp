@@ -56,7 +56,7 @@
 	<tr height ="400">
 		<td align="center"> 내용 </td>
 		<% if (!"".equals(fdto.getFboard_img())) { %>
-		<td colspan="5" id="content_photo"><img src=<%=fdto.getFboard_img() %> style="width:300px; height:300px;">
+		<td colspan="5" id="content_photo"><img src="../img/fboard_img/<%=fdto.getFboard_img() %>" style="width:300px; height:300px;">
 		<% } %>
 		<br><%=fdto.getContent() %></td>
 	</tr>
