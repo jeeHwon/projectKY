@@ -56,7 +56,6 @@ try{
     return;
 }
  
-out.println("<script>alert('Send Mail Success!!');location.href='mailForm.html';</script>");
 // 성공 시
 response.sendRedirect("../index.jsp");
 %>

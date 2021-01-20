@@ -607,7 +607,7 @@
                                     </a>
                                 </li>                                
                                 <li>
-                                    <a href="#">
+                                    <a href="tel:1661-1429">
                                         <span class="img_svg">
                                             <img src="assets/img/icon_cus_phone.png" alt="전화문의">
                                         </span>
