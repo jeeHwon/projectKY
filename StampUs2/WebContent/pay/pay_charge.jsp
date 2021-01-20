@@ -89,7 +89,7 @@
                <div class="pay_my_box">
                     <div class="my" id="my_1">
                         <div class="my_left"><h3>${mdto.name}님</h3></div>
-                        <p><a href="#" style="cursor: pointer">-&nbsp;마이페이지이동</a></p>
+                        <p><a href="../member/mypage.jsp" style="cursor: pointer">-&nbsp;마이페이지이동</a></p>
                     </div>                    
                     <div class="my" id="my_2">
                         <div class="my_left" ><h3>스탬프캐시 잔액</h3></div>
