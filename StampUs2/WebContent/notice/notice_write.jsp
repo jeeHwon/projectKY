@@ -22,7 +22,7 @@
 	
 	 <tr>
        <td> 내용 </td>
-       <td> <textarea cols="80" rows="20" name="notice_content"  placeholder="내용을 입력하세요."></textarea> </td>
+      <td> <textarea cols="80" rows="20" name="notice_content"  placeholder="내용을 입력하세요."></textarea> </td>
      </tr>
      <tr>
       <td>첨부</td>
