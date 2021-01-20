@@ -28,7 +28,7 @@
 	fdto.setUserid(userid);
 	fdto.setTitle(title);
 	fdto.setContent(content);
-	fdto.setFboard_img(realPath + fboard_img);
+	fdto.setFboard_img(fboard_img);
 	
 	FboardDao fdao = new FboardDao();
 	
