@@ -3,7 +3,6 @@
 <%@page import="dao.Event_dat_DAO" %>
 <%@page import="dto.Event_dat_DTO" %>
 <% 
-	session.setAttribute("userid", "admin");
 	request.setCharacterEncoding("utf-8");
 	String event_no = request.getParameter("event_no");
 	String event_dat_no = request.getParameter("event_dat_no");
