@@ -7,25 +7,31 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 <%
 
-	String user_id = session.getAttribute("userid").toString();
+	if(session.getAttribute("userid")==null){
+		response.sendRedirect("../login/log.jsp");
+	}
+	else
+	{
 
-	RankingDAO rDAO = new RankingDAO();
-	ArrayList<RankingDTO> ulist = rDAO.userRoomRate(user_id);
+		String user_id = session.getAttribute("userid").toString();
 	
-	rDAO = new RankingDAO();
-	double urate=rDAO.userRate(user_id);
-	
-	rDAO = new RankingDAO();
-	ArrayList<RankingDTO> rlist = rDAO.roomRanking();
-	
-	rDAO = new RankingDAO();
-	ArrayList<RankingDTO> urlist = rDAO.userRanking();
-	
-	pageContext.setAttribute("ulist", ulist);
-	pageContext.setAttribute("urate", urate);
-	pageContext.setAttribute("rlist", rlist);
-	pageContext.setAttribute("urlist", urlist);
-	
+		RankingDAO rDAO = new RankingDAO();
+		ArrayList<RankingDTO> ulist = rDAO.userRoomRate(user_id);
+		
+		rDAO = new RankingDAO();
+		double urate=rDAO.userRate(user_id);
+		
+		rDAO = new RankingDAO();
+		ArrayList<RankingDTO> rlist = rDAO.roomRanking();
+		
+		rDAO = new RankingDAO();
+		ArrayList<RankingDTO> urlist = rDAO.userRanking();
+		
+		pageContext.setAttribute("ulist", ulist);
+		pageContext.setAttribute("urate", urate);
+		pageContext.setAttribute("rlist", rlist);
+		pageContext.setAttribute("urlist", urlist);
+	}
  %>
 <jsp:include page="../header.jsp" />
 <style>
