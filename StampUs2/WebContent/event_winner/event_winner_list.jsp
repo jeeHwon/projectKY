@@ -243,6 +243,7 @@ h3{
 						<td>조회수</td>
 					</tr>
 					<%for (int i = 0; i < list.size(); i++) {	%>
+					
 					<tr class="mid" height="50">
 						<td align="center"><%=list.get(i).getEvent_winner_no()%></td>
 						<td align="center">

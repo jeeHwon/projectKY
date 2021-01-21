@@ -17,16 +17,18 @@
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
 %>
 <style>
-#event h1{
+.event_row h1{
+	font-size:20;
+	padding: 15px 0 15px 0;
 	border-bottom:1px solid black;
-	font-size:17;
 }
 #event{
 	font-size:17;
-	height:500px;
-	width:800px;
-	margin:100px 0 20px 0;
+	height:800px;
+	width:1000px;
+	border-top:1px solid black;
 	border-bottom:1px solid black;
+	margin-bottom:15px;
 }
 .event_dat{
 	font-size:13;
@@ -37,54 +39,74 @@
 	width:500px; 
 	height:100px;
 }
-
+#contentimg img{
+	border-top:1px solid #a0a0a0;
+	padding:15px 0 20px 0;
+	width:800px;
+	height:600px;
+}
+#event{
+	margin-bottom:15px;
+}
+.head_view .h_tit {
+    width: 500px;
+    float: left;
+    margin: 0;
+    padding: 14px 0;
+    font-size: 16px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.head_view .h_info {
+    float: right;
+    width: 460px;
+    text-align: right;
+}
+.h_info .info_item {
+    display: inline-block;
+}
+.h_info .info_item strong, .info_item span {
+    font-size: 14px;
+    color: #a0a0a0;
+    line-height: 45px;
+    margin-right:10px;
+}
+.h_info .info_item + .info_item:before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: #c8c8c8;
+    vertical-align: -2px;
+    margin: 0 16px 0 10px;
+}
 </style>
 <jsp:include page="../header.jsp" />
 
 <section id="event_content">
-	<div class="container">
-		<div class="event_row" align="center">
-			<table id="event">
-					<tr>
-						<th colspan="2" align="center">
-							<h1>이벤트 당첨을 축하합니다!</h1>
-						</th>
-					</tr>
-					<tr>
-						<td>글번호</td>
-						<td><%=edDTO.getEvent_winner_no()%></td>
-					</tr>
-					<tr>
-						<td>제목</td>
-						<td><%=edDTO.getEvent_winner_title()%></td>
-					</tr>
-					<tr>
-						<td>내용</td>
-						<td>
-							<img src="../img/event/<%=edDTO.getEvent_winner_img()%>"><br>
-							<%=edDTO.getEvent_winner_content()%>
-						</td>
-					</tr>
-					<tr>
-						<td>조회수</td>
-						<td><%=edDTO.getEvent_winner_view()%></td>
-					</tr>
-					<tr>
-						<td>작성일</td>
-						<td><%=edDTO.getEvent_winner_postday()%></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-						<c:if test="${userid eq 'admin'}">
-							<a href="event_winner_update.jsp?event_winner_no=<%=event_winner_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">수정</a>
-							<a onclick="return chkDel()" href="event_winner_delete.jsp?event_winner_no=<%=event_winner_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">삭제</a>
-						</c:if>
-							<a href="event_winner_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록</a>
-						</td>
-					</tr>
-				</table>
+<div class="container">
+	<div class="event_row" align="center">
+		<div id="event">
+			<h1>이벤트에 당첨을 축하합니다!</h1>
+			<div class="head_view">
+				<p class="h_tit"><strong><%=edDTO.getEvent_winner_title()%></strong></p>
+				<div class="h_info">
+					<ul>
+						<li class="info_item"><strong>조회수</strong><span><%=edDTO.getEvent_winner_view()%></span></li>
+						<li class="info_item"><strong>작성일</strong><span><%=edDTO.getEvent_winner_postday()%></span></li>
+					</ul>
+				</div>
+					<div id="contentimg">	
+						<img src="../img/event/<%=edDTO.getEvent_winner_img()%>">
+					</div>
+				<div><%=edDTO.getEvent_winner_content()%></div>
+			</div>
+			<div id="listBtn">
+				<a href="event__winner_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록으로</a>
 			</div>
 		</div>
+	</div>
+</div>
 </section>
 <script>
 function chkDel(){

@@ -17,25 +17,100 @@
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
 %>
 <style>
-#event h1{
-	border-bottom:1px solid black;
-	font-size:17;
+.event_row h1{
+	font-size:20;
+	padding:100px 0 15px 0;
 }
 #event{
 	font-size:17;
-	height:500px;
-	width:800px;
-	margin:100px 0 20px 0;
-	border-bottom:1px solid black;
+	height:800px;
+	width:1000px;
+	border-top:1px solid black;
+
+	margin-bottom:15px;
 }
+/*댓글폼*/
 .event_dat{
 	font-size:13;
 	height:300px;
 	width:400px;	
 }
+
+.dat_frm{
+	width:1000px;
+	border-bottom:1px solid black;
+	padding-bottom:15px;
+}
+
 #event_dat_content{
 	width:500px; 
-	height:100px;
+	height:80px;
+}
+
+/*content 테이블=============*/
+
+#event img{
+	border-top:1px solid #a0a0a0;
+	padding:15px 0 20px 0;
+	width:800px;
+	height:600px;
+}
+.head_view .h_tit {
+    width: 500px;
+    float: left;
+    margin: 0;
+    padding: 14px 0;
+    font-size: 16px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.head_view .h_info {
+    float: right;
+    width: 460px;
+    text-align: right;
+}
+.h_info .info_item {
+    display: inline-block;
+}
+.h_info .info_item strong, .info_item span {
+    font-size: 14px;
+    color: #a0a0a0;
+    line-height: 45px;
+    margin-right:10px;
+}
+.h_info .info_item + .info_item:before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    background: #c8c8c8;
+    vertical-align: -2px;
+    margin: 0 16px 0 10px;
+}
+#getCon{
+	width:800px;
+	padding-bottom:90px;
+	border-bottom:1px solid #a0a0a0;
+}
+/*수정삭제버튼*/
+.upDel{
+	width:800px;
+	margin-bottom:15px;
+	border-bottom:1px solid #a0a0a0;
+	padding:0 0 10px 0 ;
+	font-size:15;
+}
+.upDel a{
+	padding:10px;
+}
+/*목록버튼*/
+#listBtn a{
+	font-size: 22px;
+    font-weight: 500;
+    
+}
+#listBtn{
+	margin:50px 0 20px 0;
 }
 
 </style>
@@ -44,54 +119,40 @@
 <section id="event_content">
 	<div class="container">
 		<div class="event_row" align="center">
-			<table id="event">
-				<tr>
-					<th colspan="2" align="center">
-						<h1>이벤트에 지금 참여하세요!</h1>
-					</th>
-				</tr>
-				<tr>
-					<td>글번호</td>
-					<td><%=edDTO.getEvent_no()%></td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td><%=edDTO.getEvent_title()%></td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td>
-						<img src="../img/event/<%=edDTO.getEvent_img()%>"><br>
-						<%=edDTO.getEvent_content()%>
-					</td>
-				</tr>
-				<tr>
-					<td>조회수</td>
-					<td><%=edDTO.getEvent_view()%></td>
-				</tr>
-				<tr>
-					<td>작성일</td>
-					<td><%=edDTO.getEvent_postday()%></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center">
-					<c:if test="${userid eq 'admin'}">
+		<h1>이벤트에 지금 참여하세요!</h1>
+			<div id="event">
+				<div class="head_view">
+					<p class="h_tit"><strong><%=edDTO.getEvent_title()%></strong></p>
+					<div class="h_info">
+						<ul>
+							<li class="info_item"><strong>조회수</strong><span><%=edDTO.getEvent_view()%></span></li>
+							<li class="info_item"><strong>작성일</strong><span><%=edDTO.getEvent_postday()%></span></li>
+						</ul>
+					</div>
+				</div>
+				<div><img src="../img/event/<%=edDTO.getEvent_img()%>"></div>
+				<div id="getCon"><%=edDTO.getEvent_content()%></div>
+			</div>
+				<c:if test="${userid eq 'admin'}">
+					<div class="upDel">
 						<a href="event_update.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">수정</a>
 						<a onclick="return chkDel()" href="event_delete.jsp?event_no=<%=event_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">삭제</a>
-					</c:if>
-						<a href="event_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록</a>
-					</td>
-				</tr>
-			</table>
+					</div>
+				</c:if>
 			<!---------------------------댓글 관련 작업---------------------------->
 		    <!-- 댓글을 입력 폼  => 작성자, 내용, 비번 -->
 				<div class="event_dat_write" id="event_dat_write">
-					<form name="event_dat_form" id="event_dat_form" method="post" action="event_dat_write_ok.jsp">
-						<input type="hidden" name="event_dat_no" id="event_dat_no">
-						<input type="hidden" name="event_no" value="<%=edDTO.getEvent_no() %>">
-						<textarea name="event_dat_content" placeholder="댓글을 입력하세요" id="event_dat_content"></textarea>
-					<input id="dat_button" type="submit" value="댓글 작성">
-					</form>
+					<div class="dat_frm">
+						<form name="event_dat_form" id="event_dat_form" method="post" action="event_dat_write_ok.jsp">
+							<input type="hidden" name="event_dat_no" id="event_dat_no">
+							<input type="hidden" name="event_no" value="<%=edDTO.getEvent_no() %>">
+							<textarea name="event_dat_content" placeholder="댓글을 입력하세요" id="event_dat_content"></textarea>
+						<input id="dat_button" type="submit" value="댓글 작성">
+						</form>
+					</div>
+					<div id="listBtn">
+						<a href="event_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록으로</a>
+					</div>
 				</div>
 		   <!----------------------댓글 출력---------------------->
 		  		<div class="event_dat_list" align="center">
