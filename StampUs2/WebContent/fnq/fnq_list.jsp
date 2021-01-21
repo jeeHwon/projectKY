@@ -54,7 +54,7 @@
 		background-color: orangered;
 }
 
-#body {height : 800px;}
+#body {height : 1100px;}
 </style>
 <SCRIPT LANGUAGE="JavaScript">
 	function change(style) {
