@@ -60,7 +60,7 @@ font-family:"HMKMRHD", sans-serif;
 	<div align="center">
 	<table width=100%  height="800" align="center">
 		<tr align="center" class="top" height="100">
-			<td>대표사진</td>
+			<td width="200">대표사진</td>
 			<td>업체명</td>
 			<td>홈페이지</td>
 			<td>상세내용</td>
@@ -70,8 +70,8 @@ font-family:"HMKMRHD", sans-serif;
 		    for(int i=0;i<list.size();i++)
 		    {
  		%>	
-		<tr align="center" class="mid" height="70"> 
-			<td align="center"><img src="../img/rev/<%=list.get(i).getRev_img()%>" width="50" height="50"></td>
+		<tr align="center" class="mid" height="90"> 
+			<td align="center"  width="50" ><img src="../img/rev/<%=list.get(i).getRev_img()%>" height="90"></td>
 			<td align="center"><%=list.get(i).getRev_company()%></td>
 			<td align="center"><%=list.get(i).getRev_addr()%></td>
 			<td align="center"><a href="rev_content.jsp?rev_no=<%=list.get(i).getRev_no()%>">click!</a></td>
