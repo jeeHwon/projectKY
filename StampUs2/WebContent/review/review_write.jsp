@@ -44,6 +44,22 @@
 	  else
 		  return true;
   }
+  function setThumbnail(event) {
+      var reader = new FileReader()
+      reader.onload = function (event) {
+    	  if(document.getElementById("imsiimg")!=null)
+    		  document.getElementById("imsiimg").remove();
+    	  
+    	  var imgcon = document.querySelector("div#image_container")
+          var img = document.createElement("img")
+          img.setAttribute("src", event.target.result)
+          img.setAttribute("width", "350px")
+          img.setAttribute("height", "513px")
+          img.setAttribute("id","imsiimg")
+          imgcon.appendChild(img)
+      }
+      reader.readAsDataURL(event.target.files[0])
+  }
 </script>
 <style>
   #hash {
@@ -91,7 +107,10 @@
 		      </tr>
 		      <tr>
 		        <td> 첨부사진 </td>
-		        <td> <input type="file" name="review_file" id="review_file"> </td>
+		        <td> 
+		          <input type="file" name="review_file" id="review_file" onchange="setThumbnail(event)"> 
+		          <div class="image_container" id="image_container"></div>
+		        </td>
 		      </tr>
 		      <tr>
 		        <td> 내용 </td>
