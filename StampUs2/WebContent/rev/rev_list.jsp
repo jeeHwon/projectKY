@@ -58,7 +58,7 @@ font-family:"HMKMRHD", sans-serif;
 	</div>
 	<p align="center">stampus를 편리하게 이용해보세요</p>
 	<div align="center">
-	<table width=100%  height="800" align="center">
+	<table width=100%  height="1200" align="center">
 		<tr align="center" class="top" height="100">
 			<td width="200">대표사진</td>
 			<td>업체명</td>
