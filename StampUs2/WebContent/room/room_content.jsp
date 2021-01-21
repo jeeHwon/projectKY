@@ -69,7 +69,8 @@
     #roomContent .roomPreview {padding: 50px 0; position: relative;}    
     #roomContent .roomPreview h2 {font-size: 30px; font-weight: 500; margin-bottom: 20px; color: #fff}
     #roomContent .preview_left {position: relative; width: 49%; height: 600px;}
-    #roomContent .preview_left .preview_img {position: absolute; left: 200px; width: 350px; height: 513px; background-size: cover;}
+    #roomContent .preview_left .preview_img {position: absolute; left: 200px; }
+    #roomContent .preview_left .preview_img img {width: 350px; height: 513px; display: block;}
     #roomContent .preview_left .current_people {position: absolute; left: 200px; top:513px; width: 350px;}
     #roomContent .preview_left .current_people > span > strong.left {font-size: 24px; color: #fff}
     #roomContent .preview_left .current_people > span > strong.right {float: right; font-size: 24px; color: #fff;}
@@ -124,7 +125,9 @@
             <div class="roomPreview">
                 <h2>Preview</h2>
                 <div class="preview_left">
-                    <div class="preview_img" style="background: #ccc url(../img/room/${rdto.file_name});"></div>
+                    <div class="preview_img">
+                    	<img src="../img/room/${rdto.file_name}" alt="">
+                    </div>
                     <div class="current_people">
                         <span><strong class="left">현재인원</strong></span>
                         <span><strong class="right">${currentPeople} / ${rdto.people} </strong></span>
