@@ -254,7 +254,7 @@ h3{
 					<c:if test="${userid eq 'admin'}">
 						<tr class="bottom" height="50">
 						<td colspan="4" align="center" id="">
-							<a href="event_write.jsp">글쓰기</a>
+							<a href="event_winner_write.jsp">글쓰기</a>
 						</td>
 						</tr>
 					</c:if>

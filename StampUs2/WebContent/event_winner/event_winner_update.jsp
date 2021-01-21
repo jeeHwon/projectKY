@@ -9,8 +9,8 @@
 
     EventDAO dao=new EventDAO();
 	EventDTO dto = dao.content(event_no);
-	session.setAttribute("user_id", "user1");
-	String user_id = session.getAttribute("user_id").toString();
+
+	String user_id = session.getAttribute("userid").toString();
 	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
