@@ -17,6 +17,10 @@
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
 %>
 <style>
+#erow{
+	width:1000px;
+	height:1280px;
+}
 .event_row h1{
 	font-size:20;
 	padding:100px 0 15px 0;
@@ -40,6 +44,7 @@
 	width:1000px;
 	border-bottom:1px solid black;
 	padding-bottom:15px;
+	padding-top:10px;
 }
 
 #event_dat_content{
@@ -65,6 +70,7 @@
     word-break: break-all;
 }
 .head_view .h_info {
+	padding-top:5px;
     float: right;
     width: 460px;
     text-align: right;
@@ -110,7 +116,8 @@
     
 }
 #listBtn{
-	margin:50px 0 20px 0;
+	float:right;
+	margin:30px 0 20px 0;
 }
 
 </style>
@@ -119,6 +126,7 @@
 <section id="event_content">
 	<div class="container">
 		<div class="event_row" align="center">
+		<div id="erow">
 		<h1>이벤트에 지금 참여하세요!</h1>
 			<div id="event">
 				<div class="head_view">
@@ -176,6 +184,7 @@
 					</tr>
 					<% } %>
 					</table>
+				</div>
 				</div>	
 			</div>
 		</div>

@@ -17,10 +17,13 @@
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
 %>
 <style>
+#erow{
+	width:1000px;
+	height:1180px;
+}
 .event_row h1{
 	font-size:20;
-	padding: 15px 0 15px 0;
-	border-bottom:1px solid black;
+	padding:100px 0 15px 0;
 }
 #event{
 	font-size:17;
@@ -30,23 +33,14 @@
 	border-bottom:1px solid black;
 	margin-bottom:15px;
 }
-.event_dat{
-	font-size:13;
-	height:300px;
-	width:400px;	
-}
-#event_dat_content{
-	width:500px; 
-	height:100px;
-}
-#contentimg img{
+
+/*content 테이블=============*/
+
+#event img{
 	border-top:1px solid #a0a0a0;
 	padding:15px 0 20px 0;
 	width:800px;
 	height:600px;
-}
-#event{
-	margin-bottom:15px;
 }
 .head_view .h_tit {
     width: 500px;
@@ -58,6 +52,7 @@
     word-break: break-all;
 }
 .head_view .h_info {
+	padding-top:5px;
     float: right;
     width: 460px;
     text-align: right;
@@ -80,14 +75,40 @@
     vertical-align: -2px;
     margin: 0 16px 0 10px;
 }
+#getCon{
+	width:800px;
+	padding-bottom:45px;
+	border-bottom:1px solid #a0a0a0;
+}
+/*수정삭제버튼*/
+.upDel{
+	width:800px;
+	margin-bottom:15px;
+	padding:0 0 10px 0 ;
+	font-size:15;
+}
+.upDel a{
+	padding:10px;
+}
+/*목록버튼*/
+#listBtn a{
+	font-size: 22px;
+    font-weight: 500;
+    
+}
+#listBtn{
+	float:right;
+	margin:30px 0 20px 0;
+}
 </style>
 <jsp:include page="../header.jsp" />
 
 <section id="event_content">
 <div class="container">
 	<div class="event_row" align="center">
+	<div id="erow">
+			<h1>이벤트 당첨을 축하합니다!</h1>
 		<div id="event">
-			<h1>이벤트에 당첨을 축하합니다!</h1>
 			<div class="head_view">
 				<p class="h_tit"><strong><%=ewDTO.getEvent_winner_title()%></strong></p>
 				<div class="h_info">
@@ -96,11 +117,20 @@
 						<li class="info_item"><strong>작성일</strong><span><%=ewDTO.getEvent_winner_postday()%></span></li>
 					</ul>
 				</div>
-					<div id="contentimg">	
-						<img src="../img/event/<%=ewDTO.getEvent_winner_img()%>">
-					</div>
-				<div><%=ewDTO.getEvent_winner_content()%></div>
 			</div>
+			<div id="contentimg">	
+				<img src="../img/event/<%=ewDTO.getEvent_winner_img()%>">
+			</div>
+			<div id="getCon">
+				<%=ewDTO.getEvent_winner_content()%>
+			</div>
+		</div>
+			<c:if test="${userid eq 'admin'}">
+				<div class="upDel">
+					<a href="event_winner_update.jsp?event_winner_no=<%=event_winner_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">수정</a>
+					<a onclick="return chkDel()" href="event_winner_delete.jsp?event_winner_no=<%=event_winner_no%>&pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">삭제</a>
+				</div>
+			</c:if>
 			<div id="listBtn">
 				<a href="event_winner_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록으로</a>
 			</div>

@@ -57,6 +57,10 @@ public class EventDAO {
 		sql="delete from event_dat where event_no="+event_no;
 		db.pstmt=db.conn.prepareStatement(sql);	  
 		db.pstmt.executeUpdate();
+		
+		sql="delete from event_winner where event_no="+event_no;
+		db.pstmt=db.conn.prepareStatement(sql);	  
+		db.pstmt.executeUpdate();
 
 		sql="delete from event where event_no="+event_no;
 		db.pstmt=db.conn.prepareStatement(sql);
@@ -87,7 +91,7 @@ public class EventDAO {
 		if(sort.equals("1")) {
 			orderby=" order by event_view desc)";
 		}else if(sort.equals("2")) {
-			orderby=" order by time)";
+			orderby=" order by event_postday)";
 		}else {
 			orderby=" order by event_no desc)";
 		}
