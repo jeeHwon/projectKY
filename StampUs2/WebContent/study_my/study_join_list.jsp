@@ -23,7 +23,7 @@ pageContext.setAttribute("list", list);
 #roomList .roomList .room_list > div > div {float: left; width: 292px; height: 592px; margin-right: 18px;}
 #roomList .roomList .room_list > div > div:last-child {margin-right: 0;}
 #roomList .roomList .room_list > div > div .poster {position: relative;}
-#roomList .roomList .room_list > div > div .poster img {display: block;}
+#roomList .roomList .room_list > div > div .poster img {display: block; width:292px; height:427.98px;}
 #roomList .roomList .room_list > div > div .poster .rank {position: absolute; top: 17px; left: 0; width: 50px; height: 50px; font-size: 22px; box-shadow: 3px 3px 8px rgba(0,0,0,0.5); line-height: 50px; background-color: #CB230C; text-align: center;}
 #roomList .roomList .room_list > div > div .poster .rank strong {color: #fff; text-shadow: 2px 2px 3px rgba(0,0,0,1);}
 #roomList .roomList .room_list > div > div .poster .mx {position: absolute; top: 17px; right: 17px;}
