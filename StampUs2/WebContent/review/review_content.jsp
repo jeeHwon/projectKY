@@ -103,7 +103,7 @@
 	    <tr>
 	      <td colspan="6" id="content_photo">
 	        <img src="../img/review/${rdto.review_file}"
-	        onerror="this.src='../img/review/no-camera.png'" style="width:300px;">
+	        onerror="this.src='../img/review/no-camera.png'" style="width:600px;">
 	      </td>
 	    </tr>
 	    <tr>

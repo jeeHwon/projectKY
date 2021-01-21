@@ -233,6 +233,7 @@
                     <c:forEach var="i" begin="0" end="${fn:length(list)-1}" step="4">
                     <div class="room_list">
                         <div class="list_cont1">
+                        <c:if test="${list[i]!=null }">
                             <div>
                                 <div class="poster">
                                     <figure>
@@ -252,6 +253,8 @@
                                     </div>
                                 </div>
                             </div>
+                       </c:if>
+                       <c:if test="${list[i+1]!=null }">
                             <div>
                                 <div class="poster">
                                     <figure>
@@ -271,6 +274,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </c:if>
+                        <c:if test="${list[i+2]!=null }">
                             <div>
                                 <div class="poster">
                                     <figure>
@@ -290,6 +295,8 @@
                                     </div>
                                 </div>
                             </div>
+                       </c:if>
+                       <c:if test="${list[i+3]!=null }">
                             <div>
                                 <div class="poster">
                                     <figure>
@@ -309,6 +316,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </c:if>    
                         </div>
                     </div>
                     </c:forEach>

@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-	session.setAttribute("user_id", "admin");
-	String user_id = (String)session.getAttribute("user_id");
+	String user_id = (String)session.getAttribute("userid");
 %>
 <jsp:include page="../header.jsp" />
 <%if(user_id.equals("admin")){ %>
