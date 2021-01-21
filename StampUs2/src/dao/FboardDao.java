@@ -78,17 +78,17 @@ public class FboardDao {
             sql = "SELECT id, readnum, title, content, userid, writeday ";
             sql += " FROM(SELECT ROWNUM AS RM, id, readnum, title, content, userid, writeday";
             sql += " FROM(SELECT * FROM fboard ORDER BY writeday DESC)";
-            sql += ") WHERE RM between "+ index +" and " + (index + 20);
+            sql += ") WHERE RM between "+ index +" and " + (index + 10);
         } else if("userid".equals(cla)){   //content 필드 검색
         	sql= "SELECT id, readnum, title, content, userid, writeday ";
 	        sql += " FROM(SELECT ROWNUM AS RM, id, readnum, title, content, userid, writeday ";
 	        sql += " FROM(SELECT * FROM fboard where userid like '%" + word + "%' ORDER BY writeday DESC)";
-	        sql += ") WHERE RM between " + index + " and " + (index + 20);
+	        sql += ") WHERE RM between " + index + " and " + (index + 10);
         } else {   //title 필드 검색
         	sql = "SELECT id, readnum, title, content, userid, writeday ";
             sql += " FROM(SELECT ROWNUM AS RM, id, readnum, title, content, userid, writeday ";
             sql += " FROM(SELECT * FROM fboard where title like '%" + word + "%' ORDER BY writeday DESC)";
-            sql += ") WHERE RM between " + index + " and "+(index + 20);
+            sql += ") WHERE RM between " + index + " and "+(index + 10);
         }		
 		
 		db.pstmt = db.conn.prepareStatement(sql);
@@ -116,7 +116,7 @@ public class FboardDao {
 		db.pstmt = db.conn.prepareStatement(sql);
 		db.rs = db.pstmt.executeQuery();
 		db.rs.next();
-		int page_cnt = (int) Math.ceil(db.rs.getInt("cnt") * 0.05);
+		int page_cnt = (int) Math.ceil(db.rs.getInt("cnt") * 0.1);
 
 		if(db.rs.getInt("cnt")%10 == 0) 
             page_cnt--;
