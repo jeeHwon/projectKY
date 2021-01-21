@@ -14,7 +14,7 @@
             <table height="800">
                 <tr><th colspan="2">문의 메일 보내기</th></tr>
                 <tr><td>from    고객</td><td><input type="hidden" name="from" value="jsyoo010@naver.com" readonly="true" class="txt"></td></tr>
-                <tr><td>to      관리자</td><td><input type="hidden" name="to" value="ahy0119@naver.com" readonly="true" class="txt"></td></tr>
+                <tr><td>to      관리자</td><td><input type="hidden" name="to" value="bcity@naver.com" readonly="true" class="txt"></td></tr>
                 <tr><td>제목</td><td><input type="text" name="subject" style="width:1000px;"></td></tr>
                 <tr><td>문의내용</td><td><textarea name="content" style="width:1000px; height:300px;" ></textarea></td></tr>
                 <tr><td colspan="2" style="text-align:right;"><input type="submit" value="보내기" ></td></tr>
