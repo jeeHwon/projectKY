@@ -119,7 +119,13 @@
 				</div>
 			</div>
 			<div id="contentimg">	
+				<%if (ewDTO.getEvent_winner_img()!=null)
+				{
+				%>
 				<img src="../img/event/<%=ewDTO.getEvent_winner_img()%>">
+				<%
+				}
+				%>
 			</div>
 			<div id="getCon">
 				<%=ewDTO.getEvent_winner_content()%>
