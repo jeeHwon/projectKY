@@ -14,7 +14,7 @@
                 <tr><td>to      --관리자--</td><td><input type="hidden" name="to" value="ahy0119@naver.com" readonly="true"></td></tr>
                 <tr><td>제목</td><td><input type="text" name="subject" style="width:500px;"></td></tr>
                 <tr><td>문의내용</td><td><textarea name="content" style="width:500px; height:400px;"></textarea></td></tr>
-                <tr><td colspan="2" style="text-align:right;"><input type="submit" value="Transmission"/></td></tr>
+                <tr><td colspan="2" style="text-align:right;"><input type="submit" value="Transmission" ></td></tr>
             </table>
         </form>
     </div>
