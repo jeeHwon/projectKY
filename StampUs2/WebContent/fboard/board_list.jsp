@@ -35,12 +35,14 @@
 	}
 	tr {
 		padding: 5px;
+
 	}
 	tr.page{
 	font-size:17pt;
 	height:100px;
-
+	text-align:center;
 	}
+	
 	tr.mid {
 	border-bottom:1px solid #222;
 	font-size:12pt;
@@ -57,15 +59,28 @@
 	    margin-top:70px;
 	    float:left;
 	}
+	.top {
+		font-size : 20px;
+	}
+	
+	.button {
+		margin-top:5px;
+		float: center;
+		font-size: 18px;
+		width: 12%;
+		height: 12%;
+		border: 2px solid black;
+		}
+
 </style>
-<section id="sec_fboardlist">
+<section id="fboard_list">
 	<div class="container">
 		<div class="row">
 		
 <div class="fboard_list">
 <h3>자유게시판</h3>
 <table>
-	<tr align="center" class="top" height="50">
+	<tr align="center" class="top" height="45">
 		<td> 번호 </td>
 		<td> 이름 </td>
 		<td> 제목 </td>
@@ -76,7 +91,7 @@
 	for(int i = 0; i < list.size(); i++)
 	{
 %>
-	<tr class="mid" height="50">
+	<tr class="mid" height="45">
 		<td align="center"><%=list.get(i).getId()%></td>
 		<td align="center"><%=list.get(i).getUserid()%></td>
 		<td align="center"><a href="board_readnum.jsp?id=<%=list.get(i).getId()%>&pager=<%=pager%>&cla=<%=cla%>&word=<%=word%>"><%=list.get(i).getTitle() %></a></td>
@@ -99,8 +114,9 @@
 </div>
 		<!-- 사용자가 클릭하여 이동할 수 있는 페이지 출력 -->
 		<tr class="page" height="50">
-			<td colspan="5" align="center">
-			
+			<td colspan="1"></td>
+			<td colspan="1"></td>
+			<td colspan="1">
 			<%
 				//총 페이지 값을 구하기 => 총 레코드수/ 페이지당 레코드수
 				int page_cnt = fdao.get_total_page_cnt();
@@ -175,17 +191,13 @@
 			} 
 			%>
 			</td>
-			</tr>
-			<tr>
-			<td align="center">
-				<a href="board_write.jsp">글쓰기</a>
-				<a href="board_list.jsp">목록보기</a>
-			</td>
+			<td colspan="1" class="button">
+				<a href="board_write.jsp">글쓰기</a></td>
+			<td colspan="1" class="button">
+				<a href="board_list.jsp">목록보기</a></td>
 		</tr>
-
-	
 	</table>
-	</div>
+</div>
 </div>
 </div>
 </section>
