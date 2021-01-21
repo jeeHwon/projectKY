@@ -10,7 +10,7 @@
 <% 
 	int event_winner_no=Integer.parseInt(request.getParameter("event_winner_no"));
     Event_winnerDAO dao=new Event_winnerDAO();
-	Event_winnerDTO edDTO = dao.content(event_winner_no);
+	Event_winnerDTO ewDTO = dao.content(event_winner_no);
 	String userid = (String)session.getAttribute("userid")==null ? "" : (String)session.getAttribute("userid"); 
 	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
@@ -89,20 +89,20 @@
 		<div id="event">
 			<h1>이벤트에 당첨을 축하합니다!</h1>
 			<div class="head_view">
-				<p class="h_tit"><strong><%=edDTO.getEvent_winner_title()%></strong></p>
+				<p class="h_tit"><strong><%=ewDTO.getEvent_winner_title()%></strong></p>
 				<div class="h_info">
 					<ul>
-						<li class="info_item"><strong>조회수</strong><span><%=edDTO.getEvent_winner_view()%></span></li>
-						<li class="info_item"><strong>작성일</strong><span><%=edDTO.getEvent_winner_postday()%></span></li>
+						<li class="info_item"><strong>조회수</strong><span><%=ewDTO.getEvent_winner_view()%></span></li>
+						<li class="info_item"><strong>작성일</strong><span><%=ewDTO.getEvent_winner_postday()%></span></li>
 					</ul>
 				</div>
 					<div id="contentimg">	
-						<img src="../img/event/<%=edDTO.getEvent_winner_img()%>">
+						<img src="../img/event/<%=ewDTO.getEvent_winner_img()%>">
 					</div>
-				<div><%=edDTO.getEvent_winner_content()%></div>
+				<div><%=ewDTO.getEvent_winner_content()%></div>
 			</div>
 			<div id="listBtn">
-				<a href="event__winner_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록으로</a>
+				<a href="event_winner_list.jsp?pager=<%=pager%>&cla=<%=cla%>&sword=<%=sword%>">목록으로</a>
 			</div>
 		</div>
 	</div>

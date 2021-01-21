@@ -7,7 +7,6 @@
 <%@page import="java.util.ArrayList" %>
 <%
 	String userid=(String)session.getAttribute("userid");
-	String sort = (request.getParameter("sort") == null) ? "" : request.getParameter("sort");
 	request.setCharacterEncoding("utf-8");
 	String pager= (request.getParameter("pager") == null) ? "1" : request.getParameter("pager");
 	Event_winnerDTO eDTO = new Event_winnerDTO();
@@ -16,7 +15,7 @@
     //==========검색============
 	String cla = (request.getParameter("cla") == null) ? "" : request.getParameter("cla");
  	String sword = (request.getParameter("sword") == null) ? "" : request.getParameter("sword");
-    ArrayList<Event_winnerDTO> list=eDAO.list(sort,cla,sword,pager);
+    ArrayList<Event_winnerDTO> list=eDAO.list(cla,sword,pager);
 %>
 <jsp:include page="../header.jsp" />
 <style>
@@ -243,7 +242,6 @@ h3{
 						<td>조회수</td>
 					</tr>
 					<%for (int i = 0; i < list.size(); i++) {	%>
-					
 					<tr class="mid" height="50">
 						<td align="center"><%=list.get(i).getEvent_winner_no()%></td>
 						<td align="center">
@@ -269,10 +267,10 @@ h3{
 				          int pend=eDAO.getPend(page_cnt,pstart); 
 				      %> <!-- 이전페이지 --> <!-- 현재 페이지 그룹 이전 10페이지 --> 
 				      <% if(pstart != 1){//(현재페이지에 출력되는 그룹이 가장 첫번재 그룹이냐 => pstart=1)  %>
-							<a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_winner_list.jsp?pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">
 								<i class="fas fa-angle-double-left"></i></a> 
 					  <% }else{ %><i class="fas fa-angle-double-left"></i> <% }%> <!-- 현재페이지 기준 1페이지 이전 --> <% if(Integer.parseInt(pager) != 1){ %>
-							<a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_winner_list.jsp?pager=<%=Integer.parseInt(pager)-1%>&cla=<%=cla%>&sword=<%=sword%>">
 								<i class="fas fa-angle-left"></i>
 							</a> 
 						<% }else { %> <i class="fas fa-angle-left"></i>
@@ -280,18 +278,18 @@ h3{
 				             String str="";
 				            if(Integer.parseInt(pager) == i)
 				               str="style='color:red;'";  %> 
-				               <a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=i%>&cla=<%=cla%>&sword=<%=sword%>" <%=str%>> <%=i%>
+				               <a href="event_winner_list.jsp?pager=<%=i%>&cla=<%=cla%>&sword=<%=sword%>" <%=str%>> <%=i%>
 						</a> 
 						<!-- 페이지네이션 --> 
 						<% }%> <!-- 다음페이지 --> 
 						<!-- 현재페이지 기준 1페이지 이후 --> 
 						<% if(Integer.parseInt(pager) != page_cnt){%>
-							<a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=Integer.parseInt(pager)+1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_winner_list.jsp?pager=<%=Integer.parseInt(pager)+1%>&cla=<%=cla%>&sword=<%=sword%>">
 								<i class="fas fa-angle-right"></i>
 						    </a> 
 						<%}else{ %><i class="fas fa-angle-right"></i><% }%> <!-- 현재페이지 기준 다음 그룹으로 이동 -->
 						<%if(page_cnt != pend){%>
-							<a href="event_winner_list.jsp?sort=<%=sort%>&pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>">
+							<a href="event_winner_list.jsp?pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>">
 								<i class="fas fa-angle-double-right"></i>
 							</a> 
 						<% }else{ %> <i class="fas fa-angle-double-right"></i> <%} %>

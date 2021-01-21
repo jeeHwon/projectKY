@@ -68,45 +68,37 @@ public class Event_winnerDAO {
 		sql="select * from event_winner where event_winner_no="+event_winner_no;
 		db.pstmt=db.conn.prepareStatement(sql);
 		db.rs = db.pstmt.executeQuery();
+		db.rs.next();
 		Event_winnerDTO dto=new Event_winnerDTO();
-		if(db.rs.next()) {
-			dto.setEvent_winner_no(db.rs.getInt("event_winner_no"));
-			dto.setEvent_winner_title(db.rs.getString("Event_winner_title"));
-			dto.setEvent_winner_content(db.rs.getString("Event_winner_content"));
-			dto.setEvent_winner_img(db.rs.getString("Event_winner_img"));
-			dto.setEvent_winner_postday(db.rs.getString("Event_winner_postday"));
-			dto.setEvent_winner_view(db.rs.getString("Event_winner_view"));
-		}
+		dto.setEvent_winner_no(db.rs.getInt("event_winner_no"));
+		dto.setEvent_winner_title(db.rs.getString("event_winner_title"));
+		dto.setEvent_winner_content(db.rs.getString("event_winner_content"));
+		dto.setEvent_winner_img(db.rs.getString("event_winner_img"));
+		dto.setEvent_winner_postday(db.rs.getString("event_winner_postday"));
+		dto.setEvent_winner_view(db.rs.getString("event_winner_view"));
+		
 		return dto; 
 	}
 	//=====================list.jsp===============================
-	public ArrayList<Event_winnerDTO> list(String sort,String cla, String sword,String pager) throws Exception{
+	public ArrayList<Event_winnerDTO> list(String cla, String sword,String pager) throws Exception{
 		String orderby = "";
-		if(sort.equals("1")) {
-			orderby=" order by Event_winner_view desc)";
-		}else if(sort.equals("2")) {
-			orderby=" order by Event_winner_postday)";
-		}else if(sort.equals("3")) {
-			orderby=" order by event_no)";			
-		}else {
-			orderby=" order by event_no desc)";
-		}
+		orderby=" order by event_winner_no desc)";
 		int index;  // limit에 들어갈 index번호 생성
 		index=(Integer.parseInt(pager)-1)*10;
 		if(cla==""){//검색 조건이 없는 경우 => 모든 글 가져오기
-			sql="SELECT event_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
+			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
 			sql=sql+" FROM(SELECT ROWNUM AS RM, SELECT event_no,Event_winner_title,Event_winner_view,Event_winner_postday";
 			sql=sql+" FROM(SELECT * FROM event_winner "+orderby;
 			sql=sql+") WHERE RM between "+index+" and " +(index+10);
 		} 
 		if(cla.equals("content")){   //content 필드 검색
-			sql="SELECT event_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
-			sql=sql+" FROM(SELECT ROWNUM AS RM, event_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
+			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
+			sql=sql+" FROM(SELECT ROWNUM AS RM, event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
 			sql=sql+" FROM(SELECT * FROM event_winner where Event_winner_content like '%"+sword+"%'" +orderby;
 			sql=sql+") WHERE RM between "+index+" and "+(index+10);
 		}else{   //title 필드 검색
-			sql="SELECT event_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
-			sql=sql+" FROM(SELECT ROWNUM AS RM, event_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
+			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
+			sql=sql+" FROM(SELECT ROWNUM AS RM, event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
 			sql=sql+" FROM(SELECT * FROM event_winner where Event_winner_title like '%"+sword+"%'"+orderby;
 			sql=sql+") WHERE RM between "+index+" and "+(index+10);
 		}
@@ -116,7 +108,7 @@ public class Event_winnerDAO {
 		
 		while(db.rs.next()) {
 			Event_winnerDTO dto=new Event_winnerDTO();
-			dto.setEvent_no(db.rs.getInt("event_no"));
+			dto.setEvent_winner_no(db.rs.getInt("event_winner_no"));
 			dto.setEvent_winner_title(db.rs.getString("Event_winner_title"));
 			dto.setEvent_winner_postday(db.rs.getString("Event_winner_postday"));
 			dto.setEvent_winner_view(db.rs.getString("Event_winner_view"));
@@ -124,10 +116,6 @@ public class Event_winnerDAO {
 			list.add(dto);
 		}
 		return list; //return이 있으면 conn.close()안됨
-	}
-	
-	public void sort_list(String sort) {
-		
 	}
 	//===============================페이징=======================================
 	public int getTotalPage() throws Exception {
