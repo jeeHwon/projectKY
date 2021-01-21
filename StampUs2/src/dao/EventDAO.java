@@ -67,7 +67,7 @@ public class EventDAO {
 	//=====================content.jsp===============================
 	public EventDTO content(int event_no) throws Exception{
 
-		sql="select * from event where event_no="+event_no;
+		sql="select event_no,event_title,event_content,event_img,TO_CHAR(event_postday, 'YY-MM-DD HH24:MI') as time,event_view from event where event_no="+event_no;
 		db.pstmt=db.conn.prepareStatement(sql);
 		db.rs = db.pstmt.executeQuery();
 		db.rs.next();
@@ -76,7 +76,7 @@ public class EventDAO {
 		dto.setEvent_title(db.rs.getString("event_title"));
 		dto.setEvent_content(db.rs.getString("event_content"));
 		dto.setEvent_img(db.rs.getString("event_img"));
-		dto.setEvent_postday(db.rs.getString("event_postday"));
+		dto.setEvent_postday(db.rs.getString("time"));
 		dto.setEvent_view(db.rs.getString("event_view"));
 
 		return dto; 
@@ -87,26 +87,26 @@ public class EventDAO {
 		if(sort.equals("1")) {
 			orderby=" order by event_view desc)";
 		}else if(sort.equals("2")) {
-			orderby=" order by event_postday)";
+			orderby=" order by time)";
 		}else {
 			orderby=" order by event_no desc)";
 		}
 		int index;  // limit에 들어갈 index번호 생성
 		index=(Integer.parseInt(pager)-1)*10;
 		if(cla==""){//검색 조건이 없는 경우 => 모든 글 가져오기
-			sql="SELECT event_no,event_title,event_view,event_postday ";
-			sql=sql+" FROM(SELECT ROWNUM AS RM, SELECT event_no,event_title,event_view,event_postday";
+			sql="SELECT event_no,event_title,event_view,time ";
+			sql=sql+" FROM(SELECT ROWNUM AS RM, SELECT event_no,event_title,event_view,TO_CHAR(event_postday, 'YY-MM-DD') as time ";
 			sql=sql+" FROM(SELECT * FROM event "+orderby;
 			sql=sql+") WHERE RM between "+index+" and " +(index+10);
 		} 
 		if(cla.equals("content")){   //content 필드 검색
-			sql="SELECT event_no,event_title,event_view,event_postday ";
-			sql=sql+" FROM(SELECT ROWNUM AS RM, event_no,event_title,event_view,event_postday ";
+			sql="SELECT event_no,event_title,event_view,time ";
+			sql=sql+" FROM(SELECT ROWNUM AS RM, event_no,event_title,event_view,TO_CHAR(event_postday, 'YY-MM-DD') as time ";
 			sql=sql+" FROM(SELECT * FROM event where event_content like '%"+sword+"%'" +orderby;
 			sql=sql+") WHERE RM between "+index+" and "+(index+10);
 		}else{   //title 필드 검색
-			sql="SELECT event_no,event_title,event_view,event_postday ";
-			sql=sql+" FROM(SELECT ROWNUM AS RM, event_no,event_title,event_view,event_postday ";
+			sql="SELECT event_no,event_title,event_view,time ";
+			sql=sql+" FROM(SELECT ROWNUM AS RM, event_no,event_title,event_view,TO_CHAR(event_postday, 'YY-MM-DD') as time ";
 			sql=sql+" FROM(SELECT * FROM event where event_title like '%"+sword+"%'"+orderby;
 			sql=sql+") WHERE RM between "+index+" and "+(index+10);
 		}
@@ -118,7 +118,7 @@ public class EventDAO {
 			EventDTO dto=new EventDTO();
 			dto.setEvent_no(db.rs.getInt("event_no"));
 			dto.setEvent_title(db.rs.getString("event_title"));
-			dto.setEvent_postday(db.rs.getString("event_postday"));
+			dto.setEvent_postday(db.rs.getString("time"));
 			dto.setEvent_view(db.rs.getString("event_view"));
 			
 			list.add(dto);

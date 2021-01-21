@@ -199,10 +199,10 @@ h3{
 			<div class="event">
 			    <div class="cate_title" id="cate">
 			        <ul>
-			            <li><a href="#">오늘의 추천</a></li>
-			            <li><a class="" href="#">관심집중</a></li>
-			            <li><a class="" href="#">NEW</a></li>
-			            <li><a class="" href="#">마감임박</a></li>
+			            <li><a href="../event/event_list.jsp">오늘의 추천</a></li>
+			            <li><a class="" href="../event/event_list.jsp">관심집중</a></li>
+			            <li><a class="" href="../event/event_list.jsp">NEW</a></li>
+			            <li><a class="" href="../event/event_list.jsp">마감임박</a></li>
 			            <li class="active"><a class="nav_sub_a" href="event_winner_list.jsp">당첨자발표</a></li>
 			        </ul>
 			    </div>

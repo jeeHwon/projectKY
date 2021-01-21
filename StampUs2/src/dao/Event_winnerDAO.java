@@ -65,7 +65,8 @@ public class Event_winnerDAO {
 	//=====================content.jsp===============================
 	public Event_winnerDTO content(int event_winner_no) throws Exception{
 
-		sql="select * from event_winner where event_winner_no="+event_winner_no;
+		sql="select event_winner_no,event_winner_title,event_winner_content,event_winner_img,"
+				+ "TO_CHAR(event_winner_postday, 'YY-MM-DD HH24:MI') as time,event_winner_view from event_winner where event_winner_no="+event_winner_no;
 		db.pstmt=db.conn.prepareStatement(sql);
 		db.rs = db.pstmt.executeQuery();
 		db.rs.next();
@@ -74,7 +75,7 @@ public class Event_winnerDAO {
 		dto.setEvent_winner_title(db.rs.getString("event_winner_title"));
 		dto.setEvent_winner_content(db.rs.getString("event_winner_content"));
 		dto.setEvent_winner_img(db.rs.getString("event_winner_img"));
-		dto.setEvent_winner_postday(db.rs.getString("event_winner_postday"));
+		dto.setEvent_winner_postday(db.rs.getString("time"));
 		dto.setEvent_winner_view(db.rs.getString("event_winner_view"));
 		
 		return dto; 
@@ -86,19 +87,19 @@ public class Event_winnerDAO {
 		int index;  // limit에 들어갈 index번호 생성
 		index=(Integer.parseInt(pager)-1)*10;
 		if(cla==""){//검색 조건이 없는 경우 => 모든 글 가져오기
-			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
-			sql=sql+" FROM(SELECT ROWNUM AS RM, SELECT event_no,Event_winner_title,Event_winner_view,Event_winner_postday";
+			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,time ";
+			sql=sql+" FROM(SELECT ROWNUM AS RM, SELECT event_no,Event_winner_title,Event_winner_view,TO_CHAR(event_winner_postday, 'YY-MM-DD') as time";
 			sql=sql+" FROM(SELECT * FROM event_winner "+orderby;
 			sql=sql+") WHERE RM between "+index+" and " +(index+10);
 		} 
 		if(cla.equals("content")){   //content 필드 검색
-			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
-			sql=sql+" FROM(SELECT ROWNUM AS RM, event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
+			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,time ";
+			sql=sql+" FROM(SELECT ROWNUM AS RM, event_winner_no,Event_winner_title,Event_winner_view,TO_CHAR(event_winner_postday, 'YY-MM-DD') as time ";
 			sql=sql+" FROM(SELECT * FROM event_winner where Event_winner_content like '%"+sword+"%'" +orderby;
 			sql=sql+") WHERE RM between "+index+" and "+(index+10);
 		}else{   //title 필드 검색
-			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
-			sql=sql+" FROM(SELECT ROWNUM AS RM, event_winner_no,Event_winner_title,Event_winner_view,Event_winner_postday ";
+			sql="SELECT event_winner_no,Event_winner_title,Event_winner_view,time ";
+			sql=sql+" FROM(SELECT ROWNUM AS RM, event_winner_no,Event_winner_title,Event_winner_view,TO_CHAR(event_winner_postday, 'YY-MM-DD') as time ";
 			sql=sql+" FROM(SELECT * FROM event_winner where Event_winner_title like '%"+sword+"%'"+orderby;
 			sql=sql+") WHERE RM between "+index+" and "+(index+10);
 		}
@@ -110,7 +111,7 @@ public class Event_winnerDAO {
 			Event_winnerDTO dto=new Event_winnerDTO();
 			dto.setEvent_winner_no(db.rs.getInt("event_winner_no"));
 			dto.setEvent_winner_title(db.rs.getString("Event_winner_title"));
-			dto.setEvent_winner_postday(db.rs.getString("Event_winner_postday"));
+			dto.setEvent_winner_postday(db.rs.getString("time"));
 			dto.setEvent_winner_view(db.rs.getString("Event_winner_view"));
 			
 			list.add(dto);
