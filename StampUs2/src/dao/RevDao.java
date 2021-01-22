@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -38,35 +39,35 @@ public class RevDao {
     }
 	
 //==============================list==================================================
-	public ArrayList<RevDto> list() throws Exception
-    {
 
-    	//쿼리 생성
-    	String sql = "select * from rev";
-    	
-    	//심부름꾼 생성
-    	db.stmt = db.conn.createStatement();
-    	
-    	//쿼리 실행
-    	db.rs = db.stmt.executeQuery(sql);
-    
-    	//NoticeDto를 여러 개 담을 수 있는 ArrayList 생성
-    	ArrayList<RevDto> list=new ArrayList<RevDto>();
-    	
-    	//BoardDto 하나를 만들고 하나의 레코드를 전달
-    	while(db.rs.next()) 
-    	{
-    		RevDto rdto=new RevDto();
-    		rdto.setRev_no(db.rs.getInt("rev_no"));
-    		rdto.setRev_img(db.rs.getNString("rev_img"));
-    		rdto.setRev_company(db.rs.getNString("rev_company"));
-    		rdto.setRev_addr(db.rs.getNString("rev_addr"));
-    		list.add(rdto);
-	}	
-    	//ArrayList 객체를 넘긴다
-    	return list;	
-    }
-	
+    public ArrayList<RevDto> list(String cla, String sword,int pager) throws ClassNotFoundException, SQLException
+		{
+			int index=(pager-1)*10; // index값
+			String sql="";		
+
+		    	sql="SELECT *";
+		        sql=sql+" FROM(SELECT ROWNUM AS RM, rev_no,rev_img,rev_company,rev_addr";
+		        sql=sql+" FROM(SELECT * FROM rev ORDER BY rev_no DESC)";
+		        sql=sql+") WHERE RM between "+index+" and " +(index+10);
+
+		    // 심부름꾼생성
+			db.stmt=db.conn.createStatement();
+		    // 쿼리 실행 => ResultSet
+			db.rs=db.stmt.executeQuery(sql);
+		    
+		    ArrayList<RevDto> list=new ArrayList<RevDto>();
+		    while(db.rs.next()) 
+	    	{
+	    		RevDto rdto=new RevDto();
+	    		rdto.setRev_no(db.rs.getInt("rev_no"));
+	    		rdto.setRev_img(db.rs.getNString("rev_img"));
+	    		rdto.setRev_company(db.rs.getNString("rev_company"));
+	    		rdto.setRev_addr(db.rs.getNString("rev_addr"));
+	    		list.add(rdto);
+		}	
+	    	//ArrayList 객체를 넘긴다
+	    	return list;	
+	    }
 //==============================content==================================================
 	
 	public RevDto content(String rev_no) throws Exception
@@ -161,5 +162,23 @@ public class RevDao {
 	    	db.stmt.close();
 	    	db.conn.close();
 	    }
-	 
+		//==============================pager==================================================
+
+	    public int content_cnt(String cla, String sword) throws ClassNotFoundException, SQLException
+		{
+			String addsql="";
+	        if(cla.equals("user_id"))
+	       	 addsql="where user_id like '%"+sword+"%'";
+	        else if(cla.equals("rev_company"))
+	       	 addsql="where rev_company '%"+sword+"%'";
+	        else if(cla.equals("hash"))
+	       	 addsql="where hash like '%"+sword+"%'";
+	        
+	        String sql="select count(*) as cnt from rev "+addsql;
+	        db.stmt=db.conn.createStatement();
+	        db.rs=db.stmt.executeQuery(sql);
+	        db.rs.next();
+	        int result=db.rs.getInt("cnt");
+	        return result;
+		}
 	}

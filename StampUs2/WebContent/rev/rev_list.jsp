@@ -8,9 +8,14 @@
 <%@ page import ="dao.RevDao" %>
 <%@ page import ="dto.RevDto" %>
 <%
+//페이저 설정 => 현재 나타내고자 하는 페이지 값을 저장
+int pager=(request.getParameter("pager")==null) ? 1 : Integer.parseInt(request.getParameter("pager"));  
+String cla=(request.getParameter("cla") == null) ? "" : request.getParameter("cla");
+String sword=(request.getParameter("sword") == null) ? "" : request.getParameter("sword");
+
    // list메소드를 포함한 클래스 객체를 생성
    RevDao rdao=new RevDao();
-   ArrayList<RevDto> list=rdao.list();
+   ArrayList<RevDto> list=rdao.list(cla,sword,pager);
    pageContext.setAttribute("list", list);
    String userid="";
    if(session.getAttribute("userid")!=null)
@@ -58,7 +63,7 @@ font-family:"HMKMRHD", sans-serif;
 	</div>
 	<p align="center">stampus를 편리하게 이용해보세요</p>
 	<div align="center">
-	<table width=100%  height="1200" align="center">
+	<table width=100%  height="900" align="center">
 		<tr align="center" class="top" height="100">
 			<td width="200">대표사진</td>
 			<td>업체명</td>
@@ -79,6 +84,99 @@ font-family:"HMKMRHD", sans-serif;
 		<%
 			}
 		%>
+				 <tr> <!-- 사용자가 클릭하여 이동할수 있는 페이지 출력 -->
+		       <td colspan="5" align="center">
+		       <%
+		         // 총 페이지값을 구하기	총레코드수/페이지당레코드수
+		         int content_cnt=rdao.content_cnt(cla, sword);		         
+		       	 int page_cnt = content_cnt/10+1;		       	 
+		       	 if(content_cnt==0)
+		       		 page_cnt--;		       	   	 
+		         int pstart; 
+		         pstart=pager/10;
+		         if(pager%10 ==0)
+		        	 pstart=pstart-1;		         
+		         pstart=Integer.parseInt(pstart+"1");
+		         int pend=pstart+9;  // 251+9 => 260  총페이지:255
+		         if(page_cnt < pend)
+		        	 pend=page_cnt;
+		         
+		       %>
+		       <!-- 이전페이지 -->
+		       <!-- 현재페이지 그룹 이전 10페이지 -->
+		       <%
+		         if(pstart != 1)//(현재페이지에 출력되는 그룹이 가장 첫번쨰 그룹이냐=> pstart=1)
+		         {
+		       %>
+		       <a href="rev_list.jsp?pager=<%=pstart-1%>&cla=<%=cla%>&sword=<%=sword%>">&lt;&lt;</a>
+		       <%
+		         }
+		         else
+		         {
+		       %>
+		       		&lt;&lt;
+		       <%
+		         }
+		       %>
+		       <!-- 현재페이지 기준 1페이지 이전 -->
+		       <%
+		         if(pager !=1)
+		         {	 
+		       %>
+		       <a href="rev_list.jsp?pager=<%=pager-1%>&cla=<%=cla%>&sword=<%=sword%>">&lt;</a>
+		       <%
+		         }
+		         else
+		         {
+		       %>                 
+		          &lt;
+		       <%
+		         }
+		         for(int i=pstart;i<=pend;i++)
+		         {
+		        	 String str="";
+		        	 if(pager == i)
+		        		 str="style='color:red;'";
+		        	 
+		       %>
+		       	 <a href="rev_list.jsp?pager=<%=i%>&cla=<%=cla%>&sword=<%=sword%>" <%=str%>> <%=i%> </a>
+		       <%
+		         }	
+		       %>
+		       <!-- 다음페이지 -->
+		       <!-- 현재페이지 기준 1페이지 이후 -->
+		       <%
+		         if(pager != page_cnt)
+		         { 
+		       %>
+		       <a href="rev_list.jsp?pager=<%=pager+1%>&cla=<%=cla%>&sword=<%=sword%>">&gt;</a>
+		       <%
+		         }
+		         else
+		         {
+		       %>
+		          &gt;
+		       <% 
+		         }
+		       %>
+		       <!-- 현재페이지 기준 다음  10페이지 이후 -->
+		       <%
+		         if(page_cnt != pend)
+		         {
+		       %>
+		         <a href="rev_list.jsp?pager=<%=pend+1%>&cla=<%=cla%>&sword=<%=sword%>">&gt;&gt;</a>
+		       <%
+		         }
+		         else
+		         {
+		       %>
+		       		&gt;&gt;
+		       <%
+		         }
+		       %>  	      
+		      </td>
+		    </tr>
+		<tr>
 		<tr>
 		<%
 		if(userid.equals("admin")){
